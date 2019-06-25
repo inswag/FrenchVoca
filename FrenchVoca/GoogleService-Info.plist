@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>317590191708-ra9mckjbjt2ehdp568mk6vm34bnp6eek.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.317590191708-ra9mckjbjt2ehdp568mk6vm34bnp6eek</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAZK6rBR4d7g7XtV0oICVf-IQEzFoy4rrA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>317590191708</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>kr.inswag.FrenchVoca</string>
+	<key>PROJECT_ID</key>
+	<string>frenchvoca</string>
+	<key>STORAGE_BUCKET</key>
+	<string>frenchvoca.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:317590191708:ios:791735aa855f9b43</string>
+	<key>DATABASE_URL</key>
+	<string>https://frenchvoca.firebaseio.com</string>
+</dict>
+</plist>
