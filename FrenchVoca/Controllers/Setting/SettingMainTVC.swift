@@ -7,14 +7,13 @@
 //
 
 import UIKit
-import Foundation
 
-class SettingTableViewController: UITableViewController {
+class SettingMainTVC: UITableViewController {
     
     let cellID = "cellID"
-    let titleLabel = ["등록 정보 변경", "오픈소스 라이센스", "개발자", "Thanks to"]
-    let subtitleLabel = ["Changer votre inscription", "Open source license", "Développeur", "Merci à"]
-//    let img = ["C", "O", "D", "M"]
+    let cellID2 = "cellswitchID"
+    let titleLabel = ["등록 정보 변경", "개발자와 친구들", "알림 On/Off","알림 설정"]
+    let subtitleLabel = ["Changer votre inscription", "Développeur et ses amis", "Allumer/éteindre vos notis","Paramètre de Notifications"]
     
     let frenchVocaLogoView: UIView = {
         let view = UIView(frame: CGRect(x:  0, y: 0, width: 110, height: 27)) // 110/27
@@ -34,12 +33,13 @@ class SettingTableViewController: UITableViewController {
         
         self.tableView.backgroundColor = .white
         self.tableView.register(SettingMainCell.self, forCellReuseIdentifier: cellID)
-        self.tableView.estimatedRowHeight = 30
+        self.tableView.register(SettingMainSwitchCell.self, forCellReuseIdentifier: cellID2)
+        
         setupUIDesign()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     func setupUIDesign() {
@@ -52,29 +52,40 @@ class SettingTableViewController: UITableViewController {
     
 }
 
-extension SettingTableViewController {
+extension SettingMainTVC {
     
     override func tableView(_ tablView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        self.selectedID = self.movieInfos[indexPath.row].id
-//        let movieDetailViewController = MovieDetailViewController()
-//        movieDetailViewController.receivedValue = self.selectedID
-//        self.navigationController?.pushViewController(movieDetailViewController, animated: true)
+        //        self.selectedID = self.movieInfos[indexPath.row].id
+        //        let movieDetailViewController = MovieDetailViewController()
+        //        movieDetailViewController.receivedValue = self.selectedID
+        //        self.navigationController?.pushViewController(movieDetailViewController, animated: true)
         
         switch indexPath.row {
         case 0:
-            let settingModifyInfoViewController = SettingModifyInfoViewController()
-            settingModifyInfoViewController.modalPresentationStyle = .overCurrentContext
-//            self.navigationController?.pushViewController(settingModifyInfoViewController, animated: true)
-            self.present(settingModifyInfoViewController, animated: true, completion: nil)
+            let settingModifyInfoVC = SettingModifyInfoVC()
+            settingModifyInfoVC.modalPresentationStyle = .overCurrentContext
+            //            self.navigationController?.pushViewController(SettingModifyInfoVC, animated: true)
+            self.present(settingModifyInfoVC, animated: true, completion: nil)
             print("indexPath.row == 0")
-            // 학생증 형식으로 만들어서 기존의 학생증 틀과 새로운 학생증 틀을 동시에 보여준 후 기존에는 유저디폴트를 활용하여 보여주고 새로운 학생증 틀에는 이미지 피커 컨트롤러를 넣어서 새롭게 유저디폴트에 저장시켜버리기~~!
+        // 학생증 형식으로 만들어서 기존의 학생증 틀과 새로운 학생증 틀을 동시에 보여준 후 기존에는 유저디폴트를 활용하여 보여주고 새로운 학생증 틀에는 이미지 피커 컨트롤러를 넣어서 새롭게 유저디폴트에 저장시켜버리기~~!
         case 1:
             print("indexPath.row == 1")
-        case 2:
-            print("indexPath.row == 2")
-        default:
+            let flowLayout = UICollectionViewFlowLayout()
+            flowLayout.scrollDirection = UICollectionView.ScrollDirection.vertical
+            flowLayout.minimumInteritemSpacing = 1.0
+            flowLayout.minimumLineSpacing = 1.0
+            let settingPeopleCollectionVC = SettingPeopleCollectionVC(collectionViewLayout: flowLayout)
+            self.navigationController?.pushViewController(settingPeopleCollectionVC, animated: true)
+        case 3:
             print("indexPath.row == 3")
+            let settingNotiVC = SettingNotificationsVC()
+//            settingNotiVC.modalPresentationStyle = .pageSheet
+//            self.present(settingNotiVC, animated: true, completion: nil)
+            self.navigationController?.pushViewController(settingNotiVC, animated: true)
+            
+        default:
+            print("indexPath.row == ?")
         }
         
     }
@@ -86,11 +97,21 @@ extension SettingTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if indexPath.item == 2 {
+            let cell = self.tableView.dequeueReusableCell(withIdentifier: cellID2, for: indexPath) as! SettingMainSwitchCell
+            cell.selectionStyle = .none
+            cell.titleLabel.text = self.titleLabel[indexPath.row]
+            cell.subTitleLabel.text = self.subtitleLabel[indexPath.row]
+            return cell
+        }
+        
         let cell = self.tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! SettingMainCell
-//        cell.imageIcon.image = UIImage(named: "\(self.img[indexPath.row])")
+        cell.selectionStyle = .none
         cell.titleLabel.text = self.titleLabel[indexPath.row]
         cell.subTitleLabel.text = self.subtitleLabel[indexPath.row]
         return cell
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -99,6 +120,8 @@ extension SettingTableViewController {
     
     
 }
+
+
 
 
 

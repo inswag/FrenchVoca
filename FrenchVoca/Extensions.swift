@@ -29,20 +29,21 @@ extension UIView {
         translatesAutoresizingMaskIntoConstraints = false
         
         if let top = top {
-            self.topAnchor.constraint(equalTo: top, constant: paddingTop).isActive = true
+            self.topAnchor.constraint(equalTo: top, constant: paddingTop).isActive = true 
         }
-        
+
         if let left = left {
             self.leftAnchor.constraint(equalTo: left, constant: paddingLeft).isActive = true
         }
-        
+
         if let bottom = bottom {
-            bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom).isActive = true
+            self.bottomAnchor.constraint(equalTo: bottom, constant: -paddingBottom).isActive = true
+        }
+
+        if let right = right {
+            self.rightAnchor.constraint(equalTo: right, constant: -paddingRight).isActive = true
         }
         
-        if let right = right {
-            rightAnchor.constraint(equalTo: right, constant: -paddingRight).isActive = true
-        }
         
         if width != 0 {
             widthAnchor.constraint(equalToConstant: width).isActive = true

@@ -7,140 +7,177 @@
 //
 
 import UIKit
+import Foundation
 
-class SignInController: UIViewController,UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class SignInViewController: UIViewController {
     
-    // France Blue RGB : 36 74 156
-    let titleBackgroundView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.white
-        
+    var img = UIImage(named: "login_Photos")
+    
+    // Title Label
+    let titleLabel: UILabel = {
+        // France Blue RGB : 36 74 156
         let titleLabel = UILabel()
         titleLabel.backgroundColor = UIColor.white
         titleLabel.textAlignment = .center
-        titleLabel.numberOfLines = 1
-        let attributedTitle = NSAttributedString(string: "French Voca", attributes: [NSAttributedString.Key.font: UIFont(name: "Avenir-Light", size: 23)!, NSAttributedString.Key.foregroundColor: UIColor.black])
-        titleLabel.attributedText = attributedTitle
-        view.addSubview(titleLabel)
-        
-        titleLabel.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 180, height: 50)
-        titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        titleLabel.numberOfLines = 2
+        titleLabel.text = "맞나요?\nPas d'erreur ?"
+        titleLabel.font = UIFont(name: "Avenir-Light", size: 23)
+        titleLabel.adjustsFontSizeToFitWidth = true
+        return titleLabel
+    }()
+    
+    // Back Button
+    let backButtonIcon: UIButton = {
+        let button = UIButton()
+        let popBtn = UIImage(named: "Pop_Black_Button")
+        button.setImage(popBtn, for: .normal)
+        button.addTarget(self, action: #selector(handlePopAction), for: .touchUpInside)
+        return button
+    }()
+    
+    let backButtonText: UIButton = {
+        let button = UIButton(type: .system)
+        let attributedTitle = NSAttributedString(string: "Arrière", attributes: [NSAttributedString.Key.font: UIFont(name: "Avenir-Light", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)])
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.addTarget(self, action: #selector(handlePopAction), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func handlePopAction() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    // Photo & Username & Position & Login in Container View
+    let containerView: UIView = {
+        let view = UIView()
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.rgb(red: 138, green: 137, blue: 137).cgColor
+        view.layer.cornerRadius = 15
         return view
     }()
     
-    let loginPhotoButton: UIButton = {
-        // Button.ButtonType.system : A system style button, such as those shown in navigation bars and toolbars. <-> '.custom'
+    let studentCardLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Avenir-Light", size: 14)
+        let underlineAttriString = NSAttributedString(string: "Carte d'étudiant",
+                                                      attributes: [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
+                                                                   NSAttributedString.Key.font: UIFont(name: "Avenir-Light", size: 14)!,
+                                                                   NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)])
+        label.attributedText = underlineAttriString
+        return label
+    }()
+    
+    let chosenUserPhoto: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named: "login_Photos")
+        iv.contentMode = .scaleAspectFill
+        iv.layer.cornerRadius = 100 / 2
+        iv.clipsToBounds = true
+        return iv
+    }()
+    
+    // Label Stack View
+    let usernameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "VOTRE SURNOM"
+        label.textAlignment = .center
+        label.font = UIFont(name: "Avenir-Black", size: 25)
+        label.textColor = UIColor.rgb(red: 74, green: 74, blue: 74)
+        label.numberOfLines = 1
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    let positionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Votre position"
+        label.textAlignment = .center
+        label.font = UIFont(name: "Avenir-Book", size: 20)
+        label.textColor = UIColor.rgb(red: 74, green: 74, blue: 74)
+        label.numberOfLines = 1
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    // Button Stack View
+    let saveButton: UIButton = {
         let button = UIButton(type: .system)
-        let image = UIImage(named: "login_Photos")
-        
-        // UIImageRenderingModeAlwaysOriginal : Always draw the original image, without treating it as a template.
-        // UIImageRenderingModeAlwaysTemplate : Always draw the image as a template image, ignoring its color information.
-        image?.withRenderingMode(.alwaysOriginal)
-        
-        button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(handlePlusPhoto), for: .touchUpInside)
-        
+        button.setTitle("저장\n(Sauvegardez)", for: .normal)
+        button.backgroundColor = UIColor.rgb(red: 36, green: 74, blue: 156) // 활성화 색상
+        button.layer.cornerRadius = 5
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel!.lineBreakMode = NSLineBreakMode.byWordWrapping
+        button.titleLabel!.numberOfLines = 2
+        button.titleLabel?.textAlignment = .center
+        button.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
+        button.isEnabled = true
         return button
     }()
     
-    @objc func handlePlusPhoto() {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.allowsEditing = true
-        self.present(imagePickerController, animated: true, completion: nil)
+    @objc func handleSave() {
+        // Save to Userdefault
+//        if self.usernameLabel.text?.isEmpty != true && self.positionLabel.text?.isEmpty != true {
+//            let plist = UserDefaults.standard
+//            plist.set(self.usernameLabel.text, forKey: "이름")
+//            plist.set(self.positionLabel.text, forKey: "소속")
+//            if let imageData = self.chosenUserPhoto.image?.jpegData(compressionQuality: 0.3) {
+//                plist.set(imageData, forKey: "이미지")
+//            }
+//            plist.synchronize()
+//        }
+        
+        
+        // 인스턴스 생성 말고 다른방법은 없을까? 이 방법 안되는데... 델리게이트나 노티피케이션을 좀 알아보자
+//        let welcomeVC = WelcomeViewController()
+//        welcomeVC.collectionView.reloadData()
+//
+        
+        // Handling UX Design
+        self.loginButton.isEnabled = true
+        self.loginButton.backgroundColor = UIColor.rgb(red: 36, green: 74, blue: 156)
+        self.saveButton.isEnabled = false
+        self.saveButton.backgroundColor = UIColor.rgb(red: 199, green: 203, blue: 210)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            loginPhotoButton.setImage(editedImage.withRenderingMode(.alwaysOriginal), for: .normal)
-        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            loginPhotoButton.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
-        }
-        
-        loginPhotoButton.layer.cornerRadius = loginPhotoButton.frame.width / 2
-        loginPhotoButton.layer.masksToBounds = true
-        loginPhotoButton.layer.borderColor = UIColor.black.cgColor
-        loginPhotoButton.layer.borderWidth = 1
-        
-        dismiss(animated: true, completion: nil)
-    }
-    
-    
-    let usernameTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "닉네임(Votre surnom)"
-        textField.backgroundColor = UIColor.white
-        textField.borderStyle = .roundedRect
-        textField.font = UIFont.systemFont(ofSize: 14)
-        textField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
-        return textField
-    }()
-    
-    let positionTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "소속(Votre position)"
-        textField.backgroundColor = UIColor.white
-        textField.borderStyle = .roundedRect
-        textField.font = UIFont.systemFont(ofSize: 14)
-        textField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
-        return textField
-    }()
     
     let loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("시작(Commencer)", for: .normal)
-        button.backgroundColor = UIColor.rgb(red: 199, green: 203, blue: 210)
+        button.setTitle("다음\n(Suivant)", for: .normal)
+        button.backgroundColor = UIColor.rgb(red: 199, green: 203, blue: 210) // 비활성화 색상
         button.layer.cornerRadius = 5
         button.setTitleColor(.white, for: .normal)
-        button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
-        button.isEnabled = false
+        button.titleLabel!.lineBreakMode = NSLineBreakMode.byWordWrapping
+        button.titleLabel!.numberOfLines = 2
+        button.titleLabel?.textAlignment = .center
+        button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
+        button.isEnabled = true
         return button
     }()
     
-//    let loginGuideTitle: UILabel = {
-//        let label = UILabel()
-//        label.text = "간단한 입력을 통해 시작하세요!"
-//        label.font = UIFont.systemFont(ofSize: 14)
-//        label.adjustsFontSizeToFitWidth = true
-//        label.textColor = UIColor.rgb(red: 36, green: 74, blue: 156)
-//        label.textAlignment = .center
-//        return label
-//    }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .white
+    @objc func handleNext() {
+        print("OK handleNext")
         
-        setLogoDesign()
-        setupInputFields()
-        
-//        usernameTextField.becomeFirstResponder()
-    }
-    
-    @objc func handleTextInputChange() {
-        
-        print("OK handleTextInputChange")
-        let isFormVaild = usernameTextField.text?.isEmpty != true && positionTextField.text?.isEmpty != true
-        
-        if isFormVaild {
-            loginButton.isEnabled = true
-            loginButton.backgroundColor = UIColor.rgb(red: 36, green: 74, blue: 156)
-        } else {
-            loginButton.isEnabled = false
-            loginButton.backgroundColor = UIColor.rgb(red: 199, green: 203, blue: 210)
+        if self.usernameLabel.text?.isEmpty != true && self.positionLabel.text?.isEmpty != true {
+            let plist = UserDefaults.standard
+            plist.set(self.usernameLabel.text, forKey: "이름")
+            plist.set(self.positionLabel.text, forKey: "소속")
+            if let imageData = self.chosenUserPhoto.image?.jpegData(compressionQuality: 0.3) {
+                plist.set(imageData, forKey: "이미지")
+                print("imageData OK")
+            }
+            plist.synchronize()
         }
-    }
-    
-    @objc func handleLogin() {
-        print("OK handleLogin")
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController")
-        self.dismiss(animated: true, completion: nil)
         
-//        let viewController = SignUpController()
-//        navigationController?.pushViewController(viewController, animated: true)
+        let notiSettingVC = NotiSettingViewController()
+        navigationController?.pushViewController(notiSettingVC, animated: true)
+        
+        
+        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //        let vc = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController")
+        
+        
+        //        let viewController = SignUpController()
+        //        navigationController?.pushViewController(viewController, animated: true)
         
         //
         //        Auth.auth().signIn(withEmail: email, password: password) { (user, err) in
@@ -160,28 +197,60 @@ class SignInController: UIViewController,UITextFieldDelegate, UIImagePickerContr
         //        }
     }
     
-    func setLogoDesign() {
-        self.view.addSubview(titleBackgroundView)
-        self.titleBackgroundView.anchor(top: self.view.topAnchor, left: self.view.leftAnchor, bottom: nil, right: self.view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 200)
+    // MARK:- View Methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .white
+        setupUIDesign()
     }
     
-    func setupInputFields() {
-        self.view.addSubview(loginPhotoButton)
-        loginPhotoButton.anchor(top: self.titleBackgroundView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 80, height: 80)
-        loginPhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        
-        let stackView = UIStackView(arrangedSubviews: [usernameTextField, positionTextField, loginButton])
-        stackView.axis = .vertical
-        stackView.spacing = 20
-        stackView.distribution = .fillEqually
-        
-        self.view.addSubview(stackView)
-        // (each textField size 40 * 3) + (spacing 20 * 2)
-        stackView.anchor(top: self.loginPhotoButton.bottomAnchor, left: self.view.leftAnchor, bottom: nil, right: self.view.rightAnchor, paddingTop: 40, paddingLeft: 60, paddingBottom: 0, paddingRight: 60, width: 0, height: 160)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        // UX Design
+        if self.chosenUserPhoto.image == nil { chosenUserPhoto.image = self.img }
+        self.loginButton.isEnabled = false
+        self.saveButton.isEnabled = true
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
+    // MARK:- UI Design
+    func setupUIDesign() {
+        let labelStackView = UIStackView(arrangedSubviews: [usernameLabel, positionLabel])
+        labelStackView.axis = .vertical
+        labelStackView.spacing = 20
+        labelStackView.distribution = .fillEqually
+        
+        let btnStackView = UIStackView(arrangedSubviews: [saveButton, loginButton])
+        btnStackView.axis = .horizontal
+        btnStackView.spacing = 20
+        btnStackView.distribution = .fillEqually
+        
+        [titleLabel, backButtonIcon, backButtonText, containerView, btnStackView].forEach { self.view.addSubview($0) }
+        [studentCardLabel, chosenUserPhoto, labelStackView].forEach { self.containerView.addSubview($0) }
+        
+        self.titleLabel.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 60, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 0)
+        self.titleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
+        
+        self.backButtonIcon.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, left: self.view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        self.backButtonText.anchor(top: nil, left: self.backButtonIcon.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        self.backButtonText.centerYAnchor.constraint(equalTo: self.backButtonIcon.centerYAnchor).isActive = true
+        
+        let containerHeight: CGFloat = self.studentCardLabel.font.lineHeight + 310
+        self.containerView.anchor(top: self.titleLabel.bottomAnchor, left: self.view.leftAnchor, bottom: nil, right: self.view.rightAnchor, paddingTop: 40, paddingLeft: 80, paddingBottom: 0, paddingRight: 80, width: 0, height: containerHeight)
+        
+        
+        
+        self.studentCardLabel.anchor(top: self.containerView.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        self.studentCardLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
+        chosenUserPhoto.anchor(top: self.studentCardLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 30, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 100) // Height 100
+        chosenUserPhoto.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
+        // (each label size 40 * 3) + (spacing 20 * 2)
+        labelStackView.anchor(top: self.chosenUserPhoto.bottomAnchor, left: self.view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: self.view.safeAreaLayoutGuide.rightAnchor, paddingTop: 40, paddingLeft: 60, paddingBottom: 0, paddingRight: 60, width: 0, height: 100) // Height 140
+        
+        // (each button size 40 * 2) + (spacing 20 * 1)
+        btnStackView.anchor(top: self.containerView.bottomAnchor, left: self.view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: self.view.safeAreaLayoutGuide.rightAnchor, paddingTop: 20, paddingLeft: 60, paddingBottom: 0, paddingRight: 60, width: self.view.frame.width - 120, height: 40) // Height 60 + 10(btm) = 70
     }
     
 }

@@ -80,6 +80,8 @@ class WelcomeMainNoticeNestedCell: UICollectionViewCell {
         
         self.titleLabel.anchor(top: self.imageView.bottomAnchor, left: self.contentView.leftAnchor, bottom: nil, right: self.contentView.rightAnchor, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         self.subTitleLabel.anchor(top: self.titleLabel.bottomAnchor, left: self.contentView.leftAnchor, bottom: self.contentView.bottomAnchor, right: self.contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+        
 
         print("OK")
     }

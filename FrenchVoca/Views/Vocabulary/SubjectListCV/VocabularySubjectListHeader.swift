@@ -27,7 +27,7 @@ class VocabularySubjectListHeader: UICollectionViewCell {
 
     let vocabularySectionTitle: UILabel = {
         let label = UILabel()
-        label.text = "Vocabulaire"
+        label.text = "Choisissez votre sujet"
         label.textAlignment = .left
         label.font = Constant.vocabularySectionTitleFont
         label.textColor = UIColor.rgb(red: 138, green: 137, blue: 137)

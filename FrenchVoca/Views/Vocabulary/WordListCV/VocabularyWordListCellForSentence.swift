@@ -6,10 +6,10 @@
 //  Copyright © 2019 inswag. All rights reserved.
 //
 
-import UIKit
 import AVFoundation
+import UIKit
 
-class VocabularyWordListCell: UICollectionViewCell {
+class VocabularyWordListCellForSentence: UICollectionViewCell {
     
     static func defineCellSize(cellwidth: CGFloat) -> CGSize {
         let cellHeight = (Constant.outlineHeight) + (Constant.padding) +
@@ -63,16 +63,28 @@ class VocabularyWordListCell: UICollectionViewCell {
     
     var willSayWord = ""
     
+    // 발음 속도 조절 슬라이더 + 발음 속도 미리 들어보기 기능 추가. -> 11.20 완료
+    let plist = UserDefaults.standard
+//    var utteranceRate: Float = 0.3
+    
+
+    let singleSynthesizer = SingletonSynthesizer.shared
+    
+    // Available iOS 10+
     @objc func pronunciation() {
-        print("ok btn")
-        let synthesizer = AVSpeechSynthesizer()
-        let utterance = AVSpeechUtterance(string: self.willSayWord)
-        utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR")
-        utterance.rate = 0.4
-        synthesizer.speak(utterance)
+        
+//        let synthesizer = AVSpeechSynthesizer()
+        let utterance = AVSpeechUtterance(string: self.willSayWord) // 읽어줄 텍스트 지정
+        utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR") // 언어 지정
+        // 문제상황 : 발음 속도 조절 뷰컨을 만들엇지만 일단 처음에는 기본 값인 0.5가 있어야 겠고,
+        // 맨 처음에는 기본값 0.5 로 고정이 맞지만 발음 조정을 했을 경우에는 그 값이 반영되어야 함.
+        if plist.float(forKey: "발음속도") == 0.0 {
+            utterance.rate = AVSpeechUtteranceDefaultSpeechRate
+        } else {
+            utterance.rate = plist.float(forKey: "발음속도") //속도 조절
+        }
+        singleSynthesizer.speak(utterance) // speak 메소드를 통해 설정한 utterance 를 parameter 로 전달해준다.
     }
-    
-    
     
     lazy var sentencePrononciationButton: UIButton = {
         let btn = UIButton()
@@ -82,18 +94,38 @@ class VocabularyWordListCell: UICollectionViewCell {
         return btn
     }()
     
+    
     var willSaySentence = ""
     
     @objc func sentencePronunciation() {
-        print("ok btn")
-        let synthesizer = AVSpeechSynthesizer()
+        
         let utterance = AVSpeechUtterance(string: self.willSaySentence)
         utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR")
-        utterance.rate = 0.4
-        synthesizer.speak(utterance)
+        if plist.float(forKey: "발음속도") == 0.0 {
+            utterance.rate = AVSpeechUtteranceDefaultSpeechRate
+            print("앱 처음 실행했을 때 문장발음속도 : \(utterance.rate)")
+        } else {
+            utterance.rate = plist.float(forKey: "발음속도")
+        }
+        singleSynthesizer.speak(utterance)
     }
-        
     
+    
+    // MARK:- TEST
+    lazy var stopTTSButton: UIButton = {
+        let btn = UIButton()
+        let img = UIImage(named: "stop")
+        btn.setImage(img, for: .normal)
+        btn.addTarget(self, action: #selector(stopTTS), for: .touchUpInside)
+        return btn
+    }()
+    
+    @objc func stopTTS() {
+        if singleSynthesizer.isSpeaking == true {
+            singleSynthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
+        }
+        
+    }
     
     let wordPhoneticsLabel: UILabel = {
         let label = UILabel()
@@ -194,7 +226,7 @@ class VocabularyWordListCell: UICollectionViewCell {
     
     fileprivate func setupUIDesign() {
         [backgroundBorderView].forEach { self.contentView.addSubview($0) }
-        [wordTitleLabel, wordPhoneticsLabel, wordPronunciationButton, wordPartOfSpeechLabel, wordGenderLabel, wordNumberLabel, wordMeaningLabel, exampleTitleLabel, sentencePrononciationButton, wordFrenchExamLabel, wordKoreanExamLabel].forEach { self.backgroundBorderView.addSubview($0) }
+        [wordTitleLabel, wordPhoneticsLabel, wordPronunciationButton, wordPartOfSpeechLabel, wordGenderLabel, wordNumberLabel, wordMeaningLabel, exampleTitleLabel, sentencePrononciationButton, stopTTSButton, wordFrenchExamLabel, wordKoreanExamLabel].forEach { self.backgroundBorderView.addSubview($0) }
         
         // Here is AutoLayout of Vocabulary Word List Cell By using 'Anchor'
         self.backgroundBorderView.anchor(top: self.contentView.topAnchor, left: self.contentView.leftAnchor, bottom: self.contentView.bottomAnchor, right: self.contentView.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 0, height: 0)
@@ -202,7 +234,6 @@ class VocabularyWordListCell: UICollectionViewCell {
         self.wordPhoneticsLabel.anchor(top: self.wordTitleLabel.bottomAnchor, left: self.backgroundBorderView.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         self.wordPronunciationButton.anchor(top: nil, left: self.wordPhoneticsLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 20, height: 20)
         self.wordPronunciationButton.centerYAnchor.constraint(equalTo: self.wordPhoneticsLabel.centerYAnchor).isActive = true
-        
     
         
         self.wordMeaningLabel.anchor(top: nil, left: nil, bottom: self.wordTitleLabel.bottomAnchor, right: self.backgroundBorderView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 15, width: (self.contentView.frame.width / 3), height: 22)
@@ -215,6 +246,8 @@ class VocabularyWordListCell: UICollectionViewCell {
         self.sentencePrononciationButton.anchor(top: nil, left: self.exampleTitleLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 20, height: 20)
         self.sentencePrononciationButton.centerYAnchor.constraint(equalTo: self.exampleTitleLabel.centerYAnchor).isActive = true
         
+        self.stopTTSButton.anchor(top: nil, left: self.sentencePrononciationButton.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 20, height: 20)
+        self.stopTTSButton.centerYAnchor.constraint(equalTo: self.exampleTitleLabel.centerYAnchor).isActive = true
         
         self.wordFrenchExamLabel.anchor(top: nil, left: self.backgroundBorderView.leftAnchor, bottom: self.wordKoreanExamLabel.topAnchor, right: self.backgroundBorderView.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 5, paddingRight: 15, width: 0, height: 0)
         self.wordKoreanExamLabel.anchor(top: nil, left: self.backgroundBorderView.leftAnchor, bottom: self.backgroundBorderView.bottomAnchor, right: self.backgroundBorderView.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 15, paddingRight: 15, width: 0, height: 0)
@@ -227,5 +260,6 @@ class VocabularyWordListCell: UICollectionViewCell {
     override func prepareForReuse() {
         self.wordGenderLabel.textColor = .black
     }
+    
     
 }

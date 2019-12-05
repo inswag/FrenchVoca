@@ -7,21 +7,127 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F7B4991E9D67411F8908997 /* Pods_FrenchVoca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76AF2F4438B6C98D96CC398B /* Pods_FrenchVoca.framework */; };
+		F911EF402317AEA2009A8913 /* VocabularyNotebookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911EF3F2317AEA2009A8913 /* VocabularyNotebookVC.swift */; };
+		F911EF422317B38D009A8913 /* VocabularyNotebookVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911EF412317B38D009A8913 /* VocabularyNotebookVCCell.swift */; };
+		F91AFB3F2241097100F435A5 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F91AFB3E2241097000F435A5 /* libsqlite3.0.tbd */; };
+		F91AFB4E22410A4600F435A5 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = F91AFB4322410A4400F435A5 /* FMDatabasePool.m */; };
+		F91AFB4F22410A4600F435A5 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F91AFB4422410A4400F435A5 /* FMResultSet.m */; };
+		F91AFB5022410A4600F435A5 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = F91AFB4822410A4500F435A5 /* FMDatabaseAdditions.m */; };
+		F91AFB5122410A4600F435A5 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = F91AFB4922410A4500F435A5 /* FMDatabaseQueue.m */; };
+		F91AFB5222410A4600F435A5 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = F91AFB4B22410A4600F435A5 /* FMDatabase.m */; };
+		F91AFB5622410DB500F435A5 /* VocabularyVocaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91AFB5522410DB500F435A5 /* VocabularyVocaCell.swift */; };
+		F91AFB5B2241C69C00F435A5 /* SubjectDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91AFB5A2241C69C00F435A5 /* SubjectDAO.swift */; };
+		F91AFB5D2241DB6E00F435A5 /* WordDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91AFB5C2241DB6E00F435A5 /* WordDAO.swift */; };
+		F91CE28822101C97000D1380 /* VocabularyWordListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91CE28722101C97000D1380 /* VocabularyWordListVC.swift */; };
+		F91CE28D22101DB8000D1380 /* VocabularyWordListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91CE28C22101DB7000D1380 /* VocabularyWordListHeader.swift */; };
+		F91CE29022102207000D1380 /* VocabularyWordListCellForSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91CE28F22102207000D1380 /* VocabularyWordListCellForSentence.swift */; };
 		F91F62DF21F93D4A00B80433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62DE21F93D4A00B80433 /* AppDelegate.swift */; };
-		F91F62E121F93D4A00B80433 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62E021F93D4A00B80433 /* ViewController.swift */; };
+		F91F62E121F93D4A00B80433 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62E021F93D4A00B80433 /* WelcomeViewController.swift */; };
 		F91F62E421F93D4A00B80433 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F91F62E221F93D4A00B80433 /* Main.storyboard */; };
 		F91F62E621F93D4B00B80433 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F91F62E521F93D4B00B80433 /* Assets.xcassets */; };
 		F91F62E921F93D4B00B80433 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F91F62E721F93D4B00B80433 /* LaunchScreen.storyboard */; };
+		F91F62F121F93E8E00B80433 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62F021F93E8E00B80433 /* Extensions.swift */; };
+		F91F62F521F93E9800B80433 /* WelcomeMainNoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62F221F93E9700B80433 /* WelcomeMainNoticeCell.swift */; };
+		F91F62F621F93E9800B80433 /* WelcomeMainProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62F321F93E9700B80433 /* WelcomeMainProfileHeader.swift */; };
+		F91F62FB21F9EE6D00B80433 /* DELFScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62FA21F9EE6D00B80433 /* DELFScheduleViewController.swift */; };
+		F936B2F22382D8A000D15624 /* SettingNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */; };
+		F97867A3237D16E400CB0728 /* NotiSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97867A2237D16E400CB0728 /* NotiSettingViewController.swift */; };
+		F985BEC0238CF0270039DBF8 /* FrenchVoca.db in Resources */ = {isa = PBXBuildFile; fileRef = F985BEBF238CF0270039DBF8 /* FrenchVoca.db */; };
+		F9AAFE872257226400F281CE /* SettingModifyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */; };
+		F9AD8B46220BB5BA00EBCCCE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AD8B45220BB5BA00EBCCCE /* MainTabBarController.swift */; };
+		F9B38F3D2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B38F3C2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift */; };
+		F9B38F4022547BDD000E1CEA /* SettingMainTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B38F3F22547BDD000E1CEA /* SettingMainTVC.swift */; };
+		F9B38F4322547D79000E1CEA /* SettingMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B38F4222547D79000E1CEA /* SettingMainCell.swift */; };
+		F9B4DFA22382E87D0080DD5D /* SettingMainSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B4DFA12382E87D0080DD5D /* SettingMainSwitchCell.swift */; };
+		F9BB5C4E226AF94F00A3679F /* SettingPeopleCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BB5C4D226AF94F00A3679F /* SettingPeopleCVC.swift */; };
+		F9BB5C50226AFB4C00A3679F /* SettingPeopleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BB5C4F226AFB4C00A3679F /* SettingPeopleCell.swift */; };
+		F9BB5C54226C487100A3679F /* SettingPeopleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BB5C53226C487100A3679F /* SettingPeopleHeader.swift */; };
+		F9BB5C58226C55CE00A3679F /* people.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BB5C57226C55CE00A3679F /* people.swift */; };
+		F9BB5C5A226C55DC00A3679F /* peopleGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BB5C59226C55DC00A3679F /* peopleGroup.swift */; };
+		F9BB5C5C226C55F800A3679F /* peopleGroupData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BB5C5B226C55F800A3679F /* peopleGroupData.swift */; };
+		F9BB5C63226F097C00A3679F /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F9BB5C62226F097C00A3679F /* Settings.bundle */; };
+		F9BF0939225C9D170097E0CC /* UNNotiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BF0938225C9D170097E0CC /* UNNotiManager.swift */; };
+		F9BF093B225F34140097E0CC /* WelcomeMainWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BF093A225F34140097E0CC /* WelcomeMainWordCell.swift */; };
+		F9BF093D225F344C0097E0CC /* WelcomeMainWordNestedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BF093C225F344C0097E0CC /* WelcomeMainWordNestedCell.swift */; };
+		F9C07B8522AE907800D0920B /* VocabularyWordListCellForPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C07B8422AE907800D0920B /* VocabularyWordListCellForPhoto.swift */; };
+		F9D0E4572219780200BE4815 /* EnrollmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D0E4562219780200BE4815 /* EnrollmentViewController.swift */; };
+		F9E13884220B0CEA00DDE7B3 /* Vocabulary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9E13883220B0CEA00DDE7B3 /* Vocabulary.storyboard */; };
+		F9E13888220B0D5A00DDE7B3 /* VocabularySubjectListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E13887220B0D5A00DDE7B3 /* VocabularySubjectListVC.swift */; };
+		F9E1388A220B105100DDE7B3 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9E13889220B105100DDE7B3 /* Setting.storyboard */; };
+		F9E1388E220B1C0B00DDE7B3 /* VocabularySubjectListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E1388D220B1C0B00DDE7B3 /* VocabularySubjectListHeader.swift */; };
+		F9F1E2E523881BFC0084DE34 /* SingletonSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F1E2E423881BFC0084DE34 /* SingletonSynthesizer.swift */; };
+		F9F88DF62383E2700098C310 /* VocabularyVoiceSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F88DF52383E2700098C310 /* VocabularyVoiceSettingVC.swift */; };
+		F9FFEB982209C60B00F05E98 /* FLEXScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FFEB972209C60B00F05E98 /* FLEXScheduleViewController.swift */; };
+		F9FFEB9B2209D8EF00F05E98 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FFEB9A2209D8EF00F05E98 /* SignInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3CD8A931643B4E73B4BA260B /* Pods-FrenchVoca.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrenchVoca.release.xcconfig"; path = "Pods/Target Support Files/Pods-FrenchVoca/Pods-FrenchVoca.release.xcconfig"; sourceTree = "<group>"; };
+		69229CDDC797392F5E828F6D /* Pods-FrenchVoca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrenchVoca.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FrenchVoca/Pods-FrenchVoca.debug.xcconfig"; sourceTree = "<group>"; };
+		76AF2F4438B6C98D96CC398B /* Pods_FrenchVoca.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrenchVoca.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F911EF3F2317AEA2009A8913 /* VocabularyNotebookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyNotebookVC.swift; sourceTree = "<group>"; };
+		F911EF412317B38D009A8913 /* VocabularyNotebookVCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyNotebookVCCell.swift; sourceTree = "<group>"; };
+		F91AFB3E2241097000F435A5 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		F91AFB4022410A4200F435A5 /* FrenchVoca-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FrenchVoca-Bridging-Header.h"; sourceTree = "<group>"; };
+		F91AFB4122410A4300F435A5 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		F91AFB4322410A4400F435A5 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		F91AFB4422410A4400F435A5 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		F91AFB4522410A4400F435A5 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		F91AFB4622410A4400F435A5 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		F91AFB4722410A4500F435A5 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		F91AFB4822410A4500F435A5 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		F91AFB4922410A4500F435A5 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		F91AFB4A22410A4500F435A5 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		F91AFB4B22410A4600F435A5 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		F91AFB4C22410A4600F435A5 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		F91AFB5422410A7900F435A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F91AFB5522410DB500F435A5 /* VocabularyVocaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyVocaCell.swift; sourceTree = "<group>"; };
+		F91AFB5A2241C69C00F435A5 /* SubjectDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectDAO.swift; sourceTree = "<group>"; };
+		F91AFB5C2241DB6E00F435A5 /* WordDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDAO.swift; sourceTree = "<group>"; };
+		F91CE28722101C97000D1380 /* VocabularyWordListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyWordListVC.swift; sourceTree = "<group>"; };
+		F91CE28C22101DB7000D1380 /* VocabularyWordListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyWordListHeader.swift; sourceTree = "<group>"; };
+		F91CE28F22102207000D1380 /* VocabularyWordListCellForSentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyWordListCellForSentence.swift; sourceTree = "<group>"; };
 		F91F62DB21F93D4A00B80433 /* FrenchVoca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrenchVoca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F91F62DE21F93D4A00B80433 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F91F62E021F93D4A00B80433 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F91F62E021F93D4A00B80433 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		F91F62E321F93D4A00B80433 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F91F62E521F93D4B00B80433 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F91F62E821F93D4B00B80433 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F91F62EA21F93D4B00B80433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F91F62F021F93E8E00B80433 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F91F62F221F93E9700B80433 /* WelcomeMainNoticeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeMainNoticeCell.swift; sourceTree = "<group>"; };
+		F91F62F321F93E9700B80433 /* WelcomeMainProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeMainProfileHeader.swift; sourceTree = "<group>"; };
+		F91F62FA21F9EE6D00B80433 /* DELFScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DELFScheduleViewController.swift; sourceTree = "<group>"; };
+		F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationsVC.swift; sourceTree = "<group>"; };
+		F97867A2237D16E400CB0728 /* NotiSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiSettingViewController.swift; sourceTree = "<group>"; };
+		F985BEBF238CF0270039DBF8 /* FrenchVoca.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = FrenchVoca.db; sourceTree = "<group>"; };
+		F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModifyInfoVC.swift; sourceTree = "<group>"; };
+		F9AD8B45220BB5BA00EBCCCE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		F9B38F3C2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMainNoticeNestedCell.swift; sourceTree = "<group>"; };
+		F9B38F3F22547BDD000E1CEA /* SettingMainTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainTVC.swift; sourceTree = "<group>"; };
+		F9B38F4222547D79000E1CEA /* SettingMainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainCell.swift; sourceTree = "<group>"; };
+		F9B4DFA12382E87D0080DD5D /* SettingMainSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainSwitchCell.swift; sourceTree = "<group>"; };
+		F9BB5C4D226AF94F00A3679F /* SettingPeopleCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPeopleCVC.swift; sourceTree = "<group>"; };
+		F9BB5C4F226AFB4C00A3679F /* SettingPeopleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPeopleCell.swift; sourceTree = "<group>"; };
+		F9BB5C53226C487100A3679F /* SettingPeopleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPeopleHeader.swift; sourceTree = "<group>"; };
+		F9BB5C57226C55CE00A3679F /* people.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = people.swift; sourceTree = "<group>"; };
+		F9BB5C59226C55DC00A3679F /* peopleGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = peopleGroup.swift; sourceTree = "<group>"; };
+		F9BB5C5B226C55F800A3679F /* peopleGroupData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = peopleGroupData.swift; sourceTree = "<group>"; };
+		F9BB5C62226F097C00A3679F /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		F9BF0938225C9D170097E0CC /* UNNotiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNNotiManager.swift; sourceTree = "<group>"; };
+		F9BF093A225F34140097E0CC /* WelcomeMainWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMainWordCell.swift; sourceTree = "<group>"; };
+		F9BF093C225F344C0097E0CC /* WelcomeMainWordNestedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMainWordNestedCell.swift; sourceTree = "<group>"; };
+		F9C07B8422AE907800D0920B /* VocabularyWordListCellForPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyWordListCellForPhoto.swift; sourceTree = "<group>"; };
+		F9D0E4562219780200BE4815 /* EnrollmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentViewController.swift; sourceTree = "<group>"; };
+		F9E13883220B0CEA00DDE7B3 /* Vocabulary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Vocabulary.storyboard; sourceTree = "<group>"; };
+		F9E13887220B0D5A00DDE7B3 /* VocabularySubjectListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularySubjectListVC.swift; sourceTree = "<group>"; };
+		F9E13889220B105100DDE7B3 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		F9E1388D220B1C0B00DDE7B3 /* VocabularySubjectListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularySubjectListHeader.swift; sourceTree = "<group>"; };
+		F9F1E2E423881BFC0084DE34 /* SingletonSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingletonSynthesizer.swift; sourceTree = "<group>"; };
+		F9F88DF52383E2700098C310 /* VocabularyVoiceSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyVoiceSettingVC.swift; sourceTree = "<group>"; };
+		F9FFEB972209C60B00F05E98 /* FLEXScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLEXScheduleViewController.swift; sourceTree = "<group>"; };
+		F9FFEB9A2209D8EF00F05E98 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +135,119 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F91AFB3F2241097100F435A5 /* libsqlite3.0.tbd in Frameworks */,
+				4F7B4991E9D67411F8908997 /* Pods_FrenchVoca.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02CA939416DFCC74BD209625 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F91AFB3E2241097000F435A5 /* libsqlite3.0.tbd */,
+				76AF2F4438B6C98D96CC398B /* Pods_FrenchVoca.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ADA4ADDF2A876DABFDD6F583 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				69229CDDC797392F5E828F6D /* Pods-FrenchVoca.debug.xcconfig */,
+				3CD8A931643B4E73B4BA260B /* Pods-FrenchVoca.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F91AFB5322410A6E00F435A5 /* FMDB */ = {
+			isa = PBXGroup;
+			children = (
+				F91AFB4522410A4400F435A5 /* FMDatabase.h */,
+				F91AFB4B22410A4600F435A5 /* FMDatabase.m */,
+				F91AFB4622410A4400F435A5 /* FMDatabaseAdditions.h */,
+				F91AFB4822410A4500F435A5 /* FMDatabaseAdditions.m */,
+				F91AFB4722410A4500F435A5 /* FMDatabasePool.h */,
+				F91AFB4322410A4400F435A5 /* FMDatabasePool.m */,
+				F91AFB4C22410A4600F435A5 /* FMDatabaseQueue.h */,
+				F91AFB4922410A4500F435A5 /* FMDatabaseQueue.m */,
+				F91AFB4A22410A4500F435A5 /* FMDB.h */,
+				F91AFB4122410A4300F435A5 /* FMResultSet.h */,
+				F91AFB4422410A4400F435A5 /* FMResultSet.m */,
+				F91AFB5422410A7900F435A5 /* Info.plist */,
+			);
+			path = FMDB;
+			sourceTree = "<group>";
+		};
+		F91AFB592241C68500F435A5 /* DAO */ = {
+			isa = PBXGroup;
+			children = (
+				F985BEBF238CF0270039DBF8 /* FrenchVoca.db */,
+				F91AFB5A2241C69C00F435A5 /* SubjectDAO.swift */,
+				F91AFB5C2241DB6E00F435A5 /* WordDAO.swift */,
+			);
+			path = DAO;
+			sourceTree = "<group>";
+		};
+		F91CE28522101C3A000D1380 /* SubjectList */ = {
+			isa = PBXGroup;
+			children = (
+				F9E13887220B0D5A00DDE7B3 /* VocabularySubjectListVC.swift */,
+				F911EF3F2317AEA2009A8913 /* VocabularyNotebookVC.swift */,
+			);
+			path = SubjectList;
+			sourceTree = "<group>";
+		};
+		F91CE28622101C48000D1380 /* WordList */ = {
+			isa = PBXGroup;
+			children = (
+				F91CE28722101C97000D1380 /* VocabularyWordListVC.swift */,
+				F9F88DF52383E2700098C310 /* VocabularyVoiceSettingVC.swift */,
+			);
+			path = WordList;
+			sourceTree = "<group>";
+		};
+		F91CE28922101D2C000D1380 /* SubjectListCV */ = {
+			isa = PBXGroup;
+			children = (
+				F9E1388D220B1C0B00DDE7B3 /* VocabularySubjectListHeader.swift */,
+				F91AFB5522410DB500F435A5 /* VocabularyVocaCell.swift */,
+				F911EF412317B38D009A8913 /* VocabularyNotebookVCCell.swift */,
+			);
+			path = SubjectListCV;
+			sourceTree = "<group>";
+		};
+		F91CE28A22101D77000D1380 /* WordListCV */ = {
+			isa = PBXGroup;
+			children = (
+				F91CE28C22101DB7000D1380 /* VocabularyWordListHeader.swift */,
+				F91CE28F22102207000D1380 /* VocabularyWordListCellForSentence.swift */,
+				F9C07B8422AE907800D0920B /* VocabularyWordListCellForPhoto.swift */,
+			);
+			path = WordListCV;
+			sourceTree = "<group>";
+		};
+		F91CE28B22101D80000D1380 /* MainCV */ = {
+			isa = PBXGroup;
+			children = (
+				F91F62F321F93E9700B80433 /* WelcomeMainProfileHeader.swift */,
+				F91F62F221F93E9700B80433 /* WelcomeMainNoticeCell.swift */,
+				F9B38F3C2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift */,
+				F9BF093A225F34140097E0CC /* WelcomeMainWordCell.swift */,
+				F9BF093C225F344C0097E0CC /* WelcomeMainWordNestedCell.swift */,
+			);
+			path = MainCV;
+			sourceTree = "<group>";
+		};
 		F91F62D221F93D4A00B80433 = {
 			isa = PBXGroup;
 			children = (
 				F91F62DD21F93D4A00B80433 /* FrenchVoca */,
+				F9BB5C62226F097C00A3679F /* Settings.bundle */,
 				F91F62DC21F93D4A00B80433 /* Products */,
+				ADA4ADDF2A876DABFDD6F583 /* Pods */,
+				02CA939416DFCC74BD209625 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +262,172 @@
 		F91F62DD21F93D4A00B80433 /* FrenchVoca */ = {
 			isa = PBXGroup;
 			children = (
-				F91F62DE21F93D4A00B80433 /* AppDelegate.swift */,
-				F91F62E021F93D4A00B80433 /* ViewController.swift */,
-				F91F62E221F93D4A00B80433 /* Main.storyboard */,
+				F9F1E2E323881BCC0084DE34 /* SpeechSynthesizer */,
+				F9BB5C5F226C9E4D00A3679F /* Notification */,
+				F9BB5C56226C55BF00A3679F /* Model */,
+				F91F62F921F9EE3A00B80433 /* Views */,
+				F91F62F821F9EE2200B80433 /* Controllers */,
+				F9E13882220B0CBD00DDE7B3 /* Storyboards */,
 				F91F62E521F93D4B00B80433 /* Assets.xcassets */,
-				F91F62E721F93D4B00B80433 /* LaunchScreen.storyboard */,
+				F91F62DE21F93D4A00B80433 /* AppDelegate.swift */,
+				F91F62F021F93E8E00B80433 /* Extensions.swift */,
 				F91F62EA21F93D4B00B80433 /* Info.plist */,
+				F91AFB4022410A4200F435A5 /* FrenchVoca-Bridging-Header.h */,
 			);
 			path = FrenchVoca;
+			sourceTree = "<group>";
+		};
+		F91F62F821F9EE2200B80433 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F9AD8B45220BB5BA00EBCCCE /* MainTabBarController.swift */,
+				F9FFEB992209D81700F05E98 /* Login */,
+				F9FFEB962209C5F500F05E98 /* Welcome */,
+				F9E13885220B0D0100DDE7B3 /* Vocabulary */,
+				F9B38F3E22547B38000E1CEA /* Setting */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F91F62F921F9EE3A00B80433 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F9E1388B220B1BAA00DDE7B3 /* Welcome */,
+				F9E1388C220B1BB700DDE7B3 /* Vocabulary */,
+				F9B38F4122547D62000E1CEA /* Setting */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F9B38F3E22547B38000E1CEA /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				F9BB5C5D226C5E3000A3679F /* SettingPeople */,
+				F9B38F3F22547BDD000E1CEA /* SettingMainTVC.swift */,
+				F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */,
+				F9BB5C4D226AF94F00A3679F /* SettingPeopleCVC.swift */,
+				F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		F9B38F4122547D62000E1CEA /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				F9B38F4222547D79000E1CEA /* SettingMainCell.swift */,
+				F9B4DFA12382E87D0080DD5D /* SettingMainSwitchCell.swift */,
+				F9BB5C55226C488100A3679F /* People */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		F9BB5C55226C488100A3679F /* People */ = {
+			isa = PBXGroup;
+			children = (
+				F9BB5C53226C487100A3679F /* SettingPeopleHeader.swift */,
+				F9BB5C4F226AFB4C00A3679F /* SettingPeopleCell.swift */,
+			);
+			path = People;
+			sourceTree = "<group>";
+		};
+		F9BB5C56226C55BF00A3679F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F9BB5C5E226C5E5100A3679F /* Database */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F9BB5C5D226C5E3000A3679F /* SettingPeople */ = {
+			isa = PBXGroup;
+			children = (
+				F9BB5C57226C55CE00A3679F /* people.swift */,
+				F9BB5C59226C55DC00A3679F /* peopleGroup.swift */,
+				F9BB5C5B226C55F800A3679F /* peopleGroupData.swift */,
+			);
+			path = SettingPeople;
+			sourceTree = "<group>";
+		};
+		F9BB5C5E226C5E5100A3679F /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				F91AFB592241C68500F435A5 /* DAO */,
+				F91AFB5322410A6E00F435A5 /* FMDB */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		F9BB5C5F226C9E4D00A3679F /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				F9BF0938225C9D170097E0CC /* UNNotiManager.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		F9E13882220B0CBD00DDE7B3 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				F91F62E221F93D4A00B80433 /* Main.storyboard */,
+				F9E13883220B0CEA00DDE7B3 /* Vocabulary.storyboard */,
+				F9E13889220B105100DDE7B3 /* Setting.storyboard */,
+				F91F62E721F93D4B00B80433 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		F9E13885220B0D0100DDE7B3 /* Vocabulary */ = {
+			isa = PBXGroup;
+			children = (
+				F91CE28522101C3A000D1380 /* SubjectList */,
+				F91CE28622101C48000D1380 /* WordList */,
+			);
+			path = Vocabulary;
+			sourceTree = "<group>";
+		};
+		F9E1388B220B1BAA00DDE7B3 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				F91CE28B22101D80000D1380 /* MainCV */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		F9E1388C220B1BB700DDE7B3 /* Vocabulary */ = {
+			isa = PBXGroup;
+			children = (
+				F91CE28922101D2C000D1380 /* SubjectListCV */,
+				F91CE28A22101D77000D1380 /* WordListCV */,
+			);
+			path = Vocabulary;
+			sourceTree = "<group>";
+		};
+		F9F1E2E323881BCC0084DE34 /* SpeechSynthesizer */ = {
+			isa = PBXGroup;
+			children = (
+				F9F1E2E423881BFC0084DE34 /* SingletonSynthesizer.swift */,
+			);
+			path = SpeechSynthesizer;
+			sourceTree = "<group>";
+		};
+		F9FFEB962209C5F500F05E98 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				F91F62E021F93D4A00B80433 /* WelcomeViewController.swift */,
+				F91F62FA21F9EE6D00B80433 /* DELFScheduleViewController.swift */,
+				F9FFEB972209C60B00F05E98 /* FLEXScheduleViewController.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		F9FFEB992209D81700F05E98 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				F9D0E4562219780200BE4815 /* EnrollmentViewController.swift */,
+				F9FFEB9A2209D8EF00F05E98 /* SignInViewController.swift */,
+				F97867A2237D16E400CB0728 /* NotiSettingViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +437,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F91F62ED21F93D4B00B80433 /* Build configuration list for PBXNativeTarget "FrenchVoca" */;
 			buildPhases = (
+				6A9B8C88901E0C10B2D87DC3 /* [CP] Check Pods Manifest.lock */,
 				F91F62D721F93D4A00B80433 /* Sources */,
 				F91F62D821F93D4A00B80433 /* Frameworks */,
 				F91F62D921F93D4A00B80433 /* Resources */,
+				4F8774EA7BBB67EE483088FF /* [CP] Embed Pods Frameworks */,
+				F359202BAEEE42A3A551390A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +465,7 @@
 				TargetAttributes = {
 					F91F62DA21F93D4A00B80433 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -122,7 +492,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F985BEC0238CF0270039DBF8 /* FrenchVoca.db in Resources */,
+				F9BB5C63226F097C00A3679F /* Settings.bundle in Resources */,
+				F9E13884220B0CEA00DDE7B3 /* Vocabulary.storyboard in Resources */,
 				F91F62E921F93D4B00B80433 /* LaunchScreen.storyboard in Resources */,
+				F9E1388A220B105100DDE7B3 /* Setting.storyboard in Resources */,
 				F91F62E621F93D4B00B80433 /* Assets.xcassets in Resources */,
 				F91F62E421F93D4A00B80433 /* Main.storyboard in Resources */,
 			);
@@ -130,13 +504,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4F8774EA7BBB67EE483088FF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FrenchVoca/Pods-FrenchVoca-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FrenchVoca/Pods-FrenchVoca-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A9B8C88901E0C10B2D87DC3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FrenchVoca-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F359202BAEEE42A3A551390A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FrenchVoca/Pods-FrenchVoca-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F91F62D721F93D4A00B80433 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F91F62E121F93D4A00B80433 /* ViewController.swift in Sources */,
+				F9BB5C4E226AF94F00A3679F /* SettingPeopleCVC.swift in Sources */,
+				F97867A3237D16E400CB0728 /* NotiSettingViewController.swift in Sources */,
+				F91F62E121F93D4A00B80433 /* WelcomeViewController.swift in Sources */,
+				F9D0E4572219780200BE4815 /* EnrollmentViewController.swift in Sources */,
+				F9F88DF62383E2700098C310 /* VocabularyVoiceSettingVC.swift in Sources */,
+				F91AFB5222410A4600F435A5 /* FMDatabase.m in Sources */,
+				F911EF422317B38D009A8913 /* VocabularyNotebookVCCell.swift in Sources */,
+				F9AAFE872257226400F281CE /* SettingModifyInfoVC.swift in Sources */,
+				F9BB5C5C226C55F800A3679F /* peopleGroupData.swift in Sources */,
+				F9E1388E220B1C0B00DDE7B3 /* VocabularySubjectListHeader.swift in Sources */,
+				F91F62F121F93E8E00B80433 /* Extensions.swift in Sources */,
+				F9BF0939225C9D170097E0CC /* UNNotiManager.swift in Sources */,
+				F9FFEB9B2209D8EF00F05E98 /* SignInViewController.swift in Sources */,
+				F9BF093D225F344C0097E0CC /* WelcomeMainWordNestedCell.swift in Sources */,
+				F91CE28D22101DB8000D1380 /* VocabularyWordListHeader.swift in Sources */,
+				F91CE28822101C97000D1380 /* VocabularyWordListVC.swift in Sources */,
+				F91AFB5B2241C69C00F435A5 /* SubjectDAO.swift in Sources */,
+				F9B38F3D2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift in Sources */,
+				F91AFB4F22410A4600F435A5 /* FMResultSet.m in Sources */,
+				F91AFB4E22410A4600F435A5 /* FMDatabasePool.m in Sources */,
+				F91F62FB21F9EE6D00B80433 /* DELFScheduleViewController.swift in Sources */,
+				F91AFB5022410A4600F435A5 /* FMDatabaseAdditions.m in Sources */,
+				F9BB5C50226AFB4C00A3679F /* SettingPeopleCell.swift in Sources */,
+				F911EF402317AEA2009A8913 /* VocabularyNotebookVC.swift in Sources */,
+				F9BB5C58226C55CE00A3679F /* people.swift in Sources */,
+				F9FFEB982209C60B00F05E98 /* FLEXScheduleViewController.swift in Sources */,
+				F9AD8B46220BB5BA00EBCCCE /* MainTabBarController.swift in Sources */,
+				F9B38F4022547BDD000E1CEA /* SettingMainTVC.swift in Sources */,
+				F91F62F521F93E9800B80433 /* WelcomeMainNoticeCell.swift in Sources */,
+				F9B38F4322547D79000E1CEA /* SettingMainCell.swift in Sources */,
+				F9BB5C54226C487100A3679F /* SettingPeopleHeader.swift in Sources */,
+				F9C07B8522AE907800D0920B /* VocabularyWordListCellForPhoto.swift in Sources */,
+				F91F62F621F93E9800B80433 /* WelcomeMainProfileHeader.swift in Sources */,
+				F91CE29022102207000D1380 /* VocabularyWordListCellForSentence.swift in Sources */,
+				F9E13888220B0D5A00DDE7B3 /* VocabularySubjectListVC.swift in Sources */,
+				F9F1E2E523881BFC0084DE34 /* SingletonSynthesizer.swift in Sources */,
+				F91AFB5D2241DB6E00F435A5 /* WordDAO.swift in Sources */,
+				F91AFB5622410DB500F435A5 /* VocabularyVocaCell.swift in Sources */,
+				F9BB5C5A226C55DC00A3679F /* peopleGroup.swift in Sources */,
 				F91F62DF21F93D4A00B80433 /* AppDelegate.swift in Sources */,
+				F9BF093B225F34140097E0CC /* WelcomeMainWordCell.swift in Sources */,
+				F936B2F22382D8A000D15624 /* SettingNotificationsVC.swift in Sources */,
+				F91AFB5122410A4600F435A5 /* FMDatabaseQueue.m in Sources */,
+				F9B4DFA22382E87D0080DD5D /* SettingMainSwitchCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,37 +750,52 @@
 		};
 		F91F62EE21F93D4B00B80433 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69229CDDC797392F5E828F6D /* Pods-FrenchVoca.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C6T929VMZT;
 				INFOPLIST_FILE = FrenchVoca/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kr.inswag.FrenchVoca;
+				MARKETING_VERSION = 1.1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "kr.inswag.FrenchVocaV2-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "FrenchVoca/FrenchVoca-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		F91F62EF21F93D4B00B80433 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CD8A931643B4E73B4BA260B /* Pods-FrenchVoca.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C6T929VMZT;
 				INFOPLIST_FILE = FrenchVoca/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kr.inswag.FrenchVoca;
+				MARKETING_VERSION = 1.1.2;
+				PRODUCT_BUNDLE_IDENTIFIER = "kr.inswag.FrenchVocaV2-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "FrenchVoca/FrenchVoca-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

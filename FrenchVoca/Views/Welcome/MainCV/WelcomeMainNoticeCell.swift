@@ -12,7 +12,7 @@ class WelcomeMainNoticeCell: UICollectionViewCell {
     
     static func defineCellSize(cellwidth: CGFloat) -> CGSize {
         let margin: CGFloat = 44 + 10 // 2(Border) + 10(top ~ title)
-        let cvHeight = (Constant.noticeCellTitleFont!.lineHeight) +
+        let cvHeight = (Constant.noticeCellTitleFont!.lineHeight) + (Constant.noticeCellSubTitleFont!.lineHeight) +
             (WelcomeMainNoticeNestedCell.Constant.imageViewHeight) +
             (WelcomeMainNoticeNestedCell.Constant.titleFont!.lineHeight) +
             (WelcomeMainNoticeNestedCell.Constant.subTitleFont!.lineHeight) +
@@ -23,16 +23,15 @@ class WelcomeMainNoticeCell: UICollectionViewCell {
     
     struct Constant {
         static let collectionViewHeight: CGFloat = 200 // 228
-//        static let totalMargin: CGFloat = 73 // 약간의 마진때문에 구분선이 사라져서 +3 추가
         static let noticeCellTitleFont = UIFont(name: "Avenir-Light", size: 14)
-//        static let NoticeCellFrenchContentFont = UIFont(name: "Avenir-Book", size: 16)
-//        static let NoticeCellKoreanContentFont = UIFont(name: "AppleSDGothicNeo-Regular", size: 14)
+        static let noticeCellSubTitleFont = UIFont(name: "AppleSDGothicNeo-Bold", size: 12)
+
     }
     
-    let title = ["24 sujets, environ 900 mots et exemples.",
+    let title = ["11 sujets, environ 400 mots.",
                  "Touchez ces boutons pour voir le calendrier des examens."]
-    let subTitle = ["24개의 주제, 약 900개의 단어와 예문을 지원합니다.",
-                           "버튼을 터치하여 시험 일정을 확인할 수 있어요."]
+    let subTitle = ["11개의 주제, 약 400개의 단어와 예문을 지원합니다.",
+                           "화면 맨 위의 버튼을 터치하여 시험 일정을 확인할 수 있어요."]
     let image = ["Annonces_words", "Annonces_examens"]
     
     lazy var collectionView: UICollectionView = {
@@ -61,6 +60,17 @@ class WelcomeMainNoticeCell: UICollectionViewCell {
         return label
     }()
     
+    let noticeSubtitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "프렌치 보카가 드리는 알림"
+        label.textAlignment = .left
+        label.font = Constant.noticeCellSubTitleFont
+        label.textColor = UIColor.rgb(red: 73, green: 72, blue: 72)
+        label.numberOfLines = 1
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupCellPhraseContents()
@@ -68,10 +78,21 @@ class WelcomeMainNoticeCell: UICollectionViewCell {
     }
     
     fileprivate func setupCellPhraseContents() {
-        [noticeTitleLabel, collectionView].forEach { self.contentView.addSubview($0) }
+        [noticeTitleLabel, noticeSubtitleLabel, collectionView].forEach { self.contentView.addSubview($0) }
         collectionView.backgroundColor = .white
-        noticeTitleLabel.anchor(top: self.contentView.topAnchor, left: self.contentView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        collectionView.anchor(top: self.noticeTitleLabel.bottomAnchor, left: self.contentView.leftAnchor, bottom: self.contentView.bottomAnchor, right: self.contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+        noticeTitleLabel.anchor(top: self.contentView.topAnchor, left: self.contentView.leftAnchor, bottom: nil, right: self.contentView.rightAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 0)
+        
+        noticeSubtitleLabel.anchor(top: self.noticeTitleLabel.bottomAnchor, left: self.contentView.leftAnchor, bottom: nil, right: self.contentView.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 0)
+        let plist = UserDefaults.standard
+        if let username = plist.string(forKey: "이름") {
+            noticeSubtitleLabel.text = "\(username) 님을 위해 드리는 소식"
+        } else {
+            noticeSubtitleLabel.text = "새로 오신 여러분을 위한 소식"
+        }
+        
+        
+        collectionView.anchor(top: self.noticeSubtitleLabel.bottomAnchor, left: self.contentView.leftAnchor, bottom: self.contentView.bottomAnchor, right: self.contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -10,6 +10,7 @@ import UIKit
 
 class WelcomeMainProfileHeader: UICollectionViewCell {
     
+    // Student Card + Welcome Message PART
     static func defineCellSize(cellwidth: CGFloat) -> CGSize {
         let cellHeight = (Constant.totalMargin) +
             (Constant.profileHeaderIdentifierTitleFont!.lineHeight) +
@@ -47,6 +48,7 @@ class WelcomeMainProfileHeader: UICollectionViewCell {
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .lightGray
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
@@ -76,23 +78,17 @@ class WelcomeMainProfileHeader: UICollectionViewCell {
         let label = UILabel()
         let attributedText = NSMutableAttributedString(string: "French",
                                                        attributes: [NSAttributedString.Key.font: Constant.profileHeaderSecondLineMessageFont!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 36, green: 74, blue: 156)])
-//        attributedText.append(NSAttributedString(string: "rench ",
-//                                                 attributes: [NSAttributedString.Key.font: Constant.profileHeaderFirstLineMessageFont!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)]))
         attributedText.append(NSAttributedString(string: " Voca",
                                                  attributes: [NSAttributedString.Key.font: Constant.profileHeaderSecondLineMessageFont!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 232, green: 0, blue: 0)]))
         attributedText.append(NSAttributedString(string: " 에 오신 것을 환영합니다.", attributes: [NSAttributedString.Key.font: Constant.profileHeaderFirstLineMessageFont!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)]))
         attributedText.append(NSAttributedString(string: "\nBienvenue chez ", attributes: [NSAttributedString.Key.font: Constant.profileHeaderSecondLineMessageFont!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)]))
-        
         attributedText.append(NSAttributedString(string: "French",
                                                  attributes: [NSAttributedString.Key.font: Constant.profileHeaderSecondLineMessageFont!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 36, green: 74, blue: 156)]))
-//        attributedText.append(NSAttributedString(string: "rench ",
-//                                                 attributes: [NSAttributedString.Key.font: Constant.profileHeaderSecondLineMessageFont!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)]))
         attributedText.append(NSAttributedString(string: " Voca",
                                                  attributes: [NSAttributedString.Key.font: Constant.profileHeaderSecondLineMessageFont!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 232, green: 0, blue: 0)]))
         attributedText.append(NSAttributedString(string: ".",
                                                  attributes: [NSAttributedString.Key.font: Constant.profileHeaderSecondLineMessageFont!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)]))
         label.attributedText = attributedText
-        
         label.textAlignment = .center
         label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
@@ -117,15 +113,6 @@ class WelcomeMainProfileHeader: UICollectionViewCell {
     let secondDivisionLineView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.rgb(red: 225, green: 225, blue: 225)
-        // 쉐도우 효과 나타나지 않는 문제.
-        //        view.layer.borderWidth = 0.5
-        //        view.layer.borderColor = UIColor.rgb(red: 36, green: 74, blue: 156).cgColor
-        //        view.layer.cornerRadius = 5.0
-        //        view.layer.masksToBounds = false
-        //        view.layer.shadowColor = UIColor.gray.cgColor
-        //        view.layer.shadowOpacity = 0.3
-        //        view.layer.shadowOffset = CGSize(width: 1, height: 1)
-        //        view.layer.shadowRadius = 4.0
         return view
     }()
     
@@ -135,11 +122,10 @@ class WelcomeMainProfileHeader: UICollectionViewCell {
     }
     
     fileprivate func setupProfileContents() {
-        
         [identifierTitleLabel, profileImageView, usernameLabel, positionLabel, messageLabel, firstDivisionLineView, secondDivisionLineView].forEach { self.contentView.addSubview($0) }
         
         // Here is AutoLayout of Welcome Header By using 'Anchor'
-        // Profile, Username, Affiliation, Welcome Message
+        // Profile, Username, Position, Welcome Message
         self.identifierTitleLabel.anchor(top: self.contentView.topAnchor, left: self.contentView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         self.profileImageView.anchor(top: self.identifierTitleLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 120, height: 120)
         self.profileImageView.centerXAnchor.constraint(equalTo: self.contentView.centerXAnchor).isActive = true

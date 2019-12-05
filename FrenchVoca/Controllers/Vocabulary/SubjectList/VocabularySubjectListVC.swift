@@ -17,8 +17,12 @@ class VocabularySubjectListVC: UIViewController {
         static let vocabularyHeaderDivisionLineHeight: CGFloat = 2
     }
     
+    // MARK:- DAO
+    var subjectList: [(subjectCd: Int, subjectKoreanTitle: String, subjectFrenchTitle: String, subjectPhoto: String)]!
+    let subjectDAO = SubjectDAO()
+    
     // MARK:- Custom Navigation Bar 
-    let customNaviBarTitle: UIView = {
+    let frenchVocaLogoView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 110, height: 27)) // 1102/27
         let label = UILabel()
         view.addSubview(label)
@@ -31,6 +35,14 @@ class VocabularySubjectListVC: UIViewController {
         return view
     }()
     
+    
+//    lazy var barBtnYours = UIBarButtonItem(image: UIImage(named: "notebook")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(yoursBtnAction))
+//    @objc func yoursBtnAction() {
+//        print("push your list of vocabulary controller !")
+//        self.navigationController?.pushViewController(VocabularyNotebookVC(), animated: true)
+//    }
+    
+    // MARK:- Collection View(=CV)
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -39,24 +51,29 @@ class VocabularySubjectListVC: UIViewController {
         cv.setCollectionViewLayout(layout, animated: true)
         cv.dataSource = self
         cv.delegate = self
-        cv.register(VocabularyCollectionViewHeader.self,
+        cv.register(VocabularySubjectListHeader.self,
                     forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                    withReuseIdentifier: String(describing: VocabularyCollectionViewHeader.self))
-        cv.register(VocabularyCVVocaCell.self, forCellWithReuseIdentifier: String(describing: VocabularyCVVocaCell.self))
+                    withReuseIdentifier: String(describing: VocabularySubjectListHeader.self))
+        cv.register(VocabularyVocaCell.self, forCellWithReuseIdentifier: String(describing: VocabularyVocaCell.self))
         return cv
     }()
 
-    var subjectList: [(subjectCd: Int, subjectKoreanTitle: String, subjectFrenchTitle: String, subjectPhoto: String)]!
-    let subjectDAO = SubjectDAO()
-    
+    //MARK:- View Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUIDesign()
-        setupNaviBarDesign()
-        self.subjectList = self.subjectDAO.find()
         
+        setupUIDesign()
+        setupCustomNaviBarDesign()
+        
+        self.subjectList = self.subjectDAO.find()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    //MARK:- Design
     fileprivate func setupUIDesign() {
         self.view.addSubview(collectionView)
         collectionView.backgroundColor = .white
@@ -64,65 +81,65 @@ class VocabularySubjectListVC: UIViewController {
         print("setupUIDesign loaded")
     }
     
-    fileprivate func setupNaviBarDesign() {
-        self.navigationItem.titleView = customNaviBarTitle
+    fileprivate func setupCustomNaviBarDesign() {
+//        barBtnYours.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)], for: .normal)
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: frenchVocaLogoView)
+//        self.navigationItem.rightBarButtonItems = [barBtnYours]
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         self.navigationController?.navigationBar.barTintColor = UIColor.white
     }
 }
 
 
-extension VocabularySubjectListVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+//MARK:- CV Data Source Methods
+extension VocabularySubjectListVC: UICollectionViewDataSource {
     
     // Handle Collection View Cell
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.subjectList.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // 각 셀의 크기는 균일할 것이기 때문에 굳이 스위치문으로 나눌 필요가 없다. 후에 각 셀의 크기를 다르게 지정해 줄 때에는 나눔.
-        return VocabularyCVVocaCell.defineCellSize(cellwidth: self.view.frame.width)
-    }
-    
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let rowData = self.subjectList[indexPath.row]
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: VocabularyCVVocaCell.self), for: indexPath) as! VocabularyCVVocaCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: VocabularyVocaCell.self), for: indexPath) as! VocabularyVocaCell
         cell.levelKoreanTitle.text = rowData.subjectKoreanTitle
         cell.levelFrenchTitle.text = rowData.subjectFrenchTitle
         cell.imageView.image = UIImage(named: "\(rowData.subjectPhoto)")
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(VocabularyMenuViewController(), animated: true)
-        
-//        let deta
-        
+        let vocabularyWordListVC = VocabularyWordListVC()
+        vocabularyWordListVC.indexPath = (indexPath.row + 1)
+        self.navigationController?.pushViewController(vocabularyWordListVC, animated: true)
     }
     
     // Handle Collection View Header
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        // Section 의 텍스트는 4번 불리기 때문에 어레이 타입의 배열을 넣어야지 굳이 스위치문으로 나눌 필요가 없다.
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: VocabularyCollectionViewHeader.self), for: indexPath) as! VocabularyCollectionViewHeader
-        
-        // 아래의 텍스트로는 각 섹션의 타이틀이 들어갈 예정입니다.
-        
-        print("HEADER")
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: VocabularySubjectListHeader.self), for: indexPath) as! VocabularySubjectListHeader
         return header
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        // Section 의 사이즈는 균일하기 때문에 굳이 스위치문으로 나눌 필요가 없다.
-        return VocabularyCollectionViewHeader.defineCellSize(cellwidth: self.view.frame.width)
     }
     
 }
 
+//MARK:- CV Delegate Flow Layout Methods
+extension VocabularySubjectListVC: UICollectionViewDelegateFlowLayout {
+ 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        // Section 의 사이즈는 균일하기 때문에 굳이 스위치문으로 나눌 필요가 없다.
+        return VocabularySubjectListHeader.defineCellSize(cellwidth: self.view.frame.width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        // 각 셀의 크기는 균일할 것이기 때문에 굳이 스위치문으로 나눌 필요가 없다. 후에 각 셀의 크기를 다르게 지정해 줄 때에는 나눔.
+        return VocabularyVocaCell.defineCellSize(cellwidth: self.view.frame.width)
+    }
+    
+}

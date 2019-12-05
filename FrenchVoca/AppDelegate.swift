@@ -7,15 +7,41 @@
 //
 
 import UIKit
+import AVFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    let notiManager = UNNotiManager()
+    let plist = UserDefaults.standard
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Because of TimeInterval at least 60 seconds Error
+        if plist.double(forKey: "알림시간") == 0.0 {
+            plist.set(60000, forKey: "알림시간")
+            plist.synchronize()
+        }
+        
+        // Make Global Instance
+        notiManager.register()
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+        } catch let error as NSError {
+            print("Error : \(error), \(error.userInfo)")
+        }
+        
+        do {
+            try AVAudioSession.sharedInstance().setActive(true)
+        }
+        catch let error as NSError {
+            print("Error: Could not setActive to true: \(error), \(error.userInfo)")
+        }
+        
         return true
     }
 

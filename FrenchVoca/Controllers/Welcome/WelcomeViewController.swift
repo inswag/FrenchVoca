@@ -52,23 +52,20 @@ class WelcomeViewController: UIViewController {
         // Anchor 는 클로저 바깥에서 잡아주어야 한다.
         return cv
     }()
-    
-    let notiManager = UNNotiManager()
-    
+        
     //MARK:- View Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUIDesign()
         setupCustomNaviBarDesign()
+        print("viewDidLoad")
+
         
-        notiManager.getNotificationSettings { isAuthorized in
-            guard  isAuthorized else { return }
-        }
-        notiManager.triggerTimeIntervalNotification()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        print("viewWillAppear")
         self.collectionView.reloadData() // Userdefault 적용 하지만 뷰가 나타낼때마다 리로드해주는건 너무 좋지 않다. 다른 방법을 찾으시오.
     }
     
@@ -152,8 +149,6 @@ extension WelcomeViewController: UICollectionViewDelegateFlowLayout {
         default:
             return WelcomeMainWordCell.defineCellSize(cellwidth: self.view.frame.width)
         }
-        
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
