@@ -7,32 +7,23 @@
 //
 
 import UIKit
+import SnapKit
 
 class EnrollmentViewController: UIViewController, UITextFieldDelegate {
     
     var image: UIImage?
     
     // Title View
-    let titleBackgroundView: UIView = {
+    let enrollmentTitle : UILabel = {
         // France Blue RGB : 36 74 156
-        let view = UIView()
-        view.backgroundColor = UIColor.white
         let titleLabel = UILabel()
-        titleLabel.backgroundColor = UIColor.white
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.text = "등록\n(Inscription)"
         titleLabel.textColor = UIColor.black
         titleLabel.font = UIFont(name: "Avenir-Light", size: 23)
-//        let attributedTitle = NSAttributedString(string: "등록\n(Inscription)", attributes: [NSAttributedString.Key.font: UIFont(name: "Avenir-Light", size: 23)!, NSAttributedString.Key.foregroundColor: UIColor.black])
-//        titleLabel.attributedText = attributedTitle
-        view.addSubview(titleLabel)
-        
-        titleLabel.anchor(top: nil, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 80)
-        titleLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        return view
+        return titleLabel
     }()
     
     // User Photo Button
@@ -111,27 +102,57 @@ class EnrollmentViewController: UIViewController, UITextFieldDelegate {
         navigationController?.pushViewController(signInViewController, animated: true)
     }
     
+    let descriptionView: UIView = {
+        let view = UIView() // 110/27
+        let label = UILabel()
+        view.addSubview(label)
+        view.backgroundColor = UIColor.rgb(red: 246, green: 246, blue: 250)
+        view.layer.cornerRadius = 15
+        label.text = "닉네임과 소속은 자유롭게 적어주세요 :)"
+        label.textAlignment = .center
+        label.font = UIFont(name: "Avenir-Light", size: 12.0)
+        label.textColor = UIColor.rgb(red: 163, green: 163, blue: 181)
+        label.numberOfLines = 1
+        label.textAlignment = .left
+        label.snp.makeConstraints { (m) in
+            m.centerX.equalTo(view.snp.centerX)
+            m.centerY.equalTo(view.snp.centerY)
+        }
+        return view
+    }()
     
     // MARK:- View Did Load
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        setupUIDesign()
-        setupInputFields()
-        //        usernameTextField.becomeFirstResponder()
+        setupUIComponents()
     }
     
-    // MARK:- Design
-    func setupUIDesign() {
+    // MARK:- UI Components
+    func setupUIComponents() {
         self.navigationController?.isNavigationBarHidden = true
-        self.view.addSubview(titleBackgroundView)
-        self.titleBackgroundView.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, left: self.view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: self.view.safeAreaLayoutGuide.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 200)
-    }
-    
-    func setupInputFields() {
-        self.view.addSubview(userPhotoButton)
-        userPhotoButton.anchor(top: self.titleBackgroundView.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 100)
-        userPhotoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        [enrollmentTitle, userPhotoButton, descriptionView].forEach { self.view.addSubview($0) }
+        
+        self.enrollmentTitle.snp.makeConstraints { (m) in
+            m.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            m.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading)
+            m.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing)
+            m.height.equalTo(200)
+        }
+        
+        self.userPhotoButton.snp.makeConstraints { (m) in
+            m.top.equalTo(self.enrollmentTitle.snp.bottom)
+            m.width.equalTo(100)
+            m.height.equalTo(100)
+            m.centerX.equalTo(self.view.snp.centerX)
+        }
+
+        self.descriptionView.snp.makeConstraints { (m) in
+            m.top.equalTo(self.userPhotoButton.snp.bottom).offset(40)
+            m.leading.equalToSuperview().offset(70)
+            m.trailing.equalToSuperview().offset(-70)
+            m.height.equalTo(30)
+        }
         
         let stackView = UIStackView(arrangedSubviews: [usernameTextField, positionTextField, nextButton])
         stackView.axis = .vertical
@@ -139,8 +160,14 @@ class EnrollmentViewController: UIViewController, UITextFieldDelegate {
         stackView.distribution = .fillEqually
         
         self.view.addSubview(stackView)
-        // (each textField size 40 * 3) + (spacing 20 * 2)
-        stackView.anchor(top: self.userPhotoButton.bottomAnchor, left: self.view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: self.view.safeAreaLayoutGuide.rightAnchor, paddingTop: 40, paddingLeft: 60, paddingBottom: 0, paddingRight: 60, width: 0, height: 160)
+        
+        stackView.snp.makeConstraints { (m) in
+            m.top.equalTo(self.descriptionView.snp.bottom).offset(20)
+            m.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading).offset(60)
+            m.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing).offset(-60)
+            m.height.equalTo(160)
+        }
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
