@@ -9,11 +9,11 @@
 import UIKit
 import SnapKit
 
-class EnrollmentViewController: UIViewController, UITextFieldDelegate {
+class EnrollmentViewController: UIViewController {
     
+    // MARK: UI Properties
     var image: UIImage?
     
-    // Title View
     let enrollmentTitle : UILabel = {
         // France Blue RGB : 36 74 156
         let titleLabel = UILabel()
@@ -26,7 +26,6 @@ class EnrollmentViewController: UIViewController, UITextFieldDelegate {
         return titleLabel
     }()
     
-    // User Photo Button
     let userPhotoButton: UIButton = {
         // Button.ButtonType.system : A system style button, such as those shown in navigation bars and toolbars. <-> '.custom'
         let button = UIButton(type: .system)
@@ -46,23 +45,25 @@ class EnrollmentViewController: UIViewController, UITextFieldDelegate {
         self.present(imagePickerController, animated: true, completion: nil)
     }
     
-    // Username & Position & Next Button
-    let usernameTextField: UITextField = {
+    // Username & Position & Next Button will be made by Stackview
+    lazy var usernameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "닉네임(Votre surnom)"
         textField.backgroundColor = UIColor.white
         textField.borderStyle = .roundedRect
         textField.font = UIFont.systemFont(ofSize: 14)
+        textField.delegate = self
         textField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return textField
     }()
     
-    let positionTextField: UITextField = {
+    lazy var positionTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "소속(Votre position)"
         textField.backgroundColor = UIColor.white
         textField.borderStyle = .roundedRect
         textField.font = UIFont.systemFont(ofSize: 14)
+        textField.delegate = self
         textField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return textField
     }()
@@ -92,7 +93,6 @@ class EnrollmentViewController: UIViewController, UITextFieldDelegate {
     
     @objc func handleNext() {
         print("OK handleNext")
-        // 여기서 값을 넘겨주는 것을 해야함.
         let signInViewController = SignInViewController()
         signInViewController.usernameLabel.text = self.usernameTextField.text
         signInViewController.positionLabel.text = self.positionTextField.text
@@ -121,15 +121,28 @@ class EnrollmentViewController: UIViewController, UITextFieldDelegate {
         return view
     }()
     
-    // MARK:- View Did Load
+    // MARK:- View Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         setupUIComponents()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(noti:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(noti:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     // MARK:- UI Components
     func setupUIComponents() {
+    
         self.navigationController?.isNavigationBarHidden = true
         [enrollmentTitle, userPhotoButton, descriptionView].forEach { self.view.addSubview($0) }
         
@@ -158,9 +171,7 @@ class EnrollmentViewController: UIViewController, UITextFieldDelegate {
         stackView.axis = .vertical
         stackView.spacing = 20
         stackView.distribution = .fillEqually
-        
         self.view.addSubview(stackView)
-        
         stackView.snp.makeConstraints { (m) in
             m.top.equalTo(self.descriptionView.snp.bottom).offset(20)
             m.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading).offset(60)
@@ -170,12 +181,39 @@ class EnrollmentViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+}
+
+// MARK: TextField & Keyboard Methods
+extension EnrollmentViewController: UITextFieldDelegate {
+    
+    
+    @objc func keyboardWillAppear(noti: NSNotification) {
+        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            self.view.frame.origin.y -= keyboardHeight
+        }
+    }
+    
+    @objc func keyboardWillDisappear(noti: NSNotification) {
+        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            self.view.frame.origin.y += keyboardHeight
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
+// MARK: Image Picker Methods
 extension EnrollmentViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
