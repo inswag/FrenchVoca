@@ -124,6 +124,7 @@ class EnrollmentViewController: UIViewController {
     // MARK:- View Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.restoreFrameValue = self.view.frame.origin.y
         self.view.backgroundColor = .white
         setupUIComponents()
     }
@@ -139,10 +140,11 @@ class EnrollmentViewController: UIViewController {
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+
     
     // MARK:- UI Components
     func setupUIComponents() {
-    
+        
         self.navigationController?.isNavigationBarHidden = true
         [enrollmentTitle, userPhotoButton, descriptionView].forEach { self.view.addSubview($0) }
         
@@ -181,11 +183,12 @@ class EnrollmentViewController: UIViewController {
         
     }
     
+    var restoreFrameValue: CGFloat = 0.0
+    
 }
 
 // MARK: TextField & Keyboard Methods
 extension EnrollmentViewController: UITextFieldDelegate {
-    
     
     @objc func keyboardWillAppear(noti: NSNotification) {
         if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
@@ -193,24 +196,40 @@ extension EnrollmentViewController: UITextFieldDelegate {
             let keyboardHeight = keyboardRectangle.height
             self.view.frame.origin.y -= keyboardHeight
         }
+        print("keyboard Will appear Execute")
     }
     
     @objc func keyboardWillDisappear(noti: NSNotification) {
-        if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            let keyboardHeight = keyboardRectangle.height
-            self.view.frame.origin.y += keyboardHeight
+        if self.view.frame.origin.y != restoreFrameValue {
+            if let keyboardFrame: NSValue = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                let keyboardHeight = keyboardRectangle.height
+                self.view.frame.origin.y += keyboardHeight
+            }
+            print("keyboard Will Disappear Execute")
         }
     }
     
+    //self.view.frame.origin.y = restoreFrameValue
+   
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.frame.origin.y = restoreFrameValue
+        print("touches Began Execute")
         self.view.endEditing(true)
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print("textFieldShouldReturn Execute")
         textField.resignFirstResponder()
         return true
     }
+
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        print("textFieldShouldEndEditing Execute")
+        self.view.frame.origin.y = self.restoreFrameValue
+        return true
+    }
+    
 }
 
 // MARK: Image Picker Methods
