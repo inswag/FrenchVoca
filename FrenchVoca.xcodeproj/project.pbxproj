@@ -33,6 +33,8 @@
 		F91F62F621F93E9800B80433 /* WelcomeMainProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62F321F93E9700B80433 /* WelcomeMainProfileHeader.swift */; };
 		F91F62FB21F9EE6D00B80433 /* DELFScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62FA21F9EE6D00B80433 /* DELFScheduleViewController.swift */; };
 		F936B2F22382D8A000D15624 /* SettingNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */; };
+		F965A11923AB7F0B002A8473 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F965A11823AB7F0B002A8473 /* Coordinator.swift */; };
+		F965A11C23AB8741002A8473 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F965A11B23AB8741002A8473 /* ApplicationCoordinator.swift */; };
 		F97867A3237D16E400CB0728 /* NotiSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97867A2237D16E400CB0728 /* NotiSettingViewController.swift */; };
 		F9AAFE872257226400F281CE /* SettingModifyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */; };
 		F9AD8B46220BB5BA00EBCCCE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AD8B45220BB5BA00EBCCCE /* MainTabBarController.swift */; };
@@ -101,6 +103,8 @@
 		F91F62F321F93E9700B80433 /* WelcomeMainProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeMainProfileHeader.swift; sourceTree = "<group>"; };
 		F91F62FA21F9EE6D00B80433 /* DELFScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DELFScheduleViewController.swift; sourceTree = "<group>"; };
 		F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationsVC.swift; sourceTree = "<group>"; };
+		F965A11823AB7F0B002A8473 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		F965A11B23AB8741002A8473 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		F97867A2237D16E400CB0728 /* NotiSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiSettingViewController.swift; sourceTree = "<group>"; };
 		F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModifyInfoVC.swift; sourceTree = "<group>"; };
 		F9AD8B45220BB5BA00EBCCCE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 		F91F62DD21F93D4A00B80433 /* FrenchVoca */ = {
 			isa = PBXGroup;
 			children = (
+				F965A11A23AB7F14002A8473 /* Coordinators */,
 				F9F1E2E323881BCC0084DE34 /* SpeechSynthesizer */,
 				F9BB5C5F226C9E4D00A3679F /* Notification */,
 				F9BB5C56226C55BF00A3679F /* Model */,
@@ -297,6 +302,15 @@
 				F9B38F4122547D62000E1CEA /* Setting */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F965A11A23AB7F14002A8473 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				F965A11823AB7F0B002A8473 /* Coordinator.swift */,
+				F965A11B23AB8741002A8473 /* ApplicationCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		F9B38F3E22547B38000E1CEA /* Setting */ = {
@@ -580,6 +594,7 @@
 				F91CE28D22101DB8000D1380 /* VocabularyWordListHeader.swift in Sources */,
 				F91CE28822101C97000D1380 /* VocabularyWordListVC.swift in Sources */,
 				F91AFB5B2241C69C00F435A5 /* SubjectDAO.swift in Sources */,
+				F965A11923AB7F0B002A8473 /* Coordinator.swift in Sources */,
 				F9B38F3D2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift in Sources */,
 				F91AFB4F22410A4600F435A5 /* FMResultSet.m in Sources */,
 				F91AFB4E22410A4600F435A5 /* FMDatabasePool.m in Sources */,
@@ -597,6 +612,7 @@
 				F9C07B8522AE907800D0920B /* VocabularyWordListCellForPhoto.swift in Sources */,
 				F91F62F621F93E9800B80433 /* WelcomeMainProfileHeader.swift in Sources */,
 				F91CE29022102207000D1380 /* VocabularyWordListCellForSentence.swift in Sources */,
+				F965A11C23AB8741002A8473 /* ApplicationCoordinator.swift in Sources */,
 				F9E13888220B0D5A00DDE7B3 /* VocabularySubjectListVC.swift in Sources */,
 				F9F1E2E523881BFC0084DE34 /* SingletonSynthesizer.swift in Sources */,
 				F91AFB5D2241DB6E00F435A5 /* WordDAO.swift in Sources */,
