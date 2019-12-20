@@ -8,11 +8,14 @@
 
 import UIKit
 
-class MainTabbarController: UITabBarController {
+
+class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.delegate = self
+
         DispatchQueue.main.async {
             // UserDefault 에 저장된 이름과 소속이 없으면 등록창을, 그렇지 않으면 바로 메인 화면을 보여주게 된다.
             let plist = UserDefaults.standard
@@ -24,21 +27,60 @@ class MainTabbarController: UITabBarController {
                 navController.modalPresentationStyle = .fullScreen
                 self.present(navController, animated: true, completion: nil)
             }
-            
-            
-            
         }
-        //  일단 설명은, 앱이 처음 시작할 때 메인 탭 바 컨트롤러가 어느 뷰도 존재하지 않는데, 메인에 넣어주어서 뷰 안에 존재하게 만듬.
         
+        setupViewControllers()
+    }
+    
+    
+    func setupViewControllers() {
+        let welcomeSelected = UIImage(named: "A_selected")
+        let welcomeUnselected = UIImage(named: "A_unselected")
+        let vocaSelected = UIImage(named: "V_selected")
+        let vocaUnselected = UIImage(named: "V_unselected")
+        let settingSelected = UIImage(named: "P_selected")
+        let settingUnselected = UIImage(named: "P_unselected")
         
-        // 파이어베이스를 쓰게 되면 사용할 구문
-//        if Auth.auth().currentUser == nil {
-//            // Show if not logged in
-//
-//            return
-//        }
+        // Welcome
+        let welcomeNaviController = templateNavController(unselectedImage: welcomeUnselected!,
+                                                          selectedImage: welcomeSelected!,
+                                                          rootViewController: WelcomeViewController())
         
+        // Vocabulary
+        let vocabularyNaviController = templateNavController(unselectedImage: vocaUnselected!,
+                                                             selectedImage: vocaSelected!,
+                                                             rootViewController: VocabularySubjectListVC())
         
+        // Setting
+        let settingNaviController = UINavigationController(rootViewController: SettingMainTVC())
+        settingNaviController.tabBarItem.selectedImage = settingSelected!
+        settingNaviController.tabBarItem.image = settingUnselected!
+        
+        tabBar.tintColor = .black
+        
+        viewControllers = [welcomeNaviController,
+                           vocabularyNaviController,
+                           settingNaviController]
+        
+        // Modify tab bar item insets
+        guard let items = tabBar.items else { return }
+        
+        items[0].title = "Accueil"
+        items[1].title = "Vocabulaire"
+        items[2].title = "Paramètre"
+        
+        for item in items {
+            item.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
+        }
+        
+    }
+    
+    fileprivate func templateNavController(unselectedImage: UIImage, selectedImage: UIImage, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
+        let viewController = rootViewController
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.tabBarItem.image = unselectedImage
+        navController.tabBarItem.selectedImage = selectedImage
+        return navController
     }
     
 }

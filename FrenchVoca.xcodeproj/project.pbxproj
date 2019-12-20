@@ -25,7 +25,6 @@
 		F91CE29022102207000D1380 /* VocabularyWordListCellForSentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91CE28F22102207000D1380 /* VocabularyWordListCellForSentence.swift */; };
 		F91F62DF21F93D4A00B80433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62DE21F93D4A00B80433 /* AppDelegate.swift */; };
 		F91F62E121F93D4A00B80433 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62E021F93D4A00B80433 /* WelcomeViewController.swift */; };
-		F91F62E421F93D4A00B80433 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F91F62E221F93D4A00B80433 /* Main.storyboard */; };
 		F91F62E621F93D4B00B80433 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F91F62E521F93D4B00B80433 /* Assets.xcassets */; };
 		F91F62E921F93D4B00B80433 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F91F62E721F93D4B00B80433 /* LaunchScreen.storyboard */; };
 		F91F62F121F93E8E00B80433 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62F021F93E8E00B80433 /* Extensions.swift */; };
@@ -94,7 +93,6 @@
 		F91F62DB21F93D4A00B80433 /* FrenchVoca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FrenchVoca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F91F62DE21F93D4A00B80433 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F91F62E021F93D4A00B80433 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		F91F62E321F93D4A00B80433 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F91F62E521F93D4B00B80433 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F91F62E821F93D4B00B80433 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F91F62EA21F93D4B00B80433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -197,6 +195,7 @@
 		F91CE28522101C3A000D1380 /* SubjectList */ = {
 			isa = PBXGroup;
 			children = (
+				F91CE28922101D2C000D1380 /* SubjectListCV */,
 				F9E13887220B0D5A00DDE7B3 /* VocabularySubjectListVC.swift */,
 				F911EF3F2317AEA2009A8913 /* VocabularyNotebookVC.swift */,
 			);
@@ -206,6 +205,8 @@
 		F91CE28622101C48000D1380 /* WordList */ = {
 			isa = PBXGroup;
 			children = (
+				F9B38F4122547D62000E1CEA /* Setting */,
+				F91CE28A22101D77000D1380 /* WordListCV */,
 				F91CE28722101C97000D1380 /* VocabularyWordListVC.swift */,
 				F9F88DF52383E2700098C310 /* VocabularyVoiceSettingVC.swift */,
 			);
@@ -271,6 +272,10 @@
 				F9BB5C5F226C9E4D00A3679F /* Notification */,
 				F9BB5C56226C55BF00A3679F /* Model */,
 				F91F62F921F9EE3A00B80433 /* Views */,
+				F9FFEB992209D81700F05E98 /* Login */,
+				F9FFEB962209C5F500F05E98 /* Welcome */,
+				F9E13885220B0D0100DDE7B3 /* Vocabulary */,
+				F9B38F3E22547B38000E1CEA /* Setting */,
 				F91F62F821F9EE2200B80433 /* Controllers */,
 				F9E13882220B0CBD00DDE7B3 /* Storyboards */,
 				F91F62E521F93D4B00B80433 /* Assets.xcassets */,
@@ -286,10 +291,6 @@
 			isa = PBXGroup;
 			children = (
 				F9AD8B45220BB5BA00EBCCCE /* MainTabBarController.swift */,
-				F9FFEB992209D81700F05E98 /* Login */,
-				F9FFEB962209C5F500F05E98 /* Welcome */,
-				F9E13885220B0D0100DDE7B3 /* Vocabulary */,
-				F9B38F3E22547B38000E1CEA /* Setting */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -297,9 +298,6 @@
 		F91F62F921F9EE3A00B80433 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F9E1388B220B1BAA00DDE7B3 /* Welcome */,
-				F9E1388C220B1BB700DDE7B3 /* Vocabulary */,
-				F9B38F4122547D62000E1CEA /* Setting */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -382,7 +380,6 @@
 		F9E13882220B0CBD00DDE7B3 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				F91F62E221F93D4A00B80433 /* Main.storyboard */,
 				F9E13883220B0CEA00DDE7B3 /* Vocabulary.storyboard */,
 				F9E13889220B105100DDE7B3 /* Setting.storyboard */,
 				F91F62E721F93D4B00B80433 /* LaunchScreen.storyboard */,
@@ -407,15 +404,6 @@
 			path = Welcome;
 			sourceTree = "<group>";
 		};
-		F9E1388C220B1BB700DDE7B3 /* Vocabulary */ = {
-			isa = PBXGroup;
-			children = (
-				F91CE28922101D2C000D1380 /* SubjectListCV */,
-				F91CE28A22101D77000D1380 /* WordListCV */,
-			);
-			path = Vocabulary;
-			sourceTree = "<group>";
-		};
 		F9F1E2E323881BCC0084DE34 /* SpeechSynthesizer */ = {
 			isa = PBXGroup;
 			children = (
@@ -427,6 +415,7 @@
 		F9FFEB962209C5F500F05E98 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
+				F9E1388B220B1BAA00DDE7B3 /* Welcome */,
 				F91F62E021F93D4A00B80433 /* WelcomeViewController.swift */,
 				F91F62FA21F9EE6D00B80433 /* DELFScheduleViewController.swift */,
 				F9FFEB972209C60B00F05E98 /* FLEXScheduleViewController.swift */,
@@ -512,7 +501,6 @@
 				F91F62E921F93D4B00B80433 /* LaunchScreen.storyboard in Resources */,
 				F9E1388A220B105100DDE7B3 /* Setting.storyboard in Resources */,
 				F91F62E621F93D4B00B80433 /* Assets.xcassets in Resources */,
-				F91F62E421F93D4A00B80433 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,14 +617,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		F91F62E221F93D4A00B80433 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F91F62E321F93D4A00B80433 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		F91F62E721F93D4B00B80433 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        window = UIWindow()
+        window?.rootViewController = MainTabBarController()
+        window?.makeKeyAndVisible()
+        
         // Because of TimeInterval at least 60 seconds Error
         if plist.double(forKey: "알림시간") == 0.0 {
             plist.set(60000, forKey: "알림시간")
