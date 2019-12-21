@@ -205,7 +205,6 @@
 		F91CE28622101C48000D1380 /* WordList */ = {
 			isa = PBXGroup;
 			children = (
-				F9B38F4122547D62000E1CEA /* Setting */,
 				F91CE28A22101D77000D1380 /* WordListCV */,
 				F91CE28722101C97000D1380 /* VocabularyWordListVC.swift */,
 				F9F88DF52383E2700098C310 /* VocabularyVoiceSettingVC.swift */,
@@ -271,12 +270,12 @@
 				F9F1E2E323881BCC0084DE34 /* SpeechSynthesizer */,
 				F9BB5C5F226C9E4D00A3679F /* Notification */,
 				F9BB5C56226C55BF00A3679F /* Model */,
-				F91F62F921F9EE3A00B80433 /* Views */,
+				F91F62F821F9EE2200B80433 /* TabBar */,
 				F9FFEB992209D81700F05E98 /* Login */,
 				F9FFEB962209C5F500F05E98 /* Welcome */,
 				F9E13885220B0D0100DDE7B3 /* Vocabulary */,
+				F965A11F23ACA8B1002A8473 /* Movie */,
 				F9B38F3E22547B38000E1CEA /* Setting */,
-				F91F62F821F9EE2200B80433 /* Controllers */,
 				F9E13882220B0CBD00DDE7B3 /* Storyboards */,
 				F91F62E521F93D4B00B80433 /* Assets.xcassets */,
 				F91F62DE21F93D4A00B80433 /* AppDelegate.swift */,
@@ -287,19 +286,12 @@
 			path = FrenchVoca;
 			sourceTree = "<group>";
 		};
-		F91F62F821F9EE2200B80433 /* Controllers */ = {
+		F91F62F821F9EE2200B80433 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
 				F9AD8B45220BB5BA00EBCCCE /* MainTabBarController.swift */,
 			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		F91F62F921F9EE3A00B80433 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		F965A11A23AB7F14002A8473 /* Coordinators */ = {
@@ -311,14 +303,22 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
+		F965A11F23ACA8B1002A8473 /* Movie */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Movie;
+			sourceTree = "<group>";
+		};
 		F9B38F3E22547B38000E1CEA /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				F9BB5C5D226C5E3000A3679F /* SettingPeople */,
+				F9B38F4122547D62000E1CEA /* Setting */,
 				F9B38F3F22547BDD000E1CEA /* SettingMainTVC.swift */,
 				F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */,
 				F9BB5C4D226AF94F00A3679F /* SettingPeopleCVC.swift */,
 				F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */,
+				F9BB5C5D226C5E3000A3679F /* SettingPeopleInfo */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -350,14 +350,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		F9BB5C5D226C5E3000A3679F /* SettingPeople */ = {
+		F9BB5C5D226C5E3000A3679F /* SettingPeopleInfo */ = {
 			isa = PBXGroup;
 			children = (
 				F9BB5C57226C55CE00A3679F /* people.swift */,
 				F9BB5C59226C55DC00A3679F /* peopleGroup.swift */,
 				F9BB5C5B226C55F800A3679F /* peopleGroupData.swift */,
 			);
-			path = SettingPeople;
+			path = SettingPeopleInfo;
 			sourceTree = "<group>";
 		};
 		F9BB5C5E226C5E5100A3679F /* Database */ = {
@@ -396,14 +396,6 @@
 			path = Vocabulary;
 			sourceTree = "<group>";
 		};
-		F9E1388B220B1BAA00DDE7B3 /* Welcome */ = {
-			isa = PBXGroup;
-			children = (
-				F91CE28B22101D80000D1380 /* MainCV */,
-			);
-			path = Welcome;
-			sourceTree = "<group>";
-		};
 		F9F1E2E323881BCC0084DE34 /* SpeechSynthesizer */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,7 +407,7 @@
 		F9FFEB962209C5F500F05E98 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
-				F9E1388B220B1BAA00DDE7B3 /* Welcome */,
+				F91CE28B22101D80000D1380 /* MainCV */,
 				F91F62E021F93D4A00B80433 /* WelcomeViewController.swift */,
 				F91F62FA21F9EE6D00B80433 /* DELFScheduleViewController.swift */,
 				F9FFEB972209C60B00F05E98 /* FLEXScheduleViewController.swift */,

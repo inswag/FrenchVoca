@@ -9,12 +9,10 @@
 import UIKit
 
 
-class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
+class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.delegate = self
 
         DispatchQueue.main.async {
             // UserDefault 에 저장된 이름과 소속이 없으면 등록창을, 그렇지 않으면 바로 메인 화면을 보여주게 된다.
@@ -56,13 +54,14 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         settingNaviController.tabBarItem.selectedImage = settingSelected!
         settingNaviController.tabBarItem.image = settingUnselected!
         
-        tabBar.tintColor = .black
         
+        // Set up
+        tabBar.tintColor = .black
         viewControllers = [welcomeNaviController,
                            vocabularyNaviController,
                            settingNaviController]
         
-        // Modify tab bar item insets
+        // Modify tab bar item insets & title
         guard let items = tabBar.items else { return }
         
         items[0].title = "Accueil"
@@ -84,3 +83,5 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
 }
+
+// 6face8a577050b168c87eb2a938074c8
