@@ -21,18 +21,15 @@ class VocabularySubjectListVC: UIViewController {
     var subjectList: [(subjectCd: Int, subjectKoreanTitle: String, subjectFrenchTitle: String, subjectPhoto: String)]!
     let subjectDAO = SubjectDAO()
     
-    // MARK:- Custom Navigation Bar 
-    let frenchVocaLogoView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 110, height: 27)) // 1102/27
+    // MARK:- UI Properties
+    let frenchVocaLogo: UILabel = {
         let label = UILabel()
-        view.addSubview(label)
         label.text = "French Voca"
         label.textAlignment = .center
         label.font = UIFont(name: "Avenir-Book", size: 20)
         label.textColor = UIColor.rgb(red: 74, green: 74, blue: 74)
         label.numberOfLines = 1
-        label.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        return view
+        return label
     }()
     
     
@@ -62,7 +59,7 @@ class VocabularySubjectListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupUIDesign()
+        setupUIComponents()
         setupCustomNaviBarDesign()
         
         self.subjectList = self.subjectDAO.find()
@@ -74,7 +71,7 @@ class VocabularySubjectListVC: UIViewController {
     }
     
     //MARK:- Design
-    fileprivate func setupUIDesign() {
+    fileprivate func setupUIComponents() {
         self.view.addSubview(collectionView)
         collectionView.backgroundColor = .white
         collectionView.anchor(top: self.view.topAnchor, left: self.view.leftAnchor, bottom: self.view.bottomAnchor, right: self.view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
@@ -84,7 +81,8 @@ class VocabularySubjectListVC: UIViewController {
     fileprivate func setupCustomNaviBarDesign() {
 //        barBtnYours.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)], for: .normal)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: frenchVocaLogoView)
+        self.navigationItem.titleView = frenchVocaLogo
+        
 //        self.navigationItem.rightBarButtonItems = [barBtnYours]
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
         self.navigationController?.navigationBar.barTintColor = UIColor.white

@@ -10,13 +10,11 @@ import UIKit
 import AVFoundation
 
 class ApplicationCoordinator: Coordinator {
-    ////  let kanjiStorage: KanjiStorage //  1
     
     let notiManager: UNNotiManager
     let window: UIWindow  // 2
     let rootViewController: UITabBarController  // 3
 
-    
     init(window: UIWindow) { //4
         self.window = window
         self.notiManager = UNNotiManager()
@@ -25,6 +23,7 @@ class ApplicationCoordinator: Coordinator {
         
     func start() {  // 6
         let plist = UserDefaults.standard
+        
         // Because of TimeInterval at least 60 seconds Error
         if plist.double(forKey: "알림시간") == 0.0 {
             plist.set(60000, forKey: "알림시간")

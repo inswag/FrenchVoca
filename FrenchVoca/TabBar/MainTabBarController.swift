@@ -76,7 +76,7 @@ class MainTabBarController: UITabBarController {
     
     fileprivate func templateNavController(unselectedImage: UIImage, selectedImage: UIImage, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
         let viewController = rootViewController
-        let navController = UINavigationController(rootViewController: viewController)
+        let navController = BaseNaviController(rootViewController: viewController)
         navController.tabBarItem.image = unselectedImage
         navController.tabBarItem.selectedImage = selectedImage
         return navController

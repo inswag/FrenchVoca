@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Initialize 'a.c' with the window that i just created.
         let applicationCoordinator = ApplicationCoordinator(window: window)
-        
         self.applicationCoordinator = applicationCoordinator
         applicationCoordinator.start()
 
