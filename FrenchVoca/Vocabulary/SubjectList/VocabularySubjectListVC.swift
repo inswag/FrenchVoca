@@ -12,8 +12,7 @@ class VocabularySubjectListVC: UIViewController {
     
     struct Constant {
         static let totalMargin: CGFloat = 90
-        static let vocabularyHeaderUsernameFont = UIFont(name: "Avenir-Black", size: 25)
-        static let vocabularyHeaderSuggestionFont = UIFont(name: "Avenir-Book", size: 20)
+        static let vocabularyHeaderUsernameFont = Tools.font.avenirBlack(size: 25)
         static let vocabularyHeaderDivisionLineHeight: CGFloat = 2
     }
     
@@ -26,8 +25,8 @@ class VocabularySubjectListVC: UIViewController {
         let label = UILabel()
         label.text = "French Voca"
         label.textAlignment = .center
-        label.font = UIFont(name: "Avenir-Book", size: 20)
-        label.textColor = UIColor.rgb(red: 74, green: 74, blue: 74)
+        label.font = Tools.font.avenirBook(size: 20)
+        label.textColor = Tools.color.lightBlack
         label.numberOfLines = 1
         return label
     }()
@@ -79,7 +78,7 @@ class VocabularySubjectListVC: UIViewController {
     }
     
     fileprivate func setupCustomNaviBarDesign() {
-//        barBtnYours.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)], for: .normal)
+//        barBtnYours.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 20)!, NSAttributedString.Key.foregroundColor: Tools.color.lightBlack], for: .normal)
         
         self.navigationItem.titleView = frenchVocaLogo
         

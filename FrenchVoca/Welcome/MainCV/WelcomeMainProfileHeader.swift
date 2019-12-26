@@ -13,12 +13,12 @@ class WelcomeMainProfileHeader: UICollectionViewCell {
     // Student Card + Welcome Message PART
     static func defineCellSize(cellwidth: CGFloat) -> CGSize {
         let cellHeight = (Constant.totalMargin) +
-            (Constant.profileHeaderIdentifierTitleFont!.lineHeight) +
+            (Constant.profileHeaderIdentifierTitleFont.lineHeight) +
             (Constant.profileImageHeight) +
-            (Constant.profileHeaderUsernameFont!.lineHeight) +
-            (Constant.profileHeaderPositionFont!.lineHeight) +
-            (Constant.profileHeaderFirstLineMessageFont!.lineHeight) +
-            (Constant.profileHeaderSecondLineMessageFont!.lineHeight) +
+            (Constant.profileHeaderUsernameFont.lineHeight) +
+            (Constant.profileHeaderPositionFont.lineHeight) +
+            (Constant.profileHeaderFirstLineMessageFont.lineHeight) +
+            (Constant.profileHeaderSecondLineMessageFont.lineHeight) +
             (Constant.welcomeHeaderDivisionLineHeight * 2)
         return CGSize(width: cellwidth, height: cellHeight)
     }
@@ -26,11 +26,11 @@ class WelcomeMainProfileHeader: UICollectionViewCell {
     struct Constant {
         static let profileImageHeight: CGFloat = 120
         static let totalMargin: CGFloat = 110 + 10 // 10 : 최상단 ~ 타이틀 마진
-        static let profileHeaderIdentifierTitleFont = UIFont(name: "Avenir-Light", size: 14)
-        static let profileHeaderUsernameFont = UIFont(name: "Avenir-Black", size: 25)
-        static let profileHeaderPositionFont = UIFont(name: "Avenir-Book", size: 20)
-        static let profileHeaderFirstLineMessageFont = UIFont(name: "AppleSDGothicNeo-Regular", size: 18)
-        static let profileHeaderSecondLineMessageFont = UIFont(name: "Avenir-Book", size: 18)
+        static let profileHeaderIdentifierTitleFont = Tools.font.avenirLight(size: 14)
+        static let profileHeaderUsernameFont = Tools.font.avenirBlack(size: 25)
+        static let profileHeaderPositionFont = Tools.font.avenirBook(size: 20)
+        static let profileHeaderFirstLineMessageFont = Tools.font.appleSDGothicNeoRegular(size: 18)
+        static let profileHeaderSecondLineMessageFont = Tools.font.avenirBook(size: 18)
         static let welcomeHeaderDivisionLineHeight: CGFloat = 1 * 2
     }
     
@@ -39,7 +39,7 @@ class WelcomeMainProfileHeader: UICollectionViewCell {
         label.text = "Carte d'étudiant"
         label.textAlignment = .left
         label.font = Constant.profileHeaderIdentifierTitleFont
-        label.textColor = UIColor.rgb(red: 138, green: 137, blue: 137)
+        label.textColor = Tools.color.mediumBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = false
         return label
@@ -57,7 +57,7 @@ class WelcomeMainProfileHeader: UICollectionViewCell {
         label.text = "VOTRE SURNOM"
         label.textAlignment = .center
         label.font = Constant.profileHeaderUsernameFont
-        label.textColor = UIColor.rgb(red: 74, green: 74, blue: 74)
+        label.textColor = Tools.color.lightBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -67,8 +67,8 @@ class WelcomeMainProfileHeader: UICollectionViewCell {
         let label = UILabel()
         label.text = "Votre position"
         label.textAlignment = .center
-        label.font = Constant.profileHeaderPositionFont
-        label.textColor = UIColor.rgb(red: 74, green: 74, blue: 74)
+        label.font = Tools.font.avenirBook(size: 20)
+        label.textColor = Tools.color.lightBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -77,17 +77,17 @@ class WelcomeMainProfileHeader: UICollectionViewCell {
     let messageLabel: UILabel = {
         let label = UILabel()
         let attributedText = NSMutableAttributedString(string: "French",
-                                                       attributes: [NSAttributedString.Key.font: Constant.profileHeaderSecondLineMessageFont!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 36, green: 74, blue: 156)])
+                                                       attributes: [NSAttributedString.Key.font: Tools.font.avenirBook(size: 18), NSAttributedString.Key.foregroundColor: Tools.color.frenchBlue])
         attributedText.append(NSAttributedString(string: " Voca",
-                                                 attributes: [NSAttributedString.Key.font: Constant.profileHeaderSecondLineMessageFont!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 232, green: 0, blue: 0)]))
-        attributedText.append(NSAttributedString(string: " 에 오신 것을 환영합니다.", attributes: [NSAttributedString.Key.font: Constant.profileHeaderFirstLineMessageFont!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)]))
-        attributedText.append(NSAttributedString(string: "\nBienvenue chez ", attributes: [NSAttributedString.Key.font: Constant.profileHeaderSecondLineMessageFont!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)]))
+                                                 attributes: [NSAttributedString.Key.font: Tools.font.avenirBook(size: 18), NSAttributedString.Key.foregroundColor: Tools.color.frenchRed]))
+        attributedText.append(NSAttributedString(string: " 에 오신 것을 환영합니다.", attributes: [NSAttributedString.Key.font: Constant.profileHeaderFirstLineMessageFont, NSAttributedString.Key.foregroundColor: Tools.color.lightBlack]))
+        attributedText.append(NSAttributedString(string: "\nBienvenue chez ", attributes: [NSAttributedString.Key.font: Tools.font.avenirBook(size: 18), NSAttributedString.Key.foregroundColor: Tools.color.lightBlack]))
         attributedText.append(NSAttributedString(string: "French",
-                                                 attributes: [NSAttributedString.Key.font: Constant.profileHeaderSecondLineMessageFont!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 36, green: 74, blue: 156)]))
+                                                 attributes: [NSAttributedString.Key.font: Tools.font.avenirBook(size: 18), NSAttributedString.Key.foregroundColor: Tools.color.frenchBlue]))
         attributedText.append(NSAttributedString(string: " Voca",
-                                                 attributes: [NSAttributedString.Key.font: Constant.profileHeaderSecondLineMessageFont!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 232, green: 0, blue: 0)]))
+                                                 attributes: [NSAttributedString.Key.font: Tools.font.avenirBook(size: 18), NSAttributedString.Key.foregroundColor: Tools.color.frenchRed]))
         attributedText.append(NSAttributedString(string: ".",
-                                                 attributes: [NSAttributedString.Key.font: Constant.profileHeaderSecondLineMessageFont!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)]))
+                                                 attributes: [NSAttributedString.Key.font: Tools.font.avenirBook(size: 18), NSAttributedString.Key.foregroundColor: Tools.color.lightBlack]))
         label.attributedText = attributedText
         label.textAlignment = .center
         label.numberOfLines = 2
@@ -97,10 +97,10 @@ class WelcomeMainProfileHeader: UICollectionViewCell {
     
     let firstDivisionLineView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.rgb(red: 225, green: 225, blue: 225)
+        view.backgroundColor = Tools.color.lineDivisionColor
         // 쉐도우 효과 나타나지 않는 문제.
 //        view.layer.borderWidth = 0.5
-//        view.layer.borderColor = UIColor.rgb(red: 36, green: 74, blue: 156).cgColor
+//        view.layer.borderColor = Tools.color.frenchBlue.cgColor
 //        view.layer.cornerRadius = 5.0
 //        view.layer.masksToBounds = false
 //        view.layer.shadowColor = UIColor.gray.cgColor
@@ -112,7 +112,7 @@ class WelcomeMainProfileHeader: UICollectionViewCell {
 
     let secondDivisionLineView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.rgb(red: 225, green: 225, blue: 225)
+        view.backgroundColor = Tools.color.lineDivisionColor
         return view
     }()
     

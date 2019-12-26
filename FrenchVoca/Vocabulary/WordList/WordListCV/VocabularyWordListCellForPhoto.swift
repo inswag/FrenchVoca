@@ -37,7 +37,7 @@ class VocabularyWordListCellForPhoto: UICollectionViewCell {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.borderWidth = 1.0
-        view.layer.borderColor = UIColor.rgb(red: 225, green: 225, blue: 225).cgColor
+        view.layer.borderColor = Tools.color.lineDivisionColor.cgColor
         return view
     }()
     
@@ -46,7 +46,7 @@ class VocabularyWordListCellForPhoto: UICollectionViewCell {
         label.text = "Parents"
         label.textAlignment = .left
         label.font = Constant.wordTitleFont
-        label.textColor = UIColor.rgb(red: 0, green: 0, blue: 0)
+        label.textColor = UIColor.black
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -84,7 +84,7 @@ class VocabularyWordListCellForPhoto: UICollectionViewCell {
         label.text = "[paʀɑ̃]"
         label.textAlignment = .left
         label.font = Constant.wordPhoneticsFont
-        label.textColor = UIColor.rgb(red: 138, green: 137, blue: 137)
+        label.textColor = Tools.color.mediumBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -95,7 +95,7 @@ class VocabularyWordListCellForPhoto: UICollectionViewCell {
         label.text = "n."
         label.textAlignment = .right
         label.font = Constant.wordPartOfSpeechFont
-        label.textColor = UIColor.rgb(red: 54, green: 54, blue: 54)
+        label.textColor = Tools.color.prettyBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -106,7 +106,7 @@ class VocabularyWordListCellForPhoto: UICollectionViewCell {
         label.text = "m. f."
         label.textAlignment = .right
         label.font = Constant.wordGenderFont
-        label.textColor = UIColor.rgb(red: 54, green: 54, blue: 54)
+        label.textColor = Tools.color.prettyBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -117,7 +117,7 @@ class VocabularyWordListCellForPhoto: UICollectionViewCell {
         label.text = "pl."
         label.textAlignment = .right
         label.font = Constant.wordNumberFont
-        label.textColor = UIColor.rgb(red: 54, green: 54, blue: 54)
+        label.textColor = Tools.color.prettyBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -128,7 +128,7 @@ class VocabularyWordListCellForPhoto: UICollectionViewCell {
         label.text = "부모님"
         label.textAlignment = .left
         label.font = Constant.wordMeaningFont
-        label.textColor = UIColor.rgb(red: 54, green: 54, blue: 54)
+        label.textColor = Tools.color.prettyBlack
         label.numberOfLines = 3
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -139,7 +139,7 @@ class VocabularyWordListCellForPhoto: UICollectionViewCell {
         label.text = "Exemple"
         label.textAlignment = .left
         label.font = Constant.exampleTitleFont
-        label.textColor = UIColor.rgb(red: 155, green: 155, blue: 155)
+        label.textColor = Tools.color.prettyGray
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label

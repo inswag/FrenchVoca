@@ -24,8 +24,8 @@ class SettingPeopleCell: UICollectionViewCell {
     struct Constant {
         static let margin: CGFloat = 30
          // 228
-        static let peopleNameFont = UIFont(name: "Avenir-Light", size: 14)
-        static let peoplePositionFont = UIFont(name: "Avenir-Book", size: 12)
+        static let peopleNameFont = Tools.font.avenirLight(size: 14)
+        static let peoplePositionFont = Tools.font.avenirBook(size: 12)
 
     }
 //
@@ -48,7 +48,7 @@ class SettingPeopleCell: UICollectionViewCell {
         label.text = "inswag_"
         label.textAlignment = .center
         label.font = Constant.peopleNameFont
-        label.textColor = UIColor.rgb(red: 138, green: 137, blue: 137)
+        label.textColor = Tools.color.mediumBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = false
         return label
@@ -59,7 +59,7 @@ class SettingPeopleCell: UICollectionViewCell {
         label.text = "Développeur"
         label.textAlignment = .center
         label.font = Constant.peoplePositionFont
-        label.textColor = UIColor.rgb(red: 73, green: 72, blue: 72)
+        label.textColor = Tools.color.lightBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label

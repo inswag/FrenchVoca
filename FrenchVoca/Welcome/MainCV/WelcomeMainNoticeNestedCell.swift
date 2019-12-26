@@ -13,16 +13,16 @@ class WelcomeMainNoticeNestedCell: UICollectionViewCell {
     static func defineCellSize(cellwidth: CGFloat) -> CGSize {
         let cellHeight = (Constant.totalMargin) +
             (Constant.imageViewHeight) +
-            (Constant.titleFont!.lineHeight) +
-            (Constant.subTitleFont!.lineHeight)
+            (Constant.titleFont.lineHeight) +
+            (Constant.subTitleFont.lineHeight)
         return CGSize(width: cellwidth, height: cellHeight)
     }
     
     struct Constant {
         static let totalMargin: CGFloat = 5
         static let imageViewHeight: CGFloat = 150  // Border 를 프로그래밍으로 주는게 좋을까 디자인에서 주는게 좋을까?
-        static let titleFont = UIFont(name: "Avenir-Light", size: 15)
-        static let subTitleFont = UIFont(name: "AppleSDGothicNeo-Bold", size: 11)
+        static let titleFont = Tools.font.avenirLight(size: 15)
+        static let subTitleFont = Tools.font.appleSDGothicNeoBold(size: 11)
     }
     
     
@@ -39,7 +39,7 @@ class WelcomeMainNoticeNestedCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Touchez pour voir le calendrier des examens."
         label.font = Constant.titleFont
-        label.textColor = UIColor.rgb(red: 73, green: 72, blue: 72)
+        label.textColor = Tools.color.lightBlack
         label.numberOfLines = 1
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
@@ -50,7 +50,7 @@ class WelcomeMainNoticeNestedCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "버튼을 터치하여 시험 일정을 확인하세요."
         label.font = Constant.subTitleFont
-        label.textColor = UIColor.rgb(red: 73, green: 72, blue: 72)
+        label.textColor = Tools.color.lightBlack
         label.numberOfLines = 1
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
@@ -74,7 +74,7 @@ class WelcomeMainNoticeNestedCell: UICollectionViewCell {
         self.imageView.anchor(top: self.contentView.topAnchor, left: self.contentView.leftAnchor, bottom: nil, right: self.contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: (self.contentView.frame.width), height: 150)
         
         self.imageView.layer.borderWidth = 1.0
-        self.imageView.layer.borderColor = UIColor.rgb(red: 225, green: 225, blue: 225).cgColor
+        self.imageView.layer.borderColor = Tools.color.lineDivisionColor.cgColor
         self.imageView.layer.cornerRadius = 10.0
         self.imageView.layer.masksToBounds = true
         

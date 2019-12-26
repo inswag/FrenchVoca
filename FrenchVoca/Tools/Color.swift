@@ -21,19 +21,14 @@ struct Color {
         return UIColor.rgb(r: 74, g: 74, b: 74)
     }
     
+    // Tools.color.prettyBlack
+    var prettyBlack: UIColor {
+        return UIColor.rgb(r: 54, g: 54, b: 54)
+    }
+    
     // Tools.color.mediumBlack
     var mediumBlack: UIColor {
         return UIColor.rgb(r: 138, g: 137, b: 137)
-    }
-    
-    // Tools.color.darkGray
-    var darkGray: UIColor {
-        return UIColor.rgb(r: 199, g: 203, b: 210)
-    }
-    
-    // Tools.color.mediumGray
-    var mediumGray: UIColor {
-        return UIColor.rgb(r: 163, g: 163, b: 181)
     }
     
     // Tools.color.lightGray
@@ -41,66 +36,39 @@ struct Color {
         return UIColor.rgb(r: 246, g: 246, b: 250)
     }
     
+    // Tools.color.prettyGray
+    var prettyGray: UIColor {
+        return UIColor.rgb(r: 155, g: 155, b: 155)
+    }
+    
+    // Tools.color.mediumGray
+    var mediumGray: UIColor {
+        return UIColor.rgb(r: 163, g: 163, b: 181)
+    }
+    
+    // Tools.color.darkGray
+    var darkGray: UIColor {
+        return UIColor.rgb(r: 199, g: 203, b: 210)
+    }
+    
     // Tools.color.frenchBlue
     var frenchBlue: UIColor {
         return UIColor.rgb(r: 36, g: 74, b: 156)
     }
     
-    
-    
-    
-    // MARK:- Enrollment
-    var enrollmentTitle: UIColor {
-        return UIColor.black
+    // Tools.color.frenchRed
+    var frenchRed: UIColor {
+        return UIColor.rgb(r: 223, g: 39, b: 39)
     }
     
-    var formValid: UIColor {
-        return UIColor.rgb(r: 36, g: 74, b: 156)
+    // Tools.color.lineDivisionColor
+    var lineDivisionColor: UIColor {
+        return UIColor.rgb(r: 225, g: 225, b: 225)
     }
     
-    var formInvalid: UIColor {
-        return UIColor.rgb(r: 199, g: 203, b: 210)
+    // Tools.color.sandYellow
+    var sandYellow: UIColor {
+        return UIColor.rgb(r: 232, g: 220, b: 180)
     }
-    
-    var descriptionBackground: UIColor {
-        return UIColor.rgb(r: 246, g: 246, b: 250)
-    }
-    
-    var descriptionTitle: UIColor {
-        return UIColor.rgb(r: 163, g: 163, b: 181)
-    }
-    
-    // MARK:- Sign In
-    var verificationTitle: UIColor {
-        return UIColor.black
-    }
-    
-    var backButton: UIColor {
-        return UIColor.rgb(r: 74, g: 74, b: 74)
-    }
-    
-    var containerBorder: UIColor {
-        return UIColor.rgb(r: 138, g: 137, b: 137)
-    }
-    
-    
-    
-    var studentUsername: UIColor {
-        return UIColor.rgb(r: 74, g: 74, b: 74)
-    }
-    
-    var studentPosition: UIColor {
-        return UIColor.rgb(r: 74, g: 74, b: 74)
-    }
-    
-    var saveValid: UIColor {
-        return UIColor.rgb(r: 36, g: 74, b: 156)
-    }
-    
-    var saveInvalid: UIColor {
-        return UIColor.rgb(r: 199, g: 203, b: 210)
-    }
-    
-    
     
 }

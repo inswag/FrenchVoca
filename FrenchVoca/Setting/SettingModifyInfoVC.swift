@@ -10,21 +10,6 @@ import UIKit
 
 class SettingModifyInfoVC: UIViewController {
     
-    struct Constant {
-        static let padding: CGFloat = 95 + 5
-        static let outlineHeight: CGFloat = 2 + 19 // 2: Outline + 19: wordPhoneticsFontSize
-        
-        static let nowTitleFont = UIFont(name: "Avenir-Book", size: 14)
-        static let nowUsernameFont = UIFont(name: "Avenir-Black", size: 20)
-        static let nowPositionFont = UIFont(name: "Avenir-Book", size: 15)
-        
-        static let afterTitleFont = UIFont(name: "Avenir-Book", size: 14)
-        static let afterUsernameFont = UIFont(name: "Avenir-Black", size: 20)
-        static let afterPositionFont = UIFont(name: "Avenir-Book", size: 15)
-        
-        static let wordKoreanExamFont = UIFont(name: "AppleSDGothicNeo-Regular", size: 12)
-    }
-    
     var newImage = UIImage(named: "D")
     
     let containerView: UIView = {
@@ -41,8 +26,8 @@ class SettingModifyInfoVC: UIViewController {
         let label = UILabel()
         label.text = "Maintenant(현재)"
         label.textAlignment = .left
-        label.font = Constant.nowTitleFont
-        label.textColor = UIColor.rgb(red: 54, green: 54, blue: 54)
+        label.font = Tools.font.avenirBook(size: 14)
+        label.textColor = Tools.color.prettyBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -51,7 +36,7 @@ class SettingModifyInfoVC: UIViewController {
     let nowContainerView: UIView = {
         let view = UIView()
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.rgb(red: 155, green: 155, blue: 155).cgColor
+        view.layer.borderColor = Tools.color.prettyGray.cgColor
         view.backgroundColor = .white
         view.layer.cornerRadius = 15
         return view
@@ -59,11 +44,10 @@ class SettingModifyInfoVC: UIViewController {
     
     let nowStudentCardLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Avenir-Light", size: 14)
         let underlineAttriString = NSAttributedString(string: "Carte d'étudiant",
                                                       attributes: [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
-                                                                   NSAttributedString.Key.font: UIFont(name: "Avenir-Light", size: 14)!,
-                                                                   NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)])
+                                                                   NSAttributedString.Key.font: Tools.font.avenirLight(size: 14),
+                                                                   NSAttributedString.Key.foregroundColor: Tools.color.lightBlack])
         label.attributedText = underlineAttriString
         return label
     }()
@@ -81,8 +65,8 @@ class SettingModifyInfoVC: UIViewController {
         let label = UILabel()
         label.text = "VOTRE SURNOM"
         label.textAlignment = .left
-        label.font = Constant.nowUsernameFont
-        label.textColor = UIColor.rgb(red: 74, green: 74, blue: 74)
+        label.font = Tools.font.avenirBlack(size: 20)
+        label.textColor = Tools.color.lightBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -92,8 +76,8 @@ class SettingModifyInfoVC: UIViewController {
         let label = UILabel()
         label.text = "Votre position"
         label.textAlignment = .left
-        label.font = Constant.nowPositionFont
-        label.textColor = UIColor.rgb(red: 74, green: 74, blue: 74)
+        label.font = Tools.font.avenirBook(size: 15)
+        label.textColor = Tools.color.lightBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -104,8 +88,8 @@ class SettingModifyInfoVC: UIViewController {
         let label = UILabel()
         label.text = "Après(수정 후)"
         label.textAlignment = .left
-        label.font = Constant.afterTitleFont
-        label.textColor = UIColor.rgb(red: 54, green: 54, blue: 54)
+        label.font = Tools.font.avenirBook(size: 14)
+        label.textColor = Tools.color.prettyBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -114,7 +98,7 @@ class SettingModifyInfoVC: UIViewController {
     let afterContainerView: UIView = {
         let view = UIView()
         view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.rgb(red: 155, green: 155, blue: 155).cgColor
+        view.layer.borderColor = Tools.color.prettyGray.cgColor
         view.backgroundColor = .white
         view.layer.cornerRadius = 15
         return view
@@ -122,11 +106,11 @@ class SettingModifyInfoVC: UIViewController {
     
     let afterStudentCardLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Avenir-Light", size: 14)
+        label.font = Tools.font.avenirLight(size: 14)
         let underlineAttriString = NSAttributedString(string: "Carte d'étudiant",
                                                       attributes: [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue,
-                                                                   NSAttributedString.Key.font: UIFont(name: "Avenir-Light", size: 14)!,
-                                                                   NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)])
+                                                                   NSAttributedString.Key.font: Tools.font.avenirLight(size: 14),
+                                                                   NSAttributedString.Key.foregroundColor: Tools.color.lightBlack])
         label.attributedText = underlineAttriString
         return label
     }()
@@ -153,8 +137,8 @@ class SettingModifyInfoVC: UIViewController {
         textField.placeholder = "Votre surnom"
         textField.backgroundColor = UIColor.white
         textField.borderStyle = .roundedRect
-        textField.font = Constant.afterUsernameFont
-        textField.textColor = UIColor.rgb(red: 74, green: 74, blue: 74)
+        textField.font = Tools.font.avenirBlack(size: 20)
+        textField.textColor = Tools.color.lightBlack
         textField.addTarget(self, action: #selector(handleInputChange), for: .editingChanged)
         return textField
     }()
@@ -164,8 +148,8 @@ class SettingModifyInfoVC: UIViewController {
         textField.placeholder = "Votre position"
         textField.backgroundColor = UIColor.white
         textField.borderStyle = .roundedRect
-        textField.font = Constant.afterPositionFont
-        textField.textColor = UIColor.rgb(red: 74, green: 74, blue: 74)
+        textField.font = Tools.font.avenirBook(size: 15)
+        textField.textColor = Tools.color.lightBlack
         textField.addTarget(self, action: #selector(handleInputChange), for: .editingChanged)
         return textField
     }()
@@ -173,9 +157,9 @@ class SettingModifyInfoVC: UIViewController {
     @objc func handleInputChange() {
         // Handling UX Design
         self.completeButton.isEnabled = false
-        self.completeButton.backgroundColor = UIColor.rgb(red: 199, green: 203, blue: 210)
+        self.completeButton.backgroundColor = Tools.color.darkGray
         self.saveButton.isEnabled = true
-        self.saveButton.backgroundColor = UIColor.rgb(red: 36, green: 74, blue: 156)
+        self.saveButton.backgroundColor = Tools.color.frenchBlue
     }
     
     //MARK:- 'button' Property
@@ -183,7 +167,7 @@ class SettingModifyInfoVC: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("취소", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor.rgb(red: 223, green: 39, blue: 39)
+        button.backgroundColor = Tools.color.frenchRed
         button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(handleCancel), for: .touchUpInside)
         button.isEnabled = true
@@ -198,7 +182,7 @@ class SettingModifyInfoVC: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("저장", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor.rgb(red: 36, green: 74, blue: 156)
+        button.backgroundColor = Tools.color.frenchBlue
         button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(handleSave), for: .touchUpInside)
         button.isEnabled = true
@@ -210,9 +194,9 @@ class SettingModifyInfoVC: UIViewController {
         
         // Handling UX Design
         self.completeButton.isEnabled = true
-        self.completeButton.backgroundColor = UIColor.rgb(red: 36, green: 74, blue: 156)
+        self.completeButton.backgroundColor = Tools.color.frenchBlue
         self.saveButton.isEnabled = false
-        self.saveButton.backgroundColor = UIColor.rgb(red: 199, green: 203, blue: 210)
+        self.saveButton.backgroundColor = Tools.color.darkGray
         
         print("handleSave")
     }
@@ -221,7 +205,7 @@ class SettingModifyInfoVC: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("완료", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor.rgb(red: 199, green: 203, blue: 210)
+        button.backgroundColor = Tools.color.darkGray
         button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(handleComplete), for: .touchUpInside)
         button.isEnabled = false

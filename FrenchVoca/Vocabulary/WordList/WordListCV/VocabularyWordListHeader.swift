@@ -23,9 +23,9 @@ class VocabularyWordListHeader: UICollectionViewCell {
     
     struct Constant {
         static let backgroundImageHeight: CGFloat = 260
-        static let headerTitleFont = UIFont(name: "AppleSDGothicNeo-Bold", size: 25)
+        static let headerTitleFont = Tools.font.appleSDGothicNeoBold(size: 25)
         static let headerSubtitleFont = UIFont(name: "Avenir-Medium", size: 18)
-        static let headersubSentenceFont = UIFont(name: "Avenir-Light", size: 18)
+        static let headersubSentenceFont = Tools.font.avenirLight(size: 18)
     }
     
     let menuImageView: UIImageView = {
@@ -41,7 +41,7 @@ class VocabularyWordListHeader: UICollectionViewCell {
         label.text = "주제"
         label.textAlignment = .left
         label.font = Constant.headerTitleFont
-        label.textColor = UIColor.rgb(red: 255, green: 255, blue: 255)
+        label.textColor = UIColor.rgb(r: 255, g: 255, b: 255)
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -52,7 +52,7 @@ class VocabularyWordListHeader: UICollectionViewCell {
         label.text = "Sujet français"
         label.textAlignment = .left
         label.font = Constant.headerSubtitleFont
-        label.textColor = UIColor.rgb(red: 255, green: 255, blue: 255)
+        label.textColor = UIColor.rgb(r: 255, g: 255, b: 255)
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -63,7 +63,7 @@ class VocabularyWordListHeader: UICollectionViewCell {
         label.text = "Citation / Proverbe française"
         label.textAlignment = .left
         label.font = Constant.headersubSentenceFont
-        label.textColor = UIColor.rgb(red: 255, green: 255, blue: 255)
+        label.textColor = UIColor.rgb(r: 255, g: 255, b: 255)
         label.numberOfLines = 3
         label.adjustsFontSizeToFitWidth = true
         return label

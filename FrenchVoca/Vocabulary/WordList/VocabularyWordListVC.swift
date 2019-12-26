@@ -13,7 +13,7 @@ class VocabularyWordListVC: UIViewController {
     
     
     struct Font {
-        static let naviBarTitleFont = UIFont(name: "Avenir-Book", size: 20)
+        static let naviBarTitleFont = Tools.font.avenirBook(size: 20)
     }
     
     // MARK:- DAO Property
@@ -31,7 +31,7 @@ class VocabularyWordListVC: UIViewController {
         label.text = "French Voca"
         label.textAlignment = .center
         label.font = Font.naviBarTitleFont
-        label.textColor = UIColor.rgb(red: 74, green: 74, blue: 74)
+        label.textColor = Tools.color.lightBlack
         label.numberOfLines = 1
         label.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         return view

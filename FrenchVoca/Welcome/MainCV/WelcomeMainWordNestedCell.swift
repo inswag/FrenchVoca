@@ -21,12 +21,12 @@ class WelcomeMainWordNestedCell: UICollectionViewCell {
 //        static let totalMargin: CGFloat = 5
         static let containerViewHeight: CGFloat = 40  // Border 를 프로그래밍으로 주는게 좋을까 디자인에서 주는게 좋을까?
         
-        static let wordFrenchFont = UIFont(name: "Avenir-Book", size: 16)
+        static let wordFrenchFont = Tools.font.avenirBook(size: 16)
         // Part of speech, Gender, meaning 폰트 사이즈는 굳이 높이에 계산할 필요 없음.
-        static let wordPartOfSpeechFont = UIFont(name: "Avenir-Book", size: 16)
-        static let wordGenderFont = UIFont(name: "Avenir-Book", size: 16)
-        static let wordNumberFont = UIFont(name: "Avenir-Book", size: 16)
-        static let wordMeaningFont = UIFont(name: "Avenir-Book", size: 16)
+//        static let wordPartOfSpeechFont = UIFont(name: "Avenir-Book", size: 16)
+//        static let wordGenderFont = UIFont(name: "Avenir-Book", size: 16)
+//        static let wordNumberFont = UIFont(name: "Avenir-Book", size: 16)
+//        static let wordMeaningFont = UIFont(name: "Avenir-Book", size: 16)
 //        static let wordExampleTitleFont = UIFont(name: "Avenir-LightOblique", size: 14)
 //        static let wordFrenchExampleFont = UIFont(name: "Avenir-Book", size: 14)
 //        static let wordKoreanExampleFont = UIFont(name: "AppleSDGothicNeo-Regular", size: 12)
@@ -35,7 +35,7 @@ class WelcomeMainWordNestedCell: UICollectionViewCell {
     let containerView: UIView = {
         let view = UIView()
         view.layer.borderWidth = 1.0
-        view.layer.borderColor = UIColor.rgb(red: 225, green: 225, blue: 225).cgColor
+        view.layer.borderColor = Tools.color.lineDivisionColor.cgColor
         view.layer.cornerRadius = 10.0
         view.layer.masksToBounds = true
         return view
@@ -45,8 +45,8 @@ class WelcomeMainWordNestedCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Amour"
         label.textAlignment = .left
-        label.font = Constant.wordFrenchFont
-        label.textColor = UIColor.rgb(red: 0, green: 0, blue: 0)
+        label.font = Tools.font.avenirBook(size: 16)
+        label.textColor = UIColor.black
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -56,8 +56,8 @@ class WelcomeMainWordNestedCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "n."
         label.textAlignment = .right
-        label.font = Constant.wordPartOfSpeechFont
-        label.textColor = UIColor.rgb(red: 0, green: 0, blue: 0)
+        label.font = Tools.font.avenirBook(size: 16)
+        label.textColor = UIColor.black
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -67,8 +67,8 @@ class WelcomeMainWordNestedCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "m."
         label.textAlignment = .right
-        label.font = Constant.wordGenderFont
-        label.textColor = UIColor.rgb(red: 0, green: 0, blue: 0)
+        label.font = Tools.font.avenirBook(size: 16)
+        label.textColor = UIColor.black
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -78,8 +78,8 @@ class WelcomeMainWordNestedCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "s."
         label.textAlignment = .right
-        label.font = Constant.wordNumberFont
-        label.textColor = UIColor.rgb(red: 0, green: 0, blue: 0)
+        label.font = Tools.font.avenirBook(size: 16)
+        label.textColor = UIColor.black
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -89,8 +89,8 @@ class WelcomeMainWordNestedCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "사랑"
         label.textAlignment = .right
-        label.font = Constant.wordMeaningFont
-        label.textColor = UIColor.rgb(red: 0, green: 0, blue: 0)
+        label.font = Tools.font.avenirBook(size: 16)
+        label.textColor = UIColor.black
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label

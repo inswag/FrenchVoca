@@ -21,8 +21,8 @@ class SettingMainTVC: UITableViewController {
         view.addSubview(label)
         label.text = "French Voca"
         label.textAlignment = .left
-        label.font = UIFont(name: "Avenir-Book", size: 20)
-        label.textColor = UIColor.rgb(red: 74, green: 74, blue: 74)
+        label.font = Tools.font.avenirBook(size: 20)
+        label.textColor = Tools.color.lightBlack
         label.numberOfLines = 1
         label.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         return view

@@ -27,7 +27,6 @@
 		F91F62E121F93D4A00B80433 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62E021F93D4A00B80433 /* WelcomeViewController.swift */; };
 		F91F62E621F93D4B00B80433 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F91F62E521F93D4B00B80433 /* Assets.xcassets */; };
 		F91F62E921F93D4B00B80433 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F91F62E721F93D4B00B80433 /* LaunchScreen.storyboard */; };
-		F91F62F121F93E8E00B80433 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62F021F93E8E00B80433 /* Extensions.swift */; };
 		F91F62F521F93E9800B80433 /* WelcomeMainNoticeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62F221F93E9700B80433 /* WelcomeMainNoticeCell.swift */; };
 		F91F62F621F93E9800B80433 /* WelcomeMainProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62F321F93E9700B80433 /* WelcomeMainProfileHeader.swift */; };
 		F91F62FB21F9EE6D00B80433 /* DELFScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62FA21F9EE6D00B80433 /* DELFScheduleViewController.swift */; };
@@ -42,6 +41,7 @@
 		F9B38F3D2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B38F3C2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift */; };
 		F9B38F4022547BDD000E1CEA /* SettingMainTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B38F3F22547BDD000E1CEA /* SettingMainTVC.swift */; };
 		F9B38F4322547D79000E1CEA /* SettingMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B38F4222547D79000E1CEA /* SettingMainCell.swift */; };
+		F9B3988D23B4AAC2000E407D /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B3988C23B4AAC2000E407D /* Anchor.swift */; };
 		F9B4DFA22382E87D0080DD5D /* SettingMainSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B4DFA12382E87D0080DD5D /* SettingMainSwitchCell.swift */; };
 		F9BB5C4E226AF94F00A3679F /* SettingPeopleCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BB5C4D226AF94F00A3679F /* SettingPeopleCVC.swift */; };
 		F9BB5C50226AFB4C00A3679F /* SettingPeopleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BB5C4F226AFB4C00A3679F /* SettingPeopleCell.swift */; };
@@ -106,7 +106,6 @@
 		F91F62E521F93D4B00B80433 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F91F62E821F93D4B00B80433 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F91F62EA21F93D4B00B80433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F91F62F021F93E8E00B80433 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F91F62F221F93E9700B80433 /* WelcomeMainNoticeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeMainNoticeCell.swift; sourceTree = "<group>"; };
 		F91F62F321F93E9700B80433 /* WelcomeMainProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeMainProfileHeader.swift; sourceTree = "<group>"; };
 		F91F62FA21F9EE6D00B80433 /* DELFScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DELFScheduleViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +120,7 @@
 		F9B38F3C2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMainNoticeNestedCell.swift; sourceTree = "<group>"; };
 		F9B38F3F22547BDD000E1CEA /* SettingMainTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainTVC.swift; sourceTree = "<group>"; };
 		F9B38F4222547D79000E1CEA /* SettingMainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainCell.swift; sourceTree = "<group>"; };
+		F9B3988C23B4AAC2000E407D /* Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
 		F9B4DFA12382E87D0080DD5D /* SettingMainSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainSwitchCell.swift; sourceTree = "<group>"; };
 		F9BB5C4D226AF94F00A3679F /* SettingPeopleCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPeopleCVC.swift; sourceTree = "<group>"; };
 		F9BB5C4F226AFB4C00A3679F /* SettingPeopleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPeopleCell.swift; sourceTree = "<group>"; };
@@ -301,7 +301,6 @@
 				F9E13882220B0CBD00DDE7B3 /* Storyboards */,
 				F91F62E521F93D4B00B80433 /* Assets.xcassets */,
 				F91F62DE21F93D4A00B80433 /* AppDelegate.swift */,
-				F91F62F021F93E8E00B80433 /* Extensions.swift */,
 				F91F62EA21F93D4B00B80433 /* Info.plist */,
 				F91AFB4022410A4200F435A5 /* FrenchVoca-Bridging-Header.h */,
 			);
@@ -438,6 +437,7 @@
 				F9E8346E23B453F7006C0F4E /* Tools.swift */,
 				F9E8346C23B4402D006C0F4E /* Color.swift */,
 				F9B0D6E823B47C7200EFBBB5 /* Font.swift */,
+				F9B3988C23B4AAC2000E407D /* Anchor.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -610,12 +610,12 @@
 				F9D0E4572219780200BE4815 /* EnrollmentViewController.swift in Sources */,
 				F9F88DF62383E2700098C310 /* VocabularyVoiceSettingVC.swift in Sources */,
 				F9E8346623B43B9A006C0F4E /* BaseTableViewCell.swift in Sources */,
+				F9B3988D23B4AAC2000E407D /* Anchor.swift in Sources */,
 				F91AFB5222410A4600F435A5 /* FMDatabase.m in Sources */,
 				F911EF422317B38D009A8913 /* VocabularyNotebookVCCell.swift in Sources */,
 				F9AAFE872257226400F281CE /* SettingModifyInfoVC.swift in Sources */,
 				F9BB5C5C226C55F800A3679F /* peopleGroupData.swift in Sources */,
 				F9E1388E220B1C0B00DDE7B3 /* VocabularySubjectListHeader.swift in Sources */,
-				F91F62F121F93E8E00B80433 /* Extensions.swift in Sources */,
 				F9BF0939225C9D170097E0CC /* UNNotiManager.swift in Sources */,
 				F9FFEB9B2209D8EF00F05E98 /* SignInViewController.swift in Sources */,
 				F9BF093D225F344C0097E0CC /* WelcomeMainWordNestedCell.swift in Sources */,

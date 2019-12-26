@@ -15,8 +15,8 @@ class WelcomeViewController: UIViewController {
         let label = UILabel()
         label.text = "French Voca"
         label.textAlignment = .center
-        label.font = UIFont(name: "Avenir-Book", size: 20)
-        label.textColor = UIColor.rgb(red: 74, green: 74, blue: 74)
+        label.font = Tools.font.avenirBook(size: 20)
+        label.textColor = Tools.color.lightBlack
         label.numberOfLines = 1
         return label
     }()
@@ -77,8 +77,8 @@ class WelcomeViewController: UIViewController {
     }
     
     fileprivate func setupCustomNaviBarDesign() {
-        barBtnDELF.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)], for: .normal)
-        barBtnFLEX.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)], for: .normal)
+        barBtnDELF.setTitleTextAttributes([NSAttributedString.Key.font: Tools.font.avenirBlack(size: 20), NSAttributedString.Key.foregroundColor: Tools.color.lightBlack], for: .normal)
+        barBtnFLEX.setTitleTextAttributes([NSAttributedString.Key.font: Tools.font.avenirBlack(size: 20), NSAttributedString.Key.foregroundColor: Tools.color.lightBlack], for: .normal)
         
 //        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: frenchVocaLogoView)
 //        self.navigationItem.rightBarButtonItems = [barBtnDELF, barBtnFLEX]

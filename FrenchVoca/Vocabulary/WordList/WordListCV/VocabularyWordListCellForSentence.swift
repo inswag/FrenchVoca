@@ -12,11 +12,7 @@ import UIKit
 class VocabularyWordListCellForSentence: UICollectionViewCell {
     
     static func defineCellSize(cellwidth: CGFloat) -> CGSize {
-        let cellHeight = (Constant.outlineHeight) + (Constant.padding) +
-            (Constant.wordTitleFont!.lineHeight) +
-            (Constant.exampleTitleFont!.lineHeight) +
-            (Constant.wordFrenchExamFont!.lineHeight * 3) +
-            (Constant.wordKoreanExamFont!.lineHeight * 2)
+        let cellHeight = (Constant.outlineHeight) + (Constant.padding) + (Constant.wordTitleFont!.lineHeight) + (Constant.exampleTitleFont!.lineHeight) + (Constant.wordFrenchExamFont!.lineHeight * 3) + (Constant.wordKoreanExamFont!.lineHeight * 2)
         return CGSize(width: cellwidth, height: cellHeight)
     }
     
@@ -38,7 +34,7 @@ class VocabularyWordListCellForSentence: UICollectionViewCell {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.borderWidth = 1.0
-        view.layer.borderColor = UIColor.rgb(red: 225, green: 225, blue: 225).cgColor
+        view.layer.borderColor = Tools.color.lineDivisionColor.cgColor
         return view
     }()
     
@@ -47,7 +43,7 @@ class VocabularyWordListCellForSentence: UICollectionViewCell {
         label.text = "Parents"
         label.textAlignment = .left
         label.font = Constant.wordTitleFont
-        label.textColor = UIColor.rgb(red: 0, green: 0, blue: 0)
+        label.textColor = UIColor.black
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -132,7 +128,7 @@ class VocabularyWordListCellForSentence: UICollectionViewCell {
         label.text = "[paʀɑ̃]"
         label.textAlignment = .left
         label.font = Constant.wordPhoneticsFont
-        label.textColor = UIColor.rgb(red: 138, green: 137, blue: 137)
+        label.textColor = Tools.color.mediumBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -143,7 +139,7 @@ class VocabularyWordListCellForSentence: UICollectionViewCell {
         label.text = "n."
         label.textAlignment = .right
         label.font = Constant.wordPartOfSpeechFont
-        label.textColor = UIColor.rgb(red: 54, green: 54, blue: 54)
+        label.textColor = Tools.color.prettyBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -154,7 +150,7 @@ class VocabularyWordListCellForSentence: UICollectionViewCell {
         label.text = "m. f."
         label.textAlignment = .right
         label.font = Constant.wordGenderFont
-        label.textColor = UIColor.rgb(red: 54, green: 54, blue: 54)
+        label.textColor = Tools.color.prettyBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -165,7 +161,7 @@ class VocabularyWordListCellForSentence: UICollectionViewCell {
         label.text = "pl."
         label.textAlignment = .right
         label.font = Constant.wordNumberFont
-        label.textColor = UIColor.rgb(red: 54, green: 54, blue: 54)
+        label.textColor = Tools.color.prettyBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -176,7 +172,7 @@ class VocabularyWordListCellForSentence: UICollectionViewCell {
         label.text = "부모님"
         label.textAlignment = .right
         label.font = Constant.wordMeaningFont
-        label.textColor = UIColor.rgb(red: 54, green: 54, blue: 54)
+        label.textColor = Tools.color.prettyBlack
         label.numberOfLines = 3
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -187,7 +183,7 @@ class VocabularyWordListCellForSentence: UICollectionViewCell {
         label.text = "Exemple"
         label.textAlignment = .left
         label.font = Constant.exampleTitleFont
-        label.textColor = UIColor.rgb(red: 155, green: 155, blue: 155)
+        label.textColor = Tools.color.prettyGray
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -198,7 +194,7 @@ class VocabularyWordListCellForSentence: UICollectionViewCell {
         label.text = "Tous les parents sont un grand homme."
         label.textAlignment = .left
         label.font = Constant.wordFrenchExamFont
-        label.textColor = UIColor.rgb(red: 54, green: 52, blue: 52)
+        label.textColor = Tools.color.prettyBlack
         label.numberOfLines = 3
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -209,7 +205,7 @@ class VocabularyWordListCellForSentence: UICollectionViewCell {
         label.text = "모든 부모님은 위대하다."
         label.textAlignment = .left
         label.font = Constant.wordKoreanExamFont
-        label.textColor = UIColor.rgb(red: 54, green: 52, blue: 52)
+        label.textColor = Tools.color.prettyBlack
         label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
         return label

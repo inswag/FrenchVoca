@@ -13,14 +13,14 @@ class SettingPeopleHeader: UICollectionViewCell {
     // Complete
     
     static func defineCellSize(cellwidth: CGFloat) -> CGSize {
-        let cellHeight = (Constant.peopleTitleFont!.lineHeight) +
+        let cellHeight = (Constant.peopleTitleFont.lineHeight) +
             (Constant.peopleDivisionLineHeight) +
             (Constant.margin)
         return CGSize(width: cellwidth, height: cellHeight)
     }
     
     struct Constant {
-        static let peopleTitleFont = UIFont(name: "Avenir-Light", size: 16)
+        static let peopleTitleFont = Tools.font.avenirLight(size: 16)
         static let peopleDivisionLineHeight: CGFloat = 1
         static let margin: CGFloat = 20
     }
@@ -30,7 +30,7 @@ class SettingPeopleHeader: UICollectionViewCell {
         label.text = "parties"
         label.textAlignment = .left
         label.font = Constant.peopleTitleFont
-        label.textColor = UIColor.rgb(red: 138, green: 137, blue: 137)
+        label.textColor = Tools.color.mediumBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -38,7 +38,7 @@ class SettingPeopleHeader: UICollectionViewCell {
     
     let peopledivisionLine: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.rgb(red: 225, green: 225, blue: 225)
+        view.backgroundColor = Tools.color.lineDivisionColor
         return view
     }()
     

@@ -1,19 +1,12 @@
 //
-//  Extensions.swift
-//  FrenchVocaSecondVersion
+//  Anchor.swift
+//  FrenchVoca
 //
-//  Created by 박인수 on 21/01/2019.
+//  Created by 박인수 on 26/12/2019.
 //  Copyright © 2019 inswag. All rights reserved.
 //
 
 import UIKit
-
-
-extension UIColor {
-    static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
-        return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: 1)
-    }
-}
 
 // NSLayoutConstraint 를 extension 을 활용하여 function 을 만든 후 재사용을 통해 쉽게 오토레이아웃을 잡을 수 있게 해주었다.
 extension UIView {
@@ -29,7 +22,7 @@ extension UIView {
         translatesAutoresizingMaskIntoConstraints = false
         
         if let top = top {
-            self.topAnchor.constraint(equalTo: top, constant: paddingTop).isActive = true 
+            self.topAnchor.constraint(equalTo: top, constant: paddingTop).isActive = true
         }
 
         if let left = left {

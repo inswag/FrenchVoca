@@ -17,7 +17,7 @@ class WelcomeMainWordCell: UICollectionViewCell {
     
     static func defineCellSize(cellwidth: CGFloat) -> CGSize {
         let margin: CGFloat = 44 + 10 // 2(Border) + 10(top ~ title)
-        let cvHeight = (Constant.wordCellTitleFont!.lineHeight) + (Constant.wordCellSubTitleFont!.lineHeight) + (WelcomeMainWordNestedCell.Constant.containerViewHeight)
+        let cvHeight = (Constant.wordCellTitleFont.lineHeight) + (Constant.wordCellSubTitleFont.lineHeight) + (WelcomeMainWordNestedCell.Constant.containerViewHeight)
             // 컬렉션 뷰의 높이를 가져와야 한다.
         let totalHeight = margin + cvHeight
         return CGSize(width: cellwidth, height: totalHeight)
@@ -25,8 +25,8 @@ class WelcomeMainWordCell: UICollectionViewCell {
     
     struct Constant {
         static let collectionViewHeight: CGFloat = 200 // 228
-        static let wordCellTitleFont = UIFont(name: "Avenir-Light", size: 14)
-        static let wordCellSubTitleFont = UIFont(name: "AppleSDGothicNeo-Bold", size: 12)
+        static let wordCellTitleFont = Tools.font.avenirLight(size: 14)
+        static let wordCellSubTitleFont = Tools.font.appleSDGothicNeoBold(size: 12)
     }
     
     
@@ -50,7 +50,7 @@ class WelcomeMainWordCell: UICollectionViewCell {
         label.text = "5 Mots aléatoires"
         label.textAlignment = .left
         label.font = Constant.wordCellTitleFont
-        label.textColor = UIColor.rgb(red: 138, green: 137, blue: 137)
+        label.textColor = Tools.color.mediumBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -61,7 +61,7 @@ class WelcomeMainWordCell: UICollectionViewCell {
         label.text = "프렌치 보카의 5개의 단어를 미리 만나보세요!"
         label.textAlignment = .left
         label.font = Constant.wordCellSubTitleFont
-        label.textColor = UIColor.rgb(red: 73, green: 72, blue: 72)
+        label.textColor = Tools.color.lightBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label

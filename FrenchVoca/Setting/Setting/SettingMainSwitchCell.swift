@@ -12,14 +12,14 @@ import UserNotifications
 class SettingMainSwitchCell: UITableViewCell {
     
     static func defineCellHeight() -> CGFloat {
-        let cellHeight = (Constant.titleFont!.lineHeight) + (Constant.margin) + (Constant.subTitleFont!.lineHeight)
+        let cellHeight = (Constant.titleFont.lineHeight) + (Constant.margin) + (Constant.subTitleFont.lineHeight)
         return cellHeight
     }
     
     struct Constant {
         static let margin: CGFloat = 20
-        static let titleFont = UIFont(name: "Avenir-Light", size: 18)
-        static let subTitleFont = UIFont(name: "Avenir-Light", size: 12)
+        static let titleFont = Tools.font.avenirLight(size: 18)
+        static let subTitleFont = Tools.font.avenirLight(size: 12)
     }
     
     let cellID2 = "cellswitchID"
@@ -50,7 +50,7 @@ class SettingMainSwitchCell: UITableViewCell {
     // Right Side
     lazy var controlSwitch: UISwitch = {
         let interrupteur = UISwitch()
-        interrupteur.tintColor = UIColor.rgb(red: 36, green: 74, blue: 156) // Set Switch to On.
+        interrupteur.tintColor = Tools.color.frenchBlue // Set Switch to On.
         interrupteur.isOn = plist.bool(forKey: "알림설정확인") // Set the event to be called when switching On / Off of Switch.
         
         interrupteur.addTarget(self, action: #selector(touchAction), for: UIControl.Event.valueChanged)

@@ -11,14 +11,14 @@ import UIKit
 class SettingMainCell: UITableViewCell {
     
     static func defineCellHeight() -> CGFloat {
-        let cellHeight = (Constant.titleFont!.lineHeight) + (Constant.margin) + (Constant.subTitleFont!.lineHeight)
+        let cellHeight = (Constant.titleFont.lineHeight) + (Constant.margin) + (Constant.subTitleFont.lineHeight)
         return cellHeight
     }
     
     struct Constant {
         static let margin: CGFloat = 20
-        static let titleFont = UIFont(name: "Avenir-Light", size: 18)
-        static let subTitleFont = UIFont(name: "Avenir-Light", size: 12)
+        static let titleFont = Tools.font.avenirLight(size: 18)
+        static let subTitleFont = Tools.font.avenirLight(size: 12)
     }
     
     let cellID = "cellID"

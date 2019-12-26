@@ -13,14 +13,14 @@ class VocabularySubjectListHeader: UICollectionViewCell {
     // Complete
     
     static func defineCellSize(cellwidth: CGFloat) -> CGSize {
-        let cellHeight = (Constant.vocabularySectionTitleFont!.lineHeight) +
+        let cellHeight = (Constant.vocabularySectionTitleFont.lineHeight) +
             (Constant.vocabularydivisionLineHeight) +
             (Constant.margin)
         return CGSize(width: cellwidth, height: cellHeight)
     }
 
     struct Constant {
-        static let vocabularySectionTitleFont = UIFont(name: "Avenir-Light", size: 14)
+        static let vocabularySectionTitleFont = Tools.font.avenirLight(size: 14)
         static let vocabularydivisionLineHeight: CGFloat = 1
         static let margin: CGFloat = 20
     }
@@ -30,7 +30,7 @@ class VocabularySubjectListHeader: UICollectionViewCell {
         label.text = "Choisissez votre sujet"
         label.textAlignment = .left
         label.font = Constant.vocabularySectionTitleFont
-        label.textColor = UIColor.rgb(red: 138, green: 137, blue: 137)
+        label.textColor = Tools.color.mediumBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -38,7 +38,7 @@ class VocabularySubjectListHeader: UICollectionViewCell {
 
     let vocabularydivisionLine: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.rgb(red: 225, green: 225, blue: 225)
+        view.backgroundColor = Tools.color.lineDivisionColor
         return view
     }()
 

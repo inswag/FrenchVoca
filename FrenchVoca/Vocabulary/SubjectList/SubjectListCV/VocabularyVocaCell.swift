@@ -31,8 +31,8 @@ class VocabularyVocaCell: UICollectionViewCell {
     let levelKoreanTitle: UILabel = {
         let label = UILabel()
         label.text = "주제이름"
-        label.font = UIFont(name: "AppleSDGothicNeo-Regular", size: 12)
-        label.textColor = UIColor.rgb(red: 73, green: 72, blue: 72)
+        label.font = Tools.font.appleSDGothicNeoRegular(size: 12)
+        label.textColor = Tools.color.lightBlack
         label.numberOfLines = 1
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true
@@ -43,8 +43,8 @@ class VocabularyVocaCell: UICollectionViewCell {
     let levelFrenchTitle: UILabel = {
         let label = UILabel()
         label.text = "Nom de Sujet"
-        label.font = UIFont(name: "Avenir-Light", size: 12)
-        label.textColor = UIColor.rgb(red: 73, green: 72, blue: 72)
+        label.font = Tools.font.avenirLight(size: 12)
+        label.textColor = Tools.color.lightBlack
         label.numberOfLines = 1
         label.textAlignment = .left
         label.adjustsFontSizeToFitWidth = true

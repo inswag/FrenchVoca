@@ -25,8 +25,8 @@ class VocabularyVoiceSettingVC: UIViewController {
     let backButtonText: UIButton = {
         let button = UIButton(type: .system)
         let attributedTitle = NSAttributedString(string: "Arrière",
-                                                 attributes: [NSAttributedString.Key.font: UIFont(name: "Avenir-Light", size: 20)!,
-                                                              NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)])
+                                                 attributes: [NSAttributedString.Key.font: Tools.font.avenirLight(size: 20),
+                                                              NSAttributedString.Key.foregroundColor: Tools.color.lightBlack])
         button.setAttributedTitle(attributedTitle, for: .normal)
         button.addTarget(self, action: #selector(handlePopAction), for: .touchUpInside)
         return button
@@ -44,7 +44,7 @@ class VocabularyVoiceSettingVC: UIViewController {
         titleLabel.textAlignment = .left
         titleLabel.numberOfLines = 1
         titleLabel.text = "발음 속도 조절"
-        titleLabel.font = UIFont(name: "Avenir-Black", size: 23)
+        titleLabel.font = Tools.font.avenirBlack(size: 23)
         titleLabel.adjustsFontSizeToFitWidth = true
         return titleLabel
     }()
@@ -56,7 +56,7 @@ class VocabularyVoiceSettingVC: UIViewController {
         label.textAlignment = .left
         label.numberOfLines = 1
         label.text = "(Réglage de la vitesse de prononciation)"
-        label.font = UIFont(name: "Avenir-Black", size: 17)
+        label.font = Tools.font.avenirBlack(size: 17)
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
@@ -68,7 +68,7 @@ class VocabularyVoiceSettingVC: UIViewController {
            label.textAlignment = .left
            label.numberOfLines = 1
            label.text = "* 아래에서 속도를 조절하고 예문을 들어보세요!"
-           label.font = UIFont(name: "Avenir-Light", size: 11)
+           label.font = Tools.font.avenirLight(size: 11)
            label.adjustsFontSizeToFitWidth = true
            return label
     }()
@@ -80,7 +80,7 @@ class VocabularyVoiceSettingVC: UIViewController {
         label.textAlignment = .center
         label.numberOfLines = 1
         label.text = "Bonjour! Je m'appelle Antoine."
-        label.font = UIFont(name: "Avenir-Light", size: 14)
+        label.font = Tools.font.avenirLight(size: 14)
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
@@ -121,7 +121,7 @@ class VocabularyVoiceSettingVC: UIViewController {
     let previewButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("들어보기\n(Aperçu)", for: .normal)
-        button.backgroundColor = UIColor.rgb(red: 36, green: 74, blue: 156) // BLUE
+        button.backgroundColor = Tools.color.frenchBlue // BLUE
         button.layer.cornerRadius = 5
         button.setTitleColor(.white, for: .normal)
         button.titleLabel!.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -146,7 +146,7 @@ class VocabularyVoiceSettingVC: UIViewController {
     let defaultValueButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("기본값\n(par défaut)", for: .normal)
-        button.backgroundColor = UIColor.rgb(red: 232, green: 0, blue: 0) // RED
+        button.backgroundColor = Tools.color.frenchRed
         button.layer.cornerRadius = 5
         button.setTitleColor(.white, for: .normal)
         button.titleLabel!.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -168,7 +168,7 @@ class VocabularyVoiceSettingVC: UIViewController {
     let settingButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("설정\n(Mettez en place)", for: .normal)
-        button.backgroundColor = UIColor.rgb(red: 232, green: 220, blue: 180) // SAND
+        button.backgroundColor = Tools.color.sandYellow // SAND
         button.layer.cornerRadius = 5
         button.setTitleColor(.white, for: .normal)
         button.titleLabel!.lineBreakMode = NSLineBreakMode.byWordWrapping
