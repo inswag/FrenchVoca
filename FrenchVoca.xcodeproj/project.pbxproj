@@ -38,6 +38,7 @@
 		F97867A3237D16E400CB0728 /* NotiSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97867A2237D16E400CB0728 /* NotiSettingViewController.swift */; };
 		F9AAFE872257226400F281CE /* SettingModifyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */; };
 		F9AD8B46220BB5BA00EBCCCE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AD8B45220BB5BA00EBCCCE /* MainTabBarController.swift */; };
+		F9B0D6E923B47C7200EFBBB5 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B0D6E823B47C7200EFBBB5 /* Font.swift */; };
 		F9B38F3D2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B38F3C2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift */; };
 		F9B38F4022547BDD000E1CEA /* SettingMainTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B38F3F22547BDD000E1CEA /* SettingMainTVC.swift */; };
 		F9B38F4322547D79000E1CEA /* SettingMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B38F4222547D79000E1CEA /* SettingMainCell.swift */; };
@@ -61,6 +62,11 @@
 		F9E8346023B2F56A006C0F4E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8345F23B2F56A006C0F4E /* BaseViewController.swift */; };
 		F9E8346223B30453006C0F4E /* BaseNaviController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8346123B30453006C0F4E /* BaseNaviController.swift */; };
 		F9E8346423B352D5006C0F4E /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8346323B352D5006C0F4E /* BaseCollectionViewCell.swift */; };
+		F9E8346623B43B9A006C0F4E /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8346523B43B99006C0F4E /* BaseTableViewCell.swift */; };
+		F9E8346823B43CFC006C0F4E /* CollectionViewDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8346723B43CFC006C0F4E /* CollectionViewDecorator.swift */; };
+		F9E8346A23B43D6F006C0F4E /* TableViewDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8346923B43D6F006C0F4E /* TableViewDecorator.swift */; };
+		F9E8346D23B4402D006C0F4E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8346C23B4402D006C0F4E /* Color.swift */; };
+		F9E8346F23B453F7006C0F4E /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8346E23B453F7006C0F4E /* Tools.swift */; };
 		F9F1E2E523881BFC0084DE34 /* SingletonSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F1E2E423881BFC0084DE34 /* SingletonSynthesizer.swift */; };
 		F9F88DF62383E2700098C310 /* VocabularyVoiceSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F88DF52383E2700098C310 /* VocabularyVoiceSettingVC.swift */; };
 		F9FFEB982209C60B00F05E98 /* FLEXScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FFEB972209C60B00F05E98 /* FLEXScheduleViewController.swift */; };
@@ -111,6 +117,7 @@
 		F97867A2237D16E400CB0728 /* NotiSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiSettingViewController.swift; sourceTree = "<group>"; };
 		F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModifyInfoVC.swift; sourceTree = "<group>"; };
 		F9AD8B45220BB5BA00EBCCCE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		F9B0D6E823B47C7200EFBBB5 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		F9B38F3C2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMainNoticeNestedCell.swift; sourceTree = "<group>"; };
 		F9B38F3F22547BDD000E1CEA /* SettingMainTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainTVC.swift; sourceTree = "<group>"; };
 		F9B38F4222547D79000E1CEA /* SettingMainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainCell.swift; sourceTree = "<group>"; };
@@ -134,6 +141,11 @@
 		F9E8345F23B2F56A006C0F4E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F9E8346123B30453006C0F4E /* BaseNaviController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNaviController.swift; sourceTree = "<group>"; };
 		F9E8346323B352D5006C0F4E /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		F9E8346523B43B99006C0F4E /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		F9E8346723B43CFC006C0F4E /* CollectionViewDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDecorator.swift; sourceTree = "<group>"; };
+		F9E8346923B43D6F006C0F4E /* TableViewDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDecorator.swift; sourceTree = "<group>"; };
+		F9E8346C23B4402D006C0F4E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		F9E8346E23B453F7006C0F4E /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		F9F1E2E423881BFC0084DE34 /* SingletonSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingletonSynthesizer.swift; sourceTree = "<group>"; };
 		F9F88DF52383E2700098C310 /* VocabularyVoiceSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyVoiceSettingVC.swift; sourceTree = "<group>"; };
 		F9FFEB972209C60B00F05E98 /* FLEXScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLEXScheduleViewController.swift; sourceTree = "<group>"; };
@@ -274,6 +286,7 @@
 		F91F62DD21F93D4A00B80433 /* FrenchVoca */ = {
 			isa = PBXGroup;
 			children = (
+				F9E8346B23B44016006C0F4E /* Tools */,
 				F9E8345E23B2F54F006C0F4E /* Based */,
 				F965A11A23AB7F14002A8473 /* Coordinators */,
 				F9F1E2E323881BCC0084DE34 /* SpeechSynthesizer */,
@@ -412,8 +425,21 @@
 				F9E8345F23B2F56A006C0F4E /* BaseViewController.swift */,
 				F9E8346123B30453006C0F4E /* BaseNaviController.swift */,
 				F9E8346323B352D5006C0F4E /* BaseCollectionViewCell.swift */,
+				F9E8346523B43B99006C0F4E /* BaseTableViewCell.swift */,
+				F9E8346723B43CFC006C0F4E /* CollectionViewDecorator.swift */,
+				F9E8346923B43D6F006C0F4E /* TableViewDecorator.swift */,
 			);
 			path = Based;
+			sourceTree = "<group>";
+		};
+		F9E8346B23B44016006C0F4E /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				F9E8346E23B453F7006C0F4E /* Tools.swift */,
+				F9E8346C23B4402D006C0F4E /* Color.swift */,
+				F9B0D6E823B47C7200EFBBB5 /* Font.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		F9F1E2E323881BCC0084DE34 /* SpeechSynthesizer */ = {
@@ -580,8 +606,10 @@
 				F9BB5C4E226AF94F00A3679F /* SettingPeopleCVC.swift in Sources */,
 				F97867A3237D16E400CB0728 /* NotiSettingViewController.swift in Sources */,
 				F91F62E121F93D4A00B80433 /* WelcomeViewController.swift in Sources */,
+				F9E8346F23B453F7006C0F4E /* Tools.swift in Sources */,
 				F9D0E4572219780200BE4815 /* EnrollmentViewController.swift in Sources */,
 				F9F88DF62383E2700098C310 /* VocabularyVoiceSettingVC.swift in Sources */,
+				F9E8346623B43B9A006C0F4E /* BaseTableViewCell.swift in Sources */,
 				F91AFB5222410A4600F435A5 /* FMDatabase.m in Sources */,
 				F911EF422317B38D009A8913 /* VocabularyNotebookVCCell.swift in Sources */,
 				F9AAFE872257226400F281CE /* SettingModifyInfoVC.swift in Sources */,
@@ -593,11 +621,14 @@
 				F9BF093D225F344C0097E0CC /* WelcomeMainWordNestedCell.swift in Sources */,
 				F91CE28D22101DB8000D1380 /* VocabularyWordListHeader.swift in Sources */,
 				F9E8346423B352D5006C0F4E /* BaseCollectionViewCell.swift in Sources */,
+				F9E8346D23B4402D006C0F4E /* Color.swift in Sources */,
 				F91CE28822101C97000D1380 /* VocabularyWordListVC.swift in Sources */,
+				F9E8346823B43CFC006C0F4E /* CollectionViewDecorator.swift in Sources */,
 				F91AFB5B2241C69C00F435A5 /* SubjectDAO.swift in Sources */,
 				F965A11923AB7F0B002A8473 /* Coordinator.swift in Sources */,
 				F9B38F3D2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift in Sources */,
 				F91AFB4F22410A4600F435A5 /* FMResultSet.m in Sources */,
+				F9E8346A23B43D6F006C0F4E /* TableViewDecorator.swift in Sources */,
 				F91AFB4E22410A4600F435A5 /* FMDatabasePool.m in Sources */,
 				F91F62FB21F9EE6D00B80433 /* DELFScheduleViewController.swift in Sources */,
 				F91AFB5022410A4600F435A5 /* FMDatabaseAdditions.m in Sources */,
@@ -616,6 +647,7 @@
 				F91F62F621F93E9800B80433 /* WelcomeMainProfileHeader.swift in Sources */,
 				F91CE29022102207000D1380 /* VocabularyWordListCellForSentence.swift in Sources */,
 				F965A11C23AB8741002A8473 /* ApplicationCoordinator.swift in Sources */,
+				F9B0D6E923B47C7200EFBBB5 /* Font.swift in Sources */,
 				F9E13888220B0D5A00DDE7B3 /* VocabularySubjectListVC.swift in Sources */,
 				F9F1E2E523881BFC0084DE34 /* SingletonSynthesizer.swift in Sources */,
 				F91AFB5D2241DB6E00F435A5 /* WordDAO.swift in Sources */,

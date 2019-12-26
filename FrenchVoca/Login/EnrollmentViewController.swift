@@ -21,17 +21,14 @@ class EnrollmentViewController: UIViewController {
         titleLabel.numberOfLines = 2
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.text = "등록\n(Inscription)"
-        titleLabel.textColor = UIColor.black
-        titleLabel.font = UIFont(name: "Avenir-Light", size: 23)
+        titleLabel.textColor = Tools.color.lightBlack
+        titleLabel.font = Tools.font.avenirLight(size: 23)
         return titleLabel
     }()
     
     let userPhotoButton: UIButton = {
-        // Button.ButtonType.system : A system style button, such as those shown in navigation bars and toolbars. <-> '.custom'
         let button = UIButton(type: .system)
         let image = UIImage(named: "login_Photos")
-        // UIImageRenderingModeAlwaysOriginal : Always draw the original image, without treating it as a template.
-        // UIImageRenderingModeAlwaysTemplate : Always draw the image as a template image, ignoring its color information.
         image?.withRenderingMode(.alwaysOriginal)
         button.setImage(image, for: .normal)
         button.addTarget(self, action: #selector(handlePlusPhoto), for: .touchUpInside)
@@ -51,7 +48,7 @@ class EnrollmentViewController: UIViewController {
         textField.placeholder = "닉네임(Votre surnom)"
         textField.backgroundColor = UIColor.white
         textField.borderStyle = .roundedRect
-        textField.font = UIFont.systemFont(ofSize: 14)
+        textField.font = Tools.font.systemFont(size: 14)
         textField.delegate = self
         textField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return textField
@@ -62,7 +59,7 @@ class EnrollmentViewController: UIViewController {
         textField.placeholder = "소속(Votre position)"
         textField.backgroundColor = UIColor.white
         textField.borderStyle = .roundedRect
-        textField.font = UIFont.systemFont(ofSize: 14)
+        textField.font = Tools.font.systemFont(size: 14)
         textField.delegate = self
         textField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return textField
@@ -72,7 +69,7 @@ class EnrollmentViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("다음(Suivant)", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor.rgb(red: 199, green: 203, blue: 210)
+        button.backgroundColor = Tools.color.darkGray
         button.layer.cornerRadius = 5
         button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         button.isEnabled = false
@@ -84,10 +81,10 @@ class EnrollmentViewController: UIViewController {
         
         if isFormVaild {
             nextButton.isEnabled = true
-            nextButton.backgroundColor = UIColor.rgb(red: 36, green: 74, blue: 156)
+            nextButton.backgroundColor = Tools.color.frenchBlue
         } else {
             nextButton.isEnabled = false
-            nextButton.backgroundColor = UIColor.rgb(red: 199, green: 203, blue: 210)
+            nextButton.backgroundColor = Tools.color.darkGray
         }
     }
     
@@ -106,14 +103,14 @@ class EnrollmentViewController: UIViewController {
         let view = UIView() // 110/27
         let label = UILabel()
         view.addSubview(label)
-        view.backgroundColor = UIColor.rgb(red: 246, green: 246, blue: 250)
+        view.backgroundColor = Tools.color.lightGray
         view.layer.cornerRadius = 15
         label.text = "닉네임과 소속은 자유롭게 적어주세요 :)"
         label.textAlignment = .center
-        label.font = UIFont(name: "Avenir-Light", size: 12.0)
-        label.textColor = UIColor.rgb(red: 163, green: 163, blue: 181)
+        label.font = Tools.font.avenirLight(size: 12)
+        label.textColor = Tools.color.mediumGray
         label.numberOfLines = 1
-        label.textAlignment = .left
+        label.textAlignment = .center
         label.snp.makeConstraints { (m) in
             m.centerX.equalTo(view.snp.centerX)
             m.centerY.equalTo(view.snp.centerY)
@@ -121,7 +118,7 @@ class EnrollmentViewController: UIViewController {
         return view
     }()
     
-    // MARK:- View Methods
+    // MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.restoreFrameValue = self.view.frame.origin.y

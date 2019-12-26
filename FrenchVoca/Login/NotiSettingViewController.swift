@@ -25,7 +25,7 @@ class NotiSettingViewController: UIViewController {
     
     let backButtonText: UIButton = {
         let button = UIButton(type: .system)
-        let attributedTitle = NSAttributedString(string: "Arrière", attributes: [NSAttributedString.Key.font: UIFont(name: "Avenir-Light", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 74, green: 74, blue: 74)])
+        let attributedTitle = NSAttributedString(string: "Arrière", attributes: [NSAttributedString.Key.font: Tools.font.avenirLight(size: 20), NSAttributedString.Key.foregroundColor: Tools.color.lightBlack])
         button.setAttributedTitle(attributedTitle, for: .normal)
         button.addTarget(self, action: #selector(handlePopAction), for: .touchUpInside)
         return button
@@ -43,7 +43,7 @@ class NotiSettingViewController: UIViewController {
         titleLabel.textAlignment = .left
         titleLabel.numberOfLines = 1
         titleLabel.text = "단어 알림 시간을 알려주세요"
-        titleLabel.font = UIFont(name: "Avenir-Black", size: 23)
+        titleLabel.font = Tools.font.avenirBlack(size: 23)
         titleLabel.adjustsFontSizeToFitWidth = true
         return titleLabel
     }()
@@ -55,7 +55,7 @@ class NotiSettingViewController: UIViewController {
         label.textAlignment = .left
         label.numberOfLines = 1
         label.text = "(Notifications de mots)"
-        label.font = UIFont(name: "Avenir-Black", size: 20)
+        label.font = Tools.font.avenirBlack(size: 20)
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
@@ -67,7 +67,7 @@ class NotiSettingViewController: UIViewController {
         label.textAlignment = .left
         label.numberOfLines = 1
         label.text = "   * 넘어가기(Sautez)시 기본 알림은 3시간입니다."
-        label.font = UIFont(name: "Avenir-Light", size: 11)
+        label.font = Tools.font.avenirLight(size: 11)
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
@@ -78,7 +78,7 @@ class NotiSettingViewController: UIViewController {
         textField.backgroundColor = UIColor.white
         textField.textAlignment = .left
         textField.borderStyle = .none
-        textField.font = UIFont(name: "Avenir-Light", size: 17)
+        textField.font = Tools.font.avenirLight(size: 17)
         textField.keyboardType = .numberPad
         textField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
         return textField
@@ -86,13 +86,12 @@ class NotiSettingViewController: UIViewController {
     
     @objc func handleTextInputChange() {
         let isFormVaild = minuteTextField.text?.isEmpty != true
-
         if isFormVaild {
             saveButton.isEnabled = true
-            saveButton.backgroundColor = UIColor.rgb(red: 36, green: 74, blue: 156)
+            saveButton.backgroundColor = Tools.color.frenchBlue
         } else {
             saveButton.isEnabled = false
-            saveButton.backgroundColor = UIColor.rgb(red: 199, green: 203, blue: 210)
+            saveButton.backgroundColor = Tools.color.darkGray
         }
     }
     
@@ -100,7 +99,7 @@ class NotiSettingViewController: UIViewController {
     let skipButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("넘어가기\n(Sautez)", for: .normal)
-        button.backgroundColor = UIColor.rgb(red: 36, green: 74, blue: 156) // 활성화 색상
+        button.backgroundColor = Tools.color.frenchBlue // 활성화 색상
         button.layer.cornerRadius = 5
         button.setTitleColor(.white, for: .normal)
         button.titleLabel!.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -135,7 +134,7 @@ class NotiSettingViewController: UIViewController {
     let saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("저장\n(Sauvegardez)", for: .normal)
-        button.backgroundColor = UIColor.rgb(red: 199, green: 203, blue: 210) // 비활성화 색상
+        button.backgroundColor = Tools.color.frenchBlue // 비활성화 색상
         button.layer.cornerRadius = 5
         button.setTitleColor(.white, for: .normal)
         button.titleLabel!.lineBreakMode = NSLineBreakMode.byWordWrapping
