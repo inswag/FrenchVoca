@@ -1,5 +1,5 @@
 //
-//  BaseCollectionViewCell.swift
+//  CollectionViewCell.swift
 //  FrenchVoca
 //
 //  Created by 박인수 on 25/12/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseCollectionViewCell: UICollectionViewCell {
+class CollectionViewCell: UICollectionViewCell {
     
     //MARK:- init
     override init(frame: CGRect) {

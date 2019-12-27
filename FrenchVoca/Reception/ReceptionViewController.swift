@@ -1,5 +1,5 @@
 //
-//  WelcomeViewController.swift
+//  ReceptionViewController.swift
 //  FrenchVoca
 //
 //  Created by 박인수 on 24/01/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController {
+class ReceptionViewController: UIViewController {
     
     // MARK:- UI Properties
     let frenchVocaLogo: UILabel = {
@@ -95,7 +95,7 @@ class WelcomeViewController: UIViewController {
 
 
 //MARK:- Collection View Data Source Methods
-extension WelcomeViewController: UICollectionViewDataSource {
+extension ReceptionViewController: UICollectionViewDataSource {
     
     // Handle Collection View Number Of Items In Section
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -136,7 +136,7 @@ extension WelcomeViewController: UICollectionViewDataSource {
 
 
 //MARK:- Collection View Delegate Flow Layout Methods
-extension WelcomeViewController: UICollectionViewDelegateFlowLayout {
+extension ReceptionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

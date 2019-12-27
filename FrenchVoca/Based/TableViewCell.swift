@@ -1,5 +1,5 @@
 //
-//  BaseTableViewCell.swift
+//  TableViewCell.swift
 //  FrenchVoca
 //
 //  Created by 박인수 on 26/12/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseTableViewCell: UITableViewCell {
+class TableViewCell: UITableViewCell {
     
     //MARK:- Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

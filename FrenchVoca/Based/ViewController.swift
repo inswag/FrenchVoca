@@ -1,5 +1,5 @@
 //
-//  BaseViewController.swift
+//  ViewController.swift
 //  FrenchVoca
 //
 //  Created by 박인수 on 25/12/2019.
@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class BaseViewController: UIViewController {
+class ViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)

@@ -80,11 +80,11 @@ class VocabularySubjectListVC: UIViewController {
     fileprivate func setupCustomNaviBarDesign() {
 //        barBtnYours.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 20)!, NSAttributedString.Key.foregroundColor: Tools.color.lightBlack], for: .normal)
         
-        self.navigationItem.titleView = frenchVocaLogo
+//        self.navigationItem.titleView = frenchVocaLogo
         
 //        self.navigationItem.rightBarButtonItems = [barBtnYours]
-        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
+//        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+//        self.navigationController?.navigationBar.barTintColor = UIColor.white
     }
 }
 

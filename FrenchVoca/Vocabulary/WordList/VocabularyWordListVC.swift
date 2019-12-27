@@ -126,9 +126,9 @@ class VocabularyWordListVC: UIViewController {
     }
     
     fileprivate func setupNaviBarDesign() {
-        self.navigationItem.titleView = customNaviBarTitle
-        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-        self.navigationController?.navigationBar.barTintColor = UIColor.white
+//        self.navigationItem.titleView = customNaviBarTitle
+//        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+//        self.navigationController?.navigationBar.barTintColor = UIColor.white
     }
     
     

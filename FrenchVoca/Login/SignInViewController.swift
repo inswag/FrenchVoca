@@ -115,7 +115,7 @@ class SignInViewController: UIViewController {
     
     @objc func handleSave() {
         // 인스턴스 생성 말고 다른방법은 없을까? 이 방법 안되는데... 델리게이트나 노티피케이션을 좀 알아보자
-//        let welcomeVC = WelcomeViewController()
+//        let welcomeVC = ReceptionViewController()
 //        welcomeVC.collectionView.reloadData()
 //
         // Handling UX Design

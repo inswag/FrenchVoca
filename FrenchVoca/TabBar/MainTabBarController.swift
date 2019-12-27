@@ -11,6 +11,8 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     
+    let navigator = Navigator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,27 +41,26 @@ class MainTabBarController: UITabBarController {
         let settingSelected = UIImage(named: "P_selected")
         let settingUnselected = UIImage(named: "P_unselected")
         
-        // Welcome
-        let welcomeNaviController = templateNavController(unselectedImage: welcomeUnselected!,
+        
+        
+        // Reception
+        let receptionController = templateNavController(unselectedImage: welcomeUnselected!,
                                                           selectedImage: welcomeSelected!,
-                                                          rootViewController: WelcomeViewController())
+                                                          rootViewController: navigator.get(segue: .reception))
         
         // Vocabulary
-        let vocabularyNaviController = templateNavController(unselectedImage: vocaUnselected!,
+        let vocabularyController = templateNavController(unselectedImage: vocaUnselected!,
                                                              selectedImage: vocaSelected!,
-                                                             rootViewController: VocabularySubjectListVC())
+                                                             rootViewController: navigator.get(segue: .subjectList))
         
         // Setting
-        let settingNaviController = UINavigationController(rootViewController: SettingMainTVC())
-        settingNaviController.tabBarItem.selectedImage = settingSelected!
-        settingNaviController.tabBarItem.image = settingUnselected!
-        
+        let settingController = NavigationController(rootViewController: navigator.get(segue: .settingMain))
+        settingController.tabBarItem.selectedImage = settingSelected!
+        settingController.tabBarItem.image = settingUnselected!
         
         // Set up
         tabBar.tintColor = .black
-        viewControllers = [welcomeNaviController,
-                           vocabularyNaviController,
-                           settingNaviController]
+        viewControllers = [receptionController, vocabularyController, settingController]
         
         // Modify tab bar item insets & title
         guard let items = tabBar.items else { return }
@@ -76,7 +77,7 @@ class MainTabBarController: UITabBarController {
     
     fileprivate func templateNavController(unselectedImage: UIImage, selectedImage: UIImage, rootViewController: UIViewController = UIViewController()) -> UINavigationController {
         let viewController = rootViewController
-        let navController = BaseNaviController(rootViewController: viewController)
+        let navController = NavigationController(rootViewController: viewController)
         navController.tabBarItem.image = unselectedImage
         navController.tabBarItem.selectedImage = selectedImage
         return navController

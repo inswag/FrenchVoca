@@ -223,7 +223,7 @@ class SettingModifyInfoVC: UIViewController {
             }
             plist.synchronize()
             
-            let welcomeVC = WelcomeViewController()
+            let welcomeVC = ReceptionViewController()
             welcomeVC.collectionView.reloadData()
             
             self.dismiss(animated: true, completion: nil)
