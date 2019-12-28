@@ -31,6 +31,7 @@
 		F91F62F621F93E9800B80433 /* WelcomeMainProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62F321F93E9700B80433 /* WelcomeMainProfileHeader.swift */; };
 		F91F62FB21F9EE6D00B80433 /* DELFScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62FA21F9EE6D00B80433 /* DELFScheduleViewController.swift */; };
 		F936B2F22382D8A000D15624 /* SettingNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */; };
+		F9486C4023B728EB00B07001 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9486C3F23B728EB00B07001 /* Application.swift */; };
 		F965A11923AB7F0B002A8473 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F965A11823AB7F0B002A8473 /* Navigator.swift */; };
 		F97867A3237D16E400CB0728 /* NotiSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97867A2237D16E400CB0728 /* NotiSettingViewController.swift */; };
 		F9AAFE872257226400F281CE /* SettingModifyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */; };
@@ -108,6 +109,7 @@
 		F91F62F321F93E9700B80433 /* WelcomeMainProfileHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeMainProfileHeader.swift; sourceTree = "<group>"; };
 		F91F62FA21F9EE6D00B80433 /* DELFScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DELFScheduleViewController.swift; sourceTree = "<group>"; };
 		F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationsVC.swift; sourceTree = "<group>"; };
+		F9486C3F23B728EB00B07001 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		F965A11823AB7F0B002A8473 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		F97867A2237D16E400CB0728 /* NotiSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiSettingViewController.swift; sourceTree = "<group>"; };
 		F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModifyInfoVC.swift; sourceTree = "<group>"; };
@@ -282,10 +284,8 @@
 		F91F62DD21F93D4A00B80433 /* FrenchVoca */ = {
 			isa = PBXGroup;
 			children = (
-				F91F62DE21F93D4A00B80433 /* AppDelegate.swift */,
-				F9E8346B23B44016006C0F4E /* Tools */,
+				F950EE5A23B606C8008FEE13 /* Application */,
 				F9E8345E23B2F54F006C0F4E /* Based */,
-				F965A11A23AB7F14002A8473 /* Coordinators */,
 				F9F1E2E323881BCC0084DE34 /* SpeechSynthesizer */,
 				F9BB5C5F226C9E4D00A3679F /* Notification */,
 				F9BB5C56226C55BF00A3679F /* Model */,
@@ -293,12 +293,12 @@
 				F9FFEB992209D81700F05E98 /* Login */,
 				F9FFEB962209C5F500F05E98 /* Reception */,
 				F9E13885220B0D0100DDE7B3 /* Vocabulary */,
-				F965A11F23ACA8B1002A8473 /* Movie */,
 				F9B38F3E22547B38000E1CEA /* Setting */,
 				F9E13882220B0CBD00DDE7B3 /* Storyboards */,
 				F91F62E521F93D4B00B80433 /* Assets.xcassets */,
 				F91F62EA21F93D4B00B80433 /* Info.plist */,
 				F91AFB4022410A4200F435A5 /* FrenchVoca-Bridging-Header.h */,
+				F9E8346B23B44016006C0F4E /* Tools */,
 			);
 			path = FrenchVoca;
 			sourceTree = "<group>";
@@ -311,30 +311,25 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
-		F965A11A23AB7F14002A8473 /* Coordinators */ = {
+		F950EE5A23B606C8008FEE13 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				F91F62DE21F93D4A00B80433 /* AppDelegate.swift */,
+				F9486C3F23B728EB00B07001 /* Application.swift */,
 				F965A11823AB7F0B002A8473 /* Navigator.swift */,
 			);
-			path = Coordinators;
-			sourceTree = "<group>";
-		};
-		F965A11F23ACA8B1002A8473 /* Movie */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Movie;
+			path = Application;
 			sourceTree = "<group>";
 		};
 		F9B38F3E22547B38000E1CEA /* Setting */ = {
 			isa = PBXGroup;
 			children = (
 				F9B38F4122547D62000E1CEA /* Setting */,
+				F9BB5C5D226C5E3000A3679F /* SettingPeopleInfo */,
 				F9B38F3F22547BDD000E1CEA /* SettingMainTVC.swift */,
 				F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */,
 				F9BB5C4D226AF94F00A3679F /* SettingPeopleCollectionVC.swift */,
 				F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */,
-				F9BB5C5D226C5E3000A3679F /* SettingPeopleInfo */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -632,6 +627,7 @@
 				F9FFEB982209C60B00F05E98 /* FLEXScheduleViewController.swift in Sources */,
 				F9E8346223B30453006C0F4E /* NavigationController.swift in Sources */,
 				F9AD8B46220BB5BA00EBCCCE /* MainTabBarController.swift in Sources */,
+				F9486C4023B728EB00B07001 /* Application.swift in Sources */,
 				F9B38F4022547BDD000E1CEA /* SettingMainTVC.swift in Sources */,
 				F9E8346023B2F56A006C0F4E /* ViewController.swift in Sources */,
 				F91F62F521F93E9800B80433 /* WelcomeMainNoticeCell.swift in Sources */,

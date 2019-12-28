@@ -9,9 +9,18 @@
 import UIKit
 
 
-class MainTabBarController: UITabBarController {
+class MainTabBarController: UITabBarController, Navigatable {
     
-    let navigator = Navigator()
+    var navigator: Navigator!
+    
+    init(navigator: Navigator) {
+        self.navigator = navigator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +31,8 @@ class MainTabBarController: UITabBarController {
             if let username = plist.string(forKey: "이름"), let position = plist.string(forKey: "소속") {
                 print("My name: \(username), My position: \(position)")
             } else {
-                let enrollmentViewController = EnrollmentViewController()
-                let navController = UINavigationController(rootViewController: enrollmentViewController)
+                
+                let navController = NavigationController(rootViewController: Navigator.default.get(segue: .enrollment))
                 navController.modalPresentationStyle = .fullScreen
                 self.present(navController, animated: true, completion: nil)
             }
@@ -46,15 +55,15 @@ class MainTabBarController: UITabBarController {
         // Reception
         let receptionController = templateNavController(unselectedImage: welcomeUnselected!,
                                                           selectedImage: welcomeSelected!,
-                                                          rootViewController: navigator.get(segue: .reception))
+                                                          rootViewController: Navigator.default.get(segue: .reception))
         
         // Vocabulary
         let vocabularyController = templateNavController(unselectedImage: vocaUnselected!,
                                                              selectedImage: vocaSelected!,
-                                                             rootViewController: navigator.get(segue: .subjectList))
+                                                             rootViewController: Navigator.default.get(segue: .subjectList))
         
         // Setting
-        let settingController = NavigationController(rootViewController: navigator.get(segue: .settingMain))
+        let settingController = NavigationController(rootViewController: Navigator.default.get(segue: .settingMain))
         settingController.tabBarItem.selectedImage = settingSelected!
         settingController.tabBarItem.image = settingUnselected!
         

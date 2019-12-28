@@ -63,7 +63,7 @@ class VocabularyWordListCellForPhoto: UICollectionViewCell {
     var willSayWord = ""
     
     let plist = UserDefaults.standard
-    let singleSynthesizer = SingletonSynthesizer.shared
+    let singleSynthesizer = Synthesizer.shared
     
     @objc func pronunciation() {
         print("ok button")

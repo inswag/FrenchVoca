@@ -8,11 +8,14 @@
 
 import UIKit
 
-protocol Coordinator {
-    func start()
+protocol Navigatable {
+    var navigator: Navigator! { get set }
 }
 
 class Navigator {
+    
+    static var `default` = Navigator()
+    
     enum Scene {
         case tabs
         case enrollment         // Login
@@ -32,8 +35,9 @@ class Navigator {
     
     // 왜 SwiftHub 에서는 옵셔널로 처리했을까?
     func get(segue: Scene) -> UIViewController {
+        
         switch segue {
-        case .tabs: return MainTabBarController()
+        case .tabs: return MainTabBarController(navigator: self)
         case .enrollment: return EnrollmentViewController()
         case .signIn: return SignInViewController()
         case .notiSetting: return NotiSettingViewController()
@@ -48,7 +52,9 @@ class Navigator {
         case .settingPeople: return SettingPeopleCollectionVC()
         case .settingNoti: return SettingNotificationsVC()
         }
+        
     }
+    
     //    func get(segue: Scene) -> UIViewController? {
     //        switch segue {
     //        case .tabs(let viewModel):

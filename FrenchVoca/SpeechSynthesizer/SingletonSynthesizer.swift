@@ -9,9 +9,9 @@
 import Foundation
 import AVFoundation
 
-class SingletonSynthesizer: AVSpeechSynthesizer {
+class Synthesizer: AVSpeechSynthesizer {
     
-    static let shared = SingletonSynthesizer()
+    static let shared = Synthesizer()
     
     override init() {
         print("Initialization")

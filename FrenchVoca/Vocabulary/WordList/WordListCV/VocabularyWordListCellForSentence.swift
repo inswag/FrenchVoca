@@ -64,7 +64,7 @@ class VocabularyWordListCellForSentence: UICollectionViewCell {
 //    var utteranceRate: Float = 0.3
     
 
-    let singleSynthesizer = SingletonSynthesizer.shared
+    let singleSynthesizer = Synthesizer.shared
     
     // Available iOS 10+
     @objc func pronunciation() {

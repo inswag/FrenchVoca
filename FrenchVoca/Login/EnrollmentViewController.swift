@@ -11,8 +11,11 @@ import SnapKit
 
 class EnrollmentViewController: UIViewController {
     
+
+    
     // MARK: UI Properties
     var image: UIImage?
+    var restoreFrameValue: CGFloat = 0.0
     
     let enrollmentTitle : UILabel = {
         // France Blue RGB : 36 74 156
@@ -118,7 +121,11 @@ class EnrollmentViewController: UIViewController {
         return view
     }()
     
+    // MARK:- Init
+ 
+    
     // MARK:- View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.restoreFrameValue = self.view.frame.origin.y
@@ -140,6 +147,7 @@ class EnrollmentViewController: UIViewController {
 
     
     // MARK:- UI Components
+    
     func setupUIComponents() {
         
         self.navigationController?.isNavigationBarHidden = true
@@ -180,11 +188,12 @@ class EnrollmentViewController: UIViewController {
         
     }
     
-    var restoreFrameValue: CGFloat = 0.0
+    
     
 }
 
 // MARK: TextField & Keyboard Methods
+
 extension EnrollmentViewController: UITextFieldDelegate {
     
     @objc func keyboardWillAppear(noti: NSNotification) {
@@ -230,6 +239,7 @@ extension EnrollmentViewController: UITextFieldDelegate {
 }
 
 // MARK: Image Picker Methods
+
 extension EnrollmentViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

@@ -132,7 +132,7 @@ class VocabularyWordListVC: UIViewController {
     }
     
     
-    let singleSynthesizer = SingletonSynthesizer.shared
+    let singleSynthesizer = Synthesizer.shared
     
     override func viewWillDisappear(_ animated: Bool) {
         if singleSynthesizer.isSpeaking == true {
