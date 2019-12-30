@@ -28,7 +28,7 @@ class NavigationController: UINavigationController {
     // MARK:- Methods
     func setupUIComponents() {
         self.navigationBar.setValue(true, forKey: "hidesShadow")
-        self.navigationBar.barTintColor = UIColor.red
+        self.navigationBar.barTintColor = UIColor.white
     }
     
 }

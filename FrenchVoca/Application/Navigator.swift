@@ -37,7 +37,7 @@ class Navigator {
     func get(segue: Scene) -> UIViewController {
         
         switch segue {
-        case .tabs: return MainTabBarController(navigator: self)
+        case .tabs: return MainTabBarController()
         case .enrollment: return EnrollmentViewController()
         case .signIn: return SignInViewController()
         case .notiSetting: return NotiSettingViewController()

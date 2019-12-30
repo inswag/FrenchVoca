@@ -14,7 +14,7 @@ final class Application: NSObject {
     
     var window: UIWindow?
     
-//    var notiManager: UNNotiManager
+    //    var notiManager: UNNotiManager
     
     let synthesizer: Synthesizer
     let navigator: Navigator
@@ -23,22 +23,11 @@ final class Application: NSObject {
         synthesizer = Synthesizer.shared
         navigator = Navigator.default
         super.init()
-//        presentInitialScreen(in: window)
     }
     
-    func presentInitialScreen(in window: UIWindow?) {
-        //        updateProvider()
-        guard let window = window  else { return }
+    func presentInitialScreen(in window: UIWindow) {
         self.window = window
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            window.rootViewController = self.navigator.get(segue: .tabs)
-        }
-        
-//        window.backgroundColor = .white
-//        window.makeKeyAndVisible()
-        
-        
+        window.rootViewController = self.navigator.get(segue: .tabs)
     }
-
+    
 }

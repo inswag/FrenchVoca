@@ -1,5 +1,5 @@
 //
-//  AVSpeechSynthesizer.swift
+//  Synthesizer.swift
 //  FrenchVoca
 //
 //  Created by 박인수 on 22/11/2019.

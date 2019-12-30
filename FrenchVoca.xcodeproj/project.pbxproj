@@ -66,7 +66,7 @@
 		F9E8346A23B43D6F006C0F4E /* TableViewDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8346923B43D6F006C0F4E /* TableViewDecorator.swift */; };
 		F9E8346D23B4402D006C0F4E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8346C23B4402D006C0F4E /* Color.swift */; };
 		F9E8346F23B453F7006C0F4E /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8346E23B453F7006C0F4E /* Tools.swift */; };
-		F9F1E2E523881BFC0084DE34 /* SingletonSynthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F1E2E423881BFC0084DE34 /* SingletonSynthesizer.swift */; };
+		F9F1E2E523881BFC0084DE34 /* Synthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F1E2E423881BFC0084DE34 /* Synthesizer.swift */; };
 		F9F88DF62383E2700098C310 /* VocabularyVoiceSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F88DF52383E2700098C310 /* VocabularyVoiceSettingVC.swift */; };
 		F9FFEB982209C60B00F05E98 /* FLEXScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FFEB972209C60B00F05E98 /* FLEXScheduleViewController.swift */; };
 		F9FFEB9B2209D8EF00F05E98 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FFEB9A2209D8EF00F05E98 /* SignInViewController.swift */; };
@@ -144,7 +144,7 @@
 		F9E8346923B43D6F006C0F4E /* TableViewDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDecorator.swift; sourceTree = "<group>"; };
 		F9E8346C23B4402D006C0F4E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F9E8346E23B453F7006C0F4E /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
-		F9F1E2E423881BFC0084DE34 /* SingletonSynthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingletonSynthesizer.swift; sourceTree = "<group>"; };
+		F9F1E2E423881BFC0084DE34 /* Synthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synthesizer.swift; sourceTree = "<group>"; };
 		F9F88DF52383E2700098C310 /* VocabularyVoiceSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyVoiceSettingVC.swift; sourceTree = "<group>"; };
 		F9FFEB972209C60B00F05E98 /* FLEXScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLEXScheduleViewController.swift; sourceTree = "<group>"; };
 		F9FFEB9A2209D8EF00F05E98 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -434,7 +434,7 @@
 		F9F1E2E323881BCC0084DE34 /* SpeechSynthesizer */ = {
 			isa = PBXGroup;
 			children = (
-				F9F1E2E423881BFC0084DE34 /* SingletonSynthesizer.swift */,
+				F9F1E2E423881BFC0084DE34 /* Synthesizer.swift */,
 			);
 			path = SpeechSynthesizer;
 			sourceTree = "<group>";
@@ -638,7 +638,7 @@
 				F91CE29022102207000D1380 /* VocabularyWordListCellForSentence.swift in Sources */,
 				F9B0D6E923B47C7200EFBBB5 /* Font.swift in Sources */,
 				F9E13888220B0D5A00DDE7B3 /* VocabularySubjectListVC.swift in Sources */,
-				F9F1E2E523881BFC0084DE34 /* SingletonSynthesizer.swift in Sources */,
+				F9F1E2E523881BFC0084DE34 /* Synthesizer.swift in Sources */,
 				F91AFB5D2241DB6E00F435A5 /* WordDAO.swift in Sources */,
 				F91AFB5622410DB500F435A5 /* VocabularyVocaCell.swift in Sources */,
 				F9BB5C5A226C55DC00A3679F /* peopleGroup.swift in Sources */,

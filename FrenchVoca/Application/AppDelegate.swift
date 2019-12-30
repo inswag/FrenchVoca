@@ -17,22 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        // 얘를 처리할 방법이 없을까..
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.makeKeyAndVisible()
+//        self.window = window
+        
         Application.shared.presentInitialScreen(in: window)
-//        setupRoot()
         return true
     }
-    
-    private func setupRoot() {
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        let navigator = Navigator()
-        window.rootViewController = navigator.get(segue: .tabs)
-        window.backgroundColor = .white
-        window.makeKeyAndVisible()
-        self.window = window
-        
-    }
-    
-    
-    
+
 }
 

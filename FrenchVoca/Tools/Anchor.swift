@@ -37,7 +37,6 @@ extension UIView {
             self.rightAnchor.constraint(equalTo: right, constant: -paddingRight).isActive = true
         }
         
-        
         if width != 0 {
             widthAnchor.constraint(equalToConstant: width).isActive = true
         }
