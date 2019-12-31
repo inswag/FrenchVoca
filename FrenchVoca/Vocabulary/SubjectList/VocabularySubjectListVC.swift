@@ -74,7 +74,7 @@ class VocabularySubjectListVC: UIViewController {
         self.view.addSubview(collectionView)
         collectionView.backgroundColor = .white
         collectionView.anchor(top: self.view.topAnchor, left: self.view.leftAnchor, bottom: self.view.bottomAnchor, right: self.view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        print("setupUIDesign loaded")
+        print("setupUIComponents loaded")
     }
     
     fileprivate func setupCustomNaviBarDesign() {
@@ -101,8 +101,8 @@ extension VocabularySubjectListVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let rowData = self.subjectList[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: VocabularyVocaCell.self), for: indexPath) as! VocabularyVocaCell
-        cell.levelKoreanTitle.text = rowData.subjectKoreanTitle
-        cell.levelFrenchTitle.text = rowData.subjectFrenchTitle
+        cell.koreanTitle.text = rowData.subjectKoreanTitle
+        cell.frenchTitle.text = rowData.subjectFrenchTitle
         cell.imageView.image = UIImage(named: "\(rowData.subjectPhoto)")
         return cell
     }

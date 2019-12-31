@@ -1,5 +1,5 @@
 //
-//  VocabularyWordListCellForPhoto.swift
+//  WordListCellPhoto.swift
 //  FrenchVoca
 //
 //  Created by 박인수 on 10/06/2019.
@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class VocabularyWordListCellForPhoto: UICollectionViewCell {
+class WordListCellPhoto: UICollectionViewCell {
     
     static func defineCellSize(cellwidth: CGFloat) -> CGSize {
         let cellHeight = (Constant.padding) +
@@ -159,10 +159,10 @@ class VocabularyWordListCellForPhoto: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUIDesign()
+        setupUIComponents()
     }
     
-    fileprivate func setupUIDesign() {
+    fileprivate func setupUIComponents() {
         [backgroundBorderView].forEach { self.contentView.addSubview($0) }
         [wordTitleLabel, wordPhoneticsLabel, wordPronunciationButton, wordPartOfSpeechLabel, wordGenderLabel, wordNumberLabel, wordMeaningLabel, showImageView].forEach { self.backgroundBorderView.addSubview($0) }
         

@@ -31,7 +31,7 @@ class SettingPeopleCollectionVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionViewSetting()
-        self.setupUIDesign()
+        self.setupUIComponents()
     }
     
     fileprivate func collectionViewSetting() {
@@ -40,7 +40,7 @@ class SettingPeopleCollectionVC: UICollectionViewController {
         self.collectionView.backgroundColor = .white
     }
     
-    func setupUIDesign() {
+    func setupUIComponents() {
         // Navigation Bar
         self.navigationItem.titleView = frenchVocaLogoView
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")

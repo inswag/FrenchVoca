@@ -162,7 +162,7 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        setupUIDesign()
+        setupUIComponents()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -175,7 +175,7 @@ class SignInViewController: UIViewController {
     
     // MARK:- UI Design
     
-    func setupUIDesign() {
+    func setupUIComponents() {
         let labelStackView = UIStackView(arrangedSubviews: [usernameLabel, positionLabel])
         labelStackView.axis = .vertical
         labelStackView.spacing = 20

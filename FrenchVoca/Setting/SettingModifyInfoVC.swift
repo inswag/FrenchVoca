@@ -234,7 +234,7 @@ class SettingModifyInfoVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUIDesign()
+        setupUIComponents()
         setupContainer()
         
         imagePickerControllerInSettingVC.delegate = self
@@ -255,7 +255,7 @@ class SettingModifyInfoVC: UIViewController {
         self.afterPositionTextfield.text = plist.string(forKey: "소속")
     }
     
-    fileprivate func setupUIDesign() {
+    fileprivate func setupUIComponents() {
         self.view.backgroundColor = UIColor.clear
         self.view.isOpaque = false
         

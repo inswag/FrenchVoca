@@ -193,11 +193,11 @@ class VocabularyVoiceSettingVC: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
-        setupUIDesign()
+        setupUIComponents()
     }
     
     // MARK:- UI Design
-    func setupUIDesign() {
+    func setupUIComponents() {
         
         [rateSlider, backButtonIcon, backButtonText].forEach { self.view.addSubview($0) }
         

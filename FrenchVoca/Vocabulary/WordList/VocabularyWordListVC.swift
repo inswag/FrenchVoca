@@ -83,11 +83,11 @@ class VocabularyWordListVC: UIViewController {
         cv.dataSource = self
         cv.delegate = self
         
-        cv.register(VocabularyWordListHeader.self,
+        cv.register(WordListCommonHeader.self,
                     forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                    withReuseIdentifier: String(describing: VocabularyWordListHeader.self))
-        cv.register(VocabularyWordListCellForSentence.self, forCellWithReuseIdentifier: String(describing: VocabularyWordListCellForSentence.self))
-        cv.register(VocabularyWordListCellForPhoto.self, forCellWithReuseIdentifier: String(describing:VocabularyWordListCellForPhoto.self))
+                    withReuseIdentifier: String(describing: WordListCommonHeader.self))
+        cv.register(WordListCellSentence.self, forCellWithReuseIdentifier: String(describing: WordListCellSentence.self))
+        cv.register(WordListCellPhoto.self, forCellWithReuseIdentifier: String(describing:WordListCellPhoto.self))
         // Anchor 는 클로저 바깥에서 잡아주어야 한다.
         return cv
     }()
@@ -97,7 +97,7 @@ class VocabularyWordListVC: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
-        setupUIDesign()
+        setupUIComponents()
         setupNaviBarDesign()
         
         self.wordList = self.wordDAO.find(subjectCd: indexPath)
@@ -108,7 +108,7 @@ class VocabularyWordListVC: UIViewController {
     
     
     // MARK:- Design
-    fileprivate func setupUIDesign() {
+    fileprivate func setupUIComponents() {
         self.navigationController?.navigationBar.isHidden = true
         
         [collectionView].forEach { self.view.addSubview($0) }
@@ -175,7 +175,7 @@ extension VocabularyWordListVC: UICollectionViewDataSource {
         
         if self.indexPath == 8 || self.indexPath == 9 || self.indexPath == 11 {
             print("This is 17")
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: VocabularyWordListCellForPhoto.self), for: indexPath) as! VocabularyWordListCellForPhoto
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: WordListCellPhoto.self), for: indexPath) as! WordListCellPhoto
             
             cell.wordTitleLabel.text = rowData.wordTitle
             cell.wordPhoneticsLabel.text = "[" + "\(rowData.wordPhonetics)" + "]"
@@ -204,7 +204,7 @@ extension VocabularyWordListVC: UICollectionViewDataSource {
             return cell
             
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: VocabularyWordListCellForSentence.self), for: indexPath) as! VocabularyWordListCellForSentence
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: WordListCellSentence.self), for: indexPath) as! WordListCellSentence
             
             cell.wordTitleLabel.text = rowData.wordTitle
             cell.wordPhoneticsLabel.text = "[" + "\(rowData.wordPhonetics)" + "]"
@@ -248,7 +248,7 @@ extension VocabularyWordListVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         // Section 의 텍스트는 4번 불리기 때문에 어레이 타입의 배열을 넣어야지 굳이 스위치문으로 나눌 필요가 없다.
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: VocabularyWordListHeader.self), for: indexPath) as! VocabularyWordListHeader
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: WordListCommonHeader.self), for: indexPath) as! WordListCommonHeader
         
         // 아래의 텍스트로는 각 섹션의 타이틀이 들어갈 예정입니다.
         header.koreanTitleLabel.text = self.subjectInfo.subjectKoreanTitle
@@ -268,14 +268,14 @@ extension VocabularyWordListVC: UICollectionViewDelegateFlowLayout {
         // 각 셀의 크기는 균일할 것이기 때문에 굳이 스위치문으로 나눌 필요가 없다. 후에 각 셀의 크기를 다르게 지정해 줄 때에는 나눔.
         //        return UICollectionViewFlowLayout.automaticSize
         if self.indexPath == 8 || self.indexPath == 9 || self.indexPath == 11 {
-            return VocabularyWordListCellForPhoto.defineCellSize(cellwidth: self.view.frame.width)
+            return WordListCellPhoto.defineCellSize(cellwidth: self.view.frame.width)
         }
-        return VocabularyWordListCellForSentence.defineCellSize(cellwidth: self.view.frame.width)
+        return WordListCellSentence.defineCellSize(cellwidth: self.view.frame.width)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         // Section 의 사이즈는 균일하기 때문에 굳이 스위치문으로 나눌 필요가 없다.
-        return VocabularyWordListHeader.defineCellSize(cellwidth: self.view.frame.width)
+        return WordListCommonHeader.defineCellSize(cellwidth: self.view.frame.width)
     }
     
 }

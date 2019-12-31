@@ -1,5 +1,5 @@
 //
-//  VocabularyWordListHeader.swift
+//  WordListCommonHeader.swift
 //  FrenchVoca
 //
 //  Created by 박인수 on 10/02/2019.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-//protocol VocabularyWordListHeaderDelegate: class {
+//protocol WordListCommonHeaderDelegate: class {
 //    func popWordListVC(headerView: UICollectionReusableView)
 //}
 
-class VocabularyWordListHeader: UICollectionViewCell {
+class WordListCommonHeader: UICollectionViewCell {
     
-//    weak var delegate: VocabularyWordListHeaderDelegate?
+//    weak var delegate: WordListCommonHeaderDelegate?
     
     static func defineCellSize(cellwidth: CGFloat) -> CGSize {
         let cellHeight = (Constant.backgroundImageHeight)
@@ -72,10 +72,10 @@ class VocabularyWordListHeader: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUIDesign()
+        setupUIComponents()
     }
     
-    fileprivate func setupUIDesign() {
+    fileprivate func setupUIComponents() {
         [menuImageView].forEach { self.contentView.addSubview($0) }
         [koreanTitleLabel, subFrenchTitleLabel, subSentenceLabel].forEach { self.menuImageView.addSubview($0) }
         

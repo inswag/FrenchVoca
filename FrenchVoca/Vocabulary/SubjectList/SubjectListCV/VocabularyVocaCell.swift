@@ -28,7 +28,7 @@ class VocabularyVocaCell: UICollectionViewCell {
         return iv
     }()
     
-    let levelKoreanTitle: UILabel = {
+    let koreanTitle: UILabel = {
         let label = UILabel()
         label.text = "주제이름"
         label.font = Tools.font.appleSDGothicNeoRegular(size: 12)
@@ -40,7 +40,7 @@ class VocabularyVocaCell: UICollectionViewCell {
         
     }()
     
-    let levelFrenchTitle: UILabel = {
+    let frenchTitle: UILabel = {
         let label = UILabel()
         label.text = "Nom de Sujet"
         label.font = Tools.font.avenirLight(size: 12)
@@ -54,20 +54,20 @@ class VocabularyVocaCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUIDesign()
+        setupUIComponents()
     }
     
-    fileprivate func setupUIDesign() {
+    fileprivate func setupUIComponents() {
         self.contentView.addSubview(imageView)
-        self.contentView.addSubview(levelKoreanTitle)
-        self.contentView.addSubview(levelFrenchTitle)
+        self.contentView.addSubview(koreanTitle)
+        self.contentView.addSubview(frenchTitle)
         
         self.imageView.anchor(top: self.contentView.topAnchor, left: self.contentView.leftAnchor, bottom: self.contentView.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 30, paddingBottom: 0, paddingRight: 0, width: 120, height: 50)
-        self.levelKoreanTitle.anchor(top: nil, left: self.imageView.rightAnchor, bottom: nil, right: self.contentView.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 0)
-        self.levelKoreanTitle.centerYAnchor.constraint(equalTo: self.imageView.centerYAnchor, constant: -(levelKoreanTitle.font.lineHeight) + 5).isActive = true
+        self.koreanTitle.anchor(top: nil, left: self.imageView.rightAnchor, bottom: nil, right: self.contentView.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 0)
+        self.koreanTitle.centerYAnchor.constraint(equalTo: self.imageView.centerYAnchor, constant: -(koreanTitle.font.lineHeight) + 5).isActive = true
         
-        self.levelFrenchTitle.anchor(top: nil, left: self.imageView.rightAnchor, bottom: nil, right: self.contentView.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 0)
-        self.levelFrenchTitle.centerYAnchor.constraint(equalTo: self.imageView.centerYAnchor, constant: (levelFrenchTitle.font.lineHeight) - 5).isActive = true
+        self.frenchTitle.anchor(top: nil, left: self.imageView.rightAnchor, bottom: nil, right: self.contentView.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: 0, height: 0)
+        self.frenchTitle.centerYAnchor.constraint(equalTo: self.imageView.centerYAnchor, constant: (frenchTitle.font.lineHeight) - 5).isActive = true
         
         self.imageView.layer.cornerRadius = 3.0
         self.imageView.layer.masksToBounds = true

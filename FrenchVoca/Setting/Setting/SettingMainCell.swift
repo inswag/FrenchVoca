@@ -49,11 +49,11 @@ class SettingMainCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: cellID)
         
-        self.setupUIDesign()
+        self.setupUIComponents()
     }
     
     // MARK:- Design
-    func setupUIDesign() {
+    func setupUIComponents() {
         [titleLabel, subTitleLabel].forEach { self.contentView.addSubview($0) }
         
         self.titleLabel.anchor(top: self.contentView.topAnchor, left: self.contentView.leftAnchor, bottom: nil, right: self.contentView.rightAnchor, paddingTop: 10, paddingLeft: 30, paddingBottom: 0, paddingRight: 40, width: 0, height: 0)

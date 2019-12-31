@@ -177,11 +177,11 @@ class NotiSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        setupUIDesign()
+        setupUIComponents()
     }
     
     // MARK:- UI Design
-    func setupUIDesign() {
+    func setupUIComponents() {
         
         [minuteTextField, backButtonIcon, backButtonText].forEach { self.view.addSubview($0) }
         

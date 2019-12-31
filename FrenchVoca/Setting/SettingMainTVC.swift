@@ -35,14 +35,14 @@ class SettingMainTVC: UITableViewController {
         self.tableView.register(SettingMainCell.self, forCellReuseIdentifier: cellID)
         self.tableView.register(SettingMainSwitchCell.self, forCellReuseIdentifier: cellID2)
         
-        setupUIDesign()
+        setupUIComponents()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
     }
     
-    func setupUIDesign() {
+    func setupUIComponents() {
         // Navigation Bar
         self.navigationItem.titleView = frenchVocaLogoView
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")

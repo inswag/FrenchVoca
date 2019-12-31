@@ -53,7 +53,7 @@ class ReceptionViewController: UIViewController {
     //MARK:- View Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUIDesign()
+        setupUIComponents()
         setupCustomNaviBarDesign()
         print("viewDidLoad")
         
@@ -70,7 +70,7 @@ class ReceptionViewController: UIViewController {
     
     
     //MARK:- Design
-    fileprivate func setupUIDesign() {
+    fileprivate func setupUIComponents() {
         self.view.addSubview(collectionView)
         collectionView.backgroundColor = .white
         collectionView.anchor(top: self.view.topAnchor, left: self.view.leftAnchor, bottom: self.view.bottomAnchor, right: self.view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)

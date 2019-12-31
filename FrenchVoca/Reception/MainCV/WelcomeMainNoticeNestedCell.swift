@@ -59,14 +59,14 @@ class WelcomeMainNoticeNestedCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUIDesign()
+        setupUIComponents()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    fileprivate func setupUIDesign() {
+    fileprivate func setupUIComponents() {
         self.contentView.addSubview(imageView)
         self.contentView.addSubview(titleLabel)
         self.contentView.addSubview(subTitleLabel)

@@ -1,5 +1,5 @@
 //
-//  VocabularyMenuCollectionViewCell.swift
+//  WordListCellSentence.swift
 //  FrenchVoca
 //
 //  Created by 박인수 on 10/02/2019.
@@ -9,7 +9,7 @@
 import AVFoundation
 import UIKit
 
-class VocabularyWordListCellForSentence: UICollectionViewCell {
+class WordListCellSentence: UICollectionViewCell {
     
     static func defineCellSize(cellwidth: CGFloat) -> CGSize {
         let cellHeight = (Constant.outlineHeight) + (Constant.padding) + (Constant.wordTitleFont!.lineHeight) + (Constant.exampleTitleFont!.lineHeight) + (Constant.wordFrenchExamFont!.lineHeight * 3) + (Constant.wordKoreanExamFont!.lineHeight * 2)
@@ -214,13 +214,13 @@ class VocabularyWordListCellForSentence: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUIDesign()
+        setupUIComponents()
         
         
     
     }
     
-    fileprivate func setupUIDesign() {
+    fileprivate func setupUIComponents() {
         [backgroundBorderView].forEach { self.contentView.addSubview($0) }
         [wordTitleLabel, wordPhoneticsLabel, wordPronunciationButton, wordPartOfSpeechLabel, wordGenderLabel, wordNumberLabel, wordMeaningLabel, exampleTitleLabel, sentencePrononciationButton, stopTTSButton, wordFrenchExamLabel, wordKoreanExamLabel].forEach { self.backgroundBorderView.addSubview($0) }
         
