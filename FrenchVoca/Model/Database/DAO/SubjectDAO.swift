@@ -12,11 +12,11 @@ import Foundation
 //    var
 //}
 
-typealias SubjectRecord = (Int, String, String, String)
+
 
 class SubjectDAO {
     
-    
+    typealias SubjectRecord = (Int, String, String, String)
     
     lazy var fmdb: FMDatabase! = {
         let fileMgr = FileManager.default

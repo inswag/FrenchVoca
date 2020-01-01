@@ -211,13 +211,13 @@ class WordListCellSentence: UICollectionViewCell {
         return label
     }()
     
+    
+//    let viewModel: WordListCellSentenceViewModel
 
     override init(frame: CGRect) {
+//        viewModel.configure(<#T##view: WordListCellSentence##WordListCellSentence#>)
         super.init(frame: frame)
         setupUIComponents()
-        
-        
-    
     }
     
     fileprivate func setupUIComponents() {
@@ -259,3 +259,5 @@ class WordListCellSentence: UICollectionViewCell {
     
     
 }
+
+

@@ -23,6 +23,9 @@ class VocabularyWordListVC: UIViewController {
     var subjectInfo: (subjectCd: Int, subjectKoreanTitle: String, subjectFrenchTitle: String, subjectSentence: String)!
     var indexPath: Int = 0
     
+    
+    
+    
     // MARK:- Navigation Objects
     let customNaviBarTitle: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 110, height: 27)) // 1102/27
@@ -103,8 +106,8 @@ class VocabularyWordListVC: UIViewController {
         self.wordList = self.wordDAO.find(subjectCd: indexPath)
         self.subjectInfo = self.subjectDAO.get(subjectCd: indexPath)
         
-        
     }
+    
     
     
     // MARK:- Design
@@ -205,32 +208,35 @@ extension VocabularyWordListVC: UICollectionViewDataSource {
             
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: WordListCellSentence.self), for: indexPath) as! WordListCellSentence
+            let viewModel = WordListCellSentenceViewModel(content: rowData)
+            viewModel.configure(cell)
             
-            cell.wordTitleLabel.text = rowData.wordTitle
-            cell.wordPhoneticsLabel.text = "[" + "\(rowData.wordPhonetics)" + "]"
-            //                cell.wordPhoneticsLabel.text = "[" + "\(indexPath.row)" + "]"
-            cell.wordMeaningLabel.text = rowData.wordMeaning
-            cell.wordNumberLabel.text = rowData.wordNumber
-            cell.wordGenderLabel.text = rowData.wordGender
-            //
-            //        print("WORDLLIST :", rowData.wordCd)
-            //        print("WordConfused :", rowData.wordConfused)
-            //
-            //
-            if rowData.wordConfused == "oui" {
-                switch cell.wordGenderLabel.text {
-                case "f.":
-                    cell.wordGenderLabel.textColor = .red
-                default:
-                    cell.wordGenderLabel.textColor = .blue
-                }
-            }
-            cell.wordPartOfSpeechLabel.text = rowData.wordPartOfSpeech
-            cell.wordFrenchExamLabel.text = rowData.wordFrenchExam
-            cell.wordKoreanExamLabel.text = rowData.wordKoreanExam
             
-            cell.willSayWord = rowData.wordTitle
-            cell.willSaySentence = rowData.wordFrenchExam
+//            cell.wordTitleLabel.text = rowData.wordTitle
+//            cell.wordPhoneticsLabel.text = "[" + "\(rowData.wordPhonetics)" + "]"
+//            //                cell.wordPhoneticsLabel.text = "[" + "\(indexPath.row)" + "]"
+//            cell.wordMeaningLabel.text = rowData.wordMeaning
+//            cell.wordNumberLabel.text = rowData.wordNumber
+//            cell.wordGenderLabel.text = rowData.wordGender
+//            //
+//            //        print("WORDLLIST :", rowData.wordCd)
+//            //        print("WordConfused :", rowData.wordConfused)
+//            //
+//            //
+//            if rowData.wordConfused == "oui" {
+//                switch cell.wordGenderLabel.text {
+//                case "f.":
+//                    cell.wordGenderLabel.textColor = .red
+//                default:
+//                    cell.wordGenderLabel.textColor = .blue
+//                }
+//            }
+//            cell.wordPartOfSpeechLabel.text = rowData.wordPartOfSpeech
+//            cell.wordFrenchExamLabel.text = rowData.wordFrenchExam
+//            cell.wordKoreanExamLabel.text = rowData.wordKoreanExam
+//            
+//            cell.willSayWord = rowData.wordTitle
+//            cell.willSaySentence = rowData.wordFrenchExam
             return cell
         }
        
@@ -271,6 +277,9 @@ extension VocabularyWordListVC: UICollectionViewDelegateFlowLayout {
             return WordListCellPhoto.defineCellSize(cellwidth: self.view.frame.width)
         }
         return WordListCellSentence.defineCellSize(cellwidth: self.view.frame.width)
+        
+//        let size = CGSize(width: self.view.frame.width, height: 400)
+//        return WordListCellSentence(frame: size)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

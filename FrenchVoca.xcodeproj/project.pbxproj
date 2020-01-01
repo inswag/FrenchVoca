@@ -219,7 +219,7 @@
 		F91CE28522101C3A000D1380 /* SubjectList */ = {
 			isa = PBXGroup;
 			children = (
-				F91CE28922101D2C000D1380 /* SubjectListCV */,
+				F91CE28922101D2C000D1380 /* SubjectListCell */,
 				F9E13887220B0D5A00DDE7B3 /* VocabularySubjectListVC.swift */,
 				F911EF3F2317AEA2009A8913 /* VocabularyNotebookVC.swift */,
 			);
@@ -237,7 +237,7 @@
 			path = WordList;
 			sourceTree = "<group>";
 		};
-		F91CE28922101D2C000D1380 /* SubjectListCV */ = {
+		F91CE28922101D2C000D1380 /* SubjectListCell */ = {
 			isa = PBXGroup;
 			children = (
 				F9F1EFDF23BB38D60026ACA0 /* SubjectListCellViewModel.swift */,
@@ -245,7 +245,7 @@
 				F91AFB5522410DB500F435A5 /* VocabularyVocaCell.swift */,
 				F911EF412317B38D009A8913 /* VocabularyNotebookVCCell.swift */,
 			);
-			path = SubjectListCV;
+			path = SubjectListCell;
 			sourceTree = "<group>";
 		};
 		F91CE28A22101D77000D1380 /* WordListCV */ = {

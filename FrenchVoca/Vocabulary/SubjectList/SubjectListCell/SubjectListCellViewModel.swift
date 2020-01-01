@@ -9,9 +9,11 @@
 import UIKit
 
 class SubjectListCellViewModel {
+   
+//    private let subjec
     
-    // MARK:- Properties
-    
+//    // MARK:- Properties
+//    
 //    var id: Int
 //    var koreanName: String
 //    var frenchName: String
