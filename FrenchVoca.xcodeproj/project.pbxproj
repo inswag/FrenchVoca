@@ -32,6 +32,7 @@
 		F91F62FB21F9EE6D00B80433 /* DELFScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62FA21F9EE6D00B80433 /* DELFScheduleViewController.swift */; };
 		F936B2F22382D8A000D15624 /* SettingNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */; };
 		F9486C4023B728EB00B07001 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9486C3F23B728EB00B07001 /* Application.swift */; };
+		F94F533A23BEE0B500CDC2F2 /* WordListCellPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94F533923BEE0B500CDC2F2 /* WordListCellPhotoViewModel.swift */; };
 		F965A11923AB7F0B002A8473 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F965A11823AB7F0B002A8473 /* Navigator.swift */; };
 		F97867A3237D16E400CB0728 /* NotiSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97867A2237D16E400CB0728 /* NotiSettingViewController.swift */; };
 		F9AAFE872257226400F281CE /* SettingModifyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */; };
@@ -113,6 +114,7 @@
 		F91F62FA21F9EE6D00B80433 /* DELFScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DELFScheduleViewController.swift; sourceTree = "<group>"; };
 		F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationsVC.swift; sourceTree = "<group>"; };
 		F9486C3F23B728EB00B07001 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		F94F533923BEE0B500CDC2F2 /* WordListCellPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListCellPhotoViewModel.swift; sourceTree = "<group>"; };
 		F965A11823AB7F0B002A8473 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		F97867A2237D16E400CB0728 /* NotiSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiSettingViewController.swift; sourceTree = "<group>"; };
 		F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModifyInfoVC.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				F91CE28F22102207000D1380 /* WordListCellSentence.swift */,
 				F9F1EFE123BB475C0026ACA0 /* WordListCellSentenceViewModel.swift */,
 				F9C07B8422AE907800D0920B /* WordListCellPhoto.swift */,
+				F94F533923BEE0B500CDC2F2 /* WordListCellPhotoViewModel.swift */,
 			);
 			path = WordListCV;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				F91AFB5022410A4600F435A5 /* FMDatabaseAdditions.m in Sources */,
 				F9BB5C50226AFB4C00A3679F /* SettingPeopleCell.swift in Sources */,
 				F911EF402317AEA2009A8913 /* VocabularyNotebookVC.swift in Sources */,
+				F94F533A23BEE0B500CDC2F2 /* WordListCellPhotoViewModel.swift in Sources */,
 				F9BB5C58226C55CE00A3679F /* people.swift in Sources */,
 				F9FFEB982209C60B00F05E98 /* FLEXScheduleViewController.swift in Sources */,
 				F9E8346223B30453006C0F4E /* NavigationController.swift in Sources */,

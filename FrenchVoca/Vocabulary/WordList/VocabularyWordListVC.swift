@@ -180,29 +180,31 @@ extension VocabularyWordListVC: UICollectionViewDataSource {
             print("This is 17")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: WordListCellPhoto.self), for: indexPath) as! WordListCellPhoto
             
-            cell.wordTitleLabel.text = rowData.wordTitle
-            cell.wordPhoneticsLabel.text = "[" + "\(rowData.wordPhonetics)" + "]"
-            //                cell.wordPhoneticsLabel.text = "[" + "\(indexPath.row)" + "]"
-            cell.wordMeaningLabel.text = rowData.wordMeaning
-            cell.wordNumberLabel.text = rowData.wordNumber
-            cell.wordGenderLabel.text = rowData.wordGender
-            //
-            //        print("WORDLLIST :", rowData.wordCd)
-            //        print("WordConfused :", rowData.wordConfused)
-            //
-            //
-            if rowData.wordConfused == "oui" {
-                switch cell.wordGenderLabel.text {
-                case "f.":
-                    cell.wordGenderLabel.textColor = .red
-                default:
-                    cell.wordGenderLabel.textColor = .blue
-                }
-            }
-            cell.wordPartOfSpeechLabel.text = rowData.wordPartOfSpeech
-            let imageName: String = rowData.wordFrenchExam
-            cell.showImageView.image = UIImage(named: imageName)
-            cell.willSayWord = rowData.wordTitle
+//            cell.wordTitleLabel.text = rowData.wordTitle
+//            cell.wordPhoneticsLabel.text = "[" + "\(rowData.wordPhonetics)" + "]"
+//            //                cell.wordPhoneticsLabel.text = "[" + "\(indexPath.row)" + "]"
+//            cell.wordMeaningLabel.text = rowData.wordMeaning
+//            cell.wordNumberLabel.text = rowData.wordNumber
+//            cell.wordGenderLabel.text = rowData.wordGender
+//            //
+//            //        print("WORDLLIST :", rowData.wordCd)
+//            //        print("WordConfused :", rowData.wordConfused)
+//            //
+//            //
+//            if rowData.wordConfused == "oui" {
+//                switch cell.wordGenderLabel.text {
+//                case "f.":
+//                    cell.wordGenderLabel.textColor = .red
+//                default:
+//                    cell.wordGenderLabel.textColor = .blue
+//                }
+//            }
+//            cell.wordPartOfSpeechLabel.text = rowData.wordPartOfSpeech
+//            let imageName: String = rowData.wordFrenchExam
+//            cell.showImageView.image = UIImage(named: imageName)
+//            cell.willSayWord = rowData.wordTitle
+            cell.configure(withDelegate: WordListCellPhotoViewModel(content: rowData))
+            
             
             return cell
             

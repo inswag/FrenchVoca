@@ -162,6 +162,16 @@ class WordListCellPhoto: UICollectionViewCell {
         setupUIComponents()
     }
     
+    func configure(withDelegate delegate: WordListCellPhotoProtocol) {
+        self.wordTitleLabel.text = delegate.wordTitle
+        self.wordPhoneticsLabel.text = delegate.wordPhonetics
+        self.wordPartOfSpeechLabel.text = delegate.wordPartOfSpeech
+        self.wordGenderLabel.text = delegate.wordGender
+        self.wordNumberLabel.text = delegate.wordNumber
+        self.wordMeaningLabel.text = delegate.wordMeaning
+        self.showImageView.image = UIImage(named: delegate.imageName)
+    }
+    
     fileprivate func setupUIComponents() {
         [backgroundBorderView].forEach { self.contentView.addSubview($0) }
         [wordTitleLabel, wordPhoneticsLabel, wordPronunciationButton, wordPartOfSpeechLabel, wordGenderLabel, wordNumberLabel, wordMeaningLabel, showImageView].forEach { self.backgroundBorderView.addSubview($0) }

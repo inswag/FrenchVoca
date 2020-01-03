@@ -212,14 +212,15 @@ class WordListCellSentence: UICollectionViewCell {
     }()
     
     
-//    let viewModel: WordListCellSentenceViewModel
+    // MARK:- Initialize
 
     override init(frame: CGRect) {
-//        viewModel.configure(<#T##view: WordListCellSentence##WordListCellSentence#>)
         super.init(frame: frame)
         setupUIComponents()
     }
     
+    
+    // MARK:- UI Layout
     fileprivate func setupUIComponents() {
         [backgroundBorderView].forEach { self.contentView.addSubview($0) }
         [wordTitleLabel, wordPhoneticsLabel, wordPronunciationButton, wordPartOfSpeechLabel, wordGenderLabel, wordNumberLabel, wordMeaningLabel, exampleTitleLabel, sentencePrononciationButton, stopTTSButton, wordFrenchExamLabel, wordKoreanExamLabel].forEach { self.backgroundBorderView.addSubview($0) }
@@ -254,7 +255,7 @@ class WordListCellSentence: UICollectionViewCell {
     }
  
     override func prepareForReuse() {
-        self.wordGenderLabel.textColor = .black
+        self.wordGenderLabel.textColor = Tools.color.prettyBlack
     }
     
     
