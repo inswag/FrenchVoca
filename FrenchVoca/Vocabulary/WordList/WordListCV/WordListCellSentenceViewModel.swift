@@ -11,7 +11,7 @@ import UIKit
 class WordListCellSentenceViewModel {
     
     // MARK:- Properties
-    var name: String
+    var word: String
     var phonetics: String
     var partOfSpeech: String
     var gender: String
@@ -22,8 +22,8 @@ class WordListCellSentenceViewModel {
     
     // MARK:- Initialize
     init(content: WordVO) {
-        self.name = content.wordTitle
-        self.phonetics = content.wordPhonetics
+        self.word = content.wordTitle
+        self.phonetics = "[" + content.wordPhonetics + "]"
         self.partOfSpeech = content.wordPartOfSpeech
         self.gender = content.wordGender
         self.number = content.wordNumber
@@ -37,7 +37,7 @@ class WordListCellSentenceViewModel {
 extension WordListCellSentenceViewModel {
     
     public func configure(_ cell: WordListCellSentence) {
-        cell.wordTitleLabel.text = name
+        cell.wordTitleLabel.text = word
         cell.wordPhoneticsLabel.text = phonetics
         cell.wordPartOfSpeechLabel.text = partOfSpeech
         cell.wordGenderLabel.text = gender

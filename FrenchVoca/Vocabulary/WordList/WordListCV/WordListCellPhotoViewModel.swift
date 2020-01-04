@@ -8,35 +8,39 @@
 
 import UIKit
 
-protocol WordListCellPhotoProtocol {
-    var wordTitle: String { get }
-    var wordPhonetics: String { get }
-    var wordPartOfSpeech: String { get }
-    var wordGender: String { get }
-    var wordNumber: String { get }
-    var wordMeaning: String { get }
-    var imageName: String { get }
-}
-
-
-struct WordListCellPhotoViewModel: WordListCellPhotoProtocol {
-    var wordTitle: String
-    var wordPhonetics: String
-    var wordPartOfSpeech: String
-    var wordGender: String
-    var wordNumber: String
-    var wordMeaning: String
-    var imageName: String
-
+struct WordListCellPhotoViewModel {
     
+    // MARK:- Properties
+    var word: String
+    var phonetics: String
+    var partOfSpeech: String
+    var gender: String
+    var number: String
+    var meaning: String
+    var frenchExample: String
+
+    // MARK:- Initialize
     init(content: WordVO) {
-        self.wordTitle = content.wordTitle
-        self.wordPhonetics = content.wordPhonetics
-        self.wordPartOfSpeech = content.wordPartOfSpeech
-        self.wordGender = content.wordGender
-        self.wordNumber = content.wordNumber
-        self.wordMeaning = content.wordMeaning
-        self.imageName = content.wordFrenchExam
+        self.word = content.wordTitle
+        self.phonetics = "[" + content.wordPhonetics + "]"
+        self.partOfSpeech = content.wordPartOfSpeech
+        self.gender = content.wordGender
+        self.number = content.wordNumber
+        self.meaning = content.wordMeaning
+        self.frenchExample = content.wordFrenchExam
     }
     
+}
+
+extension WordListCellPhotoViewModel {
+    
+    public func configure(_ cell: WordListCellPhoto) {
+        cell.wordTitleLabel.text = word
+        cell.wordPhoneticsLabel.text = phonetics
+        cell.wordPartOfSpeechLabel.text = partOfSpeech
+        cell.wordGenderLabel.text = gender
+        cell.wordNumberLabel.text = number
+        cell.wordMeaningLabel.text = meaning
+        cell.showImageView.image = UIImage(named: frenchExample)
+    }
 }

@@ -179,6 +179,8 @@ extension VocabularyWordListVC: UICollectionViewDataSource {
         if self.indexPath == 8 || self.indexPath == 9 || self.indexPath == 11 {
             print("This is 17")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: WordListCellPhoto.self), for: indexPath) as! WordListCellPhoto
+            let viewModel = WordListCellPhotoViewModel(content: rowData)
+            viewModel.configure(cell)
             
 //            cell.wordTitleLabel.text = rowData.wordTitle
 //            cell.wordPhoneticsLabel.text = "[" + "\(rowData.wordPhonetics)" + "]"
@@ -203,7 +205,7 @@ extension VocabularyWordListVC: UICollectionViewDataSource {
 //            let imageName: String = rowData.wordFrenchExam
 //            cell.showImageView.image = UIImage(named: imageName)
 //            cell.willSayWord = rowData.wordTitle
-            cell.configure(withDelegate: WordListCellPhotoViewModel(content: rowData))
+            
             
             
             return cell
