@@ -11,6 +11,34 @@ import UIKit
 
 class WordListCellSentence: UICollectionViewCell {
     
+    // MARK:- Property
+    
+    let plist = UserDefaults.standard
+    var pronunciationWord: String = "단어의 발음"
+    var pronunciationSentence: String = "문장의 발음"
+    var viewModel: WordListCellSentenceViewModel! {
+        didSet {
+            wordTitleLabel.text = viewModel.word
+            wordPhoneticsLabel.text = viewModel.phonetics
+            wordMeaningLabel.text = viewModel.meaning
+            wordPartOfSpeechLabel.text = viewModel.partOfSpeech
+            wordGenderLabel.text = viewModel.gender
+            if viewModel.confused == "oui" {
+                switch wordGenderLabel.text {
+                case "f.":
+                    wordGenderLabel.textColor = .red
+                default:
+                    wordGenderLabel.textColor = .blue
+                }
+            }
+            wordNumberLabel.text = viewModel.number
+            wordFrenchExamLabel.text = viewModel.frenchExample
+            wordKoreanExamLabel.text = viewModel.koreanExample
+        }
+    }
+    
+    // MARK:- Constant
+    
     static func defineCellSize(cellwidth: CGFloat) -> CGSize {
         let cellHeight = (Constant.outlineHeight) + (Constant.padding) + (Constant.wordTitleFont!.lineHeight) + (Constant.exampleTitleFont!.lineHeight) + (Constant.wordFrenchExamFont!.lineHeight * 3) + (Constant.wordKoreanExamFont!.lineHeight * 2)
         return CGSize(width: cellwidth, height: cellHeight)
@@ -29,6 +57,9 @@ class WordListCellSentence: UICollectionViewCell {
         static let wordFrenchExamFont = UIFont(name: "Avenir-Book", size: 14)
         static let wordKoreanExamFont = UIFont(name: "AppleSDGothicNeo-Regular", size: 12)
     }
+    
+    
+    // MARK:- View Properties
     
     let backgroundBorderView: UIView = {
         let view = UIView()
@@ -53,24 +84,13 @@ class WordListCellSentence: UICollectionViewCell {
         let btn = UIButton()
         let img = UIImage(named: "headset")
         btn.setImage(img, for: .normal)
-        btn.addTarget(self, action: #selector(pronunciation), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(wordPronunciation), for: .touchUpInside)
         return btn
     }()
-    
-    var willSayWord = ""
-    
-    // 발음 속도 조절 슬라이더 + 발음 속도 미리 들어보기 기능 추가. -> 11.20 완료
-    let plist = UserDefaults.standard
-//    var utteranceRate: Float = 0.3
-    
 
-    let singleSynthesizer = Application.shared.synthesizer
-    
     // Available iOS 10+
-    @objc func pronunciation() {
-        
-//        let synthesizer = AVSpeechSynthesizer()
-        let utterance = AVSpeechUtterance(string: self.willSayWord) // 읽어줄 텍스트 지정
+    @objc func wordPronunciation() {
+        let utterance = AVSpeechUtterance(string: self.pronunciationWord) // 읽어줄 텍스트 지정
         utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR") // 언어 지정
         // 문제상황 : 발음 속도 조절 뷰컨을 만들엇지만 일단 처음에는 기본 값인 0.5가 있어야 겠고,
         // 맨 처음에는 기본값 0.5 로 고정이 맞지만 발음 조정을 했을 경우에는 그 값이 반영되어야 함.
@@ -79,7 +99,7 @@ class WordListCellSentence: UICollectionViewCell {
         } else {
             utterance.rate = plist.float(forKey: "발음속도") //속도 조절
         }
-        singleSynthesizer.speak(utterance) // speak 메소드를 통해 설정한 utterance 를 parameter 로 전달해준다.
+        Application.shared.synthesizer.speak(utterance) // speak 메소드를 통해 설정한 utterance 를 parameter 로 전달해준다.
     }
     
     lazy var sentencePrononciationButton: UIButton = {
@@ -90,12 +110,8 @@ class WordListCellSentence: UICollectionViewCell {
         return btn
     }()
     
-    
-    var willSaySentence = ""
-    
     @objc func sentencePronunciation() {
-        
-        let utterance = AVSpeechUtterance(string: self.willSaySentence)
+        let utterance = AVSpeechUtterance(string: self.pronunciationSentence)
         utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR")
         if plist.float(forKey: "발음속도") == 0.0 {
             utterance.rate = AVSpeechUtteranceDefaultSpeechRate
@@ -103,24 +119,21 @@ class WordListCellSentence: UICollectionViewCell {
         } else {
             utterance.rate = plist.float(forKey: "발음속도")
         }
-        singleSynthesizer.speak(utterance)
+        Application.shared.synthesizer.speak(utterance)
     }
     
-    
-    // MARK:- TEST
-    lazy var stopTTSButton: UIButton = {
+    lazy var stopPronunciationButton: UIButton = {
         let btn = UIButton()
         let img = UIImage(named: "stop")
         btn.setImage(img, for: .normal)
-        btn.addTarget(self, action: #selector(stopTTS), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(stopPronunciation), for: .touchUpInside)
         return btn
     }()
     
-    @objc func stopTTS() {
-        if singleSynthesizer.isSpeaking == true {
-            singleSynthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
+    @objc func stopPronunciation() {
+        if Application.shared.synthesizer.isSpeaking == true {
+            Application.shared.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
         }
-        
     }
     
     let wordPhoneticsLabel: UILabel = {
@@ -219,11 +232,14 @@ class WordListCellSentence: UICollectionViewCell {
         setupUIComponents()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     // MARK:- UI Layout
     fileprivate func setupUIComponents() {
         [backgroundBorderView].forEach { self.contentView.addSubview($0) }
-        [wordTitleLabel, wordPhoneticsLabel, wordPronunciationButton, wordPartOfSpeechLabel, wordGenderLabel, wordNumberLabel, wordMeaningLabel, exampleTitleLabel, sentencePrononciationButton, stopTTSButton, wordFrenchExamLabel, wordKoreanExamLabel].forEach { self.backgroundBorderView.addSubview($0) }
+        [wordTitleLabel, wordPhoneticsLabel, wordPronunciationButton, wordPartOfSpeechLabel, wordGenderLabel, wordNumberLabel, wordMeaningLabel, exampleTitleLabel, sentencePrononciationButton, stopPronunciationButton, wordFrenchExamLabel, wordKoreanExamLabel].forEach { self.backgroundBorderView.addSubview($0) }
         
         // Here is AutoLayout of Vocabulary Word List Cell By using 'Anchor'
         self.backgroundBorderView.anchor(top: self.contentView.topAnchor, left: self.contentView.leftAnchor, bottom: self.contentView.bottomAnchor, right: self.contentView.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 0, height: 0)
@@ -243,21 +259,19 @@ class WordListCellSentence: UICollectionViewCell {
         self.sentencePrononciationButton.anchor(top: nil, left: self.exampleTitleLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 20, height: 20)
         self.sentencePrononciationButton.centerYAnchor.constraint(equalTo: self.exampleTitleLabel.centerYAnchor).isActive = true
         
-        self.stopTTSButton.anchor(top: nil, left: self.sentencePrononciationButton.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 20, height: 20)
-        self.stopTTSButton.centerYAnchor.constraint(equalTo: self.exampleTitleLabel.centerYAnchor).isActive = true
+        self.stopPronunciationButton.anchor(top: nil, left: self.sentencePrononciationButton.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 20, height: 20)
+        self.stopPronunciationButton.centerYAnchor.constraint(equalTo: self.exampleTitleLabel.centerYAnchor).isActive = true
         
         self.wordFrenchExamLabel.anchor(top: nil, left: self.backgroundBorderView.leftAnchor, bottom: self.wordKoreanExamLabel.topAnchor, right: self.backgroundBorderView.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 5, paddingRight: 15, width: 0, height: 0)
         self.wordKoreanExamLabel.anchor(top: nil, left: self.backgroundBorderView.leftAnchor, bottom: self.backgroundBorderView.bottomAnchor, right: self.backgroundBorderView.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 15, paddingRight: 15, width: 0, height: 0)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
- 
+    
+    // MARK: - Reusable Cell Setting
+    
     override func prepareForReuse() {
         self.wordGenderLabel.textColor = Tools.color.prettyBlack
     }
-    
     
 }
 

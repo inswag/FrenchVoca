@@ -14,6 +14,7 @@ struct WordListCellPhotoViewModel {
     var word: String
     var phonetics: String
     var partOfSpeech: String
+    var confused: String
     var gender: String
     var number: String
     var meaning: String
@@ -24,23 +25,11 @@ struct WordListCellPhotoViewModel {
         self.word = content.wordTitle
         self.phonetics = "[" + content.wordPhonetics + "]"
         self.partOfSpeech = content.wordPartOfSpeech
+        self.confused = content.wordConfused
         self.gender = content.wordGender
         self.number = content.wordNumber
         self.meaning = content.wordMeaning
         self.frenchExample = content.wordFrenchExam
     }
     
-}
-
-extension WordListCellPhotoViewModel {
-    
-    public func configure(_ cell: WordListCellPhoto) {
-        cell.wordTitleLabel.text = word
-        cell.wordPhoneticsLabel.text = phonetics
-        cell.wordPartOfSpeechLabel.text = partOfSpeech
-        cell.wordGenderLabel.text = gender
-        cell.wordNumberLabel.text = number
-        cell.wordMeaningLabel.text = meaning
-        cell.showImageView.image = UIImage(named: frenchExample)
-    }
 }

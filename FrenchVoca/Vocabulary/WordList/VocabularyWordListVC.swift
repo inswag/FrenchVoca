@@ -10,35 +10,27 @@ import AVFoundation
 import UIKit
 
 class VocabularyWordListVC: UIViewController {
-    
-    
-    struct Font {
-        static let naviBarTitleFont = Tools.font.avenirBook(size: 20)
-    }
-    
+
     // MARK:- DAO Property
+    
     var wordDAO = WordDAO()
     var subjectDAO = SubjectDAO()
     var wordList: [WordVO]!
     var subjectInfo: (subjectCd: Int, subjectKoreanTitle: String, subjectFrenchTitle: String, subjectSentence: String)!
     var indexPath: Int = 0
     
+    // MARK:- UI Properties
     
-    
-    
-    // MARK:- Navigation Objects
-    let customNaviBarTitle: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: 110, height: 27)) // 1102/27
+    let frenchVocaLogo: UILabel = {
         let label = UILabel()
-        view.addSubview(label)
         label.text = "French Voca"
         label.textAlignment = .center
-        label.font = Font.naviBarTitleFont
+        label.font = Tools.font.avenirBook(size: 20)
         label.textColor = Tools.color.lightBlack
         label.numberOfLines = 1
-        label.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        return view
+        return label
     }()
+    
     
     lazy var popImageButton: UIButton = {
         let btn = UIButton()
@@ -129,17 +121,14 @@ class VocabularyWordListVC: UIViewController {
     }
     
     fileprivate func setupNaviBarDesign() {
-//        self.navigationItem.titleView = customNaviBarTitle
+//        self.navigationItem.titleView = frenchVocaLogo
 //        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
 //        self.navigationController?.navigationBar.barTintColor = UIColor.white
     }
     
-    
-    let singleSynthesizer = Synthesizer.shared
-    
     override func viewWillDisappear(_ animated: Bool) {
-        if singleSynthesizer.isSpeaking == true {
-            singleSynthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
+        if Application.shared.synthesizer.isSpeaking == true {
+            Application.shared.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
         }
     }
     
@@ -177,22 +166,10 @@ extension VocabularyWordListVC: UICollectionViewDataSource {
         print("\(rowData)")
         
         if self.indexPath == 8 || self.indexPath == 9 || self.indexPath == 11 {
-            print("This is 17")
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: WordListCellPhoto.self), for: indexPath) as! WordListCellPhoto
-            let viewModel = WordListCellPhotoViewModel(content: rowData)
-            viewModel.configure(cell)
+            cell.viewModel = WordListCellPhotoViewModel(content: rowData)
             
-//            cell.wordTitleLabel.text = rowData.wordTitle
-//            cell.wordPhoneticsLabel.text = "[" + "\(rowData.wordPhonetics)" + "]"
-//            //                cell.wordPhoneticsLabel.text = "[" + "\(indexPath.row)" + "]"
-//            cell.wordMeaningLabel.text = rowData.wordMeaning
-//            cell.wordNumberLabel.text = rowData.wordNumber
-//            cell.wordGenderLabel.text = rowData.wordGender
-//            //
-//            //        print("WORDLLIST :", rowData.wordCd)
-//            //        print("WordConfused :", rowData.wordConfused)
-//            //
-//            //
+            
 //            if rowData.wordConfused == "oui" {
 //                switch cell.wordGenderLabel.text {
 //                case "f.":
@@ -204,7 +181,7 @@ extension VocabularyWordListVC: UICollectionViewDataSource {
 //            cell.wordPartOfSpeechLabel.text = rowData.wordPartOfSpeech
 //            let imageName: String = rowData.wordFrenchExam
 //            cell.showImageView.image = UIImage(named: imageName)
-//            cell.willSayWord = rowData.wordTitle
+//            cell.pronunciationWord = rowData.wordTitle
             
             
             
@@ -212,8 +189,7 @@ extension VocabularyWordListVC: UICollectionViewDataSource {
             
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: WordListCellSentence.self), for: indexPath) as! WordListCellSentence
-            let viewModel = WordListCellSentenceViewModel(content: rowData)
-            viewModel.configure(cell)
+            cell.viewModel = WordListCellSentenceViewModel(content: rowData)
             
             
 //            cell.wordTitleLabel.text = rowData.wordTitle
@@ -239,8 +215,8 @@ extension VocabularyWordListVC: UICollectionViewDataSource {
 //            cell.wordFrenchExamLabel.text = rowData.wordFrenchExam
 //            cell.wordKoreanExamLabel.text = rowData.wordKoreanExam
 //            
-//            cell.willSayWord = rowData.wordTitle
-//            cell.willSaySentence = rowData.wordFrenchExam
+//            cell.pronunciationWord = rowData.wordTitle
+//            cell.pronunciationSentence = rowData.wordFrenchExam
             return cell
         }
        

@@ -11,6 +11,31 @@ import AVFoundation
 
 class WordListCellPhoto: UICollectionViewCell {
     
+    // MARK:- Properties
+    var pronunciationWord = ""
+    let plist = UserDefaults.standard
+    var viewModel: WordListCellPhotoViewModel! {
+        didSet {
+            wordTitleLabel.text = viewModel.word
+            wordPhoneticsLabel.text = viewModel.phonetics
+            wordMeaningLabel.text = viewModel.meaning
+            wordPartOfSpeechLabel.text = viewModel.partOfSpeech
+            wordGenderLabel.text = viewModel.gender
+            if viewModel.confused == "oui" {
+                switch wordGenderLabel.text {
+                case "f.":
+                    wordGenderLabel.textColor = .red
+                default:
+                    wordGenderLabel.textColor = .blue
+                }
+            }
+            wordNumberLabel.text = viewModel.number
+            showImageView.image = UIImage(named: viewModel.frenchExample)
+        }
+    }
+    
+    // MARK:- Constant
+    
     static func defineCellSize(cellwidth: CGFloat) -> CGSize {
         let cellHeight = (Constant.padding) +
             (Constant.outlineHeight) +
@@ -32,6 +57,7 @@ class WordListCellPhoto: UICollectionViewCell {
         static let exampleTitleFont = UIFont(name: "Avenir-Book", size: 14)
     }
 
+    // MARK:- View Properties
     
     let backgroundBorderView: UIView = {
         let view = UIView()
@@ -56,27 +82,19 @@ class WordListCellPhoto: UICollectionViewCell {
         let btn = UIButton()
         let img = UIImage(named: "headset")
         btn.setImage(img, for: .normal)
-        btn.addTarget(self, action: #selector(pronunciation), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(wordPronunciation), for: .touchUpInside)
         return btn
     }()
     
-    var willSayWord = ""
-    
-    let plist = UserDefaults.standard
-    let singleSynthesizer = Synthesizer.shared
-    
-    @objc func pronunciation() {
-        print("ok button")
-
-        let utterance = AVSpeechUtterance(string: self.willSayWord)
+    @objc func wordPronunciation() {
+        let utterance = AVSpeechUtterance(string: self.pronunciationWord)
         utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR")
-        
         if plist.float(forKey: "발음속도") == 0.0 {
             utterance.rate = AVSpeechUtteranceDefaultSpeechRate
         } else {
             utterance.rate = plist.float(forKey: "발음속도") //속도 조절
         }
-        singleSynthesizer.speak(utterance)
+        Application.shared.synthesizer.speak(utterance)
     }
     
     let wordPhoneticsLabel: UILabel = {
@@ -154,24 +172,20 @@ class WordListCellPhoto: UICollectionViewCell {
         return iv
     }()
     
-//    let imageWidthAndHeight: CGFloat = (Constant.wordTitleFont!.lineHeight) + (Constant.wordPhoneticsFont!.lineHeight) + (Constant.wordMeaningFont!.lineHeight) + (Constant.wordPartOfSpeechFont!.lineHeight) + 35
-    
+    // MARK:- Initialize
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+//        configure()
         setupUIComponents()
     }
     
-//    func configure(withDelegate delegate: WordListCellPhotoProtocol) {
-//        self.wordTitleLabel.text = delegate.wordTitle
-//        self.wordPhoneticsLabel.text = delegate.wordPhonetics
-//        self.wordPartOfSpeechLabel.text = delegate.wordPartOfSpeech
-//        self.wordGenderLabel.text = delegate.wordGender
-//        self.wordNumberLabel.text = delegate.wordNumber
-//        self.wordMeaningLabel.text = delegate.wordMeaning
-//        self.showImageView.image = UIImage(named: delegate.imageName)
-//    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
+    // MARK:- UI Layout
+
     fileprivate func setupUIComponents() {
         [backgroundBorderView].forEach { self.contentView.addSubview($0) }
         [wordTitleLabel, wordPhoneticsLabel, wordPronunciationButton, wordPartOfSpeechLabel, wordGenderLabel, wordNumberLabel, wordMeaningLabel, showImageView].forEach { self.backgroundBorderView.addSubview($0) }
@@ -185,25 +199,18 @@ class WordListCellPhoto: UICollectionViewCell {
         self.wordPronunciationButton.anchor(top: nil, left: self.wordPhoneticsLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 20, height: 20)
         self.wordPronunciationButton.centerYAnchor.constraint(equalTo: self.wordPhoneticsLabel.centerYAnchor).isActive = true
         
-        
-        
         self.wordMeaningLabel.anchor(top: self.wordPronunciationButton.bottomAnchor, left: self.backgroundBorderView.leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: (self.contentView.frame.width / 3), height: 22)
         
         self.wordPartOfSpeechLabel.anchor(top: self.wordMeaningLabel.bottomAnchor, left: self.backgroundBorderView.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         self.wordGenderLabel.anchor(top: nil, left: self.wordPartOfSpeechLabel.rightAnchor, bottom: self.wordPartOfSpeechLabel.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         self.wordNumberLabel.anchor(top: nil, left: self.wordGenderLabel.rightAnchor, bottom: self.wordPartOfSpeechLabel.bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     
-        
         self.showImageView.anchor(top: self.backgroundBorderView.topAnchor, left: nil, bottom: nil, right: self.backgroundBorderView.rightAnchor, paddingTop: 15, paddingLeft: 0, paddingBottom: 0, paddingRight: 15, width: 120, height: 120)
-        
-//        self.photoTitleLabel.anchor(top: nil, left: self.backgroundBorderView.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 15, paddingBottom: 5, paddingRight: 0, width: 0, height: 0)
     
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+    // MARK: - Reusable Cell Setting
+
     override func prepareForReuse() {
         self.wordGenderLabel.textColor = .black
     }

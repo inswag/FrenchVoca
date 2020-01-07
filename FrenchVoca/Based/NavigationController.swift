@@ -22,13 +22,14 @@ class NavigationController: UINavigationController {
     // MARK:- View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupUIComponents()
     }
     
     // MARK:- Methods
     func setupUIComponents() {
         self.navigationBar.setValue(true, forKey: "hidesShadow")
-        self.navigationBar.barTintColor = UIColor.white
+        self.navigationBar.barTintColor = UIColor.red
     }
     
 }

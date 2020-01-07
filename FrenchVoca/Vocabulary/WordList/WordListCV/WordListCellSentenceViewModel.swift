@@ -14,6 +14,7 @@ class WordListCellSentenceViewModel {
     var word: String
     var phonetics: String
     var partOfSpeech: String
+    var confused: String
     var gender: String
     var number: String
     var meaning: String
@@ -25,26 +26,12 @@ class WordListCellSentenceViewModel {
         self.word = content.wordTitle
         self.phonetics = "[" + content.wordPhonetics + "]"
         self.partOfSpeech = content.wordPartOfSpeech
+        self.confused = content.wordConfused
         self.gender = content.wordGender
         self.number = content.wordNumber
         self.meaning = content.wordMeaning
         self.frenchExample = content.wordFrenchExam
         self.koreanExample = content.wordKoreanExam
-    }
-    
-}
-
-extension WordListCellSentenceViewModel {
-    
-    public func configure(_ cell: WordListCellSentence) {
-        cell.wordTitleLabel.text = word
-        cell.wordPhoneticsLabel.text = phonetics
-        cell.wordPartOfSpeechLabel.text = partOfSpeech
-        cell.wordGenderLabel.text = gender
-        cell.wordNumberLabel.text = number
-        cell.wordMeaningLabel.text = meaning
-        cell.wordFrenchExamLabel.text = frenchExample
-        cell.wordKoreanExamLabel.text = koreanExample
     }
     
 }
