@@ -168,55 +168,10 @@ extension VocabularyWordListVC: UICollectionViewDataSource {
         if self.indexPath == 8 || self.indexPath == 9 || self.indexPath == 11 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: WordListCellPhoto.self), for: indexPath) as! WordListCellPhoto
             cell.viewModel = WordListCellPhotoViewModel(content: rowData)
-            
-            
-//            if rowData.wordConfused == "oui" {
-//                switch cell.wordGenderLabel.text {
-//                case "f.":
-//                    cell.wordGenderLabel.textColor = .red
-//                default:
-//                    cell.wordGenderLabel.textColor = .blue
-//                }
-//            }
-//            cell.wordPartOfSpeechLabel.text = rowData.wordPartOfSpeech
-//            let imageName: String = rowData.wordFrenchExam
-//            cell.showImageView.image = UIImage(named: imageName)
-//            cell.pronunciationWord = rowData.wordTitle
-            
-            
-            
             return cell
-            
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: WordListCellSentence.self), for: indexPath) as! WordListCellSentence
             cell.viewModel = WordListCellSentenceViewModel(content: rowData)
-            
-            
-//            cell.wordTitleLabel.text = rowData.wordTitle
-//            cell.wordPhoneticsLabel.text = "[" + "\(rowData.wordPhonetics)" + "]"
-//            //                cell.wordPhoneticsLabel.text = "[" + "\(indexPath.row)" + "]"
-//            cell.wordMeaningLabel.text = rowData.wordMeaning
-//            cell.wordNumberLabel.text = rowData.wordNumber
-//            cell.wordGenderLabel.text = rowData.wordGender
-//            //
-//            //        print("WORDLLIST :", rowData.wordCd)
-//            //        print("WordConfused :", rowData.wordConfused)
-//            //
-//            //
-//            if rowData.wordConfused == "oui" {
-//                switch cell.wordGenderLabel.text {
-//                case "f.":
-//                    cell.wordGenderLabel.textColor = .red
-//                default:
-//                    cell.wordGenderLabel.textColor = .blue
-//                }
-//            }
-//            cell.wordPartOfSpeechLabel.text = rowData.wordPartOfSpeech
-//            cell.wordFrenchExamLabel.text = rowData.wordFrenchExam
-//            cell.wordKoreanExamLabel.text = rowData.wordKoreanExam
-//            
-//            cell.pronunciationWord = rowData.wordTitle
-//            cell.pronunciationSentence = rowData.wordFrenchExam
             return cell
         }
        

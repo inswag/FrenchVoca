@@ -16,6 +16,9 @@ class WordListCellSentence: UICollectionViewCell {
     let plist = UserDefaults.standard
     var pronunciationWord: String = "단어의 발음"
     var pronunciationSentence: String = "문장의 발음"
+    
+    // MARK:- P Configure
+    
     var viewModel: WordListCellSentenceViewModel! {
         didSet {
             wordTitleLabel.text = viewModel.word
@@ -34,6 +37,9 @@ class WordListCellSentence: UICollectionViewCell {
             wordNumberLabel.text = viewModel.number
             wordFrenchExamLabel.text = viewModel.frenchExample
             wordKoreanExamLabel.text = viewModel.koreanExample
+            
+            pronunciationWord = viewModel.word
+            pronunciationSentence = viewModel.frenchExample
         }
     }
     

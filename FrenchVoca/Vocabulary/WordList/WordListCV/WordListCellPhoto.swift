@@ -6,14 +6,18 @@
 //  Copyright © 2019 inswag. All rights reserved.
 //
 
-import UIKit
 import AVFoundation
+import UIKit
 
 class WordListCellPhoto: UICollectionViewCell {
     
     // MARK:- Properties
+    
     var pronunciationWord = ""
     let plist = UserDefaults.standard
+    
+    // MARK:- P Configure
+    
     var viewModel: WordListCellPhotoViewModel! {
         didSet {
             wordTitleLabel.text = viewModel.word
@@ -31,6 +35,8 @@ class WordListCellPhoto: UICollectionViewCell {
             }
             wordNumberLabel.text = viewModel.number
             showImageView.image = UIImage(named: viewModel.frenchExample)
+            
+            pronunciationWord = viewModel.word
         }
     }
     

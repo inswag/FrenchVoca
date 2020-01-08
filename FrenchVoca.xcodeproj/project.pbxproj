@@ -33,13 +33,13 @@
 		F936B2F22382D8A000D15624 /* SettingNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */; };
 		F9486C4023B728EB00B07001 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9486C3F23B728EB00B07001 /* Application.swift */; };
 		F94F533A23BEE0B500CDC2F2 /* WordListCellPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94F533923BEE0B500CDC2F2 /* WordListCellPhotoViewModel.swift */; };
+		F960B47A23C60DFC00F488F8 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F960B47923C60DFC00F488F8 /* SettingViewController.swift */; };
 		F965A11923AB7F0B002A8473 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F965A11823AB7F0B002A8473 /* Navigator.swift */; };
 		F97867A3237D16E400CB0728 /* NotiSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97867A2237D16E400CB0728 /* NotiSettingViewController.swift */; };
 		F9AAFE872257226400F281CE /* SettingModifyInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */; };
 		F9AD8B46220BB5BA00EBCCCE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AD8B45220BB5BA00EBCCCE /* MainTabBarController.swift */; };
 		F9B0D6E923B47C7200EFBBB5 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B0D6E823B47C7200EFBBB5 /* Font.swift */; };
 		F9B38F3D2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B38F3C2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift */; };
-		F9B38F4022547BDD000E1CEA /* SettingMainTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B38F3F22547BDD000E1CEA /* SettingMainTVC.swift */; };
 		F9B38F4322547D79000E1CEA /* SettingMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B38F4222547D79000E1CEA /* SettingMainCell.swift */; };
 		F9B3988D23B4AAC2000E407D /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B3988C23B4AAC2000E407D /* Anchor.swift */; };
 		F9B4DFA22382E87D0080DD5D /* SettingMainSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B4DFA12382E87D0080DD5D /* SettingMainSwitchCell.swift */; };
@@ -115,13 +115,13 @@
 		F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationsVC.swift; sourceTree = "<group>"; };
 		F9486C3F23B728EB00B07001 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		F94F533923BEE0B500CDC2F2 /* WordListCellPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListCellPhotoViewModel.swift; sourceTree = "<group>"; };
+		F960B47923C60DFC00F488F8 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		F965A11823AB7F0B002A8473 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		F97867A2237D16E400CB0728 /* NotiSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiSettingViewController.swift; sourceTree = "<group>"; };
 		F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModifyInfoVC.swift; sourceTree = "<group>"; };
 		F9AD8B45220BB5BA00EBCCCE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		F9B0D6E823B47C7200EFBBB5 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		F9B38F3C2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMainNoticeNestedCell.swift; sourceTree = "<group>"; };
-		F9B38F3F22547BDD000E1CEA /* SettingMainTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainTVC.swift; sourceTree = "<group>"; };
 		F9B38F4222547D79000E1CEA /* SettingMainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainCell.swift; sourceTree = "<group>"; };
 		F9B3988C23B4AAC2000E407D /* Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
 		F9B4DFA12382E87D0080DD5D /* SettingMainSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainSwitchCell.swift; sourceTree = "<group>"; };
@@ -338,7 +338,7 @@
 			children = (
 				F9B38F4122547D62000E1CEA /* Setting */,
 				F9BB5C5D226C5E3000A3679F /* SettingPeopleInfo */,
-				F9B38F3F22547BDD000E1CEA /* SettingMainTVC.swift */,
+				F960B47923C60DFC00F488F8 /* SettingViewController.swift */,
 				F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */,
 				F9BB5C4D226AF94F00A3679F /* SettingPeopleCollectionVC.swift */,
 				F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */,
@@ -639,11 +639,11 @@
 				F911EF402317AEA2009A8913 /* VocabularyNotebookVC.swift in Sources */,
 				F94F533A23BEE0B500CDC2F2 /* WordListCellPhotoViewModel.swift in Sources */,
 				F9BB5C58226C55CE00A3679F /* people.swift in Sources */,
+				F960B47A23C60DFC00F488F8 /* SettingViewController.swift in Sources */,
 				F9FFEB982209C60B00F05E98 /* FLEXScheduleViewController.swift in Sources */,
 				F9E8346223B30453006C0F4E /* NavigationController.swift in Sources */,
 				F9AD8B46220BB5BA00EBCCCE /* MainTabBarController.swift in Sources */,
 				F9486C4023B728EB00B07001 /* Application.swift in Sources */,
-				F9B38F4022547BDD000E1CEA /* SettingMainTVC.swift in Sources */,
 				F9E8346023B2F56A006C0F4E /* ViewController.swift in Sources */,
 				F91F62F521F93E9800B80433 /* WelcomeMainNoticeCell.swift in Sources */,
 				F9F1EFE223BB475C0026ACA0 /* WordListCellSentenceViewModel.swift in Sources */,

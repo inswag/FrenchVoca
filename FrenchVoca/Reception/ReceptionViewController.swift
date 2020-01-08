@@ -57,7 +57,7 @@ class ReceptionViewController: UIViewController {
         setupCustomNaviBarDesign()
         print("viewDidLoad")
         
-        self.navigationItem.titleView = frenchVocaLogo
+//        self.navigationItem.titleView = frenchVocaLogo
 
         
     }

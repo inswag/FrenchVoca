@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct WordListCellPhotoViewModel {
+class WordListCellPhotoViewModel {
     
     // MARK:- Properties
     var word: String

@@ -11,8 +11,6 @@ import SnapKit
 
 class EnrollmentViewController: UIViewController {
     
-
-    
     // MARK: UI Properties
     var image: UIImage?
     var restoreFrameValue: CGFloat = 0.0

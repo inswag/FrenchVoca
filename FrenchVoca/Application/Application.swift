@@ -21,7 +21,7 @@ final class Application: NSObject {
     
     private override init() {
         synthesizer = Synthesizer.shared
-        navigator = Navigator.default
+        navigator = Navigator()
         super.init()
     }
     

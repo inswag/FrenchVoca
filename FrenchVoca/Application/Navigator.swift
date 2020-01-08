@@ -8,14 +8,15 @@
 
 import UIKit
 
-protocol Navigatable {
-    var navigator: Navigator! { get set }
-}
+//protocol Navigatable {
+//    var navigator: Navigator! { get set }
+//}
 
 class Navigator {
     
-    static var `default` = Navigator()
+//    static var `default` = Navigator()
     
+    // MARK: - ALL SCENE
     enum Scene {
         case tabs
         case enrollment         // Login
@@ -28,6 +29,7 @@ class Navigator {
         case wordList
         case voiceSetting
         case settingMain        // Setting
+        case setting
         case settingModifyInfo
         case settingPeople
         case settingNoti
@@ -37,7 +39,7 @@ class Navigator {
     func get(segue: Scene) -> UIViewController {
         
         switch segue {
-        case .tabs: return MainTabBarController()
+        case .tabs: return MainTabBarController(navigator: self)
         case .enrollment: return EnrollmentViewController()
         case .signIn: return SignInViewController()
         case .notiSetting: return NotiSettingViewController()
@@ -48,6 +50,7 @@ class Navigator {
         case .wordList: return VocabularyWordListVC()
         case .voiceSetting: return VocabularyVoiceSettingVC()
         case .settingMain: return SettingMainTVC()
+        case .setting: return SettingViewController()
         case .settingModifyInfo: return SettingModifyInfoVC()
         case .settingPeople: return SettingPeopleCollectionVC()
         case .settingNoti: return SettingNotificationsVC()
