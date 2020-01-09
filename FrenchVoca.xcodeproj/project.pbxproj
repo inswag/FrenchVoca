@@ -337,10 +337,10 @@
 			isa = PBXGroup;
 			children = (
 				F9B38F4122547D62000E1CEA /* Setting */,
-				F9BB5C5D226C5E3000A3679F /* SettingPeopleInfo */,
 				F960B47923C60DFC00F488F8 /* SettingViewController.swift */,
 				F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */,
 				F9BB5C4D226AF94F00A3679F /* SettingPeopleCollectionVC.swift */,
+				F9BB5C5D226C5E3000A3679F /* SettingPeopleInfo */,
 				F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */,
 			);
 			path = Setting;
