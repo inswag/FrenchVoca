@@ -11,7 +11,12 @@ import Foundation
 
 class SignInViewController: UIViewController {
     
+    // MARK:- Properties
+    
     var img = UIImage(named: "login_Photos")
+    
+    
+    // MARK:- UI Properties
     
     // Title Label
     let titleLabel: UILabel = {

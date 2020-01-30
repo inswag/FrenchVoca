@@ -26,7 +26,7 @@ class Navigator {
         case delf
         case flex
         case subjectList        // Vocabulary
-        case wordList
+        case wordList(subjectNum: Int)
         case voiceSetting
         case settingMain        // Setting
         case setting
@@ -49,7 +49,7 @@ class Navigator {
         case .subjectList: return VocabularySubjectListVC()
         case .wordList: return VocabularyWordListVC()
         case .voiceSetting: return VocabularyVoiceSettingVC()
-        case .settingMain: return SettingMainTVC()
+        case .settingMain: return SettingViewController()
         case .setting: return SettingViewController()
         case .settingModifyInfo: return SettingModifyInfoVC()
         case .settingPeople: return SettingPeopleCollectionVC()

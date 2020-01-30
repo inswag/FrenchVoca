@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -63,8 +63,6 @@
 		F9E8346223B30453006C0F4E /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8346123B30453006C0F4E /* NavigationController.swift */; };
 		F9E8346423B352D5006C0F4E /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8346323B352D5006C0F4E /* CollectionViewCell.swift */; };
 		F9E8346623B43B9A006C0F4E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8346523B43B99006C0F4E /* TableViewCell.swift */; };
-		F9E8346823B43CFC006C0F4E /* CollectionViewDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8346723B43CFC006C0F4E /* CollectionViewDecorator.swift */; };
-		F9E8346A23B43D6F006C0F4E /* TableViewDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8346923B43D6F006C0F4E /* TableViewDecorator.swift */; };
 		F9E8346D23B4402D006C0F4E /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8346C23B4402D006C0F4E /* Color.swift */; };
 		F9E8346F23B453F7006C0F4E /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8346E23B453F7006C0F4E /* Tools.swift */; };
 		F9F1E2E523881BFC0084DE34 /* Synthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F1E2E423881BFC0084DE34 /* Synthesizer.swift */; };
@@ -145,8 +143,6 @@
 		F9E8346123B30453006C0F4E /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		F9E8346323B352D5006C0F4E /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		F9E8346523B43B99006C0F4E /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		F9E8346723B43CFC006C0F4E /* CollectionViewDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDecorator.swift; sourceTree = "<group>"; };
-		F9E8346923B43D6F006C0F4E /* TableViewDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDecorator.swift; sourceTree = "<group>"; };
 		F9E8346C23B4402D006C0F4E /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		F9E8346E23B453F7006C0F4E /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		F9F1E2E423881BFC0084DE34 /* Synthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synthesizer.swift; sourceTree = "<group>"; };
@@ -425,9 +421,7 @@
 				F9E8345F23B2F56A006C0F4E /* ViewController.swift */,
 				F9E8346123B30453006C0F4E /* NavigationController.swift */,
 				F9E8346323B352D5006C0F4E /* CollectionViewCell.swift */,
-				F9E8346723B43CFC006C0F4E /* CollectionViewDecorator.swift */,
 				F9E8346523B43B99006C0F4E /* TableViewCell.swift */,
-				F9E8346923B43D6F006C0F4E /* TableViewDecorator.swift */,
 			);
 			path = Based;
 			sourceTree = "<group>";
@@ -484,7 +478,6 @@
 				F91F62D821F93D4A00B80433 /* Frameworks */,
 				F91F62D921F93D4A00B80433 /* Resources */,
 				4F8774EA7BBB67EE483088FF /* [CP] Embed Pods Frameworks */,
-				F359202BAEEE42A3A551390A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -551,17 +544,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-FrenchVoca/Pods-FrenchVoca-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FrenchVoca/Pods-FrenchVoca-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FrenchVoca/Pods-FrenchVoca-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FrenchVoca/Pods-FrenchVoca-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FrenchVoca/Pods-FrenchVoca-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6A9B8C88901E0C10B2D87DC3 /* [CP] Check Pods Manifest.lock */ = {
@@ -580,21 +572,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F359202BAEEE42A3A551390A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FrenchVoca/Pods-FrenchVoca-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -625,13 +602,11 @@
 				F9E8346423B352D5006C0F4E /* CollectionViewCell.swift in Sources */,
 				F9E8346D23B4402D006C0F4E /* Color.swift in Sources */,
 				F91CE28822101C97000D1380 /* VocabularyWordListVC.swift in Sources */,
-				F9E8346823B43CFC006C0F4E /* CollectionViewDecorator.swift in Sources */,
 				F91AFB5B2241C69C00F435A5 /* SubjectDAO.swift in Sources */,
 				F965A11923AB7F0B002A8473 /* Navigator.swift in Sources */,
 				F9B38F3D2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift in Sources */,
 				F9F1EFDE23BB389A0026ACA0 /* VocabularyWordListViewModel.swift in Sources */,
 				F91AFB4F22410A4600F435A5 /* FMResultSet.m in Sources */,
-				F9E8346A23B43D6F006C0F4E /* TableViewDecorator.swift in Sources */,
 				F91AFB4E22410A4600F435A5 /* FMDatabasePool.m in Sources */,
 				F91F62FB21F9EE6D00B80433 /* DELFScheduleViewController.swift in Sources */,
 				F91AFB5022410A4600F435A5 /* FMDatabaseAdditions.m in Sources */,

@@ -17,7 +17,7 @@ class VocabularySubjectListVC: UIViewController {
     }
     
     // MARK:- DAO
-    var subjectList: [(subjectCd: Int, subjectKoreanTitle: String, subjectFrenchTitle: String, subjectPhoto: String)]!
+    var subjectList: [SubjectVO]!
     let subjectDAO = SubjectDAO()
     
     // MARK:- UI Properties
@@ -70,6 +70,7 @@ class VocabularySubjectListVC: UIViewController {
     }
     
     //MARK:- Design
+    
     fileprivate func setupUIComponents() {
         self.view.addSubview(collectionView)
         collectionView.backgroundColor = .white

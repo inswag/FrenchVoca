@@ -16,7 +16,7 @@ class VocabularyWordListVC: UIViewController {
     var wordDAO = WordDAO()
     var subjectDAO = SubjectDAO()
     var wordList: [WordVO]!
-    var subjectInfo: (subjectCd: Int, subjectKoreanTitle: String, subjectFrenchTitle: String, subjectSentence: String)!
+    var subjectInfo: [SubjectVO]!
     var indexPath: Int = 0
     
     // MARK:- UI Properties
@@ -192,10 +192,10 @@ extension VocabularyWordListVC: UICollectionViewDataSource {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: WordListCommonHeader.self), for: indexPath) as! WordListCommonHeader
         
         // 아래의 텍스트로는 각 섹션의 타이틀이 들어갈 예정입니다.
-        header.koreanTitleLabel.text = self.subjectInfo.subjectKoreanTitle
-        header.subFrenchTitleLabel.text = self.subjectInfo.subjectFrenchTitle
-        header.subSentenceLabel.text = "\(self.subjectInfo.subjectSentence)"
-        header.menuImageView.image = UIImage(named: "\(self.subjectInfo.subjectFrenchTitle)")
+        header.koreanTitleLabel.text = self.subjectInfo.first?.subjectKoreanTitle
+        header.subFrenchTitleLabel.text = self.subjectInfo.first?.subjectFrenchTitle
+        header.subSentenceLabel.text = "\(self.subjectInfo.first?.subjectSentence)"
+        header.menuImageView.image = UIImage(named: "\(self.subjectInfo.first?.subjectFrenchTitle)")
         return header
     }
     

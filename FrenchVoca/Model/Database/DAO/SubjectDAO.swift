@@ -7,16 +7,18 @@
 //
 
 import Foundation
-//
-//struct SubjectVO {
-//    var
-//}
+
+struct SubjectVO {
+    var subjectCd: Int = 0
+    var subjectKoreanTitle: String = ""
+    var subjectFrenchTitle: String = ""
+    var subjectPhoto: String = ""
+    var subjectSentence: String = ""
+}
 
 
 
 class SubjectDAO {
-    
-    typealias SubjectRecord = (Int, String, String, String)
     
     lazy var fmdb: FMDatabase! = {
         let fileMgr = FileManager.default
@@ -39,8 +41,8 @@ class SubjectDAO {
     }
     
     // MARK:- Find All Subjects To Show Users Our Current Subjects
-    func find() -> [SubjectRecord] {
-        var subjectList = [SubjectRecord]()
+    func find() -> [SubjectVO] {
+        var subjectList = [SubjectVO]()
         
         do {
             let sql = """
@@ -50,40 +52,50 @@ class SubjectDAO {
             """
         
             let rs = try self.fmdb.executeQuery(sql, values: nil)
+            
             while rs.next() {
-                let subjectCd = rs.int(forColumn: "subj_cd")
-                let subjectKoreanTitle = rs.string(forColumn: "subj_koreantitle")
-                let subjectFrenchTitle = rs.string(forColumn: "subj_frenchtitle")
-                let subjectPhoto = rs.string(forColumn: "subj_photo")
-                subjectList.append( (Int(subjectCd), subjectKoreanTitle!, subjectFrenchTitle!, subjectPhoto!) )
+                var record = SubjectVO()
+                record.subjectCd = Int(rs.int(forColumn: "subj_cd"))
+                record.subjectKoreanTitle = rs.string(forColumn: "subj_koreantitle")!
+                record.subjectFrenchTitle = rs.string(forColumn: "subj_frenchtitle")!
+                record.subjectPhoto = rs.string(forColumn: "subj_photo")!
+                subjectList.append(record)
             }
+            
         } catch let error as NSError {
             print("failed: \(error.localizedDescription)")
         }
+        
         return subjectList
     }
     
     // MARK:- Pick Up The Single Subject For Next Word List
-    func get(subjectCd: Int) -> SubjectRecord? {
+    func get(subjectCd: Int) -> [SubjectVO]? {
+        var subjectList = [SubjectVO]()
         
-        let sql = """
+        do {
+            let sql = """
                 SELECT subj_cd, subj_koreantitle, subj_frenchtitle, subj_sentence
                 FROM subject
                 WHERE subj_cd = ?
             """
-        
-        let rs = self.fmdb.executeQuery(sql, withArgumentsIn: [subjectCd])
-        
-        if let _rs = rs {
-            _rs.next()
-            let subjectCd = _rs.int(forColumn: "subj_cd")
-            let subjectKoreanTitle = _rs.string(forColumn: "subj_koreantitle")
-            let subjectFrenchTitle = _rs.string(forColumn: "subj_frenchtitle")
-            let subjectSentence = _rs.string(forColumn: "subj_sentence")
-            return (Int(subjectCd), subjectKoreanTitle!, subjectFrenchTitle!, subjectSentence!)
-        } else {
-            return nil
+            
+            let rs = try self.fmdb.executeQuery(sql, values: nil)
+            
+            while rs.next() {
+                var record = SubjectVO()
+                record.subjectCd = Int(rs.int(forColumn: "subj_cd"))
+                record.subjectKoreanTitle = rs.string(forColumn: "subj_koreantitle")!
+                record.subjectFrenchTitle = rs.string(forColumn: "subj_frenchtitle")!
+                record.subjectSentence = rs.string(forColumn: "subj_sentence")!
+                subjectList.append(record)
+            }
+            
+        } catch let error as NSError {
+            print("failed: \(error.localizedDescription)")
         }
+        
+        return subjectList
     }
     
 }
