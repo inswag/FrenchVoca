@@ -254,7 +254,7 @@ class WordListCell: UITableViewCell {
             m.top.equalTo(wordOrderLabel.snp.bottom).offset(15)
             m.leading.equalToSuperview().offset(32)
             m.width.equalTo(160)
-//            m.height.equalTo(33)
+            m.height.equalTo(33)
         }
         
         exampleTitleLabel.snp.makeConstraints { (m) in
