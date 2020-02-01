@@ -16,6 +16,10 @@ class VocabularySubjectListVC: UIViewController {
         static let vocabularyHeaderDivisionLineHeight: CGFloat = 2
     }
     
+    // MARK:- Properties
+    
+    let navigate: Navigator
+    
     // MARK:- DAO
     var subjectList: [SubjectVO]!
     let subjectDAO = SubjectDAO()
@@ -54,6 +58,17 @@ class VocabularySubjectListVC: UIViewController {
         return cv
     }()
 
+    // MARK:- Initialize
+    
+    init(navigator: Navigator) {
+        self.navigate = navigator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     //MARK:- View Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,9 +124,10 @@ extension VocabularySubjectListVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vocabularyWordListVC = VocabularyWordListVC()
-        vocabularyWordListVC.indexPath = (indexPath.row + 1)
-        self.navigationController?.pushViewController(vocabularyWordListVC, animated: true)
+        let navigator = Navigator()
+        let wordListVC = WordListViewController(navigator: navigator)
+        wordListVC.indexPath = (indexPath.row + 1)
+        self.navigationController?.pushViewController(navigate.get(segue: .wordList), animated: true)
     }
     
     // Handle Collection View Header

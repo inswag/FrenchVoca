@@ -39,4 +39,9 @@ struct Font {
     func appleSDGothicNeoBold(size: CGFloat) -> UIFont {
         return UIFont.init(name: "AppleSDGothicNeo-Bold", size: size) ?? UIFont.systemFont(ofSize: size)
     }
+    
+    // Tools.font.lucidaGrandeRegular(size: <#입력#>)
+    func lucidaGrandeRegular(size: CGFloat) -> UIFont {
+        return UIFont.init(name: "LucidaGrande-Regular", size: size) ?? UIFont.systemFont(ofSize: size)
+    }
 }

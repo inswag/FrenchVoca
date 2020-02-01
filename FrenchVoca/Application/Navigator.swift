@@ -26,7 +26,7 @@ class Navigator {
         case delf
         case flex
         case subjectList        // Vocabulary
-        case wordList(subjectNum: Int)
+        case wordList
         case voiceSetting
         case settingMain        // Setting
         case setting
@@ -46,9 +46,12 @@ class Navigator {
         case .reception: return ReceptionViewController()
         case .delf: return DELFScheduleViewController()
         case .flex: return FLEXScheduleViewController()
-        case .subjectList: return VocabularySubjectListVC()
-        case .wordList: return VocabularyWordListVC()
-        case .voiceSetting: return VocabularyVoiceSettingVC()
+        case .subjectList: return VocabularySubjectListVC(navigator: self)
+        case .wordList: return WordListViewController(navigator: self)
+        case .voiceSetting:
+            let voiceSettingViewController = VocabularyVoiceSettingVC()
+            voiceSettingViewController.modalPresentationStyle = .pageSheet
+            return voiceSettingViewController
         case .settingMain: return SettingViewController()
         case .setting: return SettingViewController()
         case .settingModifyInfo: return SettingModifyInfoVC()
