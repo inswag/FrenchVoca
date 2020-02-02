@@ -34,7 +34,7 @@
 		F91F62FB21F9EE6D00B80433 /* DELFScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91F62FA21F9EE6D00B80433 /* DELFScheduleViewController.swift */; };
 		F936B2F22382D8A000D15624 /* SettingNotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */; };
 		F9486C4023B728EB00B07001 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9486C3F23B728EB00B07001 /* Application.swift */; };
-		F94F533A23BEE0B500CDC2F2 /* WordListCellPhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94F533923BEE0B500CDC2F2 /* WordListCellPhotoViewModel.swift */; };
+		F94F533A23BEE0B500CDC2F2 /* WordListPhotoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94F533923BEE0B500CDC2F2 /* WordListPhotoCellViewModel.swift */; };
 		F960B47A23C60DFC00F488F8 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F960B47923C60DFC00F488F8 /* SettingViewController.swift */; };
 		F965A11923AB7F0B002A8473 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F965A11823AB7F0B002A8473 /* Navigator.swift */; };
 		F97867A3237D16E400CB0728 /* NotiSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97867A2237D16E400CB0728 /* NotiSettingViewController.swift */; };
@@ -55,7 +55,7 @@
 		F9BF0939225C9D170097E0CC /* UNNotiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BF0938225C9D170097E0CC /* UNNotiManager.swift */; };
 		F9BF093B225F34140097E0CC /* WelcomeMainWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BF093A225F34140097E0CC /* WelcomeMainWordCell.swift */; };
 		F9BF093D225F344C0097E0CC /* WelcomeMainWordNestedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BF093C225F344C0097E0CC /* WelcomeMainWordNestedCell.swift */; };
-		F9C07B8522AE907800D0920B /* WordListCellPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C07B8422AE907800D0920B /* WordListCellPhoto.swift */; };
+		F9C07B8522AE907800D0920B /* WordListPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C07B8422AE907800D0920B /* WordListPhotoCell.swift */; };
 		F9D0E4572219780200BE4815 /* EnrollmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D0E4562219780200BE4815 /* EnrollmentViewController.swift */; };
 		F9E13884220B0CEA00DDE7B3 /* Vocabulary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9E13883220B0CEA00DDE7B3 /* Vocabulary.storyboard */; };
 		F9E13888220B0D5A00DDE7B3 /* VocabularySubjectListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E13887220B0D5A00DDE7B3 /* VocabularySubjectListVC.swift */; };
@@ -116,7 +116,7 @@
 		F91F62FA21F9EE6D00B80433 /* DELFScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DELFScheduleViewController.swift; sourceTree = "<group>"; };
 		F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingNotificationsVC.swift; sourceTree = "<group>"; };
 		F9486C3F23B728EB00B07001 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
-		F94F533923BEE0B500CDC2F2 /* WordListCellPhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListCellPhotoViewModel.swift; sourceTree = "<group>"; };
+		F94F533923BEE0B500CDC2F2 /* WordListPhotoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListPhotoCellViewModel.swift; sourceTree = "<group>"; };
 		F960B47923C60DFC00F488F8 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		F965A11823AB7F0B002A8473 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		F97867A2237D16E400CB0728 /* NotiSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiSettingViewController.swift; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 		F9BF0938225C9D170097E0CC /* UNNotiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UNNotiManager.swift; sourceTree = "<group>"; };
 		F9BF093A225F34140097E0CC /* WelcomeMainWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMainWordCell.swift; sourceTree = "<group>"; };
 		F9BF093C225F344C0097E0CC /* WelcomeMainWordNestedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMainWordNestedCell.swift; sourceTree = "<group>"; };
-		F9C07B8422AE907800D0920B /* WordListCellPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListCellPhoto.swift; sourceTree = "<group>"; };
+		F9C07B8422AE907800D0920B /* WordListPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListPhotoCell.swift; sourceTree = "<group>"; };
 		F9D0E4562219780200BE4815 /* EnrollmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnrollmentViewController.swift; sourceTree = "<group>"; };
 		F9E13883220B0CEA00DDE7B3 /* Vocabulary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Vocabulary.storyboard; sourceTree = "<group>"; };
 		F9E13887220B0D5A00DDE7B3 /* VocabularySubjectListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularySubjectListVC.swift; sourceTree = "<group>"; };
@@ -234,6 +234,8 @@
 				E63BF87823E469BE002145A5 /* WordListViewController.swift */,
 				E63BF87A23E46AF1002145A5 /* WordListSentenceCell.swift */,
 				F9F1EFE123BB475C0026ACA0 /* WordListSentenceCellViewModel.swift */,
+				F9C07B8422AE907800D0920B /* WordListPhotoCell.swift */,
+				F94F533923BEE0B500CDC2F2 /* WordListPhotoCellViewModel.swift */,
 				F91CE28A22101D77000D1380 /* WordListCV */,
 				F91CE28722101C97000D1380 /* VocabularyWordListVC.swift */,
 				F9F88DF52383E2700098C310 /* VocabularyVoiceSettingVC.swift */,
@@ -258,8 +260,6 @@
 			children = (
 				F91CE28C22101DB7000D1380 /* WordListCommonHeader.swift */,
 				F91CE28F22102207000D1380 /* WordListCellSentence.swift */,
-				F9C07B8422AE907800D0920B /* WordListCellPhoto.swift */,
-				F94F533923BEE0B500CDC2F2 /* WordListCellPhotoViewModel.swift */,
 			);
 			path = WordListCV;
 			sourceTree = "<group>";
@@ -618,7 +618,7 @@
 				F91AFB5022410A4600F435A5 /* FMDatabaseAdditions.m in Sources */,
 				F9BB5C50226AFB4C00A3679F /* SettingPeopleCell.swift in Sources */,
 				F911EF402317AEA2009A8913 /* VocabularyNotebookVC.swift in Sources */,
-				F94F533A23BEE0B500CDC2F2 /* WordListCellPhotoViewModel.swift in Sources */,
+				F94F533A23BEE0B500CDC2F2 /* WordListPhotoCellViewModel.swift in Sources */,
 				E63BF87923E469BE002145A5 /* WordListViewController.swift in Sources */,
 				F9BB5C58226C55CE00A3679F /* people.swift in Sources */,
 				F960B47A23C60DFC00F488F8 /* SettingViewController.swift in Sources */,
@@ -632,7 +632,7 @@
 				E63BF87B23E46AF1002145A5 /* WordListSentenceCell.swift in Sources */,
 				F9B38F4322547D79000E1CEA /* SettingMainCell.swift in Sources */,
 				F9BB5C54226C487100A3679F /* SettingPeopleHeader.swift in Sources */,
-				F9C07B8522AE907800D0920B /* WordListCellPhoto.swift in Sources */,
+				F9C07B8522AE907800D0920B /* WordListPhotoCell.swift in Sources */,
 				F91F62F621F93E9800B80433 /* WelcomeMainProfileHeader.swift in Sources */,
 				F91CE29022102207000D1380 /* WordListCellSentence.swift in Sources */,
 				F9B0D6E923B47C7200EFBBB5 /* Font.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  WordListCellPhotoViewModel.swift
+//  WordListPhotoCellViewModel.swift
 //  FrenchVoca
 //
 //  Created by 박인수 on 03/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WordListCellPhotoViewModel {
+class WordListPhotoCellViewModel {
     
     // MARK:- Properties
     var word: String

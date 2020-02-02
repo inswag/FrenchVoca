@@ -63,7 +63,10 @@ class WordListViewController: UIViewController {
         tv.showsVerticalScrollIndicator = false
         tv.dataSource = self
         tv.delegate = self
-        tv.register(WordListSentenceCell.self, forCellReuseIdentifier: String(describing: WordListSentenceCell.self))
+        tv.register(WordListSentenceCell.self,
+                    forCellReuseIdentifier: String(describing: WordListSentenceCell.self))
+        tv.register(WordListPhotoCell.self,
+                    forCellReuseIdentifier: String(describing: WordListPhotoCell.self))
         return tv
     }()
     
@@ -156,13 +159,13 @@ extension WordListViewController: UITableViewDataSource {
         print("\(rowData)")
 
 //        if self.indexPath == 8 || self.indexPath == 9 || self.indexPath == 11 {
-//            let cell = tableView.dequeueReusableCell(withReuseIdentifier: String(describing: WordListCellPhoto.self), for: indexPath) as! WordListCellPhoto
-//            cell.viewModel = WordListCellPhotoViewModel(content: rowData)
-//            return cell
-//        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WordListSentenceCell.self), for: indexPath) as! WordListSentenceCell
-            cell.viewModel = WordListSentenceCellViewModel(content: rowData)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WordListPhotoCell.self), for: indexPath) as! WordListPhotoCell
+            cell.viewModel = WordListPhotoCellViewModel(content: rowData)
             return cell
+//        } else {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WordListSentenceCell.self), for: indexPath) as! WordListSentenceCell
+//            cell.viewModel = WordListSentenceCellViewModel(content: rowData)
+//            return cell
 //        }
         
 //        return UITableViewCell()
