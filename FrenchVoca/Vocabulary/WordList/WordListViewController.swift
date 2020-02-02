@@ -63,7 +63,7 @@ class WordListViewController: UIViewController {
         tv.showsVerticalScrollIndicator = false
         tv.dataSource = self
         tv.delegate = self
-        tv.register(WordListCell.self, forCellReuseIdentifier: String(describing: WordListCell.self))
+        tv.register(WordListSentenceCell.self, forCellReuseIdentifier: String(describing: WordListSentenceCell.self))
         return tv
     }()
     
@@ -72,8 +72,6 @@ class WordListViewController: UIViewController {
     init(navigator: Navigator) {
         self.navigate = navigator
         super.init(nibName: nil, bundle: nil)
-        
-
     }
     
     required init?(coder: NSCoder) {
@@ -85,7 +83,6 @@ class WordListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUIComponents()
-        self.view.backgroundColor = .red
         
         self.wordList = self.wordDAO.find(subjectCd: indexPath)
         self.subjectInfo = self.subjectDAO.get(subjectCd: indexPath)
@@ -105,14 +102,39 @@ class WordListViewController: UIViewController {
 ////        self.view.isOpaque = false
 ////        self.view.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
 //
+        
+        self.view.backgroundColor = .white
+        self.navigationController?.navigationBar.isHidden = true
+        
         // UI Layouts
-        [tableView].forEach { self.view.addSubview($0) }
+        [tableView, popImageButton, popTextButton, optionButton].forEach {
+            self.view.addSubview($0)
+        }
 //
         tableView.snp.makeConstraints { (m) in
             m.top.equalToSuperview()
             m.bottom.equalToSuperview()
             m.leading.equalToSuperview()
             m.trailing.equalToSuperview()
+        }
+        
+        popImageButton.snp.makeConstraints { (m) in
+            m.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
+            m.leading.equalToSuperview().offset(20)
+            m.width.equalTo(12)
+            m.height.equalTo(20.5)
+        }
+        
+        popTextButton.snp.makeConstraints { (m) in
+            m.leading.equalTo(popImageButton.snp.trailing).offset(5)
+            m.centerY.equalTo(popImageButton.snp.centerY)
+        }
+        
+        optionButton.snp.makeConstraints { (m) in
+            m.trailing.equalToSuperview().offset(-20)
+            m.width.equalTo(35)
+            m.height.equalTo(35)
+            m.centerY.equalTo(popImageButton.snp.centerY)
         }
     }
 //
@@ -138,8 +160,8 @@ extension WordListViewController: UITableViewDataSource {
 //            cell.viewModel = WordListCellPhotoViewModel(content: rowData)
 //            return cell
 //        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WordListCell.self), for: indexPath) as! WordListCell
-            cell.viewModel = WordListCellSentenceViewModel(content: rowData)
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WordListSentenceCell.self), for: indexPath) as! WordListSentenceCell
+            cell.viewModel = WordListSentenceCellViewModel(content: rowData)
             return cell
 //        }
         

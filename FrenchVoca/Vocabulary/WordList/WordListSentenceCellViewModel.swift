@@ -1,5 +1,5 @@
 //
-//  WordListCellSentenceViewModel.swift
+//  WordListSentenceCellViewModel.swift
 //  FrenchVoca
 //
 //  Created by 박인수 on 31/12/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WordListCellSentenceViewModel {
+class WordListSentenceCellViewModel {
     
     // MARK:- Properties
     var word: String

@@ -171,7 +171,7 @@ extension VocabularyWordListVC: UICollectionViewDataSource {
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: WordListCellSentence.self), for: indexPath) as! WordListCellSentence
-            cell.viewModel = WordListCellSentenceViewModel(content: rowData)
+            cell.viewModel = WordListSentenceCellViewModel(content: rowData)
             return cell
         }
        

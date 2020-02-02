@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		4F7B4991E9D67411F8908997 /* Pods_FrenchVoca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76AF2F4438B6C98D96CC398B /* Pods_FrenchVoca.framework */; };
 		E63BF87923E469BE002145A5 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63BF87823E469BE002145A5 /* WordListViewController.swift */; };
-		E63BF87B23E46AF1002145A5 /* WordListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63BF87A23E46AF1002145A5 /* WordListCell.swift */; };
+		E63BF87B23E46AF1002145A5 /* WordListSentenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63BF87A23E46AF1002145A5 /* WordListSentenceCell.swift */; };
 		F911EF402317AEA2009A8913 /* VocabularyNotebookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911EF3F2317AEA2009A8913 /* VocabularyNotebookVC.swift */; };
 		F911EF422317B38D009A8913 /* VocabularyNotebookVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911EF412317B38D009A8913 /* VocabularyNotebookVCCell.swift */; };
 		F918C18323A7C12B002A11DA /* FrenchVoca.db in Resources */ = {isa = PBXBuildFile; fileRef = F918C18223A7C12B002A11DA /* FrenchVoca.db */; };
@@ -70,7 +70,7 @@
 		F9F1E2E523881BFC0084DE34 /* Synthesizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F1E2E423881BFC0084DE34 /* Synthesizer.swift */; };
 		F9F1EFDE23BB389A0026ACA0 /* VocabularyWordListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F1EFDD23BB389A0026ACA0 /* VocabularyWordListViewModel.swift */; };
 		F9F1EFE023BB38D60026ACA0 /* SubjectListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F1EFDF23BB38D60026ACA0 /* SubjectListCellViewModel.swift */; };
-		F9F1EFE223BB475C0026ACA0 /* WordListCellSentenceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F1EFE123BB475C0026ACA0 /* WordListCellSentenceViewModel.swift */; };
+		F9F1EFE223BB475C0026ACA0 /* WordListSentenceCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F1EFE123BB475C0026ACA0 /* WordListSentenceCellViewModel.swift */; };
 		F9F88DF62383E2700098C310 /* VocabularyVoiceSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F88DF52383E2700098C310 /* VocabularyVoiceSettingVC.swift */; };
 		F9FFEB982209C60B00F05E98 /* FLEXScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FFEB972209C60B00F05E98 /* FLEXScheduleViewController.swift */; };
 		F9FFEB9B2209D8EF00F05E98 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FFEB9A2209D8EF00F05E98 /* SignInViewController.swift */; };
@@ -81,7 +81,7 @@
 		69229CDDC797392F5E828F6D /* Pods-FrenchVoca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FrenchVoca.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FrenchVoca/Pods-FrenchVoca.debug.xcconfig"; sourceTree = "<group>"; };
 		76AF2F4438B6C98D96CC398B /* Pods_FrenchVoca.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FrenchVoca.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E63BF87823E469BE002145A5 /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
-		E63BF87A23E46AF1002145A5 /* WordListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListCell.swift; sourceTree = "<group>"; };
+		E63BF87A23E46AF1002145A5 /* WordListSentenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListSentenceCell.swift; sourceTree = "<group>"; };
 		F911EF3F2317AEA2009A8913 /* VocabularyNotebookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyNotebookVC.swift; sourceTree = "<group>"; };
 		F911EF412317B38D009A8913 /* VocabularyNotebookVCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyNotebookVCCell.swift; sourceTree = "<group>"; };
 		F918C18223A7C12B002A11DA /* FrenchVoca.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = FrenchVoca.db; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 		F9F1E2E423881BFC0084DE34 /* Synthesizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Synthesizer.swift; sourceTree = "<group>"; };
 		F9F1EFDD23BB389A0026ACA0 /* VocabularyWordListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyWordListViewModel.swift; sourceTree = "<group>"; };
 		F9F1EFDF23BB38D60026ACA0 /* SubjectListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectListCellViewModel.swift; sourceTree = "<group>"; };
-		F9F1EFE123BB475C0026ACA0 /* WordListCellSentenceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListCellSentenceViewModel.swift; sourceTree = "<group>"; };
+		F9F1EFE123BB475C0026ACA0 /* WordListSentenceCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListSentenceCellViewModel.swift; sourceTree = "<group>"; };
 		F9F88DF52383E2700098C310 /* VocabularyVoiceSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyVoiceSettingVC.swift; sourceTree = "<group>"; };
 		F9FFEB972209C60B00F05E98 /* FLEXScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLEXScheduleViewController.swift; sourceTree = "<group>"; };
 		F9FFEB9A2209D8EF00F05E98 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -231,9 +231,10 @@
 		F91CE28622101C48000D1380 /* WordList */ = {
 			isa = PBXGroup;
 			children = (
-				F91CE28A22101D77000D1380 /* WordListCV */,
 				E63BF87823E469BE002145A5 /* WordListViewController.swift */,
-				E63BF87A23E46AF1002145A5 /* WordListCell.swift */,
+				E63BF87A23E46AF1002145A5 /* WordListSentenceCell.swift */,
+				F9F1EFE123BB475C0026ACA0 /* WordListSentenceCellViewModel.swift */,
+				F91CE28A22101D77000D1380 /* WordListCV */,
 				F91CE28722101C97000D1380 /* VocabularyWordListVC.swift */,
 				F9F88DF52383E2700098C310 /* VocabularyVoiceSettingVC.swift */,
 				F9F1EFDD23BB389A0026ACA0 /* VocabularyWordListViewModel.swift */,
@@ -257,7 +258,6 @@
 			children = (
 				F91CE28C22101DB7000D1380 /* WordListCommonHeader.swift */,
 				F91CE28F22102207000D1380 /* WordListCellSentence.swift */,
-				F9F1EFE123BB475C0026ACA0 /* WordListCellSentenceViewModel.swift */,
 				F9C07B8422AE907800D0920B /* WordListCellPhoto.swift */,
 				F94F533923BEE0B500CDC2F2 /* WordListCellPhotoViewModel.swift */,
 			);
@@ -628,8 +628,8 @@
 				F9486C4023B728EB00B07001 /* Application.swift in Sources */,
 				F9E8346023B2F56A006C0F4E /* ViewController.swift in Sources */,
 				F91F62F521F93E9800B80433 /* WelcomeMainNoticeCell.swift in Sources */,
-				F9F1EFE223BB475C0026ACA0 /* WordListCellSentenceViewModel.swift in Sources */,
-				E63BF87B23E46AF1002145A5 /* WordListCell.swift in Sources */,
+				F9F1EFE223BB475C0026ACA0 /* WordListSentenceCellViewModel.swift in Sources */,
+				E63BF87B23E46AF1002145A5 /* WordListSentenceCell.swift in Sources */,
 				F9B38F4322547D79000E1CEA /* SettingMainCell.swift in Sources */,
 				F9BB5C54226C487100A3679F /* SettingPeopleHeader.swift in Sources */,
 				F9C07B8522AE907800D0920B /* WordListCellPhoto.swift in Sources */,

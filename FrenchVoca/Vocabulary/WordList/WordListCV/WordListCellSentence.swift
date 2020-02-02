@@ -19,7 +19,7 @@ class WordListCellSentence: UICollectionViewCell {
     
     // MARK:- P Configure
     
-    var viewModel: WordListCellSentenceViewModel! {
+    var viewModel: WordListSentenceCellViewModel! {
         didSet {
             wordTitleLabel.text = viewModel.word
             wordPhoneticsLabel.text = viewModel.phonetics

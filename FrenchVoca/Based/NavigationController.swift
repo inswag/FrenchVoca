@@ -43,7 +43,7 @@ class NavigationController: UINavigationController {
     func setupUICommonComponents() {
         navigationItem.titleView = frenchVocaLogo
         self.navigationBar.setValue(true, forKey: "hidesShadow")
-        self.navigationBar.barTintColor = UIColor.red
+        self.navigationBar.barTintColor = UIColor.white
     }
     
     func setupUIComponents() {

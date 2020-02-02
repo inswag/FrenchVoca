@@ -1,5 +1,5 @@
 //
-//  WordListCell.swift
+//  WordListSentenceCell.swift
 //  FrenchVoca
 //
 //  Created by Insu Park on 2020/01/31.
@@ -9,7 +9,7 @@
 import AVFoundation
 import UIKit
 
-class WordListCell: UITableViewCell {
+class WordListSentenceCell: UITableViewCell {
     
     // MARK:- Property
     
@@ -18,28 +18,27 @@ class WordListCell: UITableViewCell {
     var pronunciationSentence: String = "문장의 발음"
     
     // MARK:- P Configure
-    
-    var viewModel: WordListCellSentenceViewModel! {
+
+    var viewModel: WordListSentenceCellViewModel! {
         didSet {
             wordTitleLabel.text = viewModel.word
-//            wordPhoneticsLabel.text = viewModel.phonetics
-//            wordMeaningLabel.text = viewModel.meaning
-//            wordPartOfSpeechLabel.text = viewModel.partOfSpeech
-//            wordGenderLabel.text = viewModel.gender
-//            if viewModel.confused == "oui" {
-//                switch wordGenderLabel.text {
-//                case "f.":
-//                    wordGenderLabel.textColor = .red
-//                default:
-//                    wordGenderLabel.textColor = .blue
-//                }
-//            }
-//            wordNumberLabel.text = viewModel.number
+            wordPhoneticsLabel.text = viewModel.phonetics
+            wordMeaningLabel.text = viewModel.meaning
+            wordPartOfSpeechLabel.text = viewModel.partOfSpeech
+            wordGenderLabel.text = viewModel.gender
+            if viewModel.confused == "oui" {
+                switch wordGenderLabel.text {
+                case "f.":
+                    wordGenderLabel.textColor = .red
+                default:
+                    wordGenderLabel.textColor = .blue
+                }
+            }
+            wordNumberLabel.text = viewModel.number
             wordFrenchExamLabel.text = viewModel.frenchExample
             wordKoreanExamLabel.text = viewModel.koreanExample
-//
-//            pronunciationWord = viewModel.word
-//            pronunciationSentence = viewModel.frenchExample
+            pronunciationWord = viewModel.word
+            pronunciationSentence = viewModel.frenchExample
         }
     }
     
@@ -65,7 +64,7 @@ class WordListCell: UITableViewCell {
         label.text = "Numéro 1"
         label.textAlignment = .left
         label.font = Tools.font.avenirBook(size: 12)
-        label.textColor = UIColor.black
+        label.textColor = UIColor.red
         label.numberOfLines = 0
         label.adjustsFontSizeToFitWidth = false
         return label
@@ -142,7 +141,7 @@ class WordListCell: UITableViewCell {
         let label = UILabel()
         label.text = "[paʀɑ̃]"
         label.textAlignment = .left
-        label.font = Tools.font.lucidaGrandeRegular(size: 6)
+        label.font = Tools.font.lucidaGrandeRegular(size: 16)
         label.textColor = Tools.color.mediumBlack
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
@@ -230,6 +229,7 @@ class WordListCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: String(describing: WordListViewController.self))
+        
         setupUIComponents()
     }
     
@@ -240,8 +240,11 @@ class WordListCell: UITableViewCell {
     // MARK:- UI Layout
     
     fileprivate func setupUIComponents() {
-
-        [wordOrderLabel, wordTitleLabel, exampleTitleLabel, wordFrenchExamLabel, wordKoreanExamLabel, borderView].forEach { self.contentView.addSubview($0)
+        
+        selectionStyle = .none
+        
+        [wordOrderLabel, wordTitleLabel, wordPhoneticsLabel, wordPronunciationButton, wordMeaningLabel, wordPartOfSpeechLabel, wordGenderLabel, wordNumberLabel, exampleTitleLabel, sentencePrononciationButton, stopPronunciationButton, wordFrenchExamLabel, wordKoreanExamLabel, borderView].forEach {
+            self.contentView.addSubview($0)
         }
         
         wordOrderLabel.snp.makeConstraints { (m) in
@@ -253,13 +256,59 @@ class WordListCell: UITableViewCell {
         wordTitleLabel.snp.makeConstraints { (m) in
             m.top.equalTo(wordOrderLabel.snp.bottom).offset(15)
             m.leading.equalToSuperview().offset(32)
-            m.width.equalTo(160)
+            m.trailing.equalToSuperview().offset(-32)
             m.height.equalTo(33)
         }
         
-        exampleTitleLabel.snp.makeConstraints { (m) in
-            m.top.equalTo(wordTitleLabel.snp.bottom).offset(20)
+        wordPhoneticsLabel.snp.makeConstraints { (m) in
+            m.top.equalTo(wordTitleLabel.snp.bottom)
             m.leading.equalToSuperview().offset(32)
+        }
+        
+        wordPronunciationButton.snp.makeConstraints { (m) in
+            m.leading.equalTo(wordPhoneticsLabel.snp.trailing).offset(5)
+            m.centerY.equalTo(wordPhoneticsLabel.snp.centerY)
+            m.width.equalTo(20)
+            m.height.equalTo(20)
+        }
+        
+        wordPartOfSpeechLabel.snp.makeConstraints { (m) in
+            m.top.equalTo(wordPhoneticsLabel.snp.bottom).offset(10)
+            m.leading.equalToSuperview().offset(32)
+        }
+        
+        wordGenderLabel.snp.makeConstraints { (m) in
+            m.leading.equalTo(wordPartOfSpeechLabel.snp.trailing).offset(5)
+            m.centerY.equalTo(wordPartOfSpeechLabel.snp.centerY)
+        }
+        
+        wordNumberLabel.snp.makeConstraints { (m) in
+            m.leading.equalTo(wordGenderLabel.snp.trailing).offset(5)
+            m.centerY.equalTo(wordPartOfSpeechLabel.snp.centerY)
+        }
+        
+        wordMeaningLabel.snp.makeConstraints { (m) in
+            m.leading.equalTo(wordNumberLabel.snp.trailing).offset(5)
+            m.centerY.equalTo(wordPartOfSpeechLabel.snp.centerY)
+        }
+        
+        exampleTitleLabel.snp.makeConstraints { (m) in
+            m.top.equalTo(wordPartOfSpeechLabel.snp.bottom).offset(20)
+            m.leading.equalToSuperview().offset(32)
+        }
+        
+        sentencePrononciationButton.snp.makeConstraints { (m) in
+            m.leading.equalTo(exampleTitleLabel.snp.trailing).offset(10)
+            m.centerY.equalTo(exampleTitleLabel.snp.centerY)
+            m.width.equalTo(20)
+            m.height.equalTo(20)
+        }
+        
+        stopPronunciationButton.snp.makeConstraints { (m) in
+            m.leading.equalTo(sentencePrononciationButton.snp.trailing).offset(10)
+            m.centerY.equalTo(exampleTitleLabel.snp.centerY)
+            m.width.equalTo(20)
+            m.height.equalTo(20)
         }
         
         wordFrenchExamLabel.snp.makeConstraints { (m) in
@@ -282,30 +331,6 @@ class WordListCell: UITableViewCell {
             m.height.equalTo(2)
         }
         
-        
-        // Here is AutoLayout of Vocabulary Word List Cell By using 'Anchor'
-//        self.backgroundBorderView.anchor(top: self.contentView.topAnchor, left: self.contentView.leftAnchor, bottom: self.contentView.bottomAnchor, right: self.contentView.rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 20, paddingRight: 20, width: 0, height: 0)
-//        self.wordTitleLabel.anchor(top: self.backgroundBorderView.topAnchor, left: self.backgroundBorderView.leftAnchor, bottom: nil, right: nil, paddingTop: 15, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: (self.contentView.frame.width / 3), height: 33)
-//        self.wordPhoneticsLabel.anchor(top: self.wordTitleLabel.bottomAnchor, left: self.backgroundBorderView.leftAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-//        self.wordPronunciationButton.anchor(top: nil, left: self.wordPhoneticsLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 20, height: 20)
-//        self.wordPronunciationButton.centerYAnchor.constraint(equalTo: self.wordPhoneticsLabel.centerYAnchor).isActive = true
-//
-//
-//        self.wordMeaningLabel.anchor(top: nil, left: nil, bottom: self.wordTitleLabel.bottomAnchor, right: self.backgroundBorderView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 15, width: (self.contentView.frame.width / 3), height: 22)
-//        self.wordNumberLabel.anchor(top: self.wordMeaningLabel.bottomAnchor, left: nil, bottom: nil, right: self.backgroundBorderView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 15, width: 0, height: 0)
-//        self.wordGenderLabel.anchor(top: nil, left: nil, bottom: self.wordNumberLabel.bottomAnchor, right: self.wordNumberLabel.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 0, height: 0)
-//        self.wordPartOfSpeechLabel.anchor(top: nil, left: nil, bottom: self.wordNumberLabel.bottomAnchor, right: self.wordGenderLabel.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 5, width: 0, height: 0)
-//
-//        self.exampleTitleLabel.anchor(top: nil, left: self.backgroundBorderView.leftAnchor, bottom: self.wordFrenchExamLabel.topAnchor, right: nil, paddingTop: 0, paddingLeft: 15, paddingBottom: 5, paddingRight: 0, width: 0, height: 0)
-//
-//        self.sentencePrononciationButton.anchor(top: nil, left: self.exampleTitleLabel.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 20, height: 20)
-//        self.sentencePrononciationButton.centerYAnchor.constraint(equalTo: self.exampleTitleLabel.centerYAnchor).isActive = true
-//
-//        self.stopPronunciationButton.anchor(top: nil, left: self.sentencePrononciationButton.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 20, height: 20)
-//        self.stopPronunciationButton.centerYAnchor.constraint(equalTo: self.exampleTitleLabel.centerYAnchor).isActive = true
-//
-//        self.wordFrenchExamLabel.anchor(top: nil, left: self.backgroundBorderView.leftAnchor, bottom: self.wordKoreanExamLabel.topAnchor, right: self.backgroundBorderView.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 5, paddingRight: 15, width: 0, height: 0)
-//        self.wordKoreanExamLabel.anchor(top: nil, left: self.backgroundBorderView.leftAnchor, bottom: self.backgroundBorderView.bottomAnchor, right: self.backgroundBorderView.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 15, paddingRight: 15, width: 0, height: 0)
     }
     
     
