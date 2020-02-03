@@ -70,7 +70,7 @@ class SubjectDAO {
     }
     
     // MARK:- Pick Up The Single Subject For Next Word List
-    func get(subjectCd: Int) -> [SubjectVO]? {
+    func get(subjectCd: Int) -> [SubjectVO] {
         var subjectList = [SubjectVO]()
         
         do {

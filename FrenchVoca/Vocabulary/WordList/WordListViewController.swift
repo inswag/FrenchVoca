@@ -15,12 +15,14 @@ class WordListViewController: UIViewController {
     // MARK:- Properties
     
     let navigate: Navigator
-//    let viewModel: ProductControllerViewModel
+    let viewModel: WordListViewControllerViewModel
   
-    var wordDAO = WordDAO()
-    var subjectDAO = SubjectDAO()
-    var wordList: [WordVO]!
-    var subjectInfo: [SubjectVO]!
+//    var wordDAO = WordDAO()
+//    var subjectDAO = SubjectDAO()
+//    
+//    var wordList: [WordVO]!
+//    var subjectInfo: [SubjectVO]!
+    
     var indexPath: Int = 0
     
     // MARK:- UI Properties
@@ -72,8 +74,9 @@ class WordListViewController: UIViewController {
     
     // MARK:- Initialize
     
-    init(navigator: Navigator) {
+    init(navigator: Navigator, viewModel: WordListViewControllerViewModel) {
         self.navigate = navigator
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -87,8 +90,9 @@ class WordListViewController: UIViewController {
         super.viewDidLoad()
         setupUIComponents()
         
-        self.wordList = self.wordDAO.find(subjectCd: indexPath)
-        self.subjectInfo = self.subjectDAO.get(subjectCd: indexPath)
+        fetchWordList()
+//        self.wordList = self.wordDAO.find(subjectCd: indexPath)
+//        self.subjectInfo = self.subjectDAO.get(subjectCd: indexPath)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -100,20 +104,16 @@ class WordListViewController: UIViewController {
     // MARK:- UI Method
     
     func setupUIComponents() {
-//
-////        // transparent background
-////        self.view.isOpaque = false
-////        self.view.backgroundColor = UIColor(white: 0.5, alpha: 0.5)
-//
         
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         
         // UI Layouts
+
         [tableView, popImageButton, popTextButton, optionButton].forEach {
             self.view.addSubview($0)
         }
-//
+
         tableView.snp.makeConstraints { (m) in
             m.top.equalToSuperview()
             m.bottom.equalToSuperview()
@@ -140,7 +140,14 @@ class WordListViewController: UIViewController {
             m.centerY.equalTo(popImageButton.snp.centerY)
         }
     }
-//
+
+    // MARK:- DAO Methods
+    
+    func fetchWordList() {
+        let id = viewModel.id
+        viewModel.fetchSelectedSubject(id: id)
+        viewModel.fetchSelectedWords(id: id)
+    }
 
     
 }
@@ -148,27 +155,28 @@ class WordListViewController: UIViewController {
 extension WordListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.wordList.count
+        guard let wordList = self.viewModel.wordList else { return 10 }
+        return wordList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-
-
-        let rowData = self.wordList[indexPath.row]
-        print("\(rowData)")
-
-//        if self.indexPath == 8 || self.indexPath == 9 || self.indexPath == 11 {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WordListPhotoCell.self), for: indexPath) as! WordListPhotoCell
-            cell.viewModel = WordListPhotoCellViewModel(content: rowData)
-            return cell
-//        } else {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WordListSentenceCell.self), for: indexPath) as! WordListSentenceCell
-//            cell.viewModel = WordListSentenceCellViewModel(content: rowData)
-//            return cell
-//        }
         
-//        return UITableViewCell()
+        guard let rowData = self.viewModel.wordList?[indexPath.row] else { return UITableViewCell() }
+        
+        switch viewModel.id {
+        case 8, 9, 11:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WordListPhotoCell.self), for: indexPath) as! WordListPhotoCell
+            cell.viewModel = WordListPhotoCellViewModel(content: rowData)
+            cell.wordOrderLabel.text = "Numéro \(indexPath.row + 1)"
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WordListSentenceCell.self), for: indexPath) as! WordListSentenceCell
+            cell.viewModel = WordListSentenceCellViewModel(content: rowData)
+            cell.wordOrderLabel.text = "Numéro \(indexPath.row + 1)"
+            return cell
+        }
+        
+        
 
     }
 

@@ -124,10 +124,10 @@ extension VocabularySubjectListVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let navigator = Navigator()
-        let wordListVC = WordListViewController(navigator: navigator)
-        wordListVC.indexPath = (indexPath.row + 1)
-        self.navigationController?.pushViewController(navigate.get(segue: .wordList), animated: true)
+//        let navigator = Navigator()
+//        let wordListVC = WordListViewController(navigator: navigator)
+//        wordListVC.indexPath = (indexPath.row + 1)
+        self.navigationController?.pushViewController(navigate.get(segue: .wordList(id: indexPath.row + 1)), animated: true)
     }
     
     // Handle Collection View Header

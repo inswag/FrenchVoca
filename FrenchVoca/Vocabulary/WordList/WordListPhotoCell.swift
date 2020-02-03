@@ -25,6 +25,7 @@ class WordListPhotoCell: UITableViewCell {
             wordMeaningLabel.text = viewModel.meaning
             wordPartOfSpeechLabel.text = viewModel.partOfSpeech
             wordGenderLabel.text = viewModel.gender
+            
             if viewModel.confused == "oui" {
                 switch wordGenderLabel.text {
                 case "f.":
@@ -169,7 +170,8 @@ class WordListPhotoCell: UITableViewCell {
     // MARK:- Initialize
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .default, reuseIdentifier: String(describing: WordListViewController.self))
+        super.init(style: .default,
+                   reuseIdentifier: String(describing: WordListViewController.self))
         
         setupUIComponents()
     }
@@ -229,7 +231,7 @@ class WordListPhotoCell: UITableViewCell {
         }
         
         showImageView.snp.makeConstraints { (m) in
-            m.top.equalTo(wordNumberLabel.snp.bottom).offset(15)
+            m.top.equalTo(wordTitleLabel.snp.top)
             m.trailing.equalToSuperview().offset(-32)
             m.width.equalTo(120)
             m.height.equalTo(120)
