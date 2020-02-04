@@ -11,6 +11,8 @@
 		E63BF87923E469BE002145A5 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63BF87823E469BE002145A5 /* WordListViewController.swift */; };
 		E63BF87B23E46AF1002145A5 /* WordListSentenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63BF87A23E46AF1002145A5 /* WordListSentenceCell.swift */; };
 		E6627D7F23E6F31200F6AF96 /* WordListViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6627D7E23E6F31200F6AF96 /* WordListViewControllerViewModel.swift */; };
+		E6C258D923E806290094411F /* WordListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C258D823E806290094411F /* WordListHeader.swift */; };
+		E6C258DB23E8063B0094411F /* WordListHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C258DA23E8063B0094411F /* WordListHeaderViewModel.swift */; };
 		F911EF402317AEA2009A8913 /* VocabularyNotebookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911EF3F2317AEA2009A8913 /* VocabularyNotebookVC.swift */; };
 		F911EF422317B38D009A8913 /* VocabularyNotebookVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911EF412317B38D009A8913 /* VocabularyNotebookVCCell.swift */; };
 		F918C18323A7C12B002A11DA /* FrenchVoca.db in Resources */ = {isa = PBXBuildFile; fileRef = F918C18223A7C12B002A11DA /* FrenchVoca.db */; };
@@ -84,6 +86,8 @@
 		E63BF87823E469BE002145A5 /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
 		E63BF87A23E46AF1002145A5 /* WordListSentenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListSentenceCell.swift; sourceTree = "<group>"; };
 		E6627D7E23E6F31200F6AF96 /* WordListViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewControllerViewModel.swift; sourceTree = "<group>"; };
+		E6C258D823E806290094411F /* WordListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListHeader.swift; sourceTree = "<group>"; };
+		E6C258DA23E8063B0094411F /* WordListHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListHeaderViewModel.swift; sourceTree = "<group>"; };
 		F911EF3F2317AEA2009A8913 /* VocabularyNotebookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyNotebookVC.swift; sourceTree = "<group>"; };
 		F911EF412317B38D009A8913 /* VocabularyNotebookVCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyNotebookVCCell.swift; sourceTree = "<group>"; };
 		F918C18223A7C12B002A11DA /* FrenchVoca.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = FrenchVoca.db; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 			children = (
 				E63BF87823E469BE002145A5 /* WordListViewController.swift */,
 				E6627D7E23E6F31200F6AF96 /* WordListViewControllerViewModel.swift */,
+				E6C258D823E806290094411F /* WordListHeader.swift */,
+				E6C258DA23E8063B0094411F /* WordListHeaderViewModel.swift */,
 				E63BF87A23E46AF1002145A5 /* WordListSentenceCell.swift */,
 				F9F1EFE123BB475C0026ACA0 /* WordListSentenceCellViewModel.swift */,
 				F9C07B8422AE907800D0920B /* WordListPhotoCell.swift */,
@@ -594,6 +600,7 @@
 				F97867A3237D16E400CB0728 /* NotiSettingViewController.swift in Sources */,
 				F91F62E121F93D4A00B80433 /* ReceptionViewController.swift in Sources */,
 				F9E8346F23B453F7006C0F4E /* Tools.swift in Sources */,
+				E6C258D923E806290094411F /* WordListHeader.swift in Sources */,
 				F9D0E4572219780200BE4815 /* EnrollmentViewController.swift in Sources */,
 				F9F88DF62383E2700098C310 /* VocabularyVoiceSettingVC.swift in Sources */,
 				F9E8346623B43B9A006C0F4E /* TableViewCell.swift in Sources */,
@@ -636,6 +643,7 @@
 				F9B38F4322547D79000E1CEA /* SettingMainCell.swift in Sources */,
 				F9BB5C54226C487100A3679F /* SettingPeopleHeader.swift in Sources */,
 				F9C07B8522AE907800D0920B /* WordListPhotoCell.swift in Sources */,
+				E6C258DB23E8063B0094411F /* WordListHeaderViewModel.swift in Sources */,
 				F91F62F621F93E9800B80433 /* WelcomeMainProfileHeader.swift in Sources */,
 				F91CE29022102207000D1380 /* WordListCellSentence.swift in Sources */,
 				F9B0D6E923B47C7200EFBBB5 /* Font.swift in Sources */,

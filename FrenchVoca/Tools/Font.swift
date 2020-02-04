@@ -30,6 +30,11 @@ struct Font {
         return UIFont.init(name: "Avenir-Book", size: size) ?? UIFont.systemFont(ofSize: size)
     }
     
+    // Tools.font.avenirMedium(size: <#입력#>)
+    func avenirMedium(size: CGFloat) -> UIFont {
+        return UIFont.init(name: "Avenir-Medium", size: size) ?? UIFont.systemFont(ofSize: size)
+    }
+    
     // Tools.font.appleSDGothicNeoRegular(size: <#입력#>)
     func appleSDGothicNeoRegular(size: CGFloat) -> UIFont {
         return UIFont.init(name: "AppleSDGothicNeo-Regular", size: size) ?? UIFont.systemFont(ofSize: size)

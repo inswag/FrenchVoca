@@ -16,14 +16,6 @@ class WordListViewController: UIViewController {
     
     let navigate: Navigator
     let viewModel: WordListViewControllerViewModel
-  
-//    var wordDAO = WordDAO()
-//    var subjectDAO = SubjectDAO()
-//    
-//    var wordList: [WordVO]!
-//    var subjectInfo: [SubjectVO]!
-    
-    var indexPath: Int = 0
     
     // MARK:- UI Properties
     
@@ -101,6 +93,59 @@ class WordListViewController: UIViewController {
         }
     }
     
+    lazy var headerView: UIView = {
+        let view = UIView(frame: CGRect(x: 0,
+                                        y: 0,
+                                        width: self.view.frame.width,
+                                        height: 260))
+        view.backgroundColor = .blue
+        return view
+    }()
+    
+    lazy var menuImageView: UIImageView = {
+        let imageView = UIImageView(frame: CGRect(x: 0,
+                                                  y: 0,
+                                                  width: self.view.frame.width,
+                                                  height: 260))
+        imageView.backgroundColor = .red
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
+    let koreanTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "주제"
+        label.textAlignment = .left
+        label.font = Tools.font.appleSDGothicNeoBold(size: 25)
+        label.textColor = UIColor.rgb(r: 255, g: 255, b: 255)
+        label.numberOfLines = 1
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    let subFrenchTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Sujet français"
+        label.textAlignment = .left
+        label.font = Tools.font.avenirMedium(size: 18)
+        label.textColor = UIColor.white
+        label.numberOfLines = 1
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    let subSentenceLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Citation / Proverbe française"
+        label.textAlignment = .left
+        label.font = Tools.font.avenirLight(size: 18)
+        label.textColor = UIColor.white
+        label.numberOfLines = 3
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
     // MARK:- UI Method
     
     func setupUIComponents() {
@@ -109,7 +154,41 @@ class WordListViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         
         // UI Layouts
+        
+        // TableView Header
+        
+        [menuImageView].forEach {
+            self.headerView.addSubview($0)
+        }
 
+        [koreanTitleLabel, subFrenchTitleLabel, subSentenceLabel].forEach {
+            self.headerView.addSubview($0)
+        }
+
+        menuImageView.snp.makeConstraints { (m) in
+            m.top.bottom.leading.trailing.equalToSuperview()
+        }
+
+        subSentenceLabel.snp.makeConstraints { (m) in
+            m.leading.equalTo(headerView.snp.leading).offset(20)
+            m.bottom.equalTo(headerView.snp.bottom).offset(-20)
+            m.trailing.equalTo(headerView.snp.trailing)
+        }
+
+        subFrenchTitleLabel.snp.makeConstraints { (m) in
+            m.leading.equalToSuperview().offset(20)
+            m.bottom.equalTo(subSentenceLabel.snp.top)
+            m.trailing.equalToSuperview().offset(-20)
+        }
+
+        koreanTitleLabel.snp.makeConstraints { (m) in
+            m.leading.equalToSuperview().offset(20)
+            m.bottom.equalTo(subFrenchTitleLabel.snp.top)
+            m.trailing.equalToSuperview().offset(-20)
+        }
+        
+        // TableView Cell
+        
         [tableView, popImageButton, popTextButton, optionButton].forEach {
             self.view.addSubview($0)
         }
@@ -160,8 +239,9 @@ extension WordListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        guard let rowData = self.viewModel.wordList?[indexPath.row] else { return UITableViewCell() }
+        guard let rowData = self.viewModel.wordList?[indexPath.row] else {
+            return UITableViewCell()
+        }
         
         switch viewModel.id {
         case 8, 9, 11:
@@ -175,9 +255,10 @@ extension WordListViewController: UITableViewDataSource {
             cell.wordOrderLabel.text = "Numéro \(indexPath.row + 1)"
             return cell
         }
-        
-        
-
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return headerView
     }
 
 
@@ -187,7 +268,10 @@ extension WordListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             return UITableView.automaticDimension
-        
-//        return 300
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 260
+    }
+    
 }
