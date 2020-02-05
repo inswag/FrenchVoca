@@ -17,7 +17,7 @@ class WordListViewControllerViewModel {
     var subjectDAO = SubjectDAO()
     
     var wordList: [WordVO]?
-    var subjectInfo: [SubjectVO]?
+    var subjectInfo: SubjectVO?
     
 //    var fetchedProduct: Product?
     var id: Int

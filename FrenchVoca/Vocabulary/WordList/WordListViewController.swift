@@ -15,7 +15,8 @@ class WordListViewController: UIViewController {
     // MARK:- Properties
     
     let navigate: Navigator
-    let viewModel: WordListViewControllerViewModel
+    var viewModel: WordListViewControllerViewModel
+    
     
     // MARK:- UI Properties
     
@@ -51,7 +52,7 @@ class WordListViewController: UIViewController {
     }
     
     lazy var tableView: UITableView = {
-        let tv = UITableView()
+        let tv = UITableView(frame: UIScreen.main.bounds, style: UITableView.Style.grouped)
         tv.backgroundColor = .clear
         tv.separatorStyle = .none
         tv.showsVerticalScrollIndicator = false
@@ -83,8 +84,6 @@ class WordListViewController: UIViewController {
         setupUIComponents()
         
         fetchWordList()
-//        self.wordList = self.wordDAO.find(subjectCd: indexPath)
-//        self.subjectInfo = self.subjectDAO.get(subjectCd: indexPath)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -182,6 +181,7 @@ class WordListViewController: UIViewController {
         }
 
         koreanTitleLabel.snp.makeConstraints { (m) in
+//            m.top.equalToSuperview().offset(50)
             m.leading.equalToSuperview().offset(20)
             m.bottom.equalTo(subFrenchTitleLabel.snp.top)
             m.trailing.equalToSuperview().offset(-20)
@@ -226,6 +226,17 @@ class WordListViewController: UIViewController {
         let id = viewModel.id
         viewModel.fetchSelectedSubject(id: id)
         viewModel.fetchSelectedWords(id: id)
+        
+        setupSubjectUI()
+    }
+    
+    // 이거 별로 좋지 않은 것 같음 따로 처리할 방법을 찾아보자
+    func setupSubjectUI() {
+        guard let subject = viewModel.subjectInfo else { return }
+        menuImageView.image = UIImage(named: subject.subjectPhoto)
+        koreanTitleLabel.text = subject.subjectKoreanTitle
+        subFrenchTitleLabel.text = subject.subjectFrenchTitle
+        subSentenceLabel.text = subject.subjectSentence
     }
 
     
@@ -245,12 +256,14 @@ extension WordListViewController: UITableViewDataSource {
         
         switch viewModel.id {
         case 8, 9, 11:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WordListPhotoCell.self), for: indexPath) as! WordListPhotoCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WordListPhotoCell.self),
+                                                     for: indexPath) as! WordListPhotoCell
             cell.viewModel = WordListPhotoCellViewModel(content: rowData)
             cell.wordOrderLabel.text = "Numéro \(indexPath.row + 1)"
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WordListSentenceCell.self), for: indexPath) as! WordListSentenceCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: WordListSentenceCell.self),
+                                                     for: indexPath) as! WordListSentenceCell
             cell.viewModel = WordListSentenceCellViewModel(content: rowData)
             cell.wordOrderLabel.text = "Numéro \(indexPath.row + 1)"
             return cell

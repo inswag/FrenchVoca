@@ -70,32 +70,30 @@ class SubjectDAO {
     }
     
     // MARK:- Pick Up The Single Subject For Next Word List
-    func get(subjectCd: Int) -> [SubjectVO] {
-        var subjectList = [SubjectVO]()
+    func get(subjectCd: Int) -> SubjectVO {
+        var subjectList = SubjectVO()
         
-        do {
-            let sql = """
-                SELECT subj_cd, subj_koreantitle, subj_frenchtitle, subj_sentence
+        let sql = """
+                SELECT subj_cd, subj_koreantitle, subj_frenchtitle, subj_sentence, subj_photo
                 FROM subject
                 WHERE subj_cd = ?
             """
+        
+        let rs = self.fmdb.executeQuery(sql, withArgumentsIn: [subjectCd])
+        
+        if let _rs = rs {
+            _rs.next()
             
-            let rs = try self.fmdb.executeQuery(sql, values: nil)
+            subjectList.subjectCd = Int(_rs.int(forColumn: "subj_cd"))
+            subjectList.subjectKoreanTitle = _rs.string(forColumn: "subj_koreantitle")!
+            subjectList.subjectFrenchTitle = _rs.string(forColumn: "subj_frenchtitle")!
+            subjectList.subjectSentence = _rs.string(forColumn: "subj_sentence")!
+            subjectList.subjectPhoto = _rs.string(forColumn: "subj_photo")!
             
-            while rs.next() {
-                var record = SubjectVO()
-                record.subjectCd = Int(rs.int(forColumn: "subj_cd"))
-                record.subjectKoreanTitle = rs.string(forColumn: "subj_koreantitle")!
-                record.subjectFrenchTitle = rs.string(forColumn: "subj_frenchtitle")!
-                record.subjectSentence = rs.string(forColumn: "subj_sentence")!
-                subjectList.append(record)
-            }
-            
-        } catch let error as NSError {
-            print("failed: \(error.localizedDescription)")
         }
         
         return subjectList
+        
     }
     
 }
