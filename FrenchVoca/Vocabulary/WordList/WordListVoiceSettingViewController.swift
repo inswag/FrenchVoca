@@ -1,5 +1,5 @@
 //
-//  VocabularyVoiceSettingVC.swift
+//  WordListVoiceSettingViewController.swift
 //  FrenchVoca
 //
 //  Created by 박인수 on 19/11/2019.
@@ -11,7 +11,7 @@ import AVFoundation
 import UIKit
 import SnapKit
 
-class VocabularyVoiceSettingVC: UIViewController {
+class WordListVoiceSettingViewController: UIViewController {
     
     // Back Button
     let backButtonIcon: UIButton = {

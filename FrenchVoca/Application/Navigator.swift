@@ -51,7 +51,7 @@ class Navigator {
             let viewModel = WordListViewControllerViewModel(id: id)
             return WordListViewController(navigator: self, viewModel: viewModel)
         case .voiceSetting:
-            let voiceSettingViewController = VocabularyVoiceSettingVC()
+            let voiceSettingViewController = WordListVoiceSettingViewController()
             voiceSettingViewController.modalPresentationStyle = .pageSheet
             return voiceSettingViewController
         case .settingMain: return SettingViewController()

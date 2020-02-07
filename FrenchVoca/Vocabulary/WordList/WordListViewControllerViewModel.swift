@@ -16,7 +16,7 @@ class WordListViewControllerViewModel {
     var wordDAO = WordDAO()
     var subjectDAO = SubjectDAO()
     
-    var wordList: [WordVO]?
+    var wordList: [WordVO] = []
     var subjectInfo: SubjectVO?
     
 //    var fetchedProduct: Product?
@@ -37,4 +37,12 @@ class WordListViewControllerViewModel {
     func fetchSelectedWords(id: Int) {
         self.wordList = self.wordDAO.find(subjectCd: id)
     }
+    
+    // MARK- TableView Data Source
+    
+    func numberOfRowsInSection() -> Int {
+        return self.wordList.count
+    }
+    
+    
 }

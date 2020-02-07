@@ -245,14 +245,11 @@ class WordListViewController: UIViewController {
 extension WordListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let wordList = self.viewModel.wordList else { return 10 }
-        return wordList.count
+        return viewModel.numberOfRowsInSection()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let rowData = self.viewModel.wordList?[indexPath.row] else {
-            return UITableViewCell()
-        }
+        let rowData = self.viewModel.wordList[indexPath.row]
         
         switch viewModel.id {
         case 8, 9, 11:
@@ -270,7 +267,8 @@ extension WordListViewController: UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView,
+                   viewForHeaderInSection section: Int) -> UIView? {
         return headerView
     }
 
@@ -279,11 +277,13 @@ extension WordListViewController: UITableViewDataSource {
 
 extension WordListViewController: UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
             return UITableView.automaticDimension
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView,
+                   heightForHeaderInSection section: Int) -> CGFloat {
         return 260
     }
     
