@@ -10,6 +10,7 @@ import UIKit
 
 class ReceptionViewController: UIViewController {
     
+    
     // MARK:- UI Properties
     let frenchVocaLogo: UILabel = {
         let label = UILabel()
@@ -56,7 +57,6 @@ class ReceptionViewController: UIViewController {
         setupUIComponents()
         setupCustomNaviBarDesign()
         print("viewDidLoad")
-        
 //        self.navigationItem.titleView = frenchVocaLogo
 
         
@@ -122,17 +122,18 @@ extension ReceptionViewController: UICollectionViewDataSource {
     // Handle Collection View Header
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: WelcomeMainProfileHeader.self), for: indexPath) as! WelcomeMainProfileHeader
-        
-        let plist = UserDefaults.standard
-        header.usernameLabel.text = plist.string(forKey: "이름")
-        header.positionLabel.text = plist.string(forKey: "소속")
-        if let imageData = plist.data(forKey: "이미지") {
-            header.profileImageView.image = UIImage(data: imageData)
-        }
-        header.backgroundColor = .white
+//        let plist = UserDefaults.standard
+//        header.usernameLabel.text = plist.string(forKey: "이름")
+//        header.positionLabel.text = plist.string(forKey: "소속")
+//        if let imageData = plist.data(forKey: "이미지") {
+//            header.profileImageView.image = UIImage(data: imageData)
+//        }
+//        header.backgroundColor = .white
         return header
     }
 }
+
+
 
 
 //MARK:- Collection View Delegate Flow Layout Methods
@@ -151,6 +152,8 @@ extension ReceptionViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+//        return CGSize(width: self.view.frame.width, height: 250)
         return WelcomeMainProfileHeader.defineCellSize(cellwidth: self.view.frame.width)
     }
     

@@ -233,7 +233,7 @@ class WordListViewController: UIViewController {
     // 이거 별로 좋지 않은 것 같음 따로 처리할 방법을 찾아보자
     func setupSubjectUI() {
         guard let subject = viewModel.subjectInfo else { return }
-        menuImageView.image = UIImage(named: subject.subjectPhoto)
+        menuImageView.image = UIImage(named: subject.subjectFrenchTitle)
         koreanTitleLabel.text = subject.subjectKoreanTitle
         subFrenchTitleLabel.text = subject.subjectFrenchTitle
         subSentenceLabel.text = subject.subjectSentence
@@ -242,13 +242,17 @@ class WordListViewController: UIViewController {
     
 }
 
+// MARK:- Table View Data Source Methods
+
 extension WordListViewController: UITableViewDataSource {
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRowsInSection()
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let rowData = self.viewModel.wordList[indexPath.row]
         
         switch viewModel.id {
@@ -274,6 +278,8 @@ extension WordListViewController: UITableViewDataSource {
 
 
 }
+
+// MARK:- Table View Delegate Methods
 
 extension WordListViewController: UITableViewDelegate {
 

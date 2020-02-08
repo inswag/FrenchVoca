@@ -13,7 +13,13 @@ import SnapKit
 
 class WordListVoiceSettingViewController: UIViewController {
     
-    // Back Button
+    // MARK:- Properties
+    
+    let plist = UserDefaults.standard
+    var willPassValue: Float = 0.5
+    
+    // MARK:- UI Properties
+    
     let backButtonIcon: UIButton = {
         let button = UIButton()
         let popBtn = UIImage(named: "Pop_Black_Button")
@@ -36,7 +42,6 @@ class WordListVoiceSettingViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    // Title Label
     let titleLabel: UILabel = {
         // France Blue RGB : 36 74 156
         let titleLabel = UILabel()
@@ -85,10 +90,6 @@ class WordListVoiceSettingViewController: UIViewController {
         return label
     }()
     
-   
-    let plist = UserDefaults.standard
-    
-    //  UISilder
     let rateSlider: UISlider = {
         let slider = UISlider()
         slider.backgroundColor = UIColor.white
@@ -110,14 +111,11 @@ class WordListVoiceSettingViewController: UIViewController {
         return slider
     }()
 
-    var willPassValue: Float = 0.5
-    
     @objc func handleRateChange() {
         willPassValue = rateSlider.value
         print("\(rateSlider.value)")
     }
     
-    // Button Stack View
     let previewButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("들어보기\n(Aperçu)", for: .normal)
@@ -132,13 +130,13 @@ class WordListVoiceSettingViewController: UIViewController {
         return button
     }()
     
-    let synthesizer = AVSpeechSynthesizer()
+//    let synthesizer = AVSpeechSynthesizer()
     
     @objc func handlePreview() {
         let utterance = AVSpeechUtterance(string: self.commentExampleLabel.text!)
         utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR")
         utterance.rate = self.rateSlider.value
-        synthesizer.speak(utterance)
+        Application.shared.synthesizer.speak(utterance)
         
         print("Preview OK")
     }
@@ -189,6 +187,9 @@ class WordListVoiceSettingViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    // MARK:- View Life Cycle
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
@@ -197,6 +198,7 @@ class WordListVoiceSettingViewController: UIViewController {
     }
     
     // MARK:- UI Design
+    
     func setupUIComponents() {
         
         [rateSlider, backButtonIcon, backButtonText].forEach { self.view.addSubview($0) }
@@ -262,7 +264,6 @@ class WordListVoiceSettingViewController: UIViewController {
         
         containerStackView.snp.makeConstraints { (m) in
             m.top.equalTo(rateSlider.snp.bottom).offset(30)
-
             m.leading.equalTo(view.safeAreaLayoutGuide.snp.leadingMargin).offset(40)
             m.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailingMargin).offset(-40)
             m.height.equalTo(100)
@@ -271,8 +272,8 @@ class WordListVoiceSettingViewController: UIViewController {
     }
     
     deinit {
-        if synthesizer.isSpeaking == true {
-            synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
+        if Application.shared.synthesizer.isSpeaking == true {
+            Application.shared.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
         }
     }
     
