@@ -29,7 +29,6 @@ class Navigator {
         case wordList(id: Int)
         case voiceSetting
         case settingMain        // Setting
-        case setting
         case settingModifyInfo
         case settingPeople
         case settingNoti
@@ -44,8 +43,8 @@ class Navigator {
         case .signIn: return SignInViewController()
         case .notiSetting: return NotiSettingViewController()
         case .reception: return ReceptionViewController()
-        case .delf: return DELFScheduleViewController()
-        case .flex: return FLEXScheduleViewController()
+        case .delf: return DELFViewController()
+        case .flex: return FLEXViewController()
         case .subjectList: return VocabularySubjectListVC(navigator: self)
         case .wordList(let id):
             let viewModel = WordListViewControllerViewModel(id: id)
@@ -54,11 +53,23 @@ class Navigator {
             let voiceSettingViewController = WordListVoiceSettingViewController()
             voiceSettingViewController.modalPresentationStyle = .pageSheet
             return voiceSettingViewController
-        case .settingMain: return SettingViewController()
-        case .setting: return SettingViewController()
-        case .settingModifyInfo: return SettingModifyInfoVC()
-        case .settingPeople: return SettingPeopleCollectionVC()
-        case .settingNoti: return SettingNotificationsVC()
+        case .settingMain:
+            let settingMainViewController = SettingViewController(navigator: self)
+            return settingMainViewController
+        case .settingModifyInfo:
+            let settingModifyInfoViewController = SettingModifyInfoVC()
+            settingModifyInfoViewController.modalPresentationStyle = .overCurrentContext
+            return settingModifyInfoViewController
+        case .settingPeople:
+            let flowLayout = UICollectionViewFlowLayout()
+            flowLayout.scrollDirection = UICollectionView.ScrollDirection.vertical
+            flowLayout.minimumInteritemSpacing = 1.0
+            flowLayout.minimumLineSpacing = 1.0
+            let settingPeopleCollectionVC = SettingPeopleCollectionVC(collectionViewLayout: flowLayout)
+            return settingPeopleCollectionVC
+        case .settingNoti:
+            let settingNotiVC = SettingNotificationsVC()
+            return settingNotiVC
         }
         
     }

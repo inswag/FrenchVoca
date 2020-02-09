@@ -17,7 +17,6 @@ class WordListViewController: UIViewController {
     let navigate: Navigator
     var viewModel: WordListViewControllerViewModel
     
-    
     // MARK:- UI Properties
     
     lazy var popImageButton: UIButton = {

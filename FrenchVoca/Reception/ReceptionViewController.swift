@@ -8,10 +8,17 @@
 
 import UIKit
 
+protocol ReceptionHeaderDelegate: class {
+    func leftImageTapped()
+    func rightImageTapped()
+}
+
 class ReceptionViewController: UIViewController {
     
     
+    
     // MARK:- UI Properties
+    
     let frenchVocaLogo: UILabel = {
         let label = UILabel()
         label.text = "French Voca"
@@ -24,12 +31,12 @@ class ReceptionViewController: UIViewController {
 
     lazy var barBtnDELF = UIBarButtonItem(title: "DELF", style: .plain, target: self, action: #selector(delfBtnAction))
     @objc func delfBtnAction() {
-        self.navigationController?.pushViewController(DELFScheduleViewController(), animated: true)
+        self.navigationController?.pushViewController(DELFViewController(), animated: true)
     }
     
     lazy var barBtnFLEX = UIBarButtonItem(title: "FLEX", style: .plain, target: self, action: #selector(flexBtnAction))
     @objc func flexBtnAction() {
-        self.navigationController?.pushViewController(FLEXScheduleViewController(), animated: true)
+        self.navigationController?.pushViewController(FLEXViewController(), animated: true)
     }
     
     //MARK:- WelcomeVC Collection View
@@ -122,6 +129,8 @@ extension ReceptionViewController: UICollectionViewDataSource {
     // Handle Collection View Header
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: WelcomeMainProfileHeader.self), for: indexPath) as! WelcomeMainProfileHeader
+        
+        header.delegate = self
 //        let plist = UserDefaults.standard
 //        header.usernameLabel.text = plist.string(forKey: "이름")
 //        header.positionLabel.text = plist.string(forKey: "소속")
@@ -157,4 +166,15 @@ extension ReceptionViewController: UICollectionViewDelegateFlowLayout {
         return WelcomeMainProfileHeader.defineCellSize(cellwidth: self.view.frame.width)
     }
     
+}
+
+extension ReceptionViewController: ReceptionHeaderDelegate {
+    
+    func leftImageTapped() {
+        self.navigationController?.pushViewController(FLEXViewController(), animated: true)
+    }
+    
+    func rightImageTapped() {
+        self.navigationController?.pushViewController(DELFViewController(), animated: true)
+    }
 }

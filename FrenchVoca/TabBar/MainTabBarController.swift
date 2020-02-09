@@ -70,7 +70,7 @@ class MainTabBarController: UITabBarController {
         // Setting
         let settingController = templateNavController(unselectedImage: settingUnselected!,
                                                       selectedImage: settingSelected!,
-                                                      rootViewController: self.navigator.get(segue: .setting))
+                                                      rootViewController: self.navigator.get(segue: .settingMain))
         
 //        let settingController = NavigationController(rootViewController: self.navigator.get(segue: .settingMain))
 //        settingController.tabBarItem.selectedImage = settingSelected!

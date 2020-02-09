@@ -8,13 +8,7 @@
 
 import UIKit
 
-protocol ReceptionHeaderDelegate: class {
-    func leftImageTapped()
-    func rightImageTapped()
-}
-
 class WelcomeMainProfileHeader: UICollectionViewCell {
-    
     
     // Student Card + Welcome Message PART
     static func defineCellSize(cellwidth: CGFloat) -> CGSize {
@@ -38,7 +32,7 @@ class WelcomeMainProfileHeader: UICollectionViewCell {
     
     // MARK:- Properties
     
-    var delegate: ReceptionHeaderDelegate?
+    weak var delegate: ReceptionHeaderDelegate?
     
     // MARK:- UI Properties
     

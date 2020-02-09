@@ -130,7 +130,6 @@ class WordListVoiceSettingViewController: UIViewController {
         return button
     }()
     
-//    let synthesizer = AVSpeechSynthesizer()
     
     @objc func handlePreview() {
         let utterance = AVSpeechUtterance(string: self.commentExampleLabel.text!)

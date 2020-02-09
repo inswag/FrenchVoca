@@ -1,17 +1,24 @@
 //
-//  FLEXScheduleViewController.swift
+//  DELFViewController.swift
 //  FrenchVoca
 //
-//  Created by 박인수 on 05/02/2019.
+//  Created by 박인수 on 24/01/2019.
 //  Copyright © 2019 inswag. All rights reserved.
 //
 
 import UIKit
 import WebKit
 
-class FLEXScheduleViewController: UIViewController {
+class DELFViewController: UIViewController {
     
-    // MARK:- Custom Navigation Bar
+    // MARK:- Properties
+    
+    var webView: WKWebView!
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
+    
+    
+    // MARK:- UI Properties
+    
     let customNaviBarTitle: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 110, height: 27)) // 110/27
         let label = UILabel()
@@ -31,9 +38,17 @@ class FLEXScheduleViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    // MARK:- WebView & Activity Indicator
-    var webView: WKWebView!
-    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
+    // MARK:- View Did Load
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .white
+        self.setupNaviBarDesign()
+        self.setupAIDesign() // AI = Activity Indicator
+        self.handleWebView()
+    }
+    
+    // MARK:- UI Methods
     
     override func loadView() {
         let webConfiguration = WKWebViewConfiguration()
@@ -44,21 +59,11 @@ class FLEXScheduleViewController: UIViewController {
     }
     
     fileprivate func handleWebView() {
-        let myURL = URL(string: "http://license.korcham.net/kor/license/schedule.jsp?cd=0403&mm=52")
+        let myURL = URL(string: "https://www.delf-dalf.co.kr/ko/calendriers/")
         let myRequest = URLRequest(url: myURL!)
         webView.load(myRequest)
     }
     
-    // MARK:- View Did Load
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .white
-        self.setupNaviBarDesign()
-        self.setupAIDesign() // AI = Activity Indicator
-        self.handleWebView()
-    }
-
-    // MARK:- UI Design
     fileprivate func setupNaviBarDesign() {
         self.navigationItem.titleView = customNaviBarTitle
         self.navigationItem.leftBarButtonItem = self.backButton
@@ -73,11 +78,12 @@ class FLEXScheduleViewController: UIViewController {
         activityIndicator.safeAreaLayoutGuide.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor).isActive = true
         activityIndicator.safeAreaLayoutGuide.centerYAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerYAnchor).isActive = true
     }
-    
+
 }
 
-//MARK:- WKWebview Delegate Methods
-extension FLEXScheduleViewController: WKUIDelegate, WKNavigationDelegate {
+// MARK:- WKWebview Delegate Methods
+
+extension DELFViewController: WKUIDelegate, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
         activityIndicator.startAnimating()
