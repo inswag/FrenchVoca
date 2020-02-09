@@ -70,16 +70,18 @@ class SettingViewController: ViewController {
 
 }
 
-// MARK: - Data Source
+// MARK: - Table View Data Source
 
 extension SettingViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         return self.titleLabel.count
     }
     
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.item == 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingMainSwitchCell.self), for: indexPath) as! SettingMainSwitchCell
@@ -99,11 +101,12 @@ extension SettingViewController: UITableViewDataSource {
     
 }
 
-// MARK: - Delegate
+// MARK: - Table View Delegate
 
 extension SettingViewController: UITableViewDelegate {
     
-    func tableView(_ tablView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tablView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
         
         switch indexPath.row {
         case 0:
@@ -119,7 +122,8 @@ extension SettingViewController: UITableViewDelegate {
         
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
         return SettingMainCell.defineCellHeight()
     }
 }

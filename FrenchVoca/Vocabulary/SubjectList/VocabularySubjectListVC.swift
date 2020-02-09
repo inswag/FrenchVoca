@@ -21,13 +21,15 @@ class VocabularySubjectListVC: UIViewController {
     let navigate: Navigator
     
     // MARK:- DAO
+    
     var subjectList: [SubjectVO]!
     let subjectDAO = SubjectDAO()
     
     // MARK:- UI Properties
+    
     let frenchVocaLogo: UILabel = {
         let label = UILabel()
-        label.text = "French Voca"
+        label.text = "Bienvenue"
         label.textAlignment = .center
         label.font = Tools.font.avenirBook(size: 20)
         label.textColor = Tools.color.lightBlack
@@ -42,7 +44,6 @@ class VocabularySubjectListVC: UIViewController {
 //        self.navigationController?.pushViewController(VocabularyNotebookVC(), animated: true)
 //    }
     
-    // MARK:- Collection View(=CV)
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -69,7 +70,8 @@ class VocabularySubjectListVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK:- View Methods
+    // MARK:- View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -84,7 +86,7 @@ class VocabularySubjectListVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
     }
     
-    //MARK:- Design
+    // MARK:- UI Methods
     
     fileprivate func setupUIComponents() {
         self.view.addSubview(collectionView)
@@ -96,7 +98,7 @@ class VocabularySubjectListVC: UIViewController {
     fileprivate func setupCustomNaviBarDesign() {
 //        barBtnYours.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Avenir-Black", size: 20)!, NSAttributedString.Key.foregroundColor: Tools.color.lightBlack], for: .normal)
         
-//        self.navigationItem.titleView = frenchVocaLogo
+        self.navigationItem.titleView = frenchVocaLogo
         
 //        self.navigationItem.rightBarButtonItems = [barBtnYours]
 //        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")

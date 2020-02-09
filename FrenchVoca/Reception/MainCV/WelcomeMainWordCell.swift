@@ -16,10 +16,10 @@ class WelcomeMainWordCell: UICollectionViewCell {
     var fiveWordsVO: WordVO!
     
     static func defineCellSize(cellwidth: CGFloat) -> CGSize {
-        let margin: CGFloat = 44 + 10 // 2(Border) + 10(top ~ title)
-        let cvHeight = (Constant.wordCellTitleFont.lineHeight) + (Constant.wordCellSubTitleFont.lineHeight) + (WelcomeMainWordNestedCell.Constant.containerViewHeight)
+        let margin: CGFloat = 44 + 10 + 10 + 10 + 10 // 2(Border) + 10(top ~ title) + margin between cells
+        let cvHeight = (Constant.wordCellTitleFont.lineHeight) + (Constant.wordCellSubTitleFont.lineHeight) + (WelcomeMainWordNestedCell.Constant.containerViewHeight * 5)
             // 컬렉션 뷰의 높이를 가져와야 한다.
-        let totalHeight = margin + cvHeight
+        let totalHeight = (margin + cvHeight)
         return CGSize(width: cellwidth, height: totalHeight)
     }
     
@@ -32,7 +32,7 @@ class WelcomeMainWordCell: UICollectionViewCell {
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 0
         let cv = UICollectionView(frame: CGRect.zero , collectionViewLayout: layout)

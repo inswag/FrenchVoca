@@ -63,8 +63,7 @@ class ReceptionViewController: UIViewController {
         super.viewDidLoad()
         setupUIComponents()
         setupCustomNaviBarDesign()
-        print("viewDidLoad")
-//        self.navigationItem.titleView = frenchVocaLogo
+        setupAnimation()
 
         
     }
@@ -75,13 +74,30 @@ class ReceptionViewController: UIViewController {
         self.collectionView.reloadData() // Userdefault 적용 하지만 뷰가 나타낼때마다 리로드해주는건 너무 좋지 않다. 다른 방법을 찾으시오.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+    }
+    
     
     //MARK:- Design
     fileprivate func setupUIComponents() {
+        self.navigationItem.titleView = frenchVocaLogo
         self.view.addSubview(collectionView)
         collectionView.backgroundColor = .white
         collectionView.anchor(top: self.view.topAnchor, left: self.view.leftAnchor, bottom: self.view.bottomAnchor, right: self.view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
+    
+    fileprivate func setupAnimation() {
+        UIView.animate(withDuration: 1, delay: 0, options: [.transitionCrossDissolve, .autoreverse, .repeat], animations: {
+            self.frenchVocaLogo.text = "Merci"
+        }, completion: nil)
+        
+//        (with: frenchVocaLogo, duration: 0, options: [.transitionCrossDissolve, .autoreverse, .repeat], animations: { [weak self] in
+//            self?.frenchVocaLogo.text = "Merci"
+//            }, completion: nil)
+    }
+    
     
     fileprivate func setupCustomNaviBarDesign() {
         barBtnDELF.setTitleTextAttributes([NSAttributedString.Key.font: Tools.font.avenirBlack(size: 20), NSAttributedString.Key.foregroundColor: Tools.color.lightBlack], for: .normal)
