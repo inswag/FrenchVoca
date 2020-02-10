@@ -54,8 +54,8 @@ class Navigator {
             voiceSettingViewController.modalPresentationStyle = .pageSheet
             return voiceSettingViewController
         case .settingMain:
-            let settingMainViewController = SettingViewController(navigator: self)
-            return settingMainViewController
+            let settingViewController = SettingViewController(navigator: self)
+            return settingViewController
         case .settingModifyInfo:
             let settingModifyInfoViewController = SettingModifyInfoVC()
             settingModifyInfoViewController.modalPresentationStyle = .overCurrentContext

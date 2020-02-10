@@ -13,6 +13,7 @@ class SettingViewController: ViewController {
     // MARK:- Properties
     
     let navigate: Navigator
+    let plist = UserDefaults.standard
     
     let titleLabel = ["등록 정보 변경", "개발자와 친구들", "알림 On/Off","알림 설정"]
     let subtitleLabel = ["Changer votre inscription", "Développeur et ses amis", "Allumer/éteindre vos notis","Paramètre de Notifications"]
@@ -105,16 +106,27 @@ class SettingViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        imagePickerResponse()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
     }
     
+    // MARK:- Methods
+    
+
+    
     // MARK:- UI Methods
     
     override func setupUIComponents() {
         self.navigationItem.titleView = settingNaviTitle
+        
+        usernameLabel.text = plist.string(forKey: "이름")
+        positionLabel.text = plist.string(forKey: "소속")
+        if let imageData = plist.data(forKey: "이미지") {
+            profileImageView.image = UIImage(data: imageData)
+        }
         
         let nameStackView = UIStackView(arrangedSubviews: [usernameLabel, positionLabel])
         nameStackView.axis = .vertical

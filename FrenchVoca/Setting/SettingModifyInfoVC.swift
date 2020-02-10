@@ -10,7 +10,12 @@ import UIKit
 
 class SettingModifyInfoVC: UIViewController {
     
+    // MARK:- Properties
+    
     var newImage = UIImage(named: "D")
+    let imagePickerControllerInSettingVC = UIImagePickerController()
+    
+    // MARK:- UI Properties
     
     let containerView: UIView = {
         let view = UIView()
@@ -22,6 +27,7 @@ class SettingModifyInfoVC: UIViewController {
     }()
     
     // MARK:- 'now' Property
+    
     let nowTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Maintenant(현재)"
@@ -125,8 +131,6 @@ class SettingModifyInfoVC: UIViewController {
         return btn
     }()
     
-    let imagePickerControllerInSettingVC = UIImagePickerController()
-    
     @objc func handlePickImage() {
         print("Push")
         self.present(imagePickerControllerInSettingVC, animated: true, completion: nil)
@@ -163,6 +167,7 @@ class SettingModifyInfoVC: UIViewController {
     }
     
     //MARK:- 'button' Property
+    
     lazy var cancelButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("취소", for: .normal)
@@ -223,25 +228,34 @@ class SettingModifyInfoVC: UIViewController {
             }
             plist.synchronize()
             
-            let welcomeVC = ReceptionViewController()
-            welcomeVC.collectionView.reloadData()
+//            let setting = SettingViewController(navigator: Navigator())
+//            setting.tableview.reloadData()
             
             self.dismiss(animated: true, completion: nil)
         }
-        
-        
     }
+    
+    let noticeTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "* 앱 재실행 시 반영됩니다 :)"
+        label.textAlignment = .left
+        label.font = Tools.font.avenirBook(size: 14)
+        label.textColor = Tools.color.prettyBlack
+        label.numberOfLines = 1
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    // MARK:- View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUIComponents()
         setupContainer()
-        
-        imagePickerControllerInSettingVC.delegate = self
-        imagePickerControllerInSettingVC.allowsEditing = true
-        imagePickerControllerInSettingVC.sourceType = .photoLibrary
         print("View Did Load OK")
     }
+    
+    // MARK:- Methods
     
     fileprivate func setupContainer() {
         let plist = UserDefaults.standard
@@ -255,7 +269,13 @@ class SettingModifyInfoVC: UIViewController {
         self.afterPositionTextfield.text = plist.string(forKey: "소속")
     }
     
+    // MARK:- UI Methods
+    
     fileprivate func setupUIComponents() {
+        imagePickerControllerInSettingVC.delegate = self
+        imagePickerControllerInSettingVC.allowsEditing = true
+        imagePickerControllerInSettingVC.sourceType = .photoLibrary
+        
         self.view.backgroundColor = UIColor.clear
         self.view.isOpaque = false
         
@@ -264,13 +284,27 @@ class SettingModifyInfoVC: UIViewController {
         buttonStackView.spacing = 10
         buttonStackView.distribution = .fillEqually
         
-        [containerView, buttonStackView].forEach { self.view.addSubview($0) }
-        self.containerView.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 30, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 295, height: 410)
+        [containerView, buttonStackView].forEach {
+            self.view.addSubview($0)
+        }
+        
+        self.containerView.anchor(top: self.view.safeAreaLayoutGuide.topAnchor,
+                                  left: nil,
+                                  bottom: nil,
+                                  right: nil,
+                                  paddingTop: 30,
+                                  paddingLeft: 0,
+                                  paddingBottom: 0,
+                                  paddingRight: 0,
+                                  width: 295,
+                                  height: 410)
         self.containerView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
 
         
         
-        [nowTitleLabel, nowContainerView, afterTitleLabel, afterContainerView].forEach { self.containerView.addSubview($0) }
+        [nowTitleLabel, nowContainerView, afterTitleLabel, afterContainerView, noticeTitleLabel].forEach {
+            self.containerView.addSubview($0)
+        }
         self.nowTitleLabel.anchor(top: self.containerView.topAnchor, left: self.containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         self.nowContainerView.anchor(top: self.nowTitleLabel.bottomAnchor, left: self.containerView.leftAnchor, bottom: nil, right: self.containerView.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 275, height: 125)
         self.afterTitleLabel.anchor(top: self.nowContainerView.bottomAnchor, left: self.containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
@@ -288,9 +322,13 @@ class SettingModifyInfoVC: UIViewController {
         self.afterProfileImageButton.anchor(top: self.afterStudentCardLabel.bottomAnchor, left: self.afterContainerView.leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 60, height: 60)
         self.afterUsernameTextfield.anchor(top: self.afterProfileImageButton.topAnchor, left: self.afterProfileImageButton.rightAnchor, bottom: nil, right: self.afterContainerView.rightAnchor, paddingTop: 0, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 0)
         self.afterPositionTextfield.anchor(top: self.afterUsernameTextfield.bottomAnchor, left: self.afterProfileImageButton.rightAnchor, bottom: nil, right: self.afterContainerView.rightAnchor, paddingTop: 5, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 0)
+        
+        self.noticeTitleLabel.anchor(top: self.containerView.bottomAnchor, left: self.containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 16, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
-    
+    git 
 }
+
+// MARK:- Image Picker Delegate
 
 extension SettingModifyInfoVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 

@@ -126,15 +126,7 @@ extension ReceptionViewController: UICollectionViewDataSource {
     // Handle Collection View Header
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: WelcomeMainProfileHeader.self), for: indexPath) as! WelcomeMainProfileHeader
-        
         header.delegate = self
-//        let plist = UserDefaults.standard
-//        header.usernameLabel.text = plist.string(forKey: "이름")
-//        header.positionLabel.text = plist.string(forKey: "소속")
-//        if let imageData = plist.data(forKey: "이미지") {
-//            header.profileImageView.image = UIImage(data: imageData)
-//        }
-//        header.backgroundColor = .white
         return header
     }
 }
