@@ -19,20 +19,75 @@ class SettingViewController: ViewController {
     
     // MARK:- UI Properties
     
+    let settingNaviTitle: UILabel = {
+        let label = UILabel()
+        label.text = "Paramètre"
+        label.textAlignment = .center
+        label.font = Tools.font.avenirBook(size: 20)
+        label.textColor = Tools.color.lightBlack
+        label.numberOfLines = 1
+        return label
+    }()
+    
     lazy var tableview: UITableView = {
-        let tv = UITableView(frame: UIScreen.main.bounds, style: UITableView.Style.grouped)
+        let tv = UITableView(frame: UIScreen.main.bounds,
+                             style: UITableView.Style.plain)
         tv.backgroundColor = .white
-        tv.estimatedRowHeight = 150
-//        tv.rowHeight = UITableView.automaticDimension
-//        tv.contentInset =
         tv.separatorStyle = .none
-//        tv.allowsSelection = false
         tv.showsVerticalScrollIndicator = false
         tv.delegate = self
         tv.dataSource = self
-        tv.register(SettingMainCell.self, forCellReuseIdentifier: String(describing: SettingMainCell.self))
-        tv.register(SettingMainSwitchCell.self, forCellReuseIdentifier: String(describing: SettingMainSwitchCell.self))
+        tv.register(SettingDefaultCell.self, forCellReuseIdentifier: String(describing: SettingDefaultCell.self))
+        tv.register(SettingSwitchCell.self, forCellReuseIdentifier: String(describing: SettingSwitchCell.self))
         return tv
+    }()
+    
+    lazy var headerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    let identifierTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Carte d'étudiant"
+        label.textAlignment = .left
+        label.font = Tools.font.avenirLight(size: 14)
+        label.textColor = Tools.color.mediumBlack
+        label.numberOfLines = 1
+        label.adjustsFontSizeToFitWidth = false
+        return label
+    }()
+    
+    let profileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .lightGray
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 45 // imageView Size 60 * 60
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
+    let usernameLabel: UILabel = {
+        let label = UILabel()
+        label.text = "VOTRE SURNOM"
+        label.textAlignment = .left
+        label.font = Tools.font.avenirBlack(size: 20)
+        label.textColor = Tools.color.lightBlack
+        label.numberOfLines = 1
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    
+    let positionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Votre position"
+        label.textAlignment = .left
+        label.font = Tools.font.avenirBook(size: 15)
+        label.textColor = Tools.color.lightBlack
+        label.numberOfLines = 1
+        label.adjustsFontSizeToFitWidth = true
+        return label
     }()
     
     // MARK;- Initialize
@@ -59,6 +114,37 @@ class SettingViewController: ViewController {
     // MARK:- UI Methods
     
     override func setupUIComponents() {
+        self.navigationItem.titleView = settingNaviTitle
+        
+        let nameStackView = UIStackView(arrangedSubviews: [usernameLabel, positionLabel])
+        nameStackView.axis = .vertical
+        nameStackView.spacing = 8
+        nameStackView.distribution = .fillEqually
+        
+        [identifierTitleLabel, profileImageView, nameStackView].forEach {
+            headerView.addSubview($0)
+        }
+        
+        identifierTitleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(16)            // FontSize + 10
+            $0.leading.equalToSuperview().offset(16)
+        }
+        
+        profileImageView.snp.makeConstraints {
+            $0.top.equalTo(identifierTitleLabel.snp.bottom).offset(16)
+            $0.leading.equalToSuperview().offset(24)
+            $0.width.height.equalTo(90)
+        }
+        
+        nameStackView.snp.makeConstraints {
+            $0.leading.equalTo(profileImageView.snp.trailing).offset(16)
+            $0.width.equalToSuperview().offset(-16)
+            $0.height.equalTo(Tools.font.avenirBlack(size: 20).lineHeight + Tools.font.avenirBook(size: 15).lineHeight + 8)
+            $0.centerY.equalTo(profileImageView.snp.centerY)
+        }
+//
+        
+        
         [tableview].forEach {
             self.view.addSubview($0)
         }
@@ -84,19 +170,23 @@ extension SettingViewController: UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.item == 2 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingMainSwitchCell.self), for: indexPath) as! SettingMainSwitchCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingSwitchCell.self), for: indexPath) as! SettingSwitchCell
             cell.selectionStyle = .none
             cell.titleLabel.text = self.titleLabel[indexPath.row]
             cell.subTitleLabel.text = self.subtitleLabel[indexPath.row]
             return cell
         }
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingMainCell.self), for: indexPath) as! SettingMainCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: SettingDefaultCell.self), for: indexPath) as! SettingDefaultCell
         cell.selectionStyle = .none
         cell.titleLabel.text = self.titleLabel[indexPath.row]
         cell.subTitleLabel.text = self.subtitleLabel[indexPath.row]
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return headerView
     }
     
 }
@@ -124,6 +214,12 @@ extension SettingViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView,
                    heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return SettingMainCell.defineCellHeight()
+        return SettingDefaultCell.defineCellHeight()
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 138 + Tools.font.avenirLight(size: 14).lineHeight
+    }
+    
+    
 }

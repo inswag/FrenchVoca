@@ -1,5 +1,5 @@
 //
-//  SettingMainSwitchCell.swift
+//  SettingDefaultCell.swift
 //  FrenchVoca
 //
 //  Created by 박인수 on 18/11/2019.
@@ -9,7 +9,7 @@
 import UIKit
 import UserNotifications
 
-class SettingMainSwitchCell: UITableViewCell {
+class SettingSwitchCell: UITableViewCell {
     
     static func defineCellHeight() -> CGFloat {
         let cellHeight = (Constant.titleFont.lineHeight) + (Constant.margin) + (Constant.subTitleFont.lineHeight)
@@ -17,14 +17,18 @@ class SettingMainSwitchCell: UITableViewCell {
     }
     
     struct Constant {
-        static let margin: CGFloat = 20
+        static let margin: CGFloat = 16
         static let titleFont = Tools.font.avenirLight(size: 18)
         static let subTitleFont = Tools.font.avenirLight(size: 12)
     }
     
-    let cellID2 = "cellswitchID"
+    // MARK:- Properties
     
-    // MARK:- UI components
+    let notiManager = UNNotiManager()
+    let plist = UserDefaults.standard
+    
+    // MARK:- UI Properties
+    
     // Left Side
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -58,8 +62,6 @@ class SettingMainSwitchCell: UITableViewCell {
         
     }()
     
-    let notiManager = UNNotiManager()
-    let plist = UserDefaults.standard
     
     
     // 치명적 오류 존재
@@ -88,25 +90,57 @@ class SettingMainSwitchCell: UITableViewCell {
         
     }
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .default, reuseIdentifier: cellID2)
-        self.setupUIComponents()
-    }
+    // MARK:- Initialize
     
-    // MARK:- Design
-    func setupUIComponents() {
-        [titleLabel, subTitleLabel, controlSwitch].forEach { self.contentView.addSubview($0) }
-        
-        self.titleLabel.anchor(top: self.contentView.topAnchor, left: self.contentView.leftAnchor, bottom: nil, right: self.contentView.rightAnchor, paddingTop: 10, paddingLeft: 30, paddingBottom: 0, paddingRight: 40, width: 0, height: 0)
-        
-        self.subTitleLabel.anchor(top: self.titleLabel.bottomAnchor, left: self.contentView.leftAnchor, bottom: nil, right: self.rightAnchor, paddingTop: 0, paddingLeft: 30, paddingBottom: 10, paddingRight: 40, width: 0, height: 0)
-        
-        self.controlSwitch.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
-        self.controlSwitch.anchor(top: nil, left: nil, bottom: nil, right: self.contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 20, width: 0, height: 0)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .default, reuseIdentifier: String(describing: SettingViewController.self))
+        self.setupUIComponents()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK:- UI Methods
+    
+    func setupUIComponents() {
+        [titleLabel, subTitleLabel, controlSwitch].forEach { self.contentView.addSubview($0) }
+        
+        self.titleLabel.anchor(top: self.contentView.topAnchor,
+                               left: self.contentView.leftAnchor,
+                               bottom: nil,
+                               right: self.contentView.rightAnchor,
+                               paddingTop: 8,
+                               paddingLeft: 24,
+                               paddingBottom: 0,
+                               paddingRight: 24,
+                               width: 0,
+                               height: 0)
+        
+        self.subTitleLabel.anchor(top: self.titleLabel.bottomAnchor,
+                                  left: self.contentView.leftAnchor,
+                                  bottom: nil,
+                                  right: self.rightAnchor,
+                                  paddingTop: 0,
+                                  paddingLeft: 24,
+                                  paddingBottom: 8,
+                                  paddingRight: 24,
+                                  width: 0,
+                                  height: 0)
+        
+        self.controlSwitch.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor).isActive = true
+        self.controlSwitch.anchor(top: nil,
+                                  left: nil,
+                                  bottom: nil,
+                                  right: self.contentView.rightAnchor,
+                                  paddingTop: 0,
+                                  paddingLeft: 0,
+                                  paddingBottom: 0,
+                                  paddingRight: 20,
+                                  width: 0,
+                                  height: 0)
+    }
+    
+    
     
 }
