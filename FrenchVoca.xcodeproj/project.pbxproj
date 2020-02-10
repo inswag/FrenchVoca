@@ -40,9 +40,9 @@
 		F9AD8B46220BB5BA00EBCCCE /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9AD8B45220BB5BA00EBCCCE /* MainTabBarController.swift */; };
 		F9B0D6E923B47C7200EFBBB5 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B0D6E823B47C7200EFBBB5 /* Font.swift */; };
 		F9B38F3D2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B38F3C2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift */; };
-		F9B38F4322547D79000E1CEA /* SettingMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B38F4222547D79000E1CEA /* SettingMainCell.swift */; };
+		F9B38F4322547D79000E1CEA /* SettingDefaultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B38F4222547D79000E1CEA /* SettingDefaultCell.swift */; };
 		F9B3988D23B4AAC2000E407D /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B3988C23B4AAC2000E407D /* Anchor.swift */; };
-		F9B4DFA22382E87D0080DD5D /* SettingMainSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B4DFA12382E87D0080DD5D /* SettingMainSwitchCell.swift */; };
+		F9B4DFA22382E87D0080DD5D /* SettingSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9B4DFA12382E87D0080DD5D /* SettingSwitchCell.swift */; };
 		F9BB5C4E226AF94F00A3679F /* SettingPeopleCollectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BB5C4D226AF94F00A3679F /* SettingPeopleCollectionVC.swift */; };
 		F9BB5C50226AFB4C00A3679F /* SettingPeopleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BB5C4F226AFB4C00A3679F /* SettingPeopleCell.swift */; };
 		F9BB5C54226C487100A3679F /* SettingPeopleHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BB5C53226C487100A3679F /* SettingPeopleHeader.swift */; };
@@ -118,9 +118,9 @@
 		F9AD8B45220BB5BA00EBCCCE /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		F9B0D6E823B47C7200EFBBB5 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		F9B38F3C2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMainNoticeNestedCell.swift; sourceTree = "<group>"; };
-		F9B38F4222547D79000E1CEA /* SettingMainCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainCell.swift; sourceTree = "<group>"; };
+		F9B38F4222547D79000E1CEA /* SettingDefaultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDefaultCell.swift; sourceTree = "<group>"; };
 		F9B3988C23B4AAC2000E407D /* Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
-		F9B4DFA12382E87D0080DD5D /* SettingMainSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMainSwitchCell.swift; sourceTree = "<group>"; };
+		F9B4DFA12382E87D0080DD5D /* SettingSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchCell.swift; sourceTree = "<group>"; };
 		F9BB5C4D226AF94F00A3679F /* SettingPeopleCollectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPeopleCollectionVC.swift; sourceTree = "<group>"; };
 		F9BB5C4F226AFB4C00A3679F /* SettingPeopleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPeopleCell.swift; sourceTree = "<group>"; };
 		F9BB5C53226C487100A3679F /* SettingPeopleHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPeopleHeader.swift; sourceTree = "<group>"; };
@@ -319,24 +319,24 @@
 		F9B38F3E22547B38000E1CEA /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				F9B38F4122547D62000E1CEA /* Setting */,
+				F9B38F4122547D62000E1CEA /* Cell */,
 				F960B47923C60DFC00F488F8 /* SettingViewController.swift */,
 				F9AAFE862257226400F281CE /* SettingModifyInfoVC.swift */,
 				F9BB5C4D226AF94F00A3679F /* SettingPeopleCollectionVC.swift */,
-				F9BB5C5D226C5E3000A3679F /* SettingPeopleInfo */,
+				F9BB5C5D226C5E3000A3679F /* SettingData */,
 				F936B2F12382D8A000D15624 /* SettingNotificationsVC.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		F9B38F4122547D62000E1CEA /* Setting */ = {
+		F9B38F4122547D62000E1CEA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				F9B38F4222547D79000E1CEA /* SettingMainCell.swift */,
-				F9B4DFA12382E87D0080DD5D /* SettingMainSwitchCell.swift */,
+				F9B38F4222547D79000E1CEA /* SettingDefaultCell.swift */,
+				F9B4DFA12382E87D0080DD5D /* SettingSwitchCell.swift */,
 				F9BB5C55226C488100A3679F /* People */,
 			);
-			path = Setting;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		F9BB5C55226C488100A3679F /* People */ = {
@@ -356,14 +356,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		F9BB5C5D226C5E3000A3679F /* SettingPeopleInfo */ = {
+		F9BB5C5D226C5E3000A3679F /* SettingData */ = {
 			isa = PBXGroup;
 			children = (
 				F9BB5C57226C55CE00A3679F /* people.swift */,
 				F9BB5C59226C55DC00A3679F /* peopleGroup.swift */,
 				F9BB5C5B226C55F800A3679F /* peopleGroupData.swift */,
 			);
-			path = SettingPeopleInfo;
+			path = SettingData;
 			sourceTree = "<group>";
 		};
 		F9BB5C5E226C5E5100A3679F /* Database */ = {
@@ -606,7 +606,7 @@
 				F91F62F521F93E9800B80433 /* WelcomeMainNoticeCell.swift in Sources */,
 				F9F1EFE223BB475C0026ACA0 /* WordListSentenceCellViewModel.swift in Sources */,
 				E63BF87B23E46AF1002145A5 /* WordListSentenceCell.swift in Sources */,
-				F9B38F4322547D79000E1CEA /* SettingMainCell.swift in Sources */,
+				F9B38F4322547D79000E1CEA /* SettingDefaultCell.swift in Sources */,
 				F9BB5C54226C487100A3679F /* SettingPeopleHeader.swift in Sources */,
 				F9C07B8522AE907800D0920B /* WordListPhotoCell.swift in Sources */,
 				F91F62F621F93E9800B80433 /* WelcomeMainProfileHeader.swift in Sources */,
@@ -621,7 +621,7 @@
 				F9BF093B225F34140097E0CC /* WelcomeMainWordCell.swift in Sources */,
 				F936B2F22382D8A000D15624 /* SettingNotificationsVC.swift in Sources */,
 				F91AFB5122410A4600F435A5 /* FMDatabaseQueue.m in Sources */,
-				F9B4DFA22382E87D0080DD5D /* SettingMainSwitchCell.swift in Sources */,
+				F9B4DFA22382E87D0080DD5D /* SettingSwitchCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

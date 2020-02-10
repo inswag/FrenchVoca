@@ -77,16 +77,31 @@ class VocabularySubjectListVC: UIViewController {
         
         setupUIComponents()
         setupCustomNaviBarDesign()
-        
-        self.subjectList = self.subjectDAO.find()
+//        setupAnimation()
+        fetchSubjectList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.isHidden = false
+        
+        print("view will appear")
+
+    }
+    
+    // MARK:- Methods
+    
+    fileprivate func fetchSubjectList() {
+        self.subjectList = self.subjectDAO.find()
     }
     
     // MARK:- UI Methods
+   
+//    fileprivate func setupAnimation() {
+//        UIView.animate(withDuration: 2, delay: 0, options: [.autoreverse, .repeat, .transitionCrossDissolve], animations: {
+//            self.frenchVocaLogo.alpha = 0.0
+//        }, completion: nil)
+//    }
     
     fileprivate func setupUIComponents() {
         self.view.addSubview(collectionView)

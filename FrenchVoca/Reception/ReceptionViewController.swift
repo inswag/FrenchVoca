@@ -15,8 +15,6 @@ protocol ReceptionHeaderDelegate: class {
 
 class ReceptionViewController: UIViewController {
     
-    
-    
     // MARK:- UI Properties
     
     let frenchVocaLogo: UILabel = {
@@ -40,6 +38,7 @@ class ReceptionViewController: UIViewController {
     }
     
     //MARK:- WelcomeVC Collection View
+    
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -52,18 +51,19 @@ class ReceptionViewController: UIViewController {
         cv.register(WelcomeMainProfileHeader.self,
                     forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                     withReuseIdentifier: String(describing: WelcomeMainProfileHeader.self))
-        cv.register(WelcomeMainNoticeCell.self, forCellWithReuseIdentifier: String(describing: WelcomeMainNoticeCell.self))
-        cv.register(WelcomeMainWordCell.self, forCellWithReuseIdentifier: String(describing: WelcomeMainWordCell.self))
+        cv.register(WelcomeMainNoticeCell.self,
+                    forCellWithReuseIdentifier: String(describing: WelcomeMainNoticeCell.self))
+        cv.register(WelcomeMainWordCell.self,
+                    forCellWithReuseIdentifier: String(describing: WelcomeMainWordCell.self))
         // Anchor 는 클로저 바깥에서 잡아주어야 한다.
         return cv
     }()
         
     //MARK:- View Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUIComponents()
-        setupCustomNaviBarDesign()
-        setupAnimation()
 
         
     }
@@ -81,6 +81,7 @@ class ReceptionViewController: UIViewController {
     
     
     //MARK:- Design
+    
     fileprivate func setupUIComponents() {
         self.navigationItem.titleView = frenchVocaLogo
         self.view.addSubview(collectionView)
@@ -88,28 +89,8 @@ class ReceptionViewController: UIViewController {
         collectionView.anchor(top: self.view.topAnchor, left: self.view.leftAnchor, bottom: self.view.bottomAnchor, right: self.view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
     
-    fileprivate func setupAnimation() {
-        UIView.animate(withDuration: 1, delay: 0, options: [.transitionCrossDissolve, .autoreverse, .repeat], animations: {
-            self.frenchVocaLogo.text = "Merci"
-        }, completion: nil)
-        
-//        (with: frenchVocaLogo, duration: 0, options: [.transitionCrossDissolve, .autoreverse, .repeat], animations: { [weak self] in
-//            self?.frenchVocaLogo.text = "Merci"
-//            }, completion: nil)
-    }
-    
-    
-    fileprivate func setupCustomNaviBarDesign() {
-        barBtnDELF.setTitleTextAttributes([NSAttributedString.Key.font: Tools.font.avenirBlack(size: 20), NSAttributedString.Key.foregroundColor: Tools.color.lightBlack], for: .normal)
-        barBtnFLEX.setTitleTextAttributes([NSAttributedString.Key.font: Tools.font.avenirBlack(size: 20), NSAttributedString.Key.foregroundColor: Tools.color.lightBlack], for: .normal)
-        
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: frenchVocaLogoView)
-//        self.navigationItem.rightBarButtonItems = [barBtnDELF, barBtnFLEX]
-//        self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-//        self.navigationController?.navigationBar.barTintColor = UIColor.white
-    }
-    
     //MARK:- Deinit
+    
     deinit {
         print("Welcome VC deinit")
     }
