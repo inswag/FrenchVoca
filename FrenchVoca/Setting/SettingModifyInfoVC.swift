@@ -325,7 +325,7 @@ class SettingModifyInfoVC: UIViewController {
         
         self.noticeTitleLabel.anchor(top: self.containerView.bottomAnchor, left: self.containerView.leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 16, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
-    git 
+    
 }
 
 // MARK:- Image Picker Delegate
