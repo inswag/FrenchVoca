@@ -52,7 +52,7 @@ class WordListViewController: UIViewController {
         self.present(navigate.get(segue: .voiceSetting), animated: true, completion: nil)
     }
     
-    func customHandler(alert: UIAlertAction!) {
+    func customWordHandler(alert: UIAlertAction!) {
 //        self.present(navigate.get(segue: .voiceSetting), animated: true, completion: nil)
         print("make custom word list")
     }
@@ -69,13 +69,13 @@ class WordListViewController: UIViewController {
         
         let customWordAction = UIAlertAction(title: "나만의 단어장",
                                              style: .default,
-                                             handler: customHandler)
+                                             handler: customWordHandler)
         
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         
         
         alert.addAction(voiceControllerAction)
-        alert.addAction(customWordAction)
+//        alert.addAction(customWordAction)
         alert.addAction(cancelAction)
         
         self.present(alert, animated: true, completion: nil)

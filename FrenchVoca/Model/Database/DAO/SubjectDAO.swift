@@ -93,7 +93,7 @@ class SubjectDAO {
         }
         
         return subjectList
-        
     }
+    
     
 }
