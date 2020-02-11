@@ -46,8 +46,40 @@ class WordListViewController: UIViewController {
         return btn
     }()
     
-    @objc func actionOption() {
+    // MARK:- * Alert Controller *
+    
+    func voiceHandler(alert: UIAlertAction!) {
         self.present(navigate.get(segue: .voiceSetting), animated: true, completion: nil)
+    }
+    
+    func customHandler(alert: UIAlertAction!) {
+//        self.present(navigate.get(segue: .voiceSetting), animated: true, completion: nil)
+        print("make custom word list")
+    }
+    
+    @objc func actionOption() {
+        let alert = UIAlertController(title: nil,
+                                      message: "원하는 메뉴를 선택해주세요",
+                                      preferredStyle: .actionSheet)
+        
+        let voiceControllerAction = UIAlertAction(title: "발음 속도 조절",
+                                                  style: .default,
+                                                  handler: voiceHandler)
+        
+        
+        let customWordAction = UIAlertAction(title: "나만의 단어장",
+                                             style: .default,
+                                             handler: customHandler)
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        
+        alert.addAction(voiceControllerAction)
+        alert.addAction(customWordAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     lazy var tableView: UITableView = {
@@ -64,32 +96,7 @@ class WordListViewController: UIViewController {
         return tv
     }()
     
-    // MARK:- Initialize
     
-    init(navigator: Navigator, viewModel: WordListViewControllerViewModel) {
-        self.navigate = navigator
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK:- View Life Cycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUIComponents()
-        
-        fetchWordList()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        if Application.shared.synthesizer.isSpeaking == true {
-            Application.shared.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
-        }
-    }
     
     lazy var headerView: UIView = {
         let view = UIView(frame: CGRect(x: 0,
@@ -144,7 +151,36 @@ class WordListViewController: UIViewController {
         return label
     }()
     
+    // MARK:- Initialize
+    
+    init(navigator: Navigator, viewModel: WordListViewControllerViewModel) {
+        self.navigate = navigator
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK:- View Life Cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUIComponents()
+        
+        fetchWordList()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if Application.shared.synthesizer.isSpeaking == true {
+            Application.shared.synthesizer.stopSpeaking(at: AVSpeechBoundary.immediate)
+        }
+    }
+    
     // MARK:- UI Method
+    
+    
     
     func setupUIComponents() {
         
