@@ -14,7 +14,7 @@ final class Application: NSObject {
     
     var window: UIWindow?
     
-    //    var notiManager: UNNotiManager
+    var notiManager: UNNotiManager
     
     let synthesizer: Synthesizer
     let navigator: Navigator
@@ -22,6 +22,7 @@ final class Application: NSObject {
     private override init() {
         synthesizer = Synthesizer.shared
         navigator = Navigator()
+        notiManager = UNNotiManager()
         super.init()
     }
     

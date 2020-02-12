@@ -24,7 +24,8 @@ class SettingSwitchCell: UITableViewCell {
     
     // MARK:- Properties
     
-    let notiManager = UNNotiManager()
+    let notiManager = Application.shared.notiManager
+//    let notiManager = UNNotiManager()
     let plist = UserDefaults.standard
     
     // MARK:- UI Properties
@@ -70,7 +71,7 @@ class SettingSwitchCell: UITableViewCell {
         if self.controlSwitch.isOn {
             
             // Authentification of Noti
-//            notiManager.register()
+            notiManager.register()
             notiManager.getNotificationSettings { isAuthorized in
                 guard  isAuthorized else { return }
             }

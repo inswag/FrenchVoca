@@ -66,7 +66,6 @@ class WordListViewController: UIViewController {
                                                   style: .default,
                                                   handler: voiceHandler)
         
-        
         let customWordAction = UIAlertAction(title: "나만의 단어장",
                                              style: .default,
                                              handler: customWordHandler)

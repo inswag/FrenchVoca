@@ -12,7 +12,7 @@ import SnapKit
 
 class NotiSettingViewController: UIViewController {
     
-    let notiManager = UNNotiManager()
+    let notiManager = Application.shared.notiManager
     
     // Back Button
     let backButtonIcon: UIButton = {
@@ -121,7 +121,9 @@ class NotiSettingViewController: UIViewController {
         
         // Authentification of Noti
         notiManager.getNotificationSettings { isAuthorized in
-            guard  isAuthorized else { return }
+            guard  isAuthorized else {
+                print("Authorized Error")
+                return }
         }
         notiManager.triggerTimeIntervalNotification(time: plist.double(forKey: "알림시간"))
         
@@ -174,13 +176,24 @@ class NotiSettingViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    // MARK:- View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         setupUIComponents()
+        setupNotification()
     }
     
-    // MARK:- UI Design
+    
+    // MARK:- Methods
+    
+    func setupNotification() {
+        notiManager.register()
+    }
+    
+    // MARK:- UI Methods
+    
     func setupUIComponents() {
         
         [minuteTextField, backButtonIcon, backButtonText].forEach { self.view.addSubview($0) }
