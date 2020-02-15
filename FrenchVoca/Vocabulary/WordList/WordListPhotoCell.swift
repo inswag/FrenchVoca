@@ -194,7 +194,7 @@ class WordListPhotoCell: UITableViewCell {
         wordTitleLabel.snp.makeConstraints { (m) in
             m.top.equalTo(wordOrderLabel.snp.bottom).offset(15)
             m.leading.equalToSuperview().offset(32)
-            m.trailing.equalToSuperview().offset(-32)
+            m.trailing.equalTo(showImageView.snp.leading).offset(-8)
             m.height.equalTo(33)
         }
         
