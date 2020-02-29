@@ -11,6 +11,31 @@ import Foundation
 
 class SignInViewController: UIViewController {
     
+    // MARK:- Constant
+    
+    struct UI {
+        static let backIconTopMargin: CGFloat = 20
+        static let backIconLeadingMargin: CGFloat = 20
+        static let backTextLeadingMargin: CGFloat = 5
+        static let bottomContainerHeight: CGFloat = 120
+        static let titleTopMargin: CGFloat = 60
+        static let titleWidth: CGFloat = 200
+        static let containerTopMargin: CGFloat = 40
+        static let containerLeadingMargin: CGFloat = 80
+        static let containerTrailingMargin: CGFloat = -80
+        static let containerHeight: CGFloat = 350
+        static let studentCardTopMargin: CGFloat = 20
+        static let chosenUserPhotoSize: CGFloat = 100
+        static let chosenUserPhotoTopMargin: CGFloat = 30
+        static let divisionViewWidth: CGFloat = 20
+        static let divisionViewHeight: CGFloat = 8
+        static let usernameBottomMargin: CGFloat = -8
+        static let positionTopMargin: CGFloat = 8
+        static let btnStackViewTopMargin: CGFloat = 32
+        static let btnStackViewWidth: CGFloat = 275
+        static let btnStackViewHeight: CGFloat = 40
+    }
+    
     // MARK:- Properties
     
     var img = UIImage(named: "login_Photos")
@@ -56,7 +81,7 @@ class SignInViewController: UIViewController {
     let containerView: UIView = {
         let view = UIView()
         view.layer.borderWidth = 1
-        view.layer.borderColor = Tools.color.mediumBlack.cgColor
+        view.layer.borderColor = Tools.color.cardBlue.cgColor
         view.layer.cornerRadius = 15
         return view
     }()
@@ -80,16 +105,34 @@ class SignInViewController: UIViewController {
         return iv
     }()
     
+    
+    let bottomContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = Tools.color.cardBlue
+        view.layer.borderWidth = 1
+        view.layer.borderColor = Tools.color.mediumBlack.cgColor
+        view.layer.cornerRadius = 15
+        return view
+    }()
+    
+    
     // Label Stack View
     let usernameLabel: UILabel = {
         let label = UILabel()
         label.text = "VOTRE SURNOM"
         label.textAlignment = .center
         label.font = Tools.font.avenirBlack(size: 25)
-        label.textColor = Tools.color.lightBlack
+        label.textColor = .white
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
+    }()
+    
+    let divisionView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 4
+        return view
     }()
     
     let positionLabel: UILabel = {
@@ -97,7 +140,7 @@ class SignInViewController: UIViewController {
         label.text = "Votre position"
         label.textAlignment = .center
         label.font = Tools.font.avenirBook(size: 20)
-        label.textColor = Tools.color.lightBlack
+        label.textColor = .white
         label.numberOfLines = 1
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -181,43 +224,89 @@ class SignInViewController: UIViewController {
     // MARK:- UI Design
     
     func setupUIComponents() {
-        let labelStackView = UIStackView(arrangedSubviews: [usernameLabel, positionLabel])
-        labelStackView.axis = .vertical
-        labelStackView.spacing = 20
-        labelStackView.distribution = .fillEqually
         
         let btnStackView = UIStackView(arrangedSubviews: [saveButton, loginButton])
         btnStackView.axis = .horizontal
         btnStackView.spacing = 20
         btnStackView.distribution = .fillEqually
+
+        
         
         [titleLabel, backButtonIcon, backButtonText, containerView, btnStackView].forEach { self.view.addSubview($0) }
-        [studentCardLabel, chosenUserPhoto, labelStackView].forEach { self.containerView.addSubview($0) }
-        
-        self.titleLabel.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 60, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 0)
-        self.titleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         
         
-        self.backButtonIcon.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, left: self.view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        self.backButtonText.anchor(top: nil, left: self.backButtonIcon.rightAnchor, bottom: nil, right: nil, paddingTop: 0, paddingLeft: 5, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        self.backButtonText.centerYAnchor.constraint(equalTo: self.backButtonIcon.centerYAnchor).isActive = true
+        [studentCardLabel, chosenUserPhoto, bottomContainerView].forEach { self.containerView.addSubview($0) }
         
-        let containerHeight: CGFloat = self.studentCardLabel.font.lineHeight + 310
-        self.containerView.anchor(top: self.titleLabel.bottomAnchor, left: self.view.leftAnchor, bottom: nil, right: self.view.rightAnchor, paddingTop: 40, paddingLeft: 80, paddingBottom: 0, paddingRight: 80, width: 0, height: containerHeight)
+        [usernameLabel, positionLabel, divisionView].forEach {
+            self.bottomContainerView.addSubview($0)
+        }
         
+        backButtonIcon.snp.makeConstraints {
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(UI.backIconTopMargin)
+            $0.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading).offset(UI.backIconLeadingMargin)
+        }
         
+        backButtonText.snp.makeConstraints {
+            $0.leading.equalTo(self.backButtonIcon.snp.trailing).offset(UI.backTextLeadingMargin)
+            $0.centerY.equalTo(self.backButtonIcon.snp.centerY)
+        }
         
-        self.studentCardLabel.anchor(top: self.containerView.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        self.studentCardLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(UI.titleTopMargin)
+            $0.width.equalTo(UI.titleWidth)
+            $0.centerX.equalToSuperview()
+        }
         
-        chosenUserPhoto.anchor(top: self.studentCardLabel.bottomAnchor, left: nil, bottom: nil, right: nil, paddingTop: 30, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 100) // Height 100
-        chosenUserPhoto.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        containerView.snp.makeConstraints {
+            $0.top.equalTo(self.titleLabel.snp.bottom).offset(UI.containerTopMargin)
+            $0.leading.equalToSuperview().offset(UI.containerLeadingMargin)
+            $0.trailing.equalToSuperview().offset(UI.containerTrailingMargin)
+            $0.height.equalTo(UI.containerHeight)
+        }
         
-        // (each label size 40 * 3) + (spacing 20 * 2)
-        labelStackView.anchor(top: self.chosenUserPhoto.bottomAnchor, left: self.view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: self.view.safeAreaLayoutGuide.rightAnchor, paddingTop: 40, paddingLeft: 60, paddingBottom: 0, paddingRight: 60, width: 0, height: 100) // Height 140
+        studentCardLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(UI.studentCardTopMargin)
+            $0.centerX.equalToSuperview()
+        }
         
-        // (each button size 40 * 2) + (spacing 20 * 1)
-        btnStackView.anchor(top: self.containerView.bottomAnchor, left: self.view.safeAreaLayoutGuide.leftAnchor, bottom: nil, right: self.view.safeAreaLayoutGuide.rightAnchor, paddingTop: 20, paddingLeft: 60, paddingBottom: 0, paddingRight: 60, width: self.view.frame.width - 120, height: 40) // Height 60 + 10(btm) = 70
+        chosenUserPhoto.snp.makeConstraints {
+            $0.top.equalTo(studentCardLabel.snp.bottom).offset(UI.chosenUserPhotoTopMargin)
+            $0.width.height.equalTo(UI.chosenUserPhotoSize)
+            $0.centerX.equalToSuperview()
+        }
+        
+        bottomContainerView.snp.makeConstraints {
+            $0.leading.equalToSuperview()
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(UI.bottomContainerHeight)
+        }
+        
+        divisionView.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            $0.width.equalTo(UI.divisionViewWidth)
+            $0.height.equalTo(UI.divisionViewHeight)
+        }
+        
+        usernameLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.bottom.equalTo(divisionView.snp.top).offset(UI.usernameBottomMargin)
+        }
+        
+        positionLabel.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.top.equalTo(divisionView.snp.bottom).offset(UI.positionTopMargin)
+        }
+        
+        btnStackView.snp.makeConstraints {
+            $0.top.equalTo(containerView.snp.bottom).offset(UI.btnStackViewTopMargin)
+            $0.width.equalTo(UI.btnStackViewWidth)
+            $0.height.equalTo(UI.btnStackViewHeight)
+            $0.centerX.equalToSuperview()
+        }
+        
+
     }
     
 }

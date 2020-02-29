@@ -72,10 +72,7 @@ class MainTabBarController: UITabBarController {
                                                       selectedImage: settingSelected!,
                                                       rootViewController: self.navigator.get(segue: .settingMain))
         
-//        let settingController = NavigationController(rootViewController: self.navigator.get(segue: .settingMain))
-//        settingController.tabBarItem.selectedImage = settingSelected!
-//        settingController.tabBarItem.image = settingUnselected!
-//
+
         // Set up
         tabBar.tintColor = .black
         viewControllers = [receptionController, vocabularyController, settingController]
