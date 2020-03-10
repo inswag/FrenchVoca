@@ -25,6 +25,7 @@ class Navigator {
         case reception          // Reception
         case delf
         case flex
+        case institut
         case subjectList        // Vocabulary
         case wordList(id: Int)
         case voiceSetting
@@ -45,6 +46,7 @@ class Navigator {
         case .reception: return ReceptionViewController()
         case .delf: return DELFViewController()
         case .flex: return FLEXViewController()
+        case .institut: return InstitutController()
         case .subjectList: return VocabularySubjectListVC(navigator: self)
         case .wordList(let id):
             let viewModel = WordListViewControllerViewModel(id: id)

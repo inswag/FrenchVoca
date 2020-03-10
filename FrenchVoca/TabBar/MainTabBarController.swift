@@ -72,17 +72,23 @@ class MainTabBarController: UITabBarController {
                                                       selectedImage: settingSelected!,
                                                       rootViewController: self.navigator.get(segue: .settingMain))
         
+        // Institut
+        let institutController = templateNavController(unselectedImage: welcomeUnselected!,
+                                                       selectedImage: welcomeSelected!,
+                                                       rootViewController: self.navigator.get(segue: .institut))
+        
 
         // Set up
         tabBar.tintColor = .black
-        viewControllers = [receptionController, vocabularyController, settingController]
+        viewControllers = [receptionController, institutController, vocabularyController, settingController]
         
         // Modify tab bar item insets & title
         guard let items = tabBar.items else { return }
         
         items[0].title = "Accueil"
-        items[1].title = "Vocabulaire"
-        items[2].title = "Paramètre"
+        items[1].title = "Institut"
+        items[2].title = "Vocabulaire"
+        items[3].title = "Paramètre"
         
         for item in items {
             item.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)

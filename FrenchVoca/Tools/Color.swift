@@ -71,7 +71,7 @@ struct Color {
         return UIColor.rgb(r: 232, g: 220, b: 180)
     }
     
-    // SignIn -> student card
+    
     var cardBlue: UIColor {
         return UIColor.rgb(r: 29, g: 78, b: 156)
     }

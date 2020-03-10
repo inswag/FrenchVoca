@@ -6,6 +6,8 @@ target 'FrenchVoca' do
   use_frameworks!
 
  pod 'SnapKit'
+ pod 'Kingfisher'
+ pod 'Kanna'
 
   # Pods for FrenchVoca
 

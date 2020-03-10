@@ -305,8 +305,6 @@ class SignInViewController: UIViewController {
             $0.height.equalTo(UI.btnStackViewHeight)
             $0.centerX.equalToSuperview()
         }
-        
-
     }
     
 }
