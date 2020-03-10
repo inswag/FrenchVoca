@@ -7,7 +7,7 @@ target 'FrenchVoca' do
 
  pod 'SnapKit'
  pod 'Kingfisher'
- pod 'Kanna'
+ pod 'SwiftSoup'
 
   # Pods for FrenchVoca
 
