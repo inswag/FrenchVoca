@@ -11,7 +11,11 @@
 		E63BF87923E469BE002145A5 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63BF87823E469BE002145A5 /* WordListViewController.swift */; };
 		E63BF87B23E46AF1002145A5 /* WordListSentenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63BF87A23E46AF1002145A5 /* WordListSentenceCell.swift */; };
 		E6627D7F23E6F31200F6AF96 /* WordListViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6627D7E23E6F31200F6AF96 /* WordListViewControllerViewModel.swift */; };
-		E6D8DFAD24172FEF00398360 /* InstitutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D8DFAC24172FEF00398360 /* InstitutController.swift */; };
+		E6C53B8D2418B99E00F0DCD4 /* InstitutViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C53B8C2418B99E00F0DCD4 /* InstitutViewControllerViewModel.swift */; };
+		E6C53B8F2418D3E600F0DCD4 /* InstitutInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C53B8E2418D3E600F0DCD4 /* InstitutInfoCell.swift */; };
+		E6C53B9124191E4300F0DCD4 /* InstitutInfoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C53B9024191E4300F0DCD4 /* InstitutInfoCellViewModel.swift */; };
+		E6C53B9324191EEB00F0DCD4 /* InstitutInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C53B9224191EEB00F0DCD4 /* InstitutInfo.swift */; };
+		E6D8DFAD24172FEF00398360 /* InstitutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D8DFAC24172FEF00398360 /* InstitutViewController.swift */; };
 		F911EF402317AEA2009A8913 /* VocabularyNotebookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911EF3F2317AEA2009A8913 /* VocabularyNotebookVC.swift */; };
 		F911EF422317B38D009A8913 /* VocabularyNotebookVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911EF412317B38D009A8913 /* VocabularyNotebookVCCell.swift */; };
 		F918C18323A7C12B002A11DA /* FrenchVoca.db in Resources */ = {isa = PBXBuildFile; fileRef = F918C18223A7C12B002A11DA /* FrenchVoca.db */; };
@@ -80,7 +84,11 @@
 		E63BF87823E469BE002145A5 /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
 		E63BF87A23E46AF1002145A5 /* WordListSentenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListSentenceCell.swift; sourceTree = "<group>"; };
 		E6627D7E23E6F31200F6AF96 /* WordListViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewControllerViewModel.swift; sourceTree = "<group>"; };
-		E6D8DFAC24172FEF00398360 /* InstitutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstitutController.swift; sourceTree = "<group>"; };
+		E6C53B8C2418B99E00F0DCD4 /* InstitutViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstitutViewControllerViewModel.swift; sourceTree = "<group>"; };
+		E6C53B8E2418D3E600F0DCD4 /* InstitutInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstitutInfoCell.swift; sourceTree = "<group>"; };
+		E6C53B9024191E4300F0DCD4 /* InstitutInfoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstitutInfoCellViewModel.swift; sourceTree = "<group>"; };
+		E6C53B9224191EEB00F0DCD4 /* InstitutInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstitutInfo.swift; sourceTree = "<group>"; };
+		E6D8DFAC24172FEF00398360 /* InstitutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstitutViewController.swift; sourceTree = "<group>"; };
 		F911EF3F2317AEA2009A8913 /* VocabularyNotebookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyNotebookVC.swift; sourceTree = "<group>"; };
 		F911EF412317B38D009A8913 /* VocabularyNotebookVCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyNotebookVCCell.swift; sourceTree = "<group>"; };
 		F918C18223A7C12B002A11DA /* FrenchVoca.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = FrenchVoca.db; sourceTree = "<group>"; };
@@ -181,6 +189,25 @@
 				3CD8A931643B4E73B4BA260B /* Pods-FrenchVoca.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E6C53B8B2418B94600F0DCD4 /* InstitutController */ = {
+			isa = PBXGroup;
+			children = (
+				E6D8DFAC24172FEF00398360 /* InstitutViewController.swift */,
+				E6C53B8C2418B99E00F0DCD4 /* InstitutViewControllerViewModel.swift */,
+				E6C53B8E2418D3E600F0DCD4 /* InstitutInfoCell.swift */,
+				E6C53B9024191E4300F0DCD4 /* InstitutInfoCellViewModel.swift */,
+			);
+			path = InstitutController;
+			sourceTree = "<group>";
+		};
+		E6C53B9424191EEF00F0DCD4 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				E6C53B9224191EEB00F0DCD4 /* InstitutInfo.swift */,
+			);
+			path = Parser;
 			sourceTree = "<group>";
 		};
 		F91AFB5322410A6E00F435A5 /* FMDB */ = {
@@ -289,6 +316,7 @@
 				F91F62F821F9EE2200B80433 /* TabBar */,
 				F9FFEB992209D81700F05E98 /* Login */,
 				F9FFEB962209C5F500F05E98 /* Reception */,
+				E6C53B8B2418B94600F0DCD4 /* InstitutController */,
 				F9E13885220B0D0100DDE7B3 /* Vocabulary */,
 				F9B38F3E22547B38000E1CEA /* Setting */,
 				F9E13882220B0CBD00DDE7B3 /* Storyboards */,
@@ -296,7 +324,6 @@
 				F91F62EA21F93D4B00B80433 /* Info.plist */,
 				F91AFB4022410A4200F435A5 /* FrenchVoca-Bridging-Header.h */,
 				F9E8346B23B44016006C0F4E /* Tools */,
-				E6D8DFAC24172FEF00398360 /* InstitutController.swift */,
 			);
 			path = FrenchVoca;
 			sourceTree = "<group>";
@@ -354,6 +381,7 @@
 		F9BB5C56226C55BF00A3679F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E6C53B9424191EEF00F0DCD4 /* Parser */,
 				F9BB5C5E226C5E5100A3679F /* Database */,
 			);
 			path = Model;
@@ -603,19 +631,23 @@
 				F960B47A23C60DFC00F488F8 /* SettingViewController.swift in Sources */,
 				F9FFEB982209C60B00F05E98 /* FLEXViewController.swift in Sources */,
 				F9E8346223B30453006C0F4E /* NavigationController.swift in Sources */,
+				E6C53B8D2418B99E00F0DCD4 /* InstitutViewControllerViewModel.swift in Sources */,
 				F9AD8B46220BB5BA00EBCCCE /* MainTabBarController.swift in Sources */,
 				F9486C4023B728EB00B07001 /* Application.swift in Sources */,
+				E6C53B8F2418D3E600F0DCD4 /* InstitutInfoCell.swift in Sources */,
 				F9E8346023B2F56A006C0F4E /* ViewController.swift in Sources */,
 				F91F62F521F93E9800B80433 /* WelcomeMainNoticeCell.swift in Sources */,
 				F9F1EFE223BB475C0026ACA0 /* WordListSentenceCellViewModel.swift in Sources */,
 				E63BF87B23E46AF1002145A5 /* WordListSentenceCell.swift in Sources */,
 				F9B38F4322547D79000E1CEA /* SettingDefaultCell.swift in Sources */,
 				F9BB5C54226C487100A3679F /* SettingPeopleHeader.swift in Sources */,
-				E6D8DFAD24172FEF00398360 /* InstitutController.swift in Sources */,
+				E6D8DFAD24172FEF00398360 /* InstitutViewController.swift in Sources */,
 				F9C07B8522AE907800D0920B /* WordListPhotoCell.swift in Sources */,
+				E6C53B9124191E4300F0DCD4 /* InstitutInfoCellViewModel.swift in Sources */,
 				F91F62F621F93E9800B80433 /* WelcomeMainProfileHeader.swift in Sources */,
 				F9B0D6E923B47C7200EFBBB5 /* Font.swift in Sources */,
 				F9E13888220B0D5A00DDE7B3 /* VocabularySubjectListVC.swift in Sources */,
+				E6C53B9324191EEB00F0DCD4 /* InstitutInfo.swift in Sources */,
 				F9F1E2E523881BFC0084DE34 /* Synthesizer.swift in Sources */,
 				F91AFB5D2241DB6E00F435A5 /* WordDAO.swift in Sources */,
 				F91AFB5622410DB500F435A5 /* VocabularyVocaCell.swift in Sources */,

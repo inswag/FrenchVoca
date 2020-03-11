@@ -73,14 +73,14 @@ class MainTabBarController: UITabBarController {
                                                       rootViewController: self.navigator.get(segue: .settingMain))
         
         // Institut
-        let institutController = templateNavController(unselectedImage: welcomeUnselected!,
+        let InstitutViewController = templateNavController(unselectedImage: welcomeUnselected!,
                                                        selectedImage: welcomeSelected!,
                                                        rootViewController: self.navigator.get(segue: .institut))
         
 
         // Set up
         tabBar.tintColor = .black
-        viewControllers = [receptionController, institutController, vocabularyController, settingController]
+        viewControllers = [receptionController, InstitutViewController, vocabularyController, settingController]
         
         // Modify tab bar item insets & title
         guard let items = tabBar.items else { return }

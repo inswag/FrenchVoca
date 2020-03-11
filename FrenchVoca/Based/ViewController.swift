@@ -11,6 +11,12 @@ import SnapKit
 
 class ViewController: UIViewController {
     
+    // MARK:- Properties
+    
+    // MARK:- UI Properties
+    
+    // MARK:- Initialize
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -18,19 +24,30 @@ class ViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        setupUIComponents()
-    }
     
     deinit {
         print("Deinitialize")
     }
     
+    // MARK:- View Life Cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupUIComponents()
+        setupUILayout()
+    }
+    
+    // MARK:- UI Methods
+    
     func setupUIComponents() {
         
     }
+    
+    func setupUILayout() {
+        
+    }
+    
+    // MARK:- Methods
     
 }

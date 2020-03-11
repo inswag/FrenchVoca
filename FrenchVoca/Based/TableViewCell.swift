@@ -13,7 +13,8 @@ class TableViewCell: UITableViewCell {
     //MARK:- Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        setupComponents()
+        setupUIComponents()
+        setupUILayout()
     }
     
     required init?(coder: NSCoder) {
@@ -21,8 +22,14 @@ class TableViewCell: UITableViewCell {
     }
     
     //MARK:- Methods
-    func setupComponents() {
+    
+    func setupUIComponents() {
         
     }
+    
+    func setupUILayout() {
+        
+    }
+    
     
 }
