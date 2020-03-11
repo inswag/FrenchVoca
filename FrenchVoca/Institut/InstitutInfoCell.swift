@@ -7,8 +7,22 @@
 //
 
 import UIKit
+import Kingfisher
 
 class InstitutInfoCell: TableViewCell {
+    
+    // MARK:- Properties
+    
+//    var viewModel: InstitutInfoCellViewModel! {
+//        didSet {
+//            self.noticeTitleLabel.text = viewModel.title
+//
+//            let url = URL(string: viewModel.image)!
+//            self.noticeimageView.kf.setImage(with: url)
+//        }
+//    }
+    
+    // MARK:- Constant
     
     struct Constant {
         static let topMargin: CGFloat = 16

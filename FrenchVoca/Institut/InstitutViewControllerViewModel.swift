@@ -60,7 +60,6 @@ class InstitutViewControllerViewModel {
                     self.nextArray.append(try element.attr("href"))
                     print("Next URL : ", try element.attr("href"))
                 }
-                
                 completion()
                 
             } catch let error {

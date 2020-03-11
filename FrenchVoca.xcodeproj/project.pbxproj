@@ -191,7 +191,7 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		E6C53B8B2418B94600F0DCD4 /* InstitutController */ = {
+		E6C53B8B2418B94600F0DCD4 /* Institut */ = {
 			isa = PBXGroup;
 			children = (
 				E6D8DFAC24172FEF00398360 /* InstitutViewController.swift */,
@@ -199,7 +199,7 @@
 				E6C53B8E2418D3E600F0DCD4 /* InstitutInfoCell.swift */,
 				E6C53B9024191E4300F0DCD4 /* InstitutInfoCellViewModel.swift */,
 			);
-			path = InstitutController;
+			path = Institut;
 			sourceTree = "<group>";
 		};
 		E6C53B9424191EEF00F0DCD4 /* Parser */ = {
@@ -316,7 +316,7 @@
 				F91F62F821F9EE2200B80433 /* TabBar */,
 				F9FFEB992209D81700F05E98 /* Login */,
 				F9FFEB962209C5F500F05E98 /* Reception */,
-				E6C53B8B2418B94600F0DCD4 /* InstitutController */,
+				E6C53B8B2418B94600F0DCD4 /* Institut */,
 				F9E13885220B0D0100DDE7B3 /* Vocabulary */,
 				F9B38F3E22547B38000E1CEA /* Setting */,
 				F9E13882220B0CBD00DDE7B3 /* Storyboards */,
