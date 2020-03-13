@@ -26,6 +26,7 @@ class Navigator {
         case delf
         case flex
         case institut
+        case institutDetail(url: String)
         case subjectList        // Vocabulary
         case wordList(id: Int)
         case voiceSetting
@@ -49,6 +50,11 @@ class Navigator {
         case .institut:
             let viewModel = InstitutViewControllerViewModel()
             return InstitutViewController(navigator: self, viewModel: viewModel)
+        case .institutDetail(let url):
+            let viewModel = InstitutDetailViewControllerViewModel(url: url)
+            let institutDetailViewController = InstitutDetailViewController(navigator: self, viewModel: viewModel)
+            institutDetailViewController.modalPresentationStyle = .fullScreen
+            return institutDetailViewController
         case .subjectList: return VocabularySubjectListVC(navigator: self)
         case .wordList(let id):
             let viewModel = WordListViewControllerViewModel(id: id)

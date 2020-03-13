@@ -11,8 +11,12 @@ import SnapKit
 
 class SettingNotificationsVC: UIViewController {
     
-    let notiManager = UNNotiManager()
+    // MARK:- Properties
     
+    let application = Application.shared
+    
+    // MARK:- UI Properties
+
     // Back Button
     let backButtonIcon: UIButton = {
         let button = UIButton()
@@ -31,7 +35,6 @@ class SettingNotificationsVC: UIViewController {
     }()
     
     @objc func handlePopAction() {
-//        self.dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -121,10 +124,10 @@ class SettingNotificationsVC: UIViewController {
         self.view.endEditing(true)
         
         // Authentification of Noti
-        notiManager.getNotificationSettings { isAuthorized in
+        application.notiManager.getNotificationSettings { isAuthorized in
             guard  isAuthorized else { return }
         }
-        notiManager.triggerTimeIntervalNotification(time: plist.double(forKey: "알림시간"))
+        application.notiManager.triggerTimeIntervalNotification(time: plist.double(forKey: "알림시간"))
         
         print("Noti Skip setting OK")
         
@@ -161,16 +164,18 @@ class SettingNotificationsVC: UIViewController {
         self.view.endEditing(true)
         
         // Authentification of Noti
-        notiManager.getNotificationSettings { isAuthorized in
+        application.notiManager.getNotificationSettings { isAuthorized in
             guard  isAuthorized else { return }
         }
-        notiManager.triggerTimeIntervalNotification(time: plist.double(forKey: "알림시간"))
+        application.notiManager.triggerTimeIntervalNotification(time: plist.double(forKey: "알림시간"))
         
         print("Noti User Setting OK")
         
         // 메인 뷰 진입
         self.navigationController?.popViewController(animated: true)
     }
+    
+    // MARK:- View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -179,7 +184,8 @@ class SettingNotificationsVC: UIViewController {
         setupUIComponents()
     }
     
-    // MARK:- UI Design
+    // MARK:- UI Methods
+    
     func setupUIComponents() {
         
         [minuteTextField, backButtonIcon, backButtonText].forEach { self.view.addSubview($0) }
@@ -241,6 +247,7 @@ class SettingNotificationsVC: UIViewController {
     
     }
     
+    // MARK:- Touch Event
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)

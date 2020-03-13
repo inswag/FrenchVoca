@@ -32,8 +32,6 @@ class UNNotiManager: NSObject {
             print("\(granted)")
             self.setupNotificationActions()
         }
-        
-        
     }
 
     func getNotificationSettings(completionHandler: @escaping (Bool) -> Void) {
@@ -115,7 +113,6 @@ class UNNotiManager: NSObject {
 
 extension UNNotiManager: UNUserNotificationCenterDelegate {
 
-    
     // 앱이 백그라운드 혹은 종료 상태 에는 여기로 응답이 들어오게 되고,
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print("-------[ didReceive ] -------")

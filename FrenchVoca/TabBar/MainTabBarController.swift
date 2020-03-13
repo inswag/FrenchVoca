@@ -86,7 +86,7 @@ class MainTabBarController: UITabBarController {
         guard let items = tabBar.items else { return }
         
         items[0].title = "Accueil"
-        items[1].title = "Institut"
+        items[1].title = "Info"
         items[2].title = "Vocabulaire"
         items[3].title = "Paramètre"
         

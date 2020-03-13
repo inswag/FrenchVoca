@@ -9,15 +9,16 @@
 import UIKit
 import SnapKit
 
-class EnrollmentViewController: UIViewController {
+class EnrollmentViewController: ViewController {
     
-    // MARK:- UI Properties
+    // MARK:- Properties
     
     var image: UIImage?
     var restoreFrameValue: CGFloat = 0.0
     
+    // MARK:- UI Properties
+    
     let enrollmentTitle : UILabel = {
-        // France Blue RGB : 36 74 156
         let titleLabel = UILabel()
         titleLabel.textAlignment = .center
         titleLabel.numberOfLines = 2
@@ -36,13 +37,6 @@ class EnrollmentViewController: UIViewController {
         button.addTarget(self, action: #selector(handlePlusPhoto), for: .touchUpInside)
         return button
     }()
-    
-    @objc func handlePlusPhoto() {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.allowsEditing = true
-        self.present(imagePickerController, animated: true, completion: nil)
-    }
     
     // Username & Position & Next Button will be made by Stackview
     lazy var usernameTextField: UITextField = {
@@ -78,6 +72,15 @@ class EnrollmentViewController: UIViewController {
         return button
     }()
     
+    // MARK:- @objc func
+    
+    @objc func handlePlusPhoto() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        self.present(imagePickerController, animated: true, completion: nil)
+    }
+    
     @objc func handleTextInputChange() {
         let isFormVaild = usernameTextField.text?.isEmpty != true && positionTextField.text?.isEmpty != true
         
@@ -91,7 +94,6 @@ class EnrollmentViewController: UIViewController {
     }
     
     @objc func handleNext() {
-        print("OK handleNext")
         let signInViewController = SignInViewController()
         signInViewController.usernameLabel.text = self.usernameTextField.text
         signInViewController.positionLabel.text = self.positionTextField.text
@@ -120,16 +122,13 @@ class EnrollmentViewController: UIViewController {
         return view
     }()
     
-    // MARK:- Init
- 
-    
     // MARK:- View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.restoreFrameValue = self.view.frame.origin.y
         self.view.backgroundColor = .white
-        setupUIComponents()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -153,11 +152,10 @@ class EnrollmentViewController: UIViewController {
                                                   name: UIResponder.keyboardWillHideNotification,
                                                   object: nil)
     }
+    
+    // MARK:- UI Methods
 
-    
-    // MARK:- UI Components
-    
-    func setupUIComponents() {
+    override func setupUIComponents() {
         
         self.navigationController?.isNavigationBarHidden = true
         [enrollmentTitle, userPhotoButton, descriptionView].forEach { self.view.addSubview($0) }
@@ -196,8 +194,6 @@ class EnrollmentViewController: UIViewController {
         }
         
     }
-    
-    
     
 }
 

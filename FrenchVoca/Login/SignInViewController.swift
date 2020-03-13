@@ -221,7 +221,7 @@ class SignInViewController: UIViewController {
         self.saveButton.isEnabled = true
     }
     
-    // MARK:- UI Design
+    // MARK:- UI Methods
     
     func setupUIComponents() {
         
@@ -231,11 +231,13 @@ class SignInViewController: UIViewController {
         btnStackView.distribution = .fillEqually
 
         
+        [titleLabel, backButtonIcon, backButtonText, containerView, btnStackView].forEach {
+            self.view.addSubview($0)
+        }
         
-        [titleLabel, backButtonIcon, backButtonText, containerView, btnStackView].forEach { self.view.addSubview($0) }
-        
-        
-        [studentCardLabel, chosenUserPhoto, bottomContainerView].forEach { self.containerView.addSubview($0) }
+        [studentCardLabel, chosenUserPhoto, bottomContainerView].forEach {
+            self.containerView.addSubview($0)
+        }
         
         [usernameLabel, positionLabel, divisionView].forEach {
             self.bottomContainerView.addSubview($0)

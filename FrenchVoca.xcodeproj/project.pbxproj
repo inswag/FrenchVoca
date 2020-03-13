@@ -15,6 +15,8 @@
 		E6C53B8F2418D3E600F0DCD4 /* InstitutInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C53B8E2418D3E600F0DCD4 /* InstitutInfoCell.swift */; };
 		E6C53B9124191E4300F0DCD4 /* InstitutInfoCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C53B9024191E4300F0DCD4 /* InstitutInfoCellViewModel.swift */; };
 		E6C53B9324191EEB00F0DCD4 /* InstitutInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C53B9224191EEB00F0DCD4 /* InstitutInfo.swift */; };
+		E6C53B96241A166E00F0DCD4 /* InstitutDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C53B95241A166D00F0DCD4 /* InstitutDetailViewController.swift */; };
+		E6C53B98241A193400F0DCD4 /* InstitutDetailViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C53B97241A193400F0DCD4 /* InstitutDetailViewControllerViewModel.swift */; };
 		E6D8DFAD24172FEF00398360 /* InstitutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D8DFAC24172FEF00398360 /* InstitutViewController.swift */; };
 		F911EF402317AEA2009A8913 /* VocabularyNotebookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911EF3F2317AEA2009A8913 /* VocabularyNotebookVC.swift */; };
 		F911EF422317B38D009A8913 /* VocabularyNotebookVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F911EF412317B38D009A8913 /* VocabularyNotebookVCCell.swift */; };
@@ -88,6 +90,8 @@
 		E6C53B8E2418D3E600F0DCD4 /* InstitutInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstitutInfoCell.swift; sourceTree = "<group>"; };
 		E6C53B9024191E4300F0DCD4 /* InstitutInfoCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstitutInfoCellViewModel.swift; sourceTree = "<group>"; };
 		E6C53B9224191EEB00F0DCD4 /* InstitutInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstitutInfo.swift; sourceTree = "<group>"; };
+		E6C53B95241A166D00F0DCD4 /* InstitutDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstitutDetailViewController.swift; sourceTree = "<group>"; };
+		E6C53B97241A193400F0DCD4 /* InstitutDetailViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstitutDetailViewControllerViewModel.swift; sourceTree = "<group>"; };
 		E6D8DFAC24172FEF00398360 /* InstitutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstitutViewController.swift; sourceTree = "<group>"; };
 		F911EF3F2317AEA2009A8913 /* VocabularyNotebookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyNotebookVC.swift; sourceTree = "<group>"; };
 		F911EF412317B38D009A8913 /* VocabularyNotebookVCCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabularyNotebookVCCell.swift; sourceTree = "<group>"; };
@@ -198,6 +202,8 @@
 				E6C53B8C2418B99E00F0DCD4 /* InstitutViewControllerViewModel.swift */,
 				E6C53B8E2418D3E600F0DCD4 /* InstitutInfoCell.swift */,
 				E6C53B9024191E4300F0DCD4 /* InstitutInfoCellViewModel.swift */,
+				E6C53B95241A166D00F0DCD4 /* InstitutDetailViewController.swift */,
+				E6C53B97241A193400F0DCD4 /* InstitutDetailViewControllerViewModel.swift */,
 			);
 			path = Institut;
 			sourceTree = "<group>";
@@ -619,6 +625,7 @@
 				F91AFB5B2241C69C00F435A5 /* SubjectDAO.swift in Sources */,
 				F965A11923AB7F0B002A8473 /* Navigator.swift in Sources */,
 				F9B38F3D2251D5A2000E1CEA /* WelcomeMainNoticeNestedCell.swift in Sources */,
+				E6C53B98241A193400F0DCD4 /* InstitutDetailViewControllerViewModel.swift in Sources */,
 				F91AFB4F22410A4600F435A5 /* FMResultSet.m in Sources */,
 				F91AFB4E22410A4600F435A5 /* FMDatabasePool.m in Sources */,
 				F91F62FB21F9EE6D00B80433 /* DELFViewController.swift in Sources */,
@@ -658,6 +665,7 @@
 				F936B2F22382D8A000D15624 /* SettingNotificationsVC.swift in Sources */,
 				F91AFB5122410A4600F435A5 /* FMDatabaseQueue.m in Sources */,
 				F9B4DFA22382E87D0080DD5D /* SettingSwitchCell.swift in Sources */,
+				E6C53B96241A166E00F0DCD4 /* InstitutDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

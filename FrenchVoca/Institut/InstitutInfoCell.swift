@@ -43,7 +43,7 @@ class InstitutInfoCell: TableViewCell {
         label.font = Constant.noticeCellTitleFont
         label.textColor = Tools.color.mediumBlack
         label.numberOfLines = 1
-        label.adjustsFontSizeToFitWidth = false
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
@@ -90,6 +90,10 @@ class InstitutInfoCell: TableViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        noticeTitleLabel.text = nil
+        noticeimageView.image = nil
+    }
     
     
     

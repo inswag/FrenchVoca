@@ -32,7 +32,7 @@ class InstitutViewController: ViewController {
         return tv
     }()
     
-    let InstitutLogo: UILabel = {
+    let institutLogo: UILabel = {
         let label = UILabel()
         label.text = "Institut Français"
         label.textAlignment = .center
@@ -86,15 +86,13 @@ class InstitutViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-         fetchResult()
-        
+        fetchResult()
     }
     
     // MARK:- UI Methods
     
     override func setupUIComponents() {
-        self.navigationItem.titleView = InstitutLogo
+        self.navigationItem.titleView = institutLogo
         self.view.backgroundColor = .white
         
         [tableView, headerView].forEach {
@@ -132,8 +130,12 @@ class InstitutViewController: ViewController {
     // MARK:- Methods
     
     func fetchResult() {
-        viewModel.fetchHTMLParsingResult {
-            print("Finish")
+        viewModel.fetchHTMLParsingResultWill {
+            print("Will Finish")
+        }
+        
+        viewModel.fetchHTMLParsingResultNow {
+            print("Now Finish")
         }
     }
     
@@ -145,20 +147,47 @@ class InstitutViewController: ViewController {
 
 extension InstitutViewController : UITableViewDataSource {
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return InstitutViewControllerViewModel.CellType.totalCount.rawValue
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.titleArray.count
+        switch section {
+        case 0:
+            print("will : ", viewModel.willTitleArray.count)
+            return viewModel.willTitleArray.count
+        case 1:
+            print("now : ", viewModel.nowTitleArray.count)
+            return viewModel.nowTitleArray.count
+        default:
+            return 0
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InstitutInfoCell.self), for: indexPath) as? InstitutInfoCell else { return UITableViewCell() }
         
-        cell.noticeTitleLabel.text = viewModel.titleArray[indexPath.row]
-        let url = URL(string: viewModel.imageArray[indexPath.row])!
-        cell.noticeimageView.kf.setImage(with: url)
-
-        // Todo:- must change tableview structure
-//        cell.viewModel = InstitutInfoCellViewModel(contents: <#T##InstitutInfo#>)
-        return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: InstitutInfoCell.self),
+                                                       for: indexPath) as? InstitutInfoCell else { return UITableViewCell() }
+        
+        switch indexPath.section {
+        case 0:
+            cell.noticeTitleLabel.text = "🇫🇷 \(viewModel.willTitleArray[indexPath.row]) 🇰🇷"
+            let url = URL(string: viewModel.willImageArray[indexPath.row])!
+            cell.noticeimageView.kf.setImage(with: url)
+            
+            // Todo:- must change tableview structure
+            //        cell.viewModel = InstitutInfoCellViewModel(contents: <#T##InstitutInfo#>)
+            return cell
+        case 1:
+            cell.noticeTitleLabel.text = "🇫🇷 \(viewModel.nowTitleArray[indexPath.row]) 🇰🇷"
+            let url = URL(string: viewModel.nowImageArray[indexPath.row])!
+            cell.noticeimageView.kf.setImage(with: url)
+        default:
+            return UITableViewCell()
+        }
+        
+        return UITableViewCell()
     }
     
 }
@@ -171,8 +200,48 @@ extension InstitutViewController : UITableViewDelegate {
         return 200 + 16 + 8 + 20
     }
     
-    func tableView(_ tableView: UITableView,
-                   viewForHeaderInSection section: Int) -> UIView? {
-        return headerView
+//    func tableView(_ tableView: UITableView,
+//                   viewForHeaderInSection section: Int) -> UIView? {
+//
+//        switch section {
+//        case 0:
+//            return headerView
+//        default:
+//            return headerView
+//        }
+////        return headerView
+//    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return 150
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "준비 중인 이벤트"
+        default:
+            return "진행 중인 이벤트"
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let header = view as? UITableViewHeaderFooterView {
+            header.textLabel!.font = UIFont.systemFont(ofSize: 24.0)
+            header.textLabel!.textColor = UIColor.orange
+        }
+    }
+
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            let urlString = viewModel.willNextArray[indexPath.row]
+            self.navigationController?.pushViewController(navigator.get(segue: .institutDetail(url: urlString)), animated: true)
+        default:
+            let urlString = viewModel.nowNextArray[indexPath.row]
+            self.navigationController?.pushViewController(navigator.get(segue: .institutDetail(url: urlString)), animated: true)
+        }
+        
     }
 }
