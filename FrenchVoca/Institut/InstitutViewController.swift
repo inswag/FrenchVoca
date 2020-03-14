@@ -24,6 +24,7 @@ class InstitutViewController: ViewController {
         let tv = UITableView(frame: UIScreen.main.bounds, style: UITableView.Style.grouped)
         tv.backgroundColor = .clear
         tv.separatorStyle = .none
+        
         tv.showsVerticalScrollIndicator = false
         tv.dataSource = self
         tv.delegate = self
@@ -131,12 +132,12 @@ class InstitutViewController: ViewController {
     
     func fetchResult() {
         viewModel.fetchHTMLParsingResultWill {
-            print("Will Finish")
+            self.tableView.reloadData()
         }
         
-        viewModel.fetchHTMLParsingResultNow {
-            print("Now Finish")
-        }
+//        viewModel.fetchHTMLParsingResultNow {
+//            print("Now Finish")
+//        }
     }
     
 
