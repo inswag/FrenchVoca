@@ -15,7 +15,7 @@ class NotiSettingViewController: ViewController {
     // MARK:- Properties
     
     let application = Application.shared
-//    let notiManager =
+    let plist = UserDefaults.standard
     
     // MARK:- UI Properties
     
@@ -126,29 +126,30 @@ class NotiSettingViewController: ViewController {
     
     @objc func handleSkip() {
         // register 'Time' in UserDefault
-        let plist = UserDefaults.standard
         plist.set(10800, forKey: "알림시간")
+        plist.set(true, forKey: "알림설정확인")
         plist.synchronize()
         
         // Keyboard Dismiss
         self.view.endEditing(true)
         
-        // Authentification of Noti
         application.notiManager.getNotificationSettings { isAuthorized in
-            guard  isAuthorized else {
-                print("Authorized Error")
-                return }
+            guard  isAuthorized else { return }
         }
-        application.notiManager.triggerTimeIntervalNotification(time: plist.double(forKey: "알림시간"))
         
-        self.dismiss(animated: true, completion: nil)
+        application.notiManager.triggerTimeIntervalNotification(time: plist.double(forKey: "알림시간"))
+        print("사용자가 선택한 시간 : ", plist.double(forKey: "알림시간"))
+        
+        self.switchStateAlert()
     }
     
     @objc func handleSave() {
+        if plist.bool(forKey: "알람설정확인") == false {
+            
+        }
+        
         print("OK handleSave")
-    
         // register 'Time' in UserDefault // QQQQQ 60을 어떻게 추가할까
-        let plist = UserDefaults.standard
         
         if let doubleValue = Double(self.minuteTextField.text ?? "") {
             plist.set(doubleValue * 60.0, forKey: "알림시간")
@@ -158,17 +159,33 @@ class NotiSettingViewController: ViewController {
         // Keyboard Dismiss
         self.view.endEditing(true)
         
-        // Authentification of Noti
         application.notiManager.getNotificationSettings { isAuthorized in
-            guard  isAuthorized else { return }
+            guard isAuthorized else { return }
         }
+        
         application.notiManager.triggerTimeIntervalNotification(time: plist.double(forKey: "알림시간"))
+        
+        print("사용자가 선택한 시간 : ", plist.double(forKey: "알림시간"))
         
         plist.set(true, forKey: "알림설정확인")
         plist.synchronize()
         
         print("Noti User Setting OK")
         
+        self.switchStateAlert()
+    }
+    
+    private func switchStateAlert() {
+        let alert = UIAlertController(title: nil,
+                                      message: "알림 허용 하셨나요?\n안하셨다면 나중에\n아이폰 설정 - FrenchVoca - 알림 ON - 앱에서 Paramètre 선택 -> 알림 ON 을 해주세요.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "알겠습니다!",
+                                      style: .default,
+                                      handler: actionFinish(alert:)))
+        self.present(alert, animated: true)
+    }
+    
+    fileprivate func actionFinish(alert: UIAlertAction!) {
         // 메인 뷰 진입
         self.dismiss(animated: true, completion: nil)
     }
@@ -185,7 +202,7 @@ class NotiSettingViewController: ViewController {
     // MARK:- Methods
     
     func setupNotification() {
-        application.notiManager.register()
+        application.notiManager.register()  // Don't allow or allow (Just Once)
     }
     
     // MARK:- UI Methods

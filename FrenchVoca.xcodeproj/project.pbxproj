@@ -441,8 +441,8 @@
 		F9E8345E23B2F54F006C0F4E /* Based */ = {
 			isa = PBXGroup;
 			children = (
-				F9E8345F23B2F56A006C0F4E /* ViewController.swift */,
 				F9E8346123B30453006C0F4E /* NavigationController.swift */,
+				F9E8345F23B2F56A006C0F4E /* ViewController.swift */,
 				F9E8346323B352D5006C0F4E /* CollectionViewCell.swift */,
 				F9E8346523B43B99006C0F4E /* TableViewCell.swift */,
 			);

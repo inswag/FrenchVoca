@@ -11,16 +11,19 @@ import UIKit
 
 class UNNotiManager: NSObject {
 
-    // 0
+    // MARK:- Properties
+    
     var wordDAO = WordDAO()
     var totalWord: [WordVO]!
     var wordList: [WordVO]!
-
-    // UserDefault for Noti time
+    
+    // Save Time In UserDefaults
     let plist = UserDefaults.standard
+    let center = UNUserNotificationCenter.current()
+    
+    // MARK:- Methods
     
     func register() {
-        let center = UNUserNotificationCenter.current()                         // 1
         center.delegate = self                                                  // 2
         let options: UNAuthorizationOptions = [.alert, .sound]                  // 3
         center.requestAuthorization(options: options) { (granted, error) in   // 4
@@ -32,12 +35,32 @@ class UNNotiManager: NSObject {
             print("\(granted)")
             self.setupNotificationActions()
         }
+        
+        
     }
 
     func getNotificationSettings(completionHandler: @escaping (Bool) -> Void) {
-        let center = UNUserNotificationCenter.current()
         center.getNotificationSettings { (settings) in
-            completionHandler(settings.authorizationStatus == .authorized)
+            
+            
+            if settings.authorizationStatus == .authorized {
+                completionHandler(true)
+            } else {
+                print("denied")
+                completionHandler(false)
+            }
+            
+//            switch settings.authorizationStatus {
+//            case .authorized:
+//                completionHandler(settings.authorizationStatus == .authorized)
+//            case .denied: // 유저가 허용하지 않음을 클릭했을 떄
+//                print("denied")
+//                completionHandler(false)
+//            case .notDetermined:
+//                print("notDetermined")
+//            case .provisional:
+//                print("provisional")
+//            }
 //                        settings.badgeSetting
             //            settings.alertSetting
             //            settings.soundSetting
@@ -45,8 +68,9 @@ class UNNotiManager: NSObject {
         }
     }
     
+    
+    
     func triggerTimeIntervalNotification(time: Double) {
-        let center = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
 
         self.totalWord = self.wordDAO.findTotalWord()
@@ -69,13 +93,15 @@ class UNNotiManager: NSObject {
         center.add(request) { (error) in
             if let error = error {
                 print(error.localizedDescription)
+                print("triggerTimeIntervalNotification 에서 Error 가 발견되었습니다.")
             }
         }
     }
 
     func setupNotificationActions() {
-        let center = UNUserNotificationCenter.current()
-        let destructiveAction = UNNotificationAction(identifier: "DESID", title: "다음 단어", options: [.destructive])
+        let destructiveAction = UNNotificationAction(identifier: "DESID",
+                                                     title: "다음 단어",
+                                                     options: [.destructive])
 
         // iOS 10+
         let category = UNNotificationCategory(
@@ -88,33 +114,16 @@ class UNNotiManager: NSObject {
         center.setNotificationCategories([category])
     }
 
-//    func 임시() {
-//        let center = UNUserNotificationCenter.current()
-//        //        let foregroundAction = UNNotificationAction(identifier: "FOREID", title: "Foreground", options: []) // <- 앱으로 가게 만듬.
-//        //        let textInputAction = UNTextInputNotificationAction(identifier: "INPUTID", title: "TextInput", options: []) // <- 여기에 옵션 안줬기 때문에 인풋해도 별거 없음.
-//
-//                let destructiveAction = UNNotificationAction(identifier: "DESID", title: "다음 단어", options: [.destructive])
-//
-//                // iOS 11
-//                //        let category = UNNotificationCategory(identifier: <#T##String#>, actions: <#T##[UNNotificationAction]#>, intentIdentifiers: <#T##[String]#>, hiddenPreviewsBodyPlaceholder: <#T##String#>, options: <#T##UNNotificationCategoryOptions#>)
-//                //
-//
-//                // iOS 10
-//                let category = UNNotificationCategory(
-//                    identifier: "CategoryID",
-//                    actions: [destructiveAction],
-//                    intentIdentifiers: [],
-//                    options: [] // 22. .customDismissAction 를 추가해줘야 밑에서 액션에 따라 행동이 됌.
-//                )
-//
-//                center.setNotificationCategories([category])
-//    }
 }
+
+// MARK:- UNUserNotificationCenter Delegate
 
 extension UNNotiManager: UNUserNotificationCenterDelegate {
 
     // 앱이 백그라운드 혹은 종료 상태 에는 여기로 응답이 들어오게 되고,
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
         print("-------[ didReceive ] -------")
         
         // 21.

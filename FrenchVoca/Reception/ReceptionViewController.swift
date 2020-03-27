@@ -89,6 +89,16 @@ class ReceptionViewController: UIViewController {
         collectionView.anchor(top: self.view.topAnchor, left: self.view.leftAnchor, bottom: self.view.bottomAnchor, right: self.view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
     }
     
+    private func switchStateAlert() {
+           let alert = UIAlertController(title: nil,
+                                         message: "알람 허용 안함을 선택하셨습니다.\n알림을 받기 위해서는 아이폰 설정 - FrenchVoca - 알림 ON - 앱에서 Paramètre 선택 -> 알림 ON 을 해주세요.",
+                                         preferredStyle: .alert)
+           alert.addAction(UIAlertAction(title: "OK",
+                                         style: .default,
+                                         handler: nil))
+           self.present(alert, animated: true)
+       }
+    
     //MARK:- Deinit
     
     deinit {

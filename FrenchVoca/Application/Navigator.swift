@@ -8,15 +8,10 @@
 
 import UIKit
 
-//protocol Navigatable {
-//    var navigator: Navigator! { get set }
-//}
-
 class Navigator {
     
-//    static var `default` = Navigator()
-    
     // MARK: - ALL SCENE
+    
     enum Scene {
         case tabs
         case enrollment         // Login
@@ -35,6 +30,8 @@ class Navigator {
         case settingPeople
         case settingNoti
     }
+    
+    // MARK:- Scene Method
     
     // 왜 SwiftHub 에서는 옵셔널로 처리했을까?
     func get(segue: Scene) -> UIViewController {

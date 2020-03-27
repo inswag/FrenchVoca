@@ -14,6 +14,7 @@ class MainTabBarController: UITabBarController {
     // MARK:- Properties
     
     let navigator: Navigator
+    let plist = UserDefaults.standard
     
     // MARK:- Initialize
     
@@ -34,7 +35,7 @@ class MainTabBarController: UITabBarController {
         DispatchQueue.main.async {
             // UserDefault 에 저장된 이름과 소속이 없으면 등록창을, 그렇지 않으면 바로 메인 화면을 보여주게 된다.
             let plist = UserDefaults.standard
-            if let username = plist.string(forKey: "이름"), let position = plist.string(forKey: "소속") {
+            if let username = plist.string(forKey: "이름"), let position = plist.string(forKey: "소속"), plist.double(forKey: "알림시간") != 0.0 {
                 print("My name: \(username), My position: \(position)")
             } else {
                 let navController = NavigationController(rootViewController: self.navigator.get(segue: .enrollment))

@@ -14,6 +14,8 @@ class SettingNotificationsVC: UIViewController {
     // MARK:- Properties
     
     let application = Application.shared
+    let notiCenter = NotificationCenter.default
+    let plist = UserDefaults.standard
     
     // MARK:- UI Properties
 
@@ -38,7 +40,6 @@ class SettingNotificationsVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    // Title Label
     let titleLabel: UILabel = {
         // France Blue RGB : 36 74 156
         let titleLabel = UILabel()
@@ -115,8 +116,12 @@ class SettingNotificationsVC: UIViewController {
     }()
     
     @objc func handleSkip() {
+        if plist.bool(forKey: "알림설정확인") == false {
+            switchStateAlert()
+            return
+        }
+        
         // register 'Time' in UserDefault
-        let plist = UserDefaults.standard
         plist.set(10800, forKey: "알림시간")
         plist.synchronize()
         
@@ -150,11 +155,12 @@ class SettingNotificationsVC: UIViewController {
     }()
     
     @objc func handleSave() {
-        print("OK handleSave")
-    
-        // register 'Time' in UserDefault // QQQQQ 60을 어떻게 추가할까
-        let plist = UserDefaults.standard
+        if plist.bool(forKey: "알림설정확인") == false {
+            switchStateAlert()
+            return
+        }
         
+        // register 'Time' in UserDefault // QQQQQ 60을 어떻게 추가할까
         if let doubleValue = Double(self.minuteTextField.text ?? "") {
             plist.set(doubleValue * 60.0, forKey: "알림시간")
             plist.synchronize()
@@ -175,6 +181,16 @@ class SettingNotificationsVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    private func switchStateAlert() {
+        let alert = UIAlertController(title: nil,
+                                      message: "알림이 OFF 상태입니다.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK",
+                                      style: .default,
+                                      handler: nil))
+        self.present(alert, animated: true)
+    }
+    
     // MARK:- View Life Cycle
     
     override func viewDidLoad() {
@@ -182,6 +198,24 @@ class SettingNotificationsVC: UIViewController {
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isHidden = true
         setupUIComponents()
+//        receivePost()
+    }
+    
+    fileprivate func receivePost() {
+        notiCenter.addObserver(self,
+                               selector: #selector(actionSwitch),
+                               name: NSNotification.Name(rawValue: "switchOn"),
+                               object: nil)
+    }
+    
+    @objc func actionSwitch() {
+        
+    }
+    
+    deinit {
+        notiCenter.removeObserver(self,
+                                  name: NSNotification.Name("switchOn"),
+                                  object: nil)
     }
     
     // MARK:- UI Methods

@@ -24,7 +24,7 @@ class SettingSwitchCell: UITableViewCell {
     
     // MARK:- Properties
     
-    let notiManager = UNNotiManager()
+    let application = Application.shared
     let plist = UserDefaults.standard
     
     // MARK:- UI Properties
@@ -54,38 +54,37 @@ class SettingSwitchCell: UITableViewCell {
     // Right Side
     lazy var controlSwitch: UISwitch = {
         let interrupteur = UISwitch()
-        interrupteur.tintColor = Tools.color.frenchBlue // Set Switch to On.
-        interrupteur.isOn = plist.bool(forKey: "알림설정확인") // Set the event to be called when switching On / Off of Switch.
-        
+       // Set Switch to On.
+        interrupteur.tintColor = Tools.color.frenchBlue
+        // Set the event to be called when switching On / Off of Switch.
+        interrupteur.isOn = plist.bool(forKey: "알림설정확인")
         interrupteur.addTarget(self, action: #selector(touchAction), for: UIControl.Event.valueChanged)
         return interrupteur
-        
     }()
-    
-    
     
     // 치명적 오류 존재
     @objc func touchAction() {
-        print("Toggle switch")
         if self.controlSwitch.isOn {
-            
-            // Authentification of Noti
 //            notiManager.register()
-            notiManager.getNotificationSettings { isAuthorized in
+            application.notiManager.getNotificationSettings { isAuthorized in
                 guard  isAuthorized else { return }
             }
             print("Toggle plist value : \(plist.double(forKey: "알림시간"))")
-            notiManager.triggerTimeIntervalNotification(time: plist.double(forKey: "알림시간"))
+            application.notiManager.triggerTimeIntervalNotification(time: plist.double(forKey: "알림시간"))
             
             // Toggle's state
             self.controlSwitch.isOn = true
             plist.set(true, forKey: "알림설정확인")
             plist.synchronize()
+            
+            print("Paramètre 에서 Switch 가 ON 되었습니다.")
         } else {
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
             self.controlSwitch.isOn = false
             plist.set(false, forKey: "알림설정확인")
             plist.synchronize()
+            
+            print("Paramètre 에서 Switch 가 OFF 되었습니다.")
         }
         
     }
@@ -104,7 +103,9 @@ class SettingSwitchCell: UITableViewCell {
     // MARK:- UI Methods
     
     func setupUIComponents() {
-        [titleLabel, subTitleLabel, controlSwitch].forEach { self.contentView.addSubview($0) }
+        [titleLabel, subTitleLabel, controlSwitch].forEach {
+            self.contentView.addSubview($0)
+        }
         
         self.titleLabel.anchor(top: self.contentView.topAnchor,
                                left: self.contentView.leftAnchor,
