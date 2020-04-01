@@ -80,6 +80,7 @@ class SettingSwitchCell: UITableViewCell {
             print("Paramètre 에서 Switch 가 ON 되었습니다.")
         } else {
             UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+            UNUserNotificationCenter.current().removeAllDeliveredNotifications()
             self.controlSwitch.isOn = false
             plist.set(false, forKey: "알림설정확인")
             plist.synchronize()

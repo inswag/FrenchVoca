@@ -43,6 +43,11 @@ class InstitutViewControllerViewModel {
     
     func fetchHTMLParsingResultWill(completion: @escaping () -> ()) {
         
+        DispatchQueue.main.async {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        }
+        
+        
          let urlAddress = "https://www.institutfrancais-seoul.com/ko/2017-%eb%ac%b8%ed%99%94-%ea%b5%90%ec%9c%a1-%ea%b3%bc%ed%95%99-%eb%89%b4%ec%8a%a4/"
         
         guard let url = URL(string: urlAddress) else { return }

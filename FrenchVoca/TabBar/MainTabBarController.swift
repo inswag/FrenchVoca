@@ -51,6 +51,8 @@ class MainTabBarController: UITabBarController {
     func setupViewControllers() {
         let welcomeSelected = UIImage(named: "A_selected")
         let welcomeUnselected = UIImage(named: "A_unselected")
+        let informationSelected = UIImage(named: "I_selected")
+        let informationUnselected = UIImage(named: "I_unselected")
         let vocaSelected = UIImage(named: "V_selected")
         let vocaUnselected = UIImage(named: "V_unselected")
         let settingSelected = UIImage(named: "P_selected")
@@ -74,8 +76,8 @@ class MainTabBarController: UITabBarController {
                                                       rootViewController: self.navigator.get(segue: .settingMain))
         
         // Institut
-        let InstitutViewController = templateNavController(unselectedImage: welcomeUnselected!,
-                                                       selectedImage: welcomeSelected!,
+        let InstitutViewController = templateNavController(unselectedImage: informationUnselected!,
+                                                       selectedImage: informationSelected!,
                                                        rootViewController: self.navigator.get(segue: .institut))
         
 
@@ -85,14 +87,14 @@ class MainTabBarController: UITabBarController {
         
         // Modify tab bar item insets & title
         guard let items = tabBar.items else { return }
-        
+
         items[0].title = "Accueil"
         items[1].title = "Info"
         items[2].title = "Vocabulaire"
         items[3].title = "Paramètre"
         
         for item in items {
-            item.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
+            item.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: 0, right: 0)
         }
         
     }

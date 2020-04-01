@@ -131,9 +131,17 @@ class InstitutViewController: ViewController {
     // MARK:- Methods
     
     func fetchResult() {
-        viewModel.fetchHTMLParsingResultWill {
-            self.tableView.reloadData()
+        
+        DispatchQueue.global().async {
+            self.viewModel.fetchHTMLParsingResultWill {
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                }
+            }
         }
+        
+        
         
 //        viewModel.fetchHTMLParsingResultNow {
 //            print("Now Finish")

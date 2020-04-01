@@ -85,6 +85,7 @@ class UNNotiManager: NSObject {
 
         // 유저의 선택에 따라 선택되도록 !
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: time, repeats: true)
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false) // Test용
         print("trigger will go")
 
         // identifier? 알림요청이 여러가지가 될 때, 이 알림들을 구분할 수 있게 해주는 식별자

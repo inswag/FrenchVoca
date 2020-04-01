@@ -29,7 +29,9 @@ class NotiSettingViewController: ViewController {
     
     let backButtonText: UIButton = {
         let button = UIButton(type: .system)
-        let attributedTitle = NSAttributedString(string: "Arrière", attributes: [NSAttributedString.Key.font: Tools.font.avenirLight(size: 20), NSAttributedString.Key.foregroundColor: Tools.color.lightBlack])
+        let attributedTitle = NSAttributedString(string: "Arrière",
+                                                 attributes: [NSAttributedString.Key.font: Tools.font.avenirLight(size: 20),
+                                                              NSAttributedString.Key.foregroundColor: Tools.color.lightBlack])
         button.setAttributedTitle(attributedTitle, for: .normal)
         button.addTarget(self, action: #selector(handlePopAction), for: .touchUpInside)
         return button
@@ -202,7 +204,7 @@ class NotiSettingViewController: ViewController {
     // MARK:- Methods
     
     func setupNotification() {
-        application.notiManager.register()  // Don't allow or allow (Just Once)
+//        application.notiManager.register()  // Don't allow or allow (Just Once)
     }
     
     // MARK:- UI Methods

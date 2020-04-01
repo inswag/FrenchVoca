@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window.makeKeyAndVisible()
 //        self.window = window
         
-//        Application.shared.notiManager.register()
+        Application.shared.notiManager.register()
         Application.shared.presentInitialScreen(in: window)
         return true
     }
