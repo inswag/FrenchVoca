@@ -10,18 +10,19 @@ import UIKit
 import Kingfisher
 import SwiftSoup
 
-
 class InstitutViewController: ViewController {
     
     // MARK:- Properties
     
     let navigator: Navigator
     let viewModel: InstitutViewControllerViewModel
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(style: .gray)
     
     // MARK:- UI Properties
     
     lazy var tableView: UITableView = {
-        let tv = UITableView(frame: UIScreen.main.bounds, style: UITableView.Style.grouped)
+        let tv = UITableView(frame: UIScreen.main.bounds,
+                             style: UITableView.Style.grouped)
         tv.backgroundColor = .clear
         tv.separatorStyle = .none
         
@@ -51,7 +52,7 @@ class InstitutViewController: ViewController {
     
     let koreanTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "프랑스 문화/공연/교육/예술 정보"
+        label.text = "한국에서의 프랑스 문화와 예술"
         label.textAlignment = .center
         label.font = Tools.font.appleSDGothicNeoBold(size: 18)
         label.textColor = Tools.color.lightBlack
@@ -62,7 +63,7 @@ class InstitutViewController: ViewController {
     
     let subFrenchTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "(Informations chez Institut Français)"
+        label.text = "(Arts et Cultures Français en Corée)"
         label.textAlignment = .center
         label.font = Tools.font.avenirMedium(size: 18)
         label.textColor = Tools.color.lightBlack
@@ -95,8 +96,9 @@ class InstitutViewController: ViewController {
     override func setupUIComponents() {
         self.navigationItem.titleView = institutLogo
         self.view.backgroundColor = .white
+        activityIndicator.alpha = 1.0
         
-        [tableView, headerView].forEach {
+        [tableView, headerView, activityIndicator].forEach {
             self.view.addSubview($0)
         }
         
@@ -106,13 +108,20 @@ class InstitutViewController: ViewController {
     }
     
     override func setupUILayout() {
+        activityIndicator.snp.makeConstraints {
+            $0.centerX.equalToSuperview()
+            $0.centerY.equalToSuperview()
+        }
+        
         tableView.snp.makeConstraints {
-            $0.top.leading.trailing.bottom.equalToSuperview()
+            $0.top.equalTo(headerView.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
         
         headerView.snp.makeConstraints {
+            $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
             $0.width.equalTo(self.view.frame.width)
-            $0.height.equalTo(80)
+            $0.height.equalTo(70)
         }
         
         koreanTitleLabel.snp.makeConstraints {
@@ -132,10 +141,14 @@ class InstitutViewController: ViewController {
     
     func fetchResult() {
         
+        self.activityIndicator.startAnimating()
+        
         DispatchQueue.global().async {
             self.viewModel.fetchHTMLParsingResultWill {
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
                     UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
             }
